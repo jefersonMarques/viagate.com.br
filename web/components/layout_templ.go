@@ -189,7 +189,7 @@ func Layout(meta site.PageMeta) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "\"><meta name=\"theme-color\" content=\"#071527\"><link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\"><link rel=\"manifest\" href=\"/site.webmanifest\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"Conteúdos Viagate\" href=\"/feed.xml\"><link rel=\"alternate\" type=\"text/plain\" title=\"Viagate para LLMs\" href=\"/llms.txt\"><style>h1{font-size:2em}</style><link rel=\"stylesheet\" href=\"/assets/css/site.css\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "\"><meta name=\"theme-color\" content=\"#071527\"><link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\"><link rel=\"manifest\" href=\"/site.webmanifest\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"Conteúdos Viagate\" href=\"/feed.xml\"><link rel=\"alternate\" type=\"text/plain\" title=\"Viagate para LLMs\" href=\"/llms.txt\"><style>h1{font-size:2em}</style><link rel=\"stylesheet\" href=\"/assets/css/site.css\"><script src=\"/assets/js/site.js\" defer></script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -223,7 +223,7 @@ func Layout(meta site.PageMeta) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "</body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 19, "<button class=\"whatsapp-trigger\" type=\"button\" aria-haspopup=\"dialog\" aria-controls=\"whatsapp-dialog\" data-whatsapp-open><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z\"></path><path d=\"M8 8h8M8 12h5\"></path></svg><span>WhatsApp</span></button><dialog class=\"whatsapp-dialog\" id=\"whatsapp-dialog\" aria-labelledby=\"whatsapp-dialog-title\" data-whatsapp-dialog><div class=\"whatsapp-dialog-card\"><div class=\"whatsapp-dialog-header\"><div><span>Atendimento Viagate</span><h2 id=\"whatsapp-dialog-title\">Como podemos ajudar?</h2></div><form method=\"dialog\"><button class=\"whatsapp-dialog-close\" type=\"submit\" aria-label=\"Fechar atendimento\">×</button></form></div><p>Escolha o canal adequado para iniciar a conversa pelo WhatsApp.</p><div class=\"whatsapp-options\"><a href=\"https://wa.me/5541988697727?text=Ol%C3%A1%21+Preciso+de+Suporte\" target=\"_blank\" rel=\"noopener noreferrer\"><span class=\"whatsapp-option-index\">01</span><span><strong>Suporte ao motorista</strong><small>Atendimento direcionado para motoristas.</small></span><span aria-hidden=\"true\">↗</span></a><a href=\"https://wa.me/5541999623600?text=Ol%C3%A1%21+Gostaria+de+falar+com+o+Comercial\" target=\"_blank\" rel=\"noopener noreferrer\"><span class=\"whatsapp-option-index\">02</span><span><strong>Área Comercial</strong><small>Soluções, integrações e propostas.</small></span><span aria-hidden=\"true\">↗</span></a></div></div></dialog></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
