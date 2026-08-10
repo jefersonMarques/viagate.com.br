@@ -1,0 +1,37 @@
+version: "3"
+
+tasks:
+  tools:
+    desc: Instala as ferramentas de desenvolvimento
+    cmds:
+      - go install github.com/a-h/templ/cmd/templ@v0.3.1001
+
+  generate:
+    desc: Gera os arquivos Go dos templates
+    cmds:
+      - templ generate
+
+  dev:
+    desc: Inicia o servidor com recarregamento automático
+    cmds:
+      - templ generate --watch --proxy="http://localhost:8090" --cmd="go run ./cmd/server" --open-browser=false
+
+  build:
+    desc: Gera os templates e compila o binário
+    deps: [generate]
+    cmds:
+      - mkdir -p bin
+      - go build -buildvcs=false -trimpath -ldflags="-s -w" -o bin/viagate-site ./cmd/server
+
+  test:
+    desc: Executa validações e testes
+    deps: [generate]
+    cmds:
+      - go test ./...
+
+  check:
+    desc: Valida formatação, templates e testes
+    cmds:
+      - templ fmt .
+      - gofmt -w cmd internal web
+      - task: test

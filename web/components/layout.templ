@@ -1,0 +1,52 @@
+package components
+
+import "github.com/viagate/site/internal/site"
+
+templ Layout(meta site.PageMeta) {
+	<!DOCTYPE html>
+	<html lang="pt-BR">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<title>{ meta.Title }</title>
+			<meta name="description" content={ meta.Description }/>
+			<link rel="canonical" href={ meta.Canonical }/>
+			if meta.NoIndex {
+				<meta name="robots" content="noindex, follow"/>
+			} else {
+				<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+			}
+			<meta property="og:locale" content="pt_BR"/>
+			<meta property="og:site_name" content="Viagate"/>
+			<meta property="og:type" content={ meta.Type }/>
+			<meta property="og:title" content={ meta.Title }/>
+			<meta property="og:description" content={ meta.Description }/>
+			<meta property="og:url" content={ meta.Canonical }/>
+			<meta property="og:image" content={ meta.Image }/>
+			<meta property="og:image:width" content="1200"/>
+			<meta property="og:image:height" content="630"/>
+			<meta name="twitter:card" content="summary_large_image"/>
+			<meta name="twitter:title" content={ meta.Title }/>
+			<meta name="twitter:description" content={ meta.Description }/>
+			<meta name="twitter:image" content={ meta.Image }/>
+			<meta name="theme-color" content="#071527"/>
+			<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+			<link rel="manifest" href="/site.webmanifest"/>
+			<link rel="alternate" type="application/rss+xml" title="Conteúdos Viagate" href="/feed.xml"/>
+			<link rel="alternate" type="text/plain" title="Viagate para LLMs" href="/llms.txt"/>
+			<style>h1{font-size:2em}</style>
+			<link rel="stylesheet" href="/assets/css/site.css"/>
+			if meta.Schema != "" {
+				@templ.Raw("<script type=\"application/ld+json\">" + meta.Schema + "</script>")
+			}
+		</head>
+		<body>
+			<a class="skip-link" href="#main-content">Ir para o conteúdo</a>
+			@Header()
+			<main id="main-content">
+				{ children... }
+			</main>
+			@Footer()
+		</body>
+	</html>
+}

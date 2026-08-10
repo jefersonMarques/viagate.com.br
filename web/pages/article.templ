@@ -1,0 +1,55 @@
+package pages
+
+import (
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ Article(meta site.PageMeta, article site.Article) {
+	@components.Layout(meta) {
+		<article>
+			<header class="article-hero">
+				<div class="container article-header">
+					<nav class="breadcrumb" aria-label="Navegação estrutural"><a href="/">Início</a><span>/</span><a href="/blog">Conteúdos</a><span>/</span><span>{ article.Category }</span></nav>
+					<span class="eyebrow">{ article.Category }</span>
+					<h1>{ article.Title }</h1>
+					<p>{ article.Description }</p>
+					<div class="article-byline"><span>Por { article.Author }</span><span>Publicado em <time datetime={ article.PublishedAt.Format("2006-01-02") }>{ article.PublishedAt.Format("02/01/2006") }</time></span><span>{ article.ReadingTime }</span></div>
+				</div>
+			</header>
+			<div class="container article-shell">
+				@components.ImagePlaceholder(article.ImageDescription, article.ImageSize, "article-cover")
+				<div class="article-content">
+					<p class="article-summary">{ article.Summary }</p>
+					for _, section := range article.Sections {
+						<section>
+							<h2>{ section.Heading }</h2>
+							for _, paragraph := range section.Paragraphs {
+								<p>{ paragraph }</p>
+							}
+							if len(section.Items) > 0 {
+								<ul>
+									for _, item := range section.Items {
+										<li>{ item }</li>
+									}
+								</ul>
+							}
+						</section>
+					}
+					if len(article.References) > 0 {
+						<section class="references">
+							<h2>Fontes e referências</h2>
+							<ul>
+								for _, reference := range article.References {
+									<li><a href={ reference.URL } rel="noopener noreferrer">{ reference.Label }</a></li>
+								}
+							</ul>
+						</section>
+					}
+					<p class="article-update">Última atualização: <time datetime={ article.UpdatedAt.Format("2006-01-02") }>{ article.UpdatedAt.Format("02/01/2006") }</time>.</p>
+				</div>
+			</div>
+		</article>
+		@components.CallToAction("Transforme o conteúdo em processo", "Converse com a equipe Viagate sobre validação, autenticação e gestão integrada ao seu cenário.")
+	}
+}

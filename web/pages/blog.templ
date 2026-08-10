@@ -1,0 +1,24 @@
+package pages
+
+import (
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ Blog(meta site.PageMeta, articles []site.Article) {
+	@components.Layout(meta) {
+		<section class="page-hero">
+			<div class="container narrow-copy"><span class="eyebrow">Conteúdos Viagate</span><h1>Conhecimento para decisões mais seguras no transporte</h1><p>Guias objetivos sobre identidade, pesquisa cadastral, prevenção a fraudes, logística e proteção de dados.</p></div>
+		</section>
+		<section class="section">
+			<div class="container article-grid article-grid-listing">
+				for _, article := range articles {
+					@components.ArticleCard(article)
+				}
+			</div>
+		</section>
+		<section class="section section-muted">
+			<div class="container editorial-note"><div><span class="eyebrow">Compromisso editorial</span><h2>Conteúdo claro, útil e verificável</h2></div><p>Os materiais diferenciam orientação geral de requisitos legais, indicam fontes de referência e evitam promessas absolutas. Processos reais devem considerar o contexto operacional e jurídico de cada empresa.</p></div>
+		</section>
+	}
+}

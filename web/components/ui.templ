@@ -1,0 +1,303 @@
+package components
+
+import (
+	"fmt"
+
+	"github.com/templui/templui/components/card"
+	"github.com/templui/templui/components/icon"
+	"github.com/viagate/site/internal/site"
+)
+
+templ Icon(name string) {
+	switch name {
+		case "scan-face":
+			@icon.ScanFace(icon.Props{Class: "ui-icon"})
+		case "shield-check":
+			@icon.ShieldCheck(icon.Props{Class: "ui-icon"})
+		case "truck":
+			@icon.Truck(icon.Props{Class: "ui-icon"})
+		case "route":
+			@icon.Route(icon.Props{Class: "ui-icon"})
+		case "map-pinned":
+			@icon.MapPinned(icon.Props{Class: "ui-icon"})
+		case "package-check":
+			@icon.PackageCheck(icon.Props{Class: "ui-icon"})
+		case "map":
+			@icon.Map(icon.Props{Class: "ui-icon"})
+		case "coffee":
+			@icon.Coffee(icon.Props{Class: "ui-icon"})
+		case "car-front":
+			@icon.CarFront(icon.Props{Class: "ui-icon"})
+		case "code":
+			@icon.Code(icon.Props{Class: "ui-icon"})
+		case "braces":
+			@icon.Braces(icon.Props{Class: "ui-icon"})
+		case "workflow":
+			@icon.Workflow(icon.Props{Class: "ui-icon"})
+		case "database":
+			@icon.Database(icon.Props{Class: "ui-icon"})
+		case "palette":
+			@icon.Palette(icon.Props{Class: "ui-icon"})
+		case "refresh-cw":
+			@icon.RefreshCw(icon.Props{Class: "ui-icon"})
+		case "user-check":
+			@icon.UserCheck(icon.Props{Class: "ui-icon"})
+		case "badge-check":
+			@icon.BadgeCheck(icon.Props{Class: "ui-icon"})
+		case "sliders":
+			@icon.SlidersHorizontal(icon.Props{Class: "ui-icon"})
+		case "history":
+			@icon.History(icon.Props{Class: "ui-icon"})
+		case "map-pin":
+			@icon.MapPin(icon.Props{Class: "ui-icon"})
+		case "globe":
+			@icon.Globe(icon.Props{Class: "ui-icon"})
+		case "smartphone":
+			@icon.Smartphone(icon.Props{Class: "ui-icon"})
+		case "send":
+			@icon.Send(icon.Props{Class: "ui-icon"})
+		case "link":
+			@icon.Link(icon.Props{Class: "ui-icon"})
+		case "file-warning":
+			@icon.FileExclamationPoint(icon.Props{Class: "ui-icon"})
+		case "receipt":
+			@icon.Receipt(icon.Props{Class: "ui-icon"})
+		case "triangle-alert":
+			@icon.TriangleAlert(icon.Props{Class: "ui-icon"})
+		case "bell-ring":
+			@icon.BellRing(icon.Props{Class: "ui-icon"})
+		default:
+			@icon.CircleCheck(icon.Props{Class: "ui-icon"})
+	}
+}
+
+templ CommandCenter() {
+	<figure class="command-center" aria-label="Interface conceitual de controle de risco e operação">
+		<div class="console-bar">
+			<div class="console-brand"><span class="console-mark"></span><span>VIAGATE / RISK ENGINE</span></div>
+			<div class="console-live"><span></span> operação conectada</div>
+		</div>
+		<div class="console-main">
+			<div class="operational-timeline">
+				<div class="timeline-heading">
+					<div><span>CONTEXTO OPERACIONAL</span><strong>Jornada segura em processamento</strong></div>
+					<p><i></i><span>12 etapas</span></p>
+				</div>
+				<ol class="timeline-list">
+					@TimelineStep("01", "database", "Registro dos dados")
+					@TimelineStep("02", "map-pin", "Capturando localização")
+					@TimelineStep("03", "scan-face", "Biometria facial")
+					@TimelineStep("04", "shield-check", "Garantindo LGPD")
+					@TimelineStep("05", "smartphone", "Verificando telefone")
+					@TimelineStep("06", "badge-check", "Avaliando CNH")
+					@TimelineStep("07", "route", "Avaliando ANTT")
+					@TimelineStep("08", "file-warning", "Consultando processos")
+					@TimelineStep("09", "car-front", "Analisando veículo")
+					@TimelineStep("10", "shield-check", "Análise de segurança")
+					@TimelineStep("11", "user-check", "Dados confirmados")
+					@TimelineStep("12", "history", "Registro seguro")
+				</ol>
+			</div>
+			<div class="console-status">
+				<div class="status-heading"><span>SINAIS</span><small>ao vivo</small></div>
+				<div class="status-item">
+					<span class="status-icon">
+						@Icon("scan-face")
+					</span>
+					<div><small>IDENTIDADE</small><strong>Em validação</strong></div><i></i>
+				</div>
+				<div class="status-item">
+					<span class="status-icon">
+						@Icon("shield-check")
+					</span>
+					<div><small>CONSENTIMENTO</small><strong>Registrado</strong></div><i></i>
+				</div>
+				<div class="status-item">
+					<span class="status-icon">
+						@Icon("database")
+					</span>
+					<div><small>BASES</small><strong>Em consulta</strong></div><i></i>
+				</div>
+				<div class="status-item">
+					<span class="status-icon">
+						@Icon("history")
+					</span>
+					<div><small>TRILHA</small><strong>Protegida</strong></div><i></i>
+				</div>
+			</div>
+		</div>
+		<figcaption>Fluxo conceitual de validação e análise operacional</figcaption>
+	</figure>
+}
+
+templ TimelineStep(index string, iconName string, label string) {
+	<li class="timeline-step">
+		<span class="timeline-icon">@Icon(iconName)
+</span>
+		<div><small>{ index }</small><strong>{ label }</strong></div>
+		<i class="timeline-state" aria-hidden="true"></i>
+	</li>
+}
+
+templ BiometricCore() {
+	<figure class="biometric-core" aria-label="Representação conceitual de biometria e análise cadastral">
+		<div class="core-orbit core-orbit-one"></div>
+		<div class="core-orbit core-orbit-two"></div>
+		<div class="core-signal core-signal-left">
+			<span>
+				@Icon("user-check")
+			</span><small>Cadastro</small><strong>Estruturado</strong>
+		</div>
+		<div class="core-signal core-signal-right">
+			<span>
+				@Icon("shield-check")
+			</span><small>Política</small><strong>Aplicada</strong>
+		</div>
+		<div class="biometric-device">
+			<div class="device-speaker"></div>
+			<div class="device-screen">
+				<span class="screen-label">VALIDAÇÃO EM ANDAMENTO</span>
+				<div class="face-stage">
+					<div class="face-ring face-ring-static"></div>
+					<div class="face-ring face-ring-active"></div>
+					<div class="face-icon">
+						@Icon("scan-face")
+					</div>
+					<div class="scan-line"></div>
+				</div>
+				<div class="device-progress"><span></span></div>
+				<div class="device-checks"><span>presença</span><span>identidade</span><span>contexto</span></div>
+			</div>
+		</div>
+		<figcaption>Fluxo conceitual de validação biométrica</figcaption>
+	</figure>
+}
+
+templ ApiConsole() {
+	<figure class="api-console" aria-label="Exemplo conceitual de integração com a API Viagate">
+		<div class="api-console-bar"><span></span><span></span><span></span><strong>POST /v1/validations</strong></div>
+		<pre>
+			<code>
+				<span class="code-muted">{ "{" }</span>
+				<span class="code-key">"workflow"</span>: <span class="code-value">"driver_validation"</span>,
+				<span class="code-key">"checks"</span>: [
+				<span class="code-value">"identity"</span>,
+				<span class="code-value">"biometry"</span>,
+				<span class="code-value">"registry"</span>
+				],
+				<span class="code-key">"callback"</span>: <span class="code-value">"/events/status"</span>
+				<span class="code-muted">{ "}" }</span>
+			</code>
+		</pre>
+		<div class="api-result"><span><i></i> 202 ACCEPTED</span><small>trace vg_84f1...c29</small></div>
+		<figcaption>Exemplo ilustrativo; endpoints dependem da documentação contratada.</figcaption>
+	</figure>
+}
+
+templ PowerSolutionCard(solution site.Solution, index int) {
+	<article class="power-card">
+		<div class="power-card-top"><span>{ solution.Name }</span><strong>{ fmt.Sprintf("%02d", index) }</strong></div>
+		<div class="power-card-icon">
+			@Icon(solution.Icon)
+		</div>
+		<h3>{ solution.ShortName }</h3>
+		<p>{ solution.Summary }</p>
+		<a href={ solutionPath(solution) }>Explorar capacidade <span aria-hidden="true">↗</span></a>
+		<div class="power-card-grid" aria-hidden="true"></div>
+	</article>
+}
+
+templ SolutionSignalPanel(solution site.Solution) {
+	<figure class="solution-signal-panel" aria-label={ "Representação conceitual da solução " + solution.ShortName }>
+		<div class="signal-panel-grid" aria-hidden="true"></div>
+		<div class="signal-panel-top">
+			<span><i></i> VIAGATE / { solution.ShortName }</span>
+			<small>SISTEMA OPERACIONAL</small>
+		</div>
+		<div class="signal-panel-core">
+			<div class="signal-radar signal-radar-one"></div>
+			<div class="signal-radar signal-radar-two"></div>
+			<div class="signal-core-icon">
+				@Icon(solution.Icon)
+			</div>
+		</div>
+		<div class="signal-panel-checks">
+			for index, feature := range solution.Features {
+				if index < 3 {
+					<div>
+						<span>
+							@Icon(feature.Icon)
+						</span>
+						<p><small>SINAL { fmt.Sprintf("%02d", index + 1) }</small><strong>{ feature.Title }</strong></p><i></i>
+					</div>
+				}
+			}
+		</div>
+		<figcaption>Visualização conceitual — a interface final depende dos módulos contratados.</figcaption>
+	</figure>
+}
+
+templ ImagePlaceholder(description string, size string, className string) {
+	<div class={ "image-placeholder " + className } role="img" aria-label={ description + " Tamanho recomendado: " + size }>
+		<span class="placeholder-icon" aria-hidden="true">▧</span>
+		<strong>Imagem sugerida</strong>
+		<span>{ description }</span>
+		<small>{ size }</small>
+	</div>
+}
+
+templ SectionHeading(kicker string, title string, text string) {
+	<div class="section-heading">
+		if kicker != "" {
+			<span class="eyebrow">{ kicker }</span>
+		}
+		<h2>{ title }</h2>
+		if text != "" {
+			<p>{ text }</p>
+		}
+	</div>
+}
+
+templ SolutionCard(solution site.Solution) {
+	@card.Card(card.Props{Class: "solution-card"}) {
+		<div class="icon-tile">
+			@Icon(solution.Icon)
+		</div>
+		<p class="card-kicker">{ solution.Name }</p>
+		<h3>{ solution.ShortName }</h3>
+		<p>{ solution.Summary }</p>
+		<a class="text-link" href={ solutionPath(solution) }>Conhecer solução <span aria-hidden="true">→</span></a>
+	}
+}
+
+func solutionPath(solution site.Solution) string {
+	switch solution.Slug {
+	case "api":
+		return "/integracoes/api"
+	case "white-label":
+		return "/white-label"
+	default:
+		return "/solucoes/" + solution.Slug
+	}
+}
+
+templ ArticleCard(article site.Article) {
+	<article class="article-card">
+		@ImagePlaceholder(article.ImageDescription, article.ImageSize, "article-card-image")
+		<div class="article-card-body">
+			<div class="article-meta"><span>{ article.Category }</span><span>{ article.ReadingTime }</span></div>
+			<h3><a href={ "/blog/" + article.Slug }>{ article.Title }</a></h3>
+			<p>{ article.Summary }</p>
+			<a class="text-link" href={ "/blog/" + article.Slug }>Ler conteúdo <span aria-hidden="true">→</span></a>
+		</div>
+	</article>
+}
+
+templ CallToAction(title string, text string) {
+	<section class="cta-section">
+		<div class="container cta-card">
+			<div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>{ title }</h2><p>{ text }</p></div>
+			<a class="button button-light" href="/contato">Converse com a Viagate</a>
+		</div>
+	</section>
+}

@@ -1,0 +1,98 @@
+package pages
+
+import (
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ Solution(meta site.PageMeta, solution site.Solution) {
+	@components.Layout(meta) {
+		<section class="solution-command-hero">
+			<div class="command-grid" aria-hidden="true"></div>
+			<div class="command-glow command-glow-right" aria-hidden="true"></div>
+			<div class="container solution-command-grid">
+				<div class="solution-command-copy">
+					<nav class="breadcrumb breadcrumb-dark" aria-label="Navegação estrutural"><a href="/">Início</a><span>/</span><a href="/solucoes">Soluções</a><span>/</span><span>{ solution.ShortName }</span></nav>
+					<div class="product-overline"><span></span>{ solution.Name }</div>
+					<h1>{ solution.Title }</h1>
+					<p>{ solution.Lead }</p>
+					<div class="hero-actions">
+						<a class="button" href={ "/contato?interesse=" + solution.Slug }>Apresente o seu cenário</a>
+						<a class="button button-dark-ghost" href="#como-funciona">Ver a jornada</a>
+					</div>
+					<div class="solution-command-proof">
+						<div>
+							<span>
+								@components.Icon("badge-check")
+							</span>
+							<p><small>DECISÃO</small><strong>Critérios contextualizados</strong></p>
+						</div>
+						<div>
+							<span>
+								@components.Icon("history")
+							</span>
+							<p><small>CONTROLE</small><strong>Trilha operacional</strong></p>
+						</div>
+					</div>
+				</div>
+				@components.SolutionSignalPanel(solution)
+			</div>
+		</section>
+		<section class="section solution-capabilities">
+			<div class="container solution-capabilities-heading">
+				<div><span class="eyebrow">Capacidades essenciais</span><h2>{ solution.SectionTitle }</h2></div>
+				<p>{ solution.SectionText }</p>
+			</div>
+			<div class="container solution-feature-grid">
+				for index, feature := range solution.Features {
+					<article class="solution-feature-card">
+						<div class="solution-feature-top">
+							<span>
+								@components.Icon(feature.Icon)
+							</span><small>0{ index + 1 }</small>
+						</div>
+						<h3>{ feature.Title }</h3>
+						<p>{ feature.Text }</p>
+					</article>
+				}
+			</div>
+		</section>
+		<section id="como-funciona" class="solution-process">
+			<div class="container solution-process-heading">
+				<div><span class="product-overline"><span></span> Jornada operacional</span><h2>Do primeiro sinal a uma decisão com contexto.</h2></div>
+				<p>Uma sequência objetiva, desenhada para conectar pessoas, políticas e sistemas sem perder rastreabilidade.</p>
+			</div>
+			<ol class="container solution-process-grid">
+				for index, step := range solution.Steps {
+					<li><span>{ index + 1 }</span><div><small>ETAPA 0{ index + 1 }</small><h3>{ step.Title }</h3><p>{ step.Text }</p></div></li>
+				}
+			</ol>
+		</section>
+		<section class="section solution-evidence">
+			<div class="container solution-evidence-grid">
+				<div class="solution-evidence-copy">
+					<span class="eyebrow">Visibilidade operacional</span>
+					<h2>Informação compreensível para quem precisa agir.</h2>
+					<p>{ solution.Summary }</p>
+					<p>A configuração final depende dos módulos, fontes e integrações definidos para cada operação.</p>
+					<a class="button button-outline" href="/contato">Solicitar uma apresentação</a>
+				</div>
+				@components.ImagePlaceholder(solution.SecondaryImage, solution.SecondarySize, "solution-evidence-image")
+			</div>
+		</section>
+		<section class="section faq-section">
+			<div class="container faq-layout">
+				<div><span class="eyebrow">Dúvidas frequentes</span><h2>Perguntas sobre { solution.ShortName }</h2></div>
+				<div class="faq-list">
+					for _, item := range solution.FrequentlyAsked {
+						<details>
+							<summary>{ item.Question }<span>+</span></summary>
+							<p>{ item.Answer }</p>
+						</details>
+					}
+				</div>
+			</div>
+		</section>
+		@components.CallToAction("Veja a solução aplicada ao seu processo", "A equipe Viagate pode demonstrar o fluxo e discutir integrações, critérios e formato de contratação.")
+	}
+}

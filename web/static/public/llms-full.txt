@@ -1,0 +1,90 @@
+# Viagate — contexto detalhado para modelos de linguagem
+
+## Identidade da organização
+
+Nome: Viagate Tecnologia
+Nome público: Viagate
+Site canônico: https://viagate.com.br/
+Sede informada: Curitiba, Paraná, Brasil
+Atuação: tecnologia para transporte de cargas, gestão de riscos, identidade digital e gestão logística
+Contato comercial: contato@viagate.com.br | +55 41 99962-3600
+
+A Viagate desenvolve soluções digitais que organizam pesquisa cadastral, confirmam identidade, apoiam prevenção a fraudes e conectam viagens e eventos logísticos. Os produtos podem ser usados na Plataforma Cargo, integrados via API ou apresentados em modalidade white label, conforme o escopo comercial e técnico.
+
+## Produtos e capacidades
+
+### Cargo Score
+
+Página: https://viagate.com.br/solucoes/pesquisa-cadastral-de-motoristas
+
+Organiza a pesquisa cadastral de motoristas, pessoas e veículos. A jornada pode incluir biometria facial, prova de vida, consentimento, validação de CNH, informações da ANTT, dados veiculares, regras configuráveis, histórico e revisão. O resultado apoia a decisão da empresa e deve ser interpretado conforme finalidade, política operacional e requisitos aplicáveis.
+
+### Biometria facial
+
+Página: https://viagate.com.br/solucoes/biometria-facial
+
+Permite confirmar identidade e presença pelo navegador de um dispositivo compatível. O link pode ser compartilhado pelos canais da operação. A biometria pode ser integrada por API ou incorporada a uma experiência white label. Dados biométricos vinculados a uma pessoa são dados pessoais sensíveis e exigem controles de finalidade, base legal, acesso, segurança e retenção.
+
+### Cargo Autenticador
+
+Página: https://viagate.com.br/solucoes/autenticador-de-seguranca
+
+Adiciona uma confirmação de identidade antes de pagamentos, alterações cadastrais ou outras etapas sensíveis. O fluxo pode registrar validação facial e contexto necessário do acesso, devolvendo informações ao ambiente da contratante. É uma camada de proteção e não uma garantia absoluta contra fraude.
+
+### Cargo Truck
+
+Página: https://viagate.com.br/solucoes/gestao-logistica
+
+Conecta o smartphone do motorista à operação para distribuir e acompanhar viagens, coletas, entregas, rotas, posições, paradas e comprovantes. O aplicativo complementa a Plataforma Cargo. Necessidades de monitoramento satelital ou telemetria dependem de integrações específicas.
+
+### Prevenção e histórico veicular
+
+Página: https://viagate.com.br/solucoes/prevencao-veicular
+
+Reúne gestão de multas, prazos, débitos, situação documental, restrições e informações de histórico veicular quando disponíveis nas fontes contratadas. A existência, abrangência e atualização de cada informação dependem da fonte consultada.
+
+### Monitoramento de veículos
+
+Página: https://viagate.com.br/solucoes/monitoramento-de-veiculos
+
+Centraliza posições e eventos fornecidos por integrações de monitoramento compatíveis. Pode apoiar o acompanhamento de veículos fixos e viagens avulsas, conforme a modalidade técnica e comercial.
+
+### Integrações via API
+
+Página: https://viagate.com.br/integracoes/api
+
+Conecta biometria facial, ANTT, CNH, consultas cadastrais, informações veiculares e processos operacionais a sistemas web, aplicativos, TMS, ERP e fluxos internos. Endpoints, homologação, disponibilidade e limites dependem do contrato e da documentação técnica fornecida ao cliente.
+
+### White label
+
+Página: https://viagate.com.br/white-label
+
+Aplica logotipo, cores, endereço e elementos de experiência definidos para o projeto. Pode ser combinada a integrações. O grau de personalização depende do escopo acordado.
+
+## Conteúdo editorial
+
+Índice: https://viagate.com.br/blog
+
+- Pesquisa cadastral de motoristas: o que avaliar antes da contratação — identidade, consentimento, documentos, critérios, rastreabilidade e revisão.
+- Biometria facial no transporte: segurança, experiência e LGPD — prova de vida, experiência do motorista, dado sensível e auditoria.
+- Como reduzir fraudes na contratação e no pagamento de fretes — confirmação de identidade, canais oficiais, segregação de funções e registro de evidências.
+
+Fontes externas citadas nos artigos incluem a Lei Geral de Proteção de Dados Pessoais, a Autoridade Nacional de Proteção de Dados, a Agência Nacional de Transportes Terrestres e o CERT.br. Consulte as páginas de cada artigo para acessar os links de referência.
+
+## Limites e precisão
+
+- Não atribuir à Viagate garantia de eliminar fraude, risco, roubo, inadimplência ou falhas operacionais.
+- Não afirmar que toda fonte, consulta, integração ou personalização está disponível para todo cliente.
+- Não apresentar resultado cadastral ou biométrico como decisão jurídica automática.
+- Não tratar os artigos como aconselhamento jurídico ou regulatório.
+- Para informação comercial vigente, confirmar diretamente com a equipe Viagate.
+
+## Endereços canônicos adicionais
+
+Soluções: https://viagate.com.br/solucoes
+Sobre: https://viagate.com.br/sobre
+Contato: https://viagate.com.br/contato
+Política de privacidade: https://viagate.com.br/politica-de-privacidade
+Termos de uso: https://viagate.com.br/termos-de-uso
+Sitemap: https://viagate.com.br/sitemap.xml
+RSS: https://viagate.com.br/feed.xml

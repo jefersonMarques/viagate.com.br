@@ -1,0 +1,4 @@
+Contact: mailto:contato@viagate.com.br
+Preferred-Languages: pt-BR, en
+Canonical: https://viagate.com.br/.well-known/security.txt
+Expires: 2027-08-07T00:00:00Z

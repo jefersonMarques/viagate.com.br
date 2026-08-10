@@ -1,0 +1,12 @@
+package pages
+
+import (
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ NotFound(meta site.PageMeta) {
+	@components.Layout(meta) {
+		<section class="not-found"><div class="container"><span class="error-code">404</span><h1>Esta rota não chegou ao destino</h1><p>A página pode ter mudado de endereço ou não estar mais disponível.</p><div><a class="button" href="/">Voltar ao início</a><a class="button button-outline" href="/solucoes">Ver soluções</a></div></div></section>
+	}
+}

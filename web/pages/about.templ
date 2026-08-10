@@ -1,0 +1,32 @@
+package pages
+
+import (
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ About(meta site.PageMeta) {
+	@components.Layout(meta) {
+		<section class="page-hero">
+			<div class="container hero-grid">
+				<div class="hero-copy"><span class="eyebrow">Sobre a Viagate</span><h1>Tecnologia brasileira para uma operação de transporte mais segura</h1><p class="hero-lead">Criamos soluções que organizam informações, confirmam identidades e conectam etapas críticas do transporte.</p></div>
+				@components.ImagePlaceholder("Equipe multidisciplinar da Viagate reunida em um ambiente de tecnologia e logística, com telas de produto ao fundo.", "1600 x 1400 px - proporção 8:7", "hero-image")
+			</div>
+		</section>
+		<section class="section">
+			<div class="container split-content">
+				<div><span class="eyebrow">Nossa perspectiva</span><h2>Risco, identidade e logística fazem parte da mesma jornada</h2><p>Uma decisão cadastral influencia a contratação. Uma confirmação de identidade protege o pagamento. Uma viagem bem registrada melhora o acompanhamento e a prestação de contas.</p><p>Por isso, a Viagate desenvolve um ecossistema modular, capaz de atender uma necessidade pontual e evoluir para fluxos integrados.</p></div>
+				@components.ImagePlaceholder("Diagrama editorial conectando identidade, risco, prevenção a fraudes, viagens e integrações.", "1600 x 1200 px - proporção 4:3", "content-image")
+			</div>
+		</section>
+		<section class="section section-muted">
+			<div class="container values-grid">
+				<article><span>01</span><h2>Clareza</h2><p>Informação compreensível para decisões humanas e processos auditáveis.</p></article>
+				<article><span>02</span><h2>Integração</h2><p>Tecnologia que se adapta ao fluxo, sem criar ilhas operacionais.</p></article>
+				<article><span>03</span><h2>Responsabilidade</h2><p>Segurança, privacidade e finalidade consideradas desde o desenho da solução.</p></article>
+				<article><span>04</span><h2>Evolução</h2><p>Produtos modulares preparados para acompanhar novas necessidades.</p></article>
+			</div>
+		</section>
+		@components.CallToAction("Quer conhecer a Viagate de perto?", "Agende uma conversa para ver as soluções e discutir o seu cenário operacional.")
+	}
+}

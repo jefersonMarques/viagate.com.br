@@ -1,0 +1,46 @@
+package pages
+
+import (
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ Contact(meta site.PageMeta, status string, interest string) {
+	@components.Layout(meta) {
+		<section class="page-hero contact-hero">
+			<div class="container contact-layout">
+				<div class="contact-copy">
+					<span class="eyebrow">Fale com a Viagate</span>
+					<h1>Conte o que você precisa tornar mais seguro ou eficiente</h1>
+					<p>Compartilhe o cenário atual. A equipe entra em contato para entender o processo e apresentar as soluções aplicáveis.</p>
+					<div class="contact-points"><div><strong>E-mail</strong><a href="mailto:contato@viagate.com.br">contato@viagate.com.br</a></div><div><strong>Telefone</strong><a href="tel:+5541999623600">+55 41 99962-3600</a></div><div><strong>Localização</strong><span>Curitiba, Paraná, Brasil</span></div></div>
+				</div>
+				<div class="contact-form-card">
+					if status == "sent" {
+						<div class="form-alert form-alert-success" role="status"><strong>Mensagem enviada.</strong><span>A equipe Viagate retornará assim que possível.</span></div>
+					}
+					if status == "invalid" {
+						<div class="form-alert form-alert-error" role="alert"><strong>Revise os dados.</strong><span>Preencha nome, e-mail válido e aceite a política de privacidade.</span></div>
+					}
+					if status == "limited" {
+						<div class="form-alert form-alert-error" role="alert"><strong>Muitas tentativas.</strong><span>Aguarde alguns minutos antes de enviar novamente.</span></div>
+					}
+					if status == "unavailable" {
+						<div class="form-alert form-alert-error" role="alert"><strong>Envio temporariamente indisponível.</strong><span>Escreva para contato@viagate.com.br.</span></div>
+					}
+					<form action="/contato" method="post">
+						if interest != "" {
+							<input type="hidden" name="interest" value={ interest }/>
+						}
+						<div class="form-row"><label>Nome completo<input type="text" name="name" autocomplete="name" minlength="2" maxlength="100" required/></label><label>E-mail profissional<input type="email" name="email" autocomplete="email" maxlength="254" required/></label></div>
+						<div class="form-row"><label>Empresa<input type="text" name="company" autocomplete="organization" maxlength="120"/></label><label>Telefone<input type="tel" name="phone" autocomplete="tel" maxlength="40"/></label></div>
+						<label>Como podemos ajudar?<textarea name="message" rows="5" maxlength="3000"></textarea></label>
+						<label class="honeypot" aria-hidden="true">Website<input type="text" name="website" tabindex="-1" autocomplete="off"/></label>
+						<label class="consent"><input type="checkbox" name="consent" required/><span>Concordo com o tratamento dos dados para retorno deste contato, conforme a <a href="/politica-de-privacidade">Política de Privacidade</a>.</span></label>
+						<button class="button" type="submit">Enviar mensagem</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	}
+}

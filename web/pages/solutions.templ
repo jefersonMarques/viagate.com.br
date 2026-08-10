@@ -1,0 +1,68 @@
+package pages
+
+import (
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ Solutions(meta site.PageMeta, solutions []site.Solution) {
+	@components.Layout(meta) {
+		<section class="solutions-command-hero">
+			<div class="command-grid" aria-hidden="true"></div>
+			<div class="command-glow command-glow-left" aria-hidden="true"></div>
+			<div class="container solutions-command-copy">
+				<div class="authority-line"><span class="authority-dot"></span> Ecossistema Viagate</div>
+				<h1>Uma arquitetura para controlar os pontos críticos da operação.</h1>
+				<p>Valide identidades, organize cadastros, proteja negociações, acompanhe viagens e conecte dados ao ambiente tecnológico da empresa.</p>
+			</div>
+			<div class="container solutions-principles">
+				<div><small>01 / MODULAR</small><strong>Comece pelo risco prioritário</strong></div>
+				<div><small>02 / CONECTADO</small><strong>Preserve o contexto entre etapas</strong></div>
+				<div><small>03 / RASTREÁVEL</small><strong>Mantenha evidências operacionais</strong></div>
+			</div>
+		</section>
+		<section class="section solutions-catalog">
+			<div class="container ecosystem-heading">
+				<div><span class="eyebrow">Capacidades</span><h2>Escolha o ponto de entrada. Conecte o restante quando fizer sentido.</h2></div>
+				<p>Cada solução atende a um problema específico e pode compor uma jornada maior dentro do ecossistema Viagate.</p>
+			</div>
+			<div class="container power-grid power-grid-catalog">
+				for index, solution := range solutions {
+					@components.PowerSolutionCard(solution, index+1)
+				}
+			</div>
+		</section>
+		<section class="section solutions-architecture">
+			<div class="container solutions-architecture-grid">
+				@components.ImagePlaceholder("Arquitetura modular mostrando produtos Viagate conectados ao TMS, ERP, gerenciadoras de risco e sistemas do cliente.", "1800 x 1200 px - proporção 3:2", "solutions-architecture-image")
+				<div>
+					<span class="eyebrow">Integração sem ruptura</span>
+					<h2>Use a plataforma ou leve os recursos ao seu sistema.</h2>
+					<p>As soluções podem compor uma jornada dentro da Plataforma Cargo, ser integradas por API ou disponibilizadas em experiência white label, conforme o projeto.</p>
+					<ul class="architecture-list">
+						<li>
+							<span>
+								@components.Icon("workflow")
+							</span>
+							<div><strong>APIs modulares</strong><small>Capacidades incorporadas ao fluxo atual.</small></div>
+						</li>
+						<li>
+							<span>
+								@components.Icon("palette")
+							</span>
+							<div><strong>Experiência white label</strong><small>Jornadas alinhadas à marca contratante.</small></div>
+						</li>
+						<li>
+							<span>
+								@components.Icon("database")
+							</span>
+							<div><strong>Plataforma Cargo</strong><small>Ambiente operacional centralizado.</small></div>
+						</li>
+					</ul>
+					<a class="button button-outline" href="/integracoes/api">Conheça as integrações</a>
+				</div>
+			</div>
+		</section>
+		@components.CallToAction("Qual ponto da operação precisa de mais controle?", "Apresente o processo atual e receba uma proposta alinhada à realidade da sua empresa.")
+	}
+}
