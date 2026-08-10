@@ -111,22 +111,12 @@ func (application *Application) contact(response http.ResponseWriter, request *h
 	))
 }
 
-func (application *Application) privacy(response http.ResponseWriter, request *http.Request) {
-	application.render(response, request, http.StatusOK, pages.Privacy(content.SimpleMeta(
+func (application *Application) legal(response http.ResponseWriter, request *http.Request) {
+	application.render(response, request, http.StatusOK, pages.Legal(content.SimpleMeta(
 		application.config.SiteURL,
-		"Política de privacidade",
-		"Saiba como os dados pessoais enviados pelo site institucional da Viagate são tratados.",
-		"/politica-de-privacidade",
-		false,
-	)))
-}
-
-func (application *Application) terms(response http.ResponseWriter, request *http.Request) {
-	application.render(response, request, http.StatusOK, pages.Terms(content.SimpleMeta(
-		application.config.SiteURL,
-		"Termos de uso",
-		"Condições de uso do site institucional da Viagate.",
-		"/termos-de-uso",
+		"Termos de uso e Política de privacidade",
+		"Consulte os termos de uso e saiba como os dados pessoais enviados pelo site institucional da Viagate são tratados.",
+		"/termos-uso-politica-privacidade",
 		false,
 	)))
 }

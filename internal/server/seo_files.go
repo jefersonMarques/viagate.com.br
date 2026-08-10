@@ -50,8 +50,7 @@ func (application *Application) sitemap(response http.ResponseWriter, request *h
 		{Location: baseURL + "/sobre", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.6"},
 		{Location: baseURL + "/blog", LastModified: siteUpdatedAt, Change: "weekly", Priority: "0.8"},
 		{Location: baseURL + "/contato", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.7"},
-		{Location: baseURL + "/politica-de-privacidade", LastModified: siteUpdatedAt, Change: "yearly", Priority: "0.2"},
-		{Location: baseURL + "/termos-de-uso", LastModified: siteUpdatedAt, Change: "yearly", Priority: "0.2"},
+		{Location: baseURL + "/termos-uso-politica-privacidade", LastModified: siteUpdatedAt, Change: "yearly", Priority: "0.2"},
 		{Location: baseURL + "/integracoes/api", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.8"},
 		{Location: baseURL + "/white-label", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.7"},
 	}

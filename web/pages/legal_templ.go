@@ -13,6 +13,53 @@ import (
 	"github.com/viagate/site/web/components"
 )
 
+func Legal(meta site.PageMeta) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var1 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var1 == nil {
+			templ_7745c5c3_Var1 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Var2 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+			templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+			templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+			if !templ_7745c5c3_IsBuffer {
+				defer func() {
+					templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+					if templ_7745c5c3_Err == nil {
+						templ_7745c5c3_Err = templ_7745c5c3_BufErr
+					}
+				}()
+			}
+			ctx = templ.InitializeContext(ctx)
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"legal-page\"><div class=\"container legal-content\"><span class=\"eyebrow\">Transparência e condições</span><h1>Termos de uso e Política de privacidade</h1><p class=\"legal-date\">Última atualização: 7 de agosto de 2026.</p><nav class=\"legal-navigation\" aria-label=\"Navegação do documento\"><a href=\"#termos-de-uso\">Termos de uso</a> <a href=\"#politica-de-privacidade\">Política de privacidade</a></nav><article id=\"termos-de-uso\" class=\"legal-section\"><h2>Termos de uso</h2><h3>1. Conteúdo institucional</h3><p>O site apresenta informações gerais sobre a Viagate e suas soluções. Funcionalidades, integrações, fontes, prazos e condições dependem da proposta comercial, da viabilidade técnica e do contrato aplicável.</p><h3>2. Uso permitido</h3><p>O visitante deve utilizar o site de forma lícita, sem tentar comprometer disponibilidade, segurança, formulários, dados ou infraestrutura.</p><h3>3. Propriedade intelectual</h3><p>Marcas, textos, interfaces, códigos e demais materiais pertencem aos respectivos titulares. O acesso ao site não concede licença além do uso normal para consulta.</p><h3>4. Conteúdo editorial</h3><p>Artigos e guias possuem finalidade informativa e não substituem análise jurídica, técnica ou operacional específica. Referências externas permanecem sob responsabilidade de seus respectivos mantenedores.</p><h3>5. Disponibilidade</h3><p>A Viagate pode atualizar ou interromper partes do site para manutenção, segurança ou evolução. Esforços razoáveis são aplicados para preservar disponibilidade e integridade.</p><h3>6. Contato</h3><p>Dúvidas sobre estes termos podem ser enviadas para <a href=\"mailto:contato@viagate.com.br\">contato@viagate.com.br</a>.</p></article><article id=\"politica-de-privacidade\" class=\"legal-section\"><h2>Política de privacidade</h2><h3>1. Escopo</h3><p>Esta política descreve o tratamento de dados pessoais enviados pelo site institucional da Viagate. Os produtos e ambientes contratados podem possuir avisos específicos, adequados às respectivas finalidades e relações entre controladores e operadores.</p><h3>2. Dados coletados</h3><p>O formulário pode coletar nome, e-mail, empresa, telefone, mensagem, registros técnicos de segurança e consentimento. Os campos opcionais devem ser preenchidos somente quando necessários ao contato.</p><h3>3. Finalidades</h3><p>Os dados são utilizados para responder solicitações, entender necessidades comerciais, proteger o formulário contra abuso e manter registros necessários ao atendimento.</p><h3>4. Compartilhamento</h3><p>Os dados podem ser processados por fornecedores de infraestrutura e atendimento contratados pela Viagate, observadas medidas de segurança, instruções e limites compatíveis com a finalidade.</p><h3>5. Retenção e segurança</h3><p>Os registros são mantidos pelo período necessário ao atendimento, às obrigações aplicáveis e à proteção de direitos. São adotados controles técnicos e organizacionais proporcionais aos riscos.</p><h3>6. Direitos do titular</h3><p>Solicitações sobre confirmação, acesso, correção, oposição, eliminação e outros direitos aplicáveis podem ser enviadas para <a href=\"mailto:contato@viagate.com.br\">contato@viagate.com.br</a>. A identidade do solicitante poderá ser confirmada antes do atendimento.</p><h3>7. Atualizações</h3><p>Esta política pode ser atualizada para refletir mudanças no site, nos processos ou na legislação. A data da versão vigente permanece indicada nesta página.</p></article></div></section>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			return nil
+		})
+		templ_7745c5c3_Err = components.Layout(meta).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
 func Privacy(meta site.PageMeta) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context

@@ -84,7 +84,6 @@ Fontes externas citadas nos artigos incluem a Lei Geral de Proteção de Dados P
 Soluções: https://viagate.com.br/solucoes
 Sobre: https://viagate.com.br/sobre
 Contato: https://viagate.com.br/contato
-Política de privacidade: https://viagate.com.br/politica-de-privacidade
-Termos de uso: https://viagate.com.br/termos-de-uso
+Termos de uso e Política de privacidade: https://viagate.com.br/termos-uso-politica-privacidade
 Sitemap: https://viagate.com.br/sitemap.xml
 RSS: https://viagate.com.br/feed.xml

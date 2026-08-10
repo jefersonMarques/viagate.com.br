@@ -220,9 +220,15 @@ p { color: var(--muted); }
 .legal-content { max-width: 790px; }
 .legal-content h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); }
 .legal-content h2 { margin-top: 50px; font-size: 1.6rem; }
+.legal-content h3 { margin: 34px 0 10px; font-size: 1.15rem; }
 .legal-content p { font-size: 1.05rem; }
 .legal-content a { color: var(--orange-600); text-decoration: underline; }
 .legal-date { padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+.legal-navigation { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 10px; }
+.legal-navigation a { padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); font-weight: 700; text-decoration: none; }
+.legal-navigation a:hover { border-color: var(--orange-500); color: var(--orange-600); }
+.legal-section { scroll-margin-top: 110px; }
+.legal-section + .legal-section { margin-top: 72px; padding-top: 16px; border-top: 1px solid var(--line); }
 .not-found { display: grid; place-items: center; min-height: 70vh; padding: 80px 0; text-align: center; }
 .not-found .container { max-width: 720px; }
 .error-code { color: var(--orange-600); font-size: clamp(5rem, 16vw, 11rem); font-weight: 850; letter-spacing: -.08em; line-height: .8; }
