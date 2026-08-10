@@ -84,18 +84,18 @@ templ CommandCenter() {
 					<p><i></i><span>12 etapas</span></p>
 				</div>
 				<ol class="timeline-list">
-					@TimelineStep("01", "database", "Registro dos dados")
-					@TimelineStep("02", "map-pin", "Capturando localização")
-					@TimelineStep("03", "scan-face", "Biometria facial")
-					@TimelineStep("04", "shield-check", "Garantindo LGPD")
-					@TimelineStep("05", "smartphone", "Verificando telefone")
-					@TimelineStep("06", "badge-check", "Avaliando CNH")
-					@TimelineStep("07", "route", "Avaliando ANTT")
-					@TimelineStep("08", "file-warning", "Consultando processos")
-					@TimelineStep("09", "car-front", "Analisando veículo")
-					@TimelineStep("10", "shield-check", "Análise de segurança")
-					@TimelineStep("11", "user-check", "Dados confirmados")
-					@TimelineStep("12", "history", "Registro seguro")
+					@TimelineStep("01", "database", "Dados recebidos")
+					@TimelineStep("02", "map-pin", "Localização registrada")
+					@TimelineStep("03", "scan-face", "Biometria validada")
+					@TimelineStep("04", "shield-check", "Consentimento registrado")
+					@TimelineStep("05", "smartphone", "Telefone verificado")
+					@TimelineStep("06", "badge-check", "CNH consultada")
+					@TimelineStep("07", "route", "ANTT consultada")
+					@TimelineStep("08", "file-warning", "Processos analisados")
+					@TimelineStep("09", "car-front", "Veículo analisado")
+					@TimelineStep("10", "sliders", "Critérios aplicados")
+					@TimelineStep("11", "user-check", "Validação concluída")
+					@TimelineStep("12", "history", "Trilha registrada")
 				</ol>
 			</div>
 			<div class="console-status">
@@ -132,8 +132,9 @@ templ CommandCenter() {
 
 templ TimelineStep(index string, iconName string, label string) {
 	<li class="timeline-step">
-		<span class="timeline-icon">@Icon(iconName)
-</span>
+		<span class="timeline-icon">
+			@Icon(iconName)
+		</span>
 		<div><small>{ index }</small><strong>{ label }</strong></div>
 		<i class="timeline-state" aria-hidden="true"></i>
 	</li>
@@ -202,7 +203,7 @@ templ PowerSolutionCard(solution site.Solution, index int) {
 		</div>
 		<h3>{ solution.ShortName }</h3>
 		<p>{ solution.Summary }</p>
-		<a href={ solutionPath(solution) }>Explorar capacidade <span aria-hidden="true">↗</span></a>
+		<a href={ solutionPath(solution) }>Conhecer solução <span aria-hidden="true">↗</span></a>
 		<div class="power-card-grid" aria-hidden="true"></div>
 	</article>
 }
@@ -297,7 +298,7 @@ templ CallToAction(title string, text string) {
 	<section class="cta-section">
 		<div class="container cta-card">
 			<div><span class="eyebrow eyebrow-light">Próximo passo</span><h2>{ title }</h2><p>{ text }</p></div>
-			<a class="button button-light" href="/contato">Converse com a Viagate</a>
+			<a class="button button-light" href="/contato">Agendar demonstração</a>
 		</div>
 	</section>
 }

@@ -5,6 +5,7 @@ import (
 
 	"github.com/a-h/templ"
 	"github.com/viagate/site/internal/content"
+	"github.com/viagate/site/internal/site"
 	"github.com/viagate/site/web/pages"
 )
 
@@ -20,11 +21,13 @@ func (application *Application) solutions(response http.ResponseWriter, request 
 	application.render(response, request, http.StatusOK, pages.Solutions(
 		content.ListingMeta(
 			application.config.SiteURL,
-			"Soluções para transporte e gestão de riscos",
-			"Conheça as soluções Viagate para pesquisa cadastral, biometria facial, prevenção de fraudes, logística e integrações.",
+			"Soluções para gestão de riscos no transporte",
+			"Conheça os produtos, capacidades e formas de integração da Viagate para pesquisa cadastral, identidade, prevenção e logística.",
 			"/solucoes",
 		),
-		content.Solutions(),
+		content.SolutionsByKind(site.SolutionKindProduct),
+		content.SolutionsByKind(site.SolutionKindCapability),
+		content.SolutionsByKind(site.SolutionKindDelivery),
 	))
 }
 

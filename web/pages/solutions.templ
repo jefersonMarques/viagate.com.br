@@ -5,15 +5,15 @@ import (
 	"github.com/viagate/site/web/components"
 )
 
-templ Solutions(meta site.PageMeta, solutions []site.Solution) {
+templ Solutions(meta site.PageMeta, products []site.Solution, capabilities []site.Solution, deliveryModels []site.Solution) {
 	@components.Layout(meta) {
 		<section class="solutions-command-hero">
 			<div class="command-grid" aria-hidden="true"></div>
 			<div class="command-glow command-glow-left" aria-hidden="true"></div>
 			<div class="container solutions-command-copy">
 				<div class="authority-line"><span class="authority-dot"></span> Ecossistema Viagate</div>
-				<h1>Uma arquitetura para controlar os pontos críticos da operação.</h1>
-				<p>Valide identidades, organize cadastros, proteja negociações, acompanhe viagens e conecte dados ao ambiente tecnológico da empresa.</p>
+				<h1>Produtos e integrações para decisões críticas no transporte.</h1>
+				<p>Pesquise motoristas e veículos, confirme identidades, proteja negociações, acompanhe viagens e conecte cada resultado ao sistema da empresa.</p>
 			</div>
 			<div class="container solutions-principles">
 				<div><small>01 / MODULAR</small><strong>Comece pelo risco prioritário</strong></div>
@@ -23,11 +23,33 @@ templ Solutions(meta site.PageMeta, solutions []site.Solution) {
 		</section>
 		<section class="section solutions-catalog">
 			<div class="container ecosystem-heading">
-				<div><span class="eyebrow">Capacidades</span><h2>Escolha o ponto de entrada. Conecte o restante quando fizer sentido.</h2></div>
-				<p>Cada solução atende a um problema específico e pode compor uma jornada maior dentro do ecossistema Viagate.</p>
+				<div><span class="eyebrow">Produtos operacionais</span><h2>Comece pelo problema que exige resposta agora.</h2></div>
+				<p>Cada produto resolve um ponto específico e pode compartilhar contexto com os demais módulos da Plataforma Cargo.</p>
 			</div>
 			<div class="container power-grid power-grid-catalog">
-				for index, solution := range solutions {
+				for index, solution := range products {
+					@components.PowerSolutionCard(solution, index+1)
+				}
+			</div>
+		</section>
+		<section class="section solution-group-section">
+			<div class="container ecosystem-heading">
+				<div><span class="eyebrow">Capacidades independentes</span><h2>Use somente a validação necessária ou conecte-a a uma jornada completa.</h2></div>
+				<p>Capacidades Viagate podem funcionar como uma etapa específica dentro de cadastros, autenticações e processos próprios.</p>
+			</div>
+			<div class="container power-grid power-grid-catalog power-grid-single">
+				for index, solution := range capabilities {
+					@components.PowerSolutionCard(solution, index+1)
+				}
+			</div>
+		</section>
+		<section class="section solutions-catalog">
+			<div class="container ecosystem-heading">
+				<div><span class="eyebrow">Formas de utilização</span><h2>Use a Plataforma Cargo ou incorpore a tecnologia ao seu produto.</h2></div>
+				<p>APIs e experiências white label adaptam a entrega das capacidades Viagate à arquitetura e à marca da contratante.</p>
+			</div>
+			<div class="container power-grid power-grid-catalog power-grid-balanced">
+				for index, solution := range deliveryModels {
 					@components.PowerSolutionCard(solution, index+1)
 				}
 			</div>
@@ -37,8 +59,8 @@ templ Solutions(meta site.PageMeta, solutions []site.Solution) {
 				@components.ImagePlaceholder("Arquitetura modular mostrando produtos Viagate conectados ao TMS, ERP, gerenciadoras de risco e sistemas do cliente.", "1800 x 1200 px - proporção 3:2", "solutions-architecture-image")
 				<div>
 					<span class="eyebrow">Integração sem ruptura</span>
-					<h2>Use a plataforma ou leve os recursos ao seu sistema.</h2>
-					<p>As soluções podem compor uma jornada dentro da Plataforma Cargo, ser integradas por API ou disponibilizadas em experiência white label, conforme o projeto.</p>
+					<h2>Uma base tecnológica, diferentes formas de operação.</h2>
+					<p>Os produtos podem operar na Plataforma Cargo, compartilhar dados com o sistema da empresa por API ou compor uma experiência white label.</p>
 					<ul class="architecture-list">
 						<li>
 							<span>
@@ -63,6 +85,6 @@ templ Solutions(meta site.PageMeta, solutions []site.Solution) {
 				</div>
 			</div>
 		</section>
-		@components.CallToAction("Qual ponto da operação precisa de mais controle?", "Apresente o processo atual e receba uma proposta alinhada à realidade da sua empresa.")
+		@components.CallToAction("Qual ponto da operação precisa de resposta agora?", "Agende uma demonstração para identificar o produto, a capacidade e o modelo de integração mais adequados.")
 	}
 }

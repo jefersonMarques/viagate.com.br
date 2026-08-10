@@ -13,7 +13,7 @@ import (
 	"github.com/viagate/site/web/components"
 )
 
-func Solutions(meta site.PageMeta, solutions []site.Solution) templ.Component {
+func Solutions(meta site.PageMeta, products []site.Solution, capabilities []site.Solution, deliveryModels []site.Solution) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -46,17 +46,37 @@ func Solutions(meta site.PageMeta, solutions []site.Solution) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"solutions-command-hero\"><div class=\"command-grid\" aria-hidden=\"true\"></div><div class=\"command-glow command-glow-left\" aria-hidden=\"true\"></div><div class=\"container solutions-command-copy\"><div class=\"authority-line\"><span class=\"authority-dot\"></span> Ecossistema Viagate</div><h1>Uma arquitetura para controlar os pontos críticos da operação.</h1><p>Valide identidades, organize cadastros, proteja negociações, acompanhe viagens e conecte dados ao ambiente tecnológico da empresa.</p></div><div class=\"container solutions-principles\"><div><small>01 / MODULAR</small><strong>Comece pelo risco prioritário</strong></div><div><small>02 / CONECTADO</small><strong>Preserve o contexto entre etapas</strong></div><div><small>03 / RASTREÁVEL</small><strong>Mantenha evidências operacionais</strong></div></div></section><section class=\"section solutions-catalog\"><div class=\"container ecosystem-heading\"><div><span class=\"eyebrow\">Capacidades</span><h2>Escolha o ponto de entrada. Conecte o restante quando fizer sentido.</h2></div><p>Cada solução atende a um problema específico e pode compor uma jornada maior dentro do ecossistema Viagate.</p></div><div class=\"container power-grid power-grid-catalog\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"solutions-command-hero\"><div class=\"command-grid\" aria-hidden=\"true\"></div><div class=\"command-glow command-glow-left\" aria-hidden=\"true\"></div><div class=\"container solutions-command-copy\"><div class=\"authority-line\"><span class=\"authority-dot\"></span> Ecossistema Viagate</div><h1>Produtos e integrações para decisões críticas no transporte.</h1><p>Pesquise motoristas e veículos, confirme identidades, proteja negociações, acompanhe viagens e conecte cada resultado ao sistema da empresa.</p></div><div class=\"container solutions-principles\"><div><small>01 / MODULAR</small><strong>Comece pelo risco prioritário</strong></div><div><small>02 / CONECTADO</small><strong>Preserve o contexto entre etapas</strong></div><div><small>03 / RASTREÁVEL</small><strong>Mantenha evidências operacionais</strong></div></div></section><section class=\"section solutions-catalog\"><div class=\"container ecosystem-heading\"><div><span class=\"eyebrow\">Produtos operacionais</span><h2>Comece pelo problema que exige resposta agora.</h2></div><p>Cada produto resolve um ponto específico e pode compartilhar contexto com os demais módulos da Plataforma Cargo.</p></div><div class=\"container power-grid power-grid-catalog\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			for index, solution := range solutions {
+			for index, solution := range products {
 				templ_7745c5c3_Err = components.PowerSolutionCard(solution, index+1).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></section><section class=\"section solutions-architecture\"><div class=\"container solutions-architecture-grid\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></section><section class=\"section solution-group-section\"><div class=\"container ecosystem-heading\"><div><span class=\"eyebrow\">Capacidades independentes</span><h2>Use somente a validação necessária ou conecte-a a uma jornada completa.</h2></div><p>Capacidades Viagate podem funcionar como uma etapa específica dentro de cadastros, autenticações e processos próprios.</p></div><div class=\"container power-grid power-grid-catalog power-grid-single\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for index, solution := range capabilities {
+				templ_7745c5c3_Err = components.PowerSolutionCard(solution, index+1).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</div></section><section class=\"section solutions-catalog\"><div class=\"container ecosystem-heading\"><div><span class=\"eyebrow\">Formas de utilização</span><h2>Use a Plataforma Cargo ou incorpore a tecnologia ao seu produto.</h2></div><p>APIs e experiências white label adaptam a entrega das capacidades Viagate à arquitetura e à marca da contratante.</p></div><div class=\"container power-grid power-grid-catalog power-grid-balanced\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for index, solution := range deliveryModels {
+				templ_7745c5c3_Err = components.PowerSolutionCard(solution, index+1).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></section><section class=\"section solutions-architecture\"><div class=\"container solutions-architecture-grid\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -64,7 +84,7 @@ func Solutions(meta site.PageMeta, solutions []site.Solution) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<div><span class=\"eyebrow\">Integração sem ruptura</span><h2>Use a plataforma ou leve os recursos ao seu sistema.</h2><p>As soluções podem compor uma jornada dentro da Plataforma Cargo, ser integradas por API ou disponibilizadas em experiência white label, conforme o projeto.</p><ul class=\"architecture-list\"><li><span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<div><span class=\"eyebrow\">Integração sem ruptura</span><h2>Uma base tecnológica, diferentes formas de operação.</h2><p>Os produtos podem operar na Plataforma Cargo, compartilhar dados com o sistema da empresa por API ou compor uma experiência white label.</p><ul class=\"architecture-list\"><li><span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -72,7 +92,7 @@ func Solutions(meta site.PageMeta, solutions []site.Solution) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</span><div><strong>APIs modulares</strong><small>Capacidades incorporadas ao fluxo atual.</small></div></li><li><span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</span><div><strong>APIs modulares</strong><small>Capacidades incorporadas ao fluxo atual.</small></div></li><li><span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -80,7 +100,7 @@ func Solutions(meta site.PageMeta, solutions []site.Solution) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</span><div><strong>Experiência white label</strong><small>Jornadas alinhadas à marca contratante.</small></div></li><li><span>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</span><div><strong>Experiência white label</strong><small>Jornadas alinhadas à marca contratante.</small></div></li><li><span>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -88,11 +108,11 @@ func Solutions(meta site.PageMeta, solutions []site.Solution) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</span><div><strong>Plataforma Cargo</strong><small>Ambiente operacional centralizado.</small></div></li></ul><a class=\"button button-outline\" href=\"/integracoes/api\">Conheça as integrações</a></div></div></section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span><div><strong>Plataforma Cargo</strong><small>Ambiente operacional centralizado.</small></div></li></ul><a class=\"button button-outline\" href=\"/integracoes/api\">Conheça as integrações</a></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.CallToAction("Qual ponto da operação precisa de mais controle?", "Apresente o processo atual e receba uma proposta alinhada à realidade da sua empresa.").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.CallToAction("Qual ponto da operação precisa de resposta agora?", "Agende uma demonstração para identificar o produto, a capacidade e o modelo de integração mais adequados.").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

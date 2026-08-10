@@ -4,21 +4,47 @@ import (
 	"encoding/json"
 	"strings"
 	"testing"
+
+	"github.com/viagate/site/internal/site"
 )
 
 func TestSolutionContentIsCompleteAndUnique(t *testing.T) {
 	seen := make(map[string]bool)
 	for _, solution := range Solutions() {
-		if solution.Slug == "" || solution.Title == "" || solution.MetaDescription == "" {
+		if solution.Slug == "" || solution.Kind == "" || solution.Title == "" || solution.MetaDescription == "" {
 			t.Fatalf("solution has incomplete SEO content: %#v", solution)
 		}
 		if seen[solution.Slug] {
 			t.Fatalf("duplicate solution slug: %s", solution.Slug)
 		}
 		seen[solution.Slug] = true
-		if len(solution.Features) < 3 || len(solution.FrequentlyAsked) < 2 {
+		if solution.Definition == "" || solution.Audience == "" || solution.Challenge == "" || solution.Outcome == "" {
+			t.Fatalf("solution %s needs complete positioning content", solution.Slug)
+		}
+		if solution.ProcessTitle == "" || solution.ProcessText == "" || solution.EvidenceTitle == "" {
+			t.Fatalf("solution %s needs complete presentation content", solution.Slug)
+		}
+		if len(solution.Features) != len(solution.Steps) || len(solution.Features) < 4 || len(solution.FrequentlyAsked) < 2 {
 			t.Fatalf("solution %s needs more supporting content", solution.Slug)
 		}
+	}
+}
+
+func TestSolutionsAreGroupedWithoutDuplication(t *testing.T) {
+	grouped := append(
+		append(SolutionsByKind(site.SolutionKindProduct), SolutionsByKind(site.SolutionKindCapability)...),
+		SolutionsByKind(site.SolutionKindDelivery)...,
+	)
+	if len(grouped) != len(Solutions()) {
+		t.Fatalf("expected %d grouped solutions, got %d", len(Solutions()), len(grouped))
+	}
+
+	seen := make(map[string]bool, len(grouped))
+	for _, solution := range grouped {
+		if seen[solution.Slug] {
+			t.Fatalf("solution %s appears in more than one group", solution.Slug)
+		}
+		seen[solution.Slug] = true
 	}
 }
 

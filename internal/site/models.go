@@ -28,8 +28,17 @@ type FAQ struct {
 	Answer   string
 }
 
+type SolutionKind string
+
+const (
+	SolutionKindProduct    SolutionKind = "product"
+	SolutionKindCapability SolutionKind = "capability"
+	SolutionKindDelivery   SolutionKind = "delivery"
+)
+
 type Solution struct {
 	Slug            string
+	Kind            SolutionKind
 	Name            string
 	ShortName       string
 	Icon            string
@@ -37,10 +46,17 @@ type Solution struct {
 	Lead            string
 	MetaDescription string
 	Summary         string
+	Definition      string
+	Audience        string
+	Challenge       string
+	Outcome         string
 	HeroDescription string
 	HeroSize        string
 	SectionTitle    string
 	SectionText     string
+	ProcessTitle    string
+	ProcessText     string
+	EvidenceTitle   string
 	Features        []Feature
 	Steps           []Step
 	SecondaryImage  string

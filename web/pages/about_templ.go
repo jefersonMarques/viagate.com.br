@@ -46,7 +46,7 @@ func About(meta site.PageMeta) templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"page-hero\"><div class=\"container hero-grid\"><div class=\"hero-copy\"><span class=\"eyebrow\">Sobre a Viagate</span><h1>Tecnologia brasileira para uma operação de transporte mais segura</h1><p class=\"hero-lead\">Criamos soluções que organizam informações, confirmam identidades e conectam etapas críticas do transporte.</p></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"page-hero\"><div class=\"container hero-grid\"><div class=\"hero-copy\"><span class=\"eyebrow\">Sobre a Viagate</span><h1>Tecnologia brasileira para decisões críticas no transporte</h1><p class=\"hero-lead\">Conectamos identidade, pesquisa cadastral, prevenção e logística para transformar dados dispersos em processos rastreáveis.</p></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -54,7 +54,7 @@ func About(meta site.PageMeta) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></section><section class=\"section\"><div class=\"container split-content\"><div><span class=\"eyebrow\">Nossa perspectiva</span><h2>Risco, identidade e logística fazem parte da mesma jornada</h2><p>Uma decisão cadastral influencia a contratação. Uma confirmação de identidade protege o pagamento. Uma viagem bem registrada melhora o acompanhamento e a prestação de contas.</p><p>Por isso, a Viagate desenvolve um ecossistema modular, capaz de atender uma necessidade pontual e evoluir para fluxos integrados.</p></div>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "</div></section><section class=\"section\"><div class=\"container split-content\"><div><span class=\"eyebrow\">Nossa perspectiva</span><h2>Uma decisão não termina quando o cadastro é aprovado</h2><p>A identidade influencia a contratação. A autenticação protege etapas sensíveis. Os eventos da viagem preservam o contexto da decisão inicial.</p><p>Por isso, a Viagate desenvolve produtos modulares que resolvem problemas específicos e podem compartilhar informações dentro de uma operação integrada.</p></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -66,7 +66,7 @@ func About(meta site.PageMeta) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = components.CallToAction("Quer conhecer a Viagate de perto?", "Agende uma conversa para ver as soluções e discutir o seu cenário operacional.").Render(ctx, templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = components.CallToAction("Veja a tecnologia Viagate em funcionamento", "Agende uma demonstração para conhecer os produtos e discutir o seu cenário operacional.").Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

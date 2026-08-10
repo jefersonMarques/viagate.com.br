@@ -17,25 +17,49 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 					<h1>{ solution.Title }</h1>
 					<p>{ solution.Lead }</p>
 					<div class="hero-actions">
-						<a class="button" href={ "/contato?interesse=" + solution.Slug }>Apresente o seu cenário</a>
-						<a class="button button-dark-ghost" href="#como-funciona">Ver a jornada</a>
+						<a class="button" href={ "/contato?interesse=" + solution.Slug }>Agendar uma demonstração</a>
+						<a class="button button-dark-ghost" href="#como-funciona">Ver o processo</a>
 					</div>
 					<div class="solution-command-proof">
 						<div>
 							<span>
-								@components.Icon("badge-check")
+								@components.Icon(solution.Features[0].Icon)
 							</span>
-							<p><small>DECISÃO</small><strong>Critérios contextualizados</strong></p>
+							<p><small>CAPACIDADE</small><strong>{ solution.Features[0].Title }</strong></p>
 						</div>
 						<div>
 							<span>
-								@components.Icon("history")
+								@components.Icon(solution.Features[3].Icon)
 							</span>
-							<p><small>CONTROLE</small><strong>Trilha operacional</strong></p>
+							<p><small>DIFERENCIAL</small><strong>{ solution.Features[3].Title }</strong></p>
 						</div>
 					</div>
 				</div>
 				@components.SolutionSignalPanel(solution)
+			</div>
+		</section>
+		<section class="solution-positioning">
+			<div class="container solution-positioning-intro">
+				<span class="eyebrow">Definição objetiva</span>
+				<h2>O que é { solution.ShortName }</h2>
+				<p>{ solution.Definition }</p>
+			</div>
+			<div class="container solution-positioning-grid">
+				<article>
+					<span>01 / INDICADO PARA</span>
+					<h3>Quem utiliza</h3>
+					<p>{ solution.Audience }</p>
+				</article>
+				<article>
+					<span>02 / PROBLEMA</span>
+					<h3>O que precisa mudar</h3>
+					<p>{ solution.Challenge }</p>
+				</article>
+				<article>
+					<span>03 / RESULTADO</span>
+					<h3>O que a operação ganha</h3>
+					<p>{ solution.Outcome }</p>
+				</article>
 			</div>
 		</section>
 		<section class="section solution-capabilities">
@@ -59,23 +83,37 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 		</section>
 		<section id="como-funciona" class="solution-process">
 			<div class="container solution-process-heading">
-				<div><span class="product-overline"><span></span> Jornada operacional</span><h2>Do primeiro sinal a uma decisão com contexto.</h2></div>
-				<p>Uma sequência objetiva, desenhada para conectar pessoas, políticas e sistemas sem perder rastreabilidade.</p>
+				<div><span class="product-overline"><span></span> Processo em movimento</span><h2>{ solution.ProcessTitle }</h2></div>
+				<p>{ solution.ProcessText }</p>
+			</div>
+			<div class="container process-live-bar" aria-hidden="true">
+				<span><i></i> PROCESSO ATIVO</span>
+				<strong>VIAGATE / { solution.ShortName }</strong>
+				<small>04 ETAPAS CONECTADAS</small>
 			</div>
 			<ol class="container solution-process-grid">
 				for index, step := range solution.Steps {
-					<li><span>{ index + 1 }</span><div><small>ETAPA 0{ index + 1 }</small><h3>{ step.Title }</h3><p>{ step.Text }</p></div></li>
+					<li>
+						<div class="process-step-marker">
+							<span>
+								@components.Icon(solution.Features[index].Icon)
+							</span>
+							<small>0{ index + 1 }</small>
+						</div>
+						<div><small>ETAPA 0{ index + 1 }</small><h3>{ step.Title }</h3><p>{ step.Text }</p></div>
+						<i class="process-step-status" aria-hidden="true"></i>
+					</li>
 				}
 			</ol>
 		</section>
 		<section class="section solution-evidence">
 			<div class="container solution-evidence-grid">
 				<div class="solution-evidence-copy">
-					<span class="eyebrow">Visibilidade operacional</span>
-					<h2>Informação compreensível para quem precisa agir.</h2>
+					<span class="eyebrow">Resultado visível</span>
+					<h2>{ solution.EvidenceTitle }</h2>
 					<p>{ solution.Summary }</p>
-					<p>A configuração final depende dos módulos, fontes e integrações definidos para cada operação.</p>
-					<a class="button button-outline" href="/contato">Solicitar uma apresentação</a>
+					<p>{ solution.Outcome }</p>
+					<a class="button button-outline" href={ "/contato?interesse=" + solution.Slug }>Solicitar uma demonstração</a>
 				</div>
 				@components.ImagePlaceholder(solution.SecondaryImage, solution.SecondarySize, "solution-evidence-image")
 			</div>
@@ -93,6 +131,6 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 				</div>
 			</div>
 		</section>
-		@components.CallToAction("Veja a solução aplicada ao seu processo", "A equipe Viagate pode demonstrar o fluxo e discutir integrações, critérios e formato de contratação.")
+		@components.CallToAction("Veja "+solution.ShortName+" aplicado ao seu processo", "Agende uma demonstração para discutir fluxo, integrações, critérios e formato de contratação.")
 	}
 }

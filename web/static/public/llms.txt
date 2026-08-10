@@ -9,14 +9,14 @@ Contato: contato@viagate.com.br | +55 41 99962-3600
 
 ## Principais soluções
 
-- [Cargo Score — pesquisa cadastral de motoristas](https://viagate.com.br/solucoes/pesquisa-cadastral-de-motoristas): organiza biometria facial, validações cadastrais, critérios e histórico de análise.
+- [Cargo Score — pesquisa cadastral de motoristas](https://viagate.com.br/solucoes/pesquisa-cadastral-de-motoristas): reúne biometria, telefone, CNH, ANTT, processos, dados veiculares, regras configuráveis e histórico de análise.
 - [Biometria facial](https://viagate.com.br/solucoes/biometria-facial): confirma identidade e prova de vida pelo navegador, com opções de API e white label.
 - [Cargo Autenticador](https://viagate.com.br/solucoes/autenticador-de-seguranca): adiciona confirmação de identidade antes de negociações e etapas sensíveis.
 - [Cargo Truck](https://viagate.com.br/solucoes/gestao-logistica): organiza viagens, coletas, entregas, posições, paradas e comprovantes pelo smartphone do motorista.
 - [Prevenção veicular](https://viagate.com.br/solucoes/prevencao-veicular): reúne gestão de multas, débitos, restrições e informações de histórico veicular.
 - [Monitoramento](https://viagate.com.br/solucoes/monitoramento-de-veiculos): conecta dados de veículos e viagens por integrações compatíveis.
-- [APIs](https://viagate.com.br/integracoes/api): integra biometria, ANTT, CNH, consultas cadastrais e informações veiculares a sistemas de terceiros.
-- [White label](https://viagate.com.br/white-label): aplica identidade visual e endereço configurados para o projeto contratante.
+- [APIs](https://viagate.com.br/integracoes/api): forma de integrar biometria, ANTT, CNH, consultas cadastrais e informações veiculares a sistemas de terceiros.
+- [White label](https://viagate.com.br/white-label): modalidade de entrega com identidade visual, endereço e experiência configurados para a empresa contratante.
 
 ## Conteúdo e fontes
 
