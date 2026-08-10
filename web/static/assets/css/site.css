@@ -475,6 +475,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .api-console-bar > span:first-child { background: var(--orange-500); }
 .api-console-bar strong { margin-left: 12px; color: #8094a6; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .66rem; font-weight: 650; }
 .api-console pre { overflow-x: auto; min-height: 330px; padding: 38px; margin: 0; color: #aebdca; background: radial-gradient(circle at 80% 50%,rgba(26,68,98,.24),transparent 35%); font: 500 .87rem/1.9 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.api-console code { display: block; min-width: max-content; }
+.code-line { display: block; min-height: 1.9em; white-space: pre; }
+.code-indent { padding-left: 1.5em; }
+.code-indent-double { padding-left: 3em; }
 .code-key { color: #7fb8dd; }
 .code-value { color: #ff9c62; }
 .code-muted { color: #536a7e; }

@@ -438,7 +438,7 @@ func ApiConsole() templ.Component {
 			templ_7745c5c3_Var7 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<figure class=\"api-console\" aria-label=\"Exemplo conceitual de integração com a API Viagate\"><div class=\"api-console-bar\"><span></span><span></span><span></span><strong>POST /v1/validations</strong></div><pre><code><span class=\"code-muted\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<figure class=\"api-console\" aria-label=\"Exemplo conceitual de integração com a API Viagate\"><div class=\"api-console-bar\"><span></span><span></span><span></span><strong>POST /v1/validations</strong></div><pre><code><span class=\"code-line\"><span class=\"code-muted\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -451,7 +451,7 @@ func ApiConsole() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</span> <span class=\"code-key\">\"workflow\"</span>: <span class=\"code-value\">\"driver_validation\"</span>, <span class=\"code-key\">\"checks\"</span>: [ <span class=\"code-value\">\"identity\"</span>, <span class=\"code-value\">\"biometry\"</span>, <span class=\"code-value\">\"registry\"</span> ], <span class=\"code-key\">\"callback\"</span>: <span class=\"code-value\">\"/events/status\"</span> <span class=\"code-muted\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</span></span><span class=\"code-line code-indent\"><span class=\"code-key\">\"workflow\"</span>: <span class=\"code-value\">\"driver_validation\"</span>,</span><span class=\"code-line code-indent\"><span class=\"code-key\">\"checks\"</span>: [</span><span class=\"code-line code-indent-double\"><span class=\"code-value\">\"identity\"</span>,</span><span class=\"code-line code-indent-double\"><span class=\"code-value\">\"biometry\"</span>,</span><span class=\"code-line code-indent-double\"><span class=\"code-value\">\"registry\"</span></span><span class=\"code-line code-indent\">],</span><span class=\"code-line code-indent\"><span class=\"code-key\">\"callback\"</span>: <span class=\"code-value\">\"/events/status\"</span></span><span class=\"code-line\"><span class=\"code-muted\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -464,7 +464,7 @@ func ApiConsole() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</span></code></pre><div class=\"api-result\"><span><i></i> 202 ACCEPTED</span><small>trace vg_84f1...c29</small></div><figcaption>Exemplo ilustrativo; endpoints dependem da documentação contratada.</figcaption></figure>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</span></span></code></pre><div class=\"api-result\"><span><i></i> 202 ACCEPTED</span><small>trace vg_84f1...c29</small></div><figcaption>Exemplo ilustrativo; endpoints dependem da documentação contratada.</figcaption></figure>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

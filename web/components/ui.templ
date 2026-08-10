@@ -178,15 +178,15 @@ templ ApiConsole() {
 		<div class="api-console-bar"><span></span><span></span><span></span><strong>POST /v1/validations</strong></div>
 		<pre>
 			<code>
-				<span class="code-muted">{ "{" }</span>
-				<span class="code-key">"workflow"</span>: <span class="code-value">"driver_validation"</span>,
-				<span class="code-key">"checks"</span>: [
-				<span class="code-value">"identity"</span>,
-				<span class="code-value">"biometry"</span>,
-				<span class="code-value">"registry"</span>
-				],
-				<span class="code-key">"callback"</span>: <span class="code-value">"/events/status"</span>
-				<span class="code-muted">{ "}" }</span>
+				<span class="code-line"><span class="code-muted">{ "{" }</span></span>
+				<span class="code-line code-indent"><span class="code-key">"workflow"</span>: <span class="code-value">"driver_validation"</span>,</span>
+				<span class="code-line code-indent"><span class="code-key">"checks"</span>: [</span>
+				<span class="code-line code-indent-double"><span class="code-value">"identity"</span>,</span>
+				<span class="code-line code-indent-double"><span class="code-value">"biometry"</span>,</span>
+				<span class="code-line code-indent-double"><span class="code-value">"registry"</span></span>
+				<span class="code-line code-indent">],</span>
+				<span class="code-line code-indent"><span class="code-key">"callback"</span>: <span class="code-value">"/events/status"</span></span>
+				<span class="code-line"><span class="code-muted">{ "}" }</span></span>
 			</code>
 		</pre>
 		<div class="api-result"><span><i></i> 202 ACCEPTED</span><small>trace vg_84f1...c29</small></div>
