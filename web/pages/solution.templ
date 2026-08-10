@@ -35,7 +35,11 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 						</div>
 					</div>
 				</div>
-				@components.SolutionSignalPanel(solution)
+				if solution.Slug == "pesquisa-cadastral-de-motoristas" {
+					@components.CargoScoreNetworkPanel()
+				} else {
+					@components.SolutionSignalPanel(solution)
+				}
 			</div>
 		</section>
 		<section class="solution-positioning">

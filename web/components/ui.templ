@@ -208,6 +208,83 @@ templ PowerSolutionCard(solution site.Solution, index int) {
 	</article>
 }
 
+templ CargoScoreNetworkPanel() {
+	<figure class="solution-signal-panel score-network-panel" aria-label="Rede conceitual do Cargo Score reunindo fontes cadastrais em uma análise rastreável">
+		<div class="signal-panel-grid" aria-hidden="true"></div>
+		<div class="signal-panel-top">
+			<span><i></i> VIAGATE / CARGO SCORE</span>
+			<small>ANÁLISE EM PROCESSAMENTO</small>
+		</div>
+		<div class="score-network-stage">
+			<svg class="score-network-lines" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+				<g class="score-network-paths score-network-paths-base">
+					<path d="M102 66 L300 180"></path>
+					<path d="M76 180 L300 180"></path>
+					<path d="M102 294 L300 180"></path>
+					<path d="M498 66 L300 180"></path>
+					<path d="M524 180 L300 180"></path>
+					<path d="M498 294 L300 180"></path>
+					<path d="M102 66 L76 180 L102 294"></path>
+					<path d="M498 66 L524 180 L498 294"></path>
+				</g>
+				<g class="score-network-paths score-network-paths-flow">
+					<path d="M102 66 L300 180"></path>
+					<path d="M76 180 L300 180"></path>
+					<path d="M102 294 L300 180"></path>
+					<path d="M498 66 L300 180"></path>
+					<path d="M524 180 L300 180"></path>
+					<path d="M498 294 L300 180"></path>
+				</g>
+			</svg>
+			<div class="score-network-node score-network-node-biometry">
+				<span>@Icon("scan-face")
+</span>
+				<p><small>IDENTIDADE</small><strong>Biometria</strong></p><i></i>
+			</div>
+			<div class="score-network-node score-network-node-phone">
+				<span>@Icon("smartphone")
+</span>
+				<p><small>CONTATO</small><strong>Telefone</strong></p><i></i>
+			</div>
+			<div class="score-network-node score-network-node-license">
+				<span>@Icon("badge-check")
+</span>
+				<p><small>DOCUMENTO</small><strong>CNH</strong></p><i></i>
+			</div>
+			<div class="score-network-node score-network-node-registry">
+				<span>@Icon("route")
+</span>
+				<p><small>REGISTRO</small><strong>ANTT</strong></p><i></i>
+			</div>
+			<div class="score-network-node score-network-node-courts">
+				<span>@Icon("file-warning")
+</span>
+				<p><small>CONTEXTO</small><strong>Processos</strong></p><i></i>
+			</div>
+			<div class="score-network-node score-network-node-vehicle">
+				<span>@Icon("car-front")
+</span>
+				<p><small>CADASTRO</small><strong>Veículo</strong></p><i></i>
+			</div>
+			<div class="score-engine">
+				<div class="score-engine-ring score-engine-ring-outer" aria-hidden="true"></div>
+				<div class="score-engine-ring score-engine-ring-inner" aria-hidden="true"></div>
+				<span>@Icon("user-check")
+</span>
+				<small>CARGO</small>
+				<strong>SCORE</strong>
+			</div>
+		</div>
+		<div class="score-network-result">
+			<span class="score-result-icon">@Icon("shield-check")
+</span>
+			<div><small>RESULTADO CONSOLIDADO</small><strong>Análise rastreável para decisão segura</strong></div>
+			<span class="score-result-privacy"><i></i> EVIDÊNCIAS PARA GOVERNANÇA LGPD</span>
+		</div>
+		<figcaption>Fluxo conceitual — fontes, critérios e evidências dependem dos módulos contratados.</figcaption>
+	</figure>
+}
+
 templ SolutionSignalPanel(solution site.Solution) {
 	<figure class="solution-signal-panel" aria-label={ "Representação conceitual da solução " + solution.ShortName }>
 		<div class="signal-panel-grid" aria-hidden="true"></div>
