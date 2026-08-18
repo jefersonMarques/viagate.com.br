@@ -1,6 +1,6 @@
 :root {
-  --orange-600: #d33f00;
-  --orange-500: #ff6200;
+  --orange-600: #ff6400;
+  --orange-500: #ff6400;
   --orange-100: #fff0e8;
   --line: #ccd6df;
   --radius: 6px;
@@ -56,9 +56,9 @@ h6 {
 }
 
 .site-header {
-  border-bottom-color: rgba(10, 25, 44, 0.14);
-  background: rgba(250, 251, 252, 0.95);
-  box-shadow: 0 12px 32px rgba(6, 17, 31, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  background: rgba(6, 17, 31, 0.96);
+  box-shadow: 0 14px 34px rgba(2, 10, 18, 0.22);
 }
 
 .brand-image {
@@ -71,6 +71,7 @@ h6 {
 
 .desktop-nav a {
   position: relative;
+  color: #d7e0e8;
   font-size: 0.9rem;
   font-weight: 650;
   letter-spacing: 0.035em;
@@ -107,15 +108,15 @@ input[type="reset"] {
 .button {
   background: var(--orange-600);
   border-color: var(--orange-600);
-  box-shadow: 0 12px 28px rgba(255, 98, 0, 0.18);
+  box-shadow: 0 12px 28px rgba(255, 100, 0, 0.2);
   font-weight: 700;
   letter-spacing: 0.025em;
 }
 
 .button:hover {
-  background: #b93600;
-  border-color: #b93600;
-  box-shadow: 0 16px 36px rgba(255, 98, 0, 0.24);
+  background: #dc5700;
+  border-color: #dc5700;
+  box-shadow: 0 16px 36px rgba(255, 100, 0, 0.28);
 }
 
 .button-light:hover {
@@ -139,6 +140,41 @@ input[type="reset"] {
   color: var(--orange-600);
 }
 
+.insurer-trust {
+  color: var(--white);
+  background: #ff6400;
+  border-top-color: rgba(6, 17, 31, 0.14);
+  border-bottom: 1px solid rgba(6, 17, 31, 0.18);
+}
+
+.insurer-trust-heading span {
+  color: var(--navy-950);
+}
+
+.insurer-trust-heading h2 {
+  color: var(--white);
+}
+
+.insurer-trust-heading p {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.insurer-logo-grid {
+  background: rgba(6, 17, 31, 0.24);
+}
+
+.insurer-logo {
+  background: rgba(6, 17, 31, 0.92);
+}
+
+.insurer-logo img {
+  opacity: 0.82;
+}
+
+.insurer-logo:hover img {
+  opacity: 1;
+}
+
 .mobile-menu summary,
 .mobile-menu nav,
 .solution-card,
@@ -149,6 +185,23 @@ input[type="reset"] {
 .whatsapp-options a,
 .whatsapp-option-index {
   border-radius: 2px;
+}
+
+.mobile-menu summary {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu summary span {
+  background: var(--white);
+}
+
+.mobile-menu nav {
+  background: var(--navy-950);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.mobile-menu nav > a:not(.button) {
+  color: #d7e0e8;
 }
 
 .whatsapp-trigger,
