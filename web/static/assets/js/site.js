@@ -25,7 +25,7 @@ const initializeFadeUp = () => {
   }
 
   const elements = Array.from(
-    document.querySelectorAll("main section > .container > *, main .page-hero > .container > *, main .hero > .container > *"),
+    document.querySelectorAll("main section > .container > *, main .page-hero > .container > *, main .hero > .container > *")
   );
 
   if (elements.length === 0) {
@@ -58,8 +58,8 @@ const initializeFadeUp = () => {
     },
     {
       threshold: 0.12,
-      rootMargin: "0px 0px -8% 0px",
-    },
+      rootMargin: "0px 0px -8% 0px"
+    }
   );
 
   elements.forEach((element) => {
