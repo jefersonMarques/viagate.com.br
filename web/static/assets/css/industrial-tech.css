@@ -141,42 +141,51 @@ input[type="reset"] {
 }
 
 .insurer-trust {
-  padding: 30px 0 34px;
-  color: var(--white);
-  background: #ff6400;
-  border-top-color: rgba(6, 17, 31, 0.14);
-  border-bottom: 1px solid rgba(6, 17, 31, 0.18);
+  padding: 46px 0 50px;
+  color: var(--navy-950);
+  background: #f4f5f6;
+  border-top: 1px solid #dce2e7;
+  border-bottom: 1px solid #dce2e7;
 }
 
 .insurer-trust-inner {
-  gap: 20px;
+  gap: 26px;
+}
+
+.insurer-trust-heading > div::after {
+  width: 58px;
+  height: 2px;
+  margin-top: 5px;
+  content: "";
+  background: var(--orange-600);
 }
 
 .insurer-trust-heading span {
-  color: var(--navy-950);
+  color: var(--orange-600);
 }
 
 .insurer-trust-heading h2 {
-  color: var(--white);
+  color: var(--navy-950);
 }
 
 .insurer-trust-heading p {
-  color: rgba(255, 255, 255, 0.86);
+  color: #5d6b79;
 }
 
 .insurer-logo-grid {
   display: grid;
   grid-template-columns: repeat(14, minmax(0, 1fr));
-  gap: 1px;
-  padding: 1px;
-  background: rgba(6, 17, 31, 0.24);
+  gap: 0;
+  padding: 18px 0 0;
+  background: transparent;
+  border-top: 1px solid #d8dee4;
 }
 
 .insurer-logo {
   grid-column: span 2;
-  min-height: 76px;
-  padding: 14px 18px;
-  background: rgba(6, 17, 31, 0.92);
+  min-height: 74px;
+  padding: 12px 18px;
+  background: transparent;
 }
 
 .insurer-logo:nth-child(8) {
@@ -187,7 +196,9 @@ input[type="reset"] {
   width: 100%;
   max-width: 124px;
   height: 38px;
-  opacity: 0.82;
+  opacity: 0.64;
+  filter: grayscale(1) brightness(0.38) contrast(1.28);
+  transition: opacity 180ms ease, filter 180ms ease, transform 180ms ease;
 }
 
 .insurer-logo:nth-child(1) img,
@@ -207,6 +218,15 @@ input[type="reset"] {
 
 .insurer-logo:hover img {
   opacity: 1;
+  filter: grayscale(1) brightness(0.2) contrast(1.4);
+  transform: translateY(-2px);
+}
+
+.cta-section .cta-card {
+  width: min(calc(100% - clamp(32px, 6vw, 96px)), var(--container));
+  max-width: none;
+  margin-inline: auto;
+  border-radius: 2px;
 }
 
 .mobile-menu summary,
@@ -332,7 +352,7 @@ input[type="reset"] {
   }
 
   .insurer-trust {
-    padding: 26px 0 30px;
+    padding: 34px 0 38px;
   }
 
   .insurer-logo-grid {
@@ -340,7 +360,11 @@ input[type="reset"] {
   }
 
   .insurer-logo {
-    min-height: 70px;
+    min-height: 68px;
+  }
+
+  .cta-section .cta-card {
+    width: min(calc(100% - 32px), var(--container));
   }
 }
 
