@@ -11,6 +11,19 @@ const initializeRiskEngineProfile = () => {
     return;
   }
 
+  const identities = [
+    { name: "João da Silva", age: 39, cpf: "123.456.789-10" },
+    { name: "Carlos Eduardo", age: 42, cpf: "214.587.963-01" },
+    { name: "Marcos Vinicius", age: 36, cpf: "315.902.478-22" },
+    { name: "Rafael Mendes", age: 44, cpf: "426.173.850-33" },
+    { name: "Paulo Henrique", age: 31, cpf: "537.264.981-44" },
+    { name: "André Luiz", age: 47, cpf: "648.395.172-55" },
+    { name: "Felipe Rocha", age: 34, cpf: "759.486.203-66" },
+    { name: "Tiago Martins", age: 40, cpf: "860.517.394-77" },
+    { name: "Bruno Almeida", age: 38, cpf: "971.628.405-88" },
+    { name: "Leandro Costa", age: 45, cpf: "082.739.516-99" }
+  ];
+
   const profile = document.createElement("div");
   profile.className = "driver-profile";
 
@@ -30,17 +43,11 @@ const initializeRiskEngineProfile = () => {
   name.className = "driver-profile-name";
 
   const nameText = document.createElement("strong");
-  nameText.textContent = "João da Silva";
-
   const age = document.createElement("span");
-  age.textContent = "39 anos";
-
   name.append(nameText, age);
 
   const cpf = document.createElement("span");
   cpf.className = "driver-profile-cpf";
-  cpf.textContent = "CPF: 123.456.789-10";
-
   copy.append(name, cpf);
 
   const status = document.createElement("div");
@@ -56,7 +63,57 @@ const initializeRiskEngineProfile = () => {
   profile.append(photo, copy, status);
   heading.replaceChildren(profile);
 
+  let currentIdentityIndex = 0;
+  let lastScenarioKey = null;
+
+  const renderIdentity = () => {
+    const identity = identities[currentIdentityIndex % identities.length];
+
+    nameText.textContent = identity.name;
+    age.textContent = `${identity.age} anos`;
+    cpf.textContent = `CPF: ${identity.cpf}`;
+  };
+
+  const getScenarioKey = () => {
+    if (engine.classList.contains("scenario-fraud")) {
+      return "fraud";
+    }
+
+    if (engine.classList.contains("scenario-review")) {
+      return "review";
+    }
+
+    if (engine.classList.contains("scenario-approval")) {
+      return "approval";
+    }
+
+    return null;
+  };
+
+  const syncIdentity = () => {
+    const scenarioKey = getScenarioKey();
+
+    if (scenarioKey === null) {
+      return;
+    }
+
+    if (lastScenarioKey === null) {
+      lastScenarioKey = scenarioKey;
+      renderIdentity();
+      return;
+    }
+
+    if (scenarioKey === lastScenarioKey) {
+      return;
+    }
+
+    lastScenarioKey = scenarioKey;
+    currentIdentityIndex = (currentIdentityIndex + 1) % identities.length;
+    renderIdentity();
+  };
+
   const syncState = () => {
+    syncIdentity();
     profile.classList.remove("is-success", "is-warning", "is-danger");
 
     if (engine.classList.contains("is-rejected")) {
@@ -96,6 +153,7 @@ const initializeRiskEngineProfile = () => {
     attributeFilter: ["class"]
   });
 
+  renderIdentity();
   syncState();
 };
 
