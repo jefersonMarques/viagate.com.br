@@ -165,7 +165,7 @@ const initializeRiskEngine = () => {
       timerId = window.setTimeout(() => {
         currentStepIndex = 0;
         render(currentStepIndex);
-        timerId = window.setTimeout(scheduleNextStep, 1050);
+        scheduleNextStep();
       }, 2600);
       return;
     }
