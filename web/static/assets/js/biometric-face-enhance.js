@@ -6,6 +6,7 @@ const initializeBiometricFaceEnhancement = () => {
   }
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const faceImagePath = "/assets/images/biometric-face-reference.webp";
   const signalItems = [
     { label: "CPF", value: "Confirmado" },
     { label: "Telefone", value: "Verificado" },
@@ -88,42 +89,7 @@ const initializeBiometricFaceEnhancement = () => {
     }
   };
 
-  const partUrls = Array.from(
-    { length: 7 },
-    (_, index) => `/assets/images/biometric-face-parts/part-${String(index).padStart(2, "0")}.txt`
-  );
-
-  let faceUrl = null;
-
-  const loadFaceUrl = async () => {
-    const parts = await Promise.all(
-      partUrls.map(async (url) => {
-        const response = await fetch(url);
-
-        if (!response.ok) {
-          throw new Error(`Unable to load biometric face asset: ${url}`);
-        }
-
-        return response.text();
-      })
-    );
-
-    const encoded = parts.join("").replace(/\s+/g, "");
-    const binary = window.atob(encoded);
-    const bytes = new Uint8Array(binary.length);
-
-    for (let index = 0; index < binary.length; index += 1) {
-      bytes[index] = binary.charCodeAt(index);
-    }
-
-    return URL.createObjectURL(new Blob([bytes], { type: "image/webp" }));
-  };
-
   const applyFace = () => {
-    if (faceUrl === null) {
-      return;
-    }
-
     core.querySelectorAll(".bio-face-oval").forEach((oval) => {
       if (!(oval instanceof HTMLElement) || oval.querySelector(".bio-face-photo")) {
         return;
@@ -131,7 +97,7 @@ const initializeBiometricFaceEnhancement = () => {
 
       const image = document.createElement("img");
       image.className = "bio-face-photo";
-      image.src = faceUrl;
+      image.src = faceImagePath;
       image.alt = "";
       image.decoding = "async";
       image.setAttribute("aria-hidden", "true");
@@ -146,24 +112,13 @@ const initializeBiometricFaceEnhancement = () => {
     subtree: true
   });
 
-  loadFaceUrl()
-    .then((url) => {
-      faceUrl = url;
-      applyFace();
-    })
-    .catch((error) => {
-      console.warn("Biometric face asset could not be loaded.", error);
-    });
+  applyFace();
 
   window.addEventListener(
     "pagehide",
     () => {
       stopSignals();
       faceObserver.disconnect();
-
-      if (faceUrl !== null) {
-        URL.revokeObjectURL(faceUrl);
-      }
     },
     { once: true }
   );
