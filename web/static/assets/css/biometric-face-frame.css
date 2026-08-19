@@ -1,0 +1,52 @@
+.bio-face-oval {
+  width: 132px;
+  height: 176px;
+  border: 1px solid rgba(226, 235, 242, 0.88);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 22px rgba(117, 151, 176, 0.035),
+    0 0 18px rgba(117, 151, 176, 0.045);
+}
+
+.bio-face-panel.is-scanning .bio-face-oval {
+  border-color: rgba(255, 100, 0, 0.82);
+  box-shadow:
+    inset 0 0 28px rgba(255, 100, 0, 0.045),
+    0 0 20px rgba(255, 100, 0, 0.09);
+}
+
+.bio-face-panel.is-success .bio-face-oval {
+  border-color: rgba(77, 211, 145, 0.9);
+  box-shadow:
+    inset 0 0 28px rgba(77, 211, 145, 0.045),
+    0 0 22px rgba(77, 211, 145, 0.1);
+}
+
+.bio-face-mark {
+  opacity: 0.42;
+}
+
+.bio-face-mark-a,
+.bio-face-mark-b {
+  top: 14px;
+}
+
+.bio-face-mark-c,
+.bio-face-mark-d {
+  bottom: 14px;
+}
+
+.bio-face-mark-a,
+.bio-face-mark-c {
+  left: 17px;
+}
+
+.bio-face-mark-b,
+.bio-face-mark-d {
+  right: 17px;
+}
+
+.bio-face-scan {
+  left: 14px;
+  right: 14px;
+}
