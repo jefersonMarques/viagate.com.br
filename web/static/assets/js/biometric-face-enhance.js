@@ -6,7 +6,7 @@ const initializeBiometricFaceEnhancement = () => {
   }
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const faceImagePath = "/assets/images/biometric-face-reference.webp";
+  const faceImagePath = "/assets/images/face_transparent_compact.webp";
   const signalItems = [
     { label: "CPF", value: "Confirmado" },
     { label: "Telefone", value: "Verificado" },
