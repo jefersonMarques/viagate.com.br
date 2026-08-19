@@ -32,11 +32,14 @@
   transition: border-color 280ms ease, box-shadow 280ms ease;
 }
 
-.driver-profile-photo img {
+.driver-profile-silhouette {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  background: var(--orange-500);
+  -webkit-mask: url("/assets/images/biometric-silhouette-transparent.svg") center / contain no-repeat;
+  mask: url("/assets/images/biometric-silhouette-transparent.svg") center / contain no-repeat;
+  transition: background 320ms ease;
 }
 
 .driver-profile-copy {
@@ -126,6 +129,10 @@
   box-shadow: 0 0 16px rgba(77, 211, 145, 0.1);
 }
 
+.driver-profile.is-success .driver-profile-silhouette {
+  background: #4dd391;
+}
+
 .driver-profile.is-success .driver-profile-status {
   color: #6fe1a5;
 }
@@ -147,6 +154,10 @@
   box-shadow: 0 0 16px rgba(245, 185, 66, 0.09);
 }
 
+.driver-profile.is-warning .driver-profile-silhouette {
+  background: #f5b942;
+}
+
 .driver-profile.is-warning .driver-profile-status {
   color: #f5c866;
 }
@@ -166,6 +177,10 @@
 .driver-profile.is-danger .driver-profile-photo {
   border-color: rgba(255, 83, 83, 0.62);
   box-shadow: 0 0 16px rgba(255, 83, 83, 0.09);
+}
+
+.driver-profile.is-danger .driver-profile-silhouette {
+  background: #ff5353;
 }
 
 .driver-profile.is-danger .driver-profile-status {
