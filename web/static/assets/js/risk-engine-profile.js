@@ -17,13 +17,11 @@ const initializeRiskEngineProfile = () => {
   const photo = document.createElement("div");
   photo.className = "driver-profile-photo";
 
-  const image = document.createElement("img");
-  image.src = "/assets/images/biometric-silhouette-transparent.svg";
-  image.alt = "Silhueta biométrica do motorista";
-  image.width = 60;
-  image.height = 60;
-  image.decoding = "async";
-  photo.append(image);
+  const silhouette = document.createElement("span");
+  silhouette.className = "driver-profile-silhouette";
+  silhouette.setAttribute("role", "img");
+  silhouette.setAttribute("aria-label", "Silhueta biométrica do motorista");
+  photo.append(silhouette);
 
   const copy = document.createElement("div");
   copy.className = "driver-profile-copy";
