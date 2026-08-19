@@ -1,0 +1,388 @@
+.command-center,
+.command-center::before,
+.command-center .console-bar,
+.command-center .operational-timeline,
+.command-center .console-status,
+.command-center .console-mark,
+.command-center .console-live span {
+  transition:
+    background 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease,
+    color 320ms ease;
+}
+
+.command-center .timeline-heading > div > span,
+.command-center .timeline-heading > div > strong,
+.command-center .status-heading > small {
+  transition: color 240ms ease;
+}
+
+.command-center.is-danger {
+  border-color: rgba(255, 76, 76, 0.42);
+  box-shadow: 0 48px 100px rgba(0, 0, 0, 0.38), 0 0 34px rgba(255, 52, 52, 0.08);
+}
+
+.command-center.is-danger::before,
+.command-center.is-rejected::before {
+  border-color: rgba(255, 76, 76, 0.42);
+}
+
+.command-center.is-danger .console-bar,
+.command-center.is-rejected .console-bar {
+  background: #190d14;
+  border-bottom-color: rgba(255, 92, 92, 0.16);
+}
+
+.command-center.is-danger .operational-timeline,
+.command-center.is-rejected .operational-timeline {
+  background:
+    radial-gradient(circle at 58% 30%, rgba(135, 28, 38, 0.3), transparent 44%),
+    linear-gradient(145deg, #160c16, #0c101b);
+}
+
+.command-center.is-danger .console-status,
+.command-center.is-rejected .console-status {
+  background: rgba(28, 8, 14, 0.82);
+}
+
+.command-center.is-danger .console-mark,
+.command-center.is-rejected .console-mark {
+  border-color: #ff5353;
+  border-left-color: transparent;
+}
+
+.command-center.is-danger .console-live span,
+.command-center.is-rejected .console-live span {
+  background: #ff5353;
+  box-shadow: 0 0 12px rgba(255, 83, 83, 0.82);
+}
+
+.command-center.is-danger .timeline-heading > div > span,
+.command-center.is-danger .status-heading > small,
+.command-center.is-rejected .timeline-heading > div > span,
+.command-center.is-rejected .status-heading > small {
+  color: #ff7272;
+}
+
+.command-center.is-danger .timeline-heading > div > strong,
+.command-center.is-rejected .timeline-heading > div > strong {
+  color: #ffd6d6;
+}
+
+.command-center.is-warning {
+  border-color: rgba(245, 185, 66, 0.42);
+  box-shadow: 0 48px 100px rgba(0, 0, 0, 0.38), 0 0 34px rgba(245, 185, 66, 0.07);
+}
+
+.command-center.is-warning::before {
+  border-color: rgba(245, 185, 66, 0.42);
+}
+
+.command-center.is-warning .console-bar {
+  background: #19160d;
+  border-bottom-color: rgba(245, 185, 66, 0.16);
+}
+
+.command-center.is-warning .operational-timeline {
+  background:
+    radial-gradient(circle at 58% 30%, rgba(141, 99, 20, 0.28), transparent 44%),
+    linear-gradient(145deg, #17150d, #0b1119);
+}
+
+.command-center.is-warning .console-status {
+  background: rgba(27, 22, 9, 0.8);
+}
+
+.command-center.is-warning .console-mark {
+  border-color: #f5b942;
+  border-left-color: transparent;
+}
+
+.command-center.is-warning .console-live span {
+  background: #f5b942;
+  box-shadow: 0 0 12px rgba(245, 185, 66, 0.72);
+}
+
+.command-center.is-warning .timeline-heading > div > span,
+.command-center.is-warning .status-heading > small {
+  color: #f5c866;
+}
+
+.command-center.is-warning .timeline-heading > div > strong {
+  color: #fff0c7;
+}
+
+.command-center.is-approved,
+.command-center.is-manual-approved {
+  border-color: rgba(77, 211, 145, 0.4);
+  box-shadow: 0 48px 100px rgba(0, 0, 0, 0.38), 0 0 32px rgba(77, 211, 145, 0.08);
+}
+
+.command-center.is-approved::before,
+.command-center.is-manual-approved::before {
+  border-color: rgba(77, 211, 145, 0.34);
+}
+
+.command-center.is-approved .timeline-heading > div > span,
+.command-center.is-approved .status-heading > small,
+.command-center.is-manual-approved .timeline-heading > div > span,
+.command-center.is-manual-approved .status-heading > small {
+  color: #6fe1a5;
+}
+
+.command-center.is-approved .console-live span,
+.command-center.is-manual-approved .console-live span {
+  background: #4dd391;
+  box-shadow: 0 0 12px rgba(77, 211, 145, 0.8);
+}
+
+.command-center.is-danger .process-step.is-active {
+  background: linear-gradient(90deg, rgba(255, 69, 69, 0.15), transparent 76%);
+  border-left-color: #ff5353;
+}
+
+.command-center.is-danger .process-step.is-active .process-index {
+  color: #ff6b6b;
+}
+
+.command-center.is-danger .process-step.is-active .process-progress i {
+  background: #ff5353;
+  box-shadow: 0 0 10px rgba(255, 83, 83, 0.52);
+}
+
+.command-center.is-warning .process-step.is-active {
+  background: linear-gradient(90deg, rgba(245, 185, 66, 0.15), transparent 76%);
+  border-left-color: #f5b942;
+}
+
+.command-center.is-warning .process-step.is-active .process-index {
+  color: #f5c866;
+}
+
+.command-center.is-warning .process-step.is-active .process-progress i {
+  background: #f5b942;
+  box-shadow: 0 0 10px rgba(245, 185, 66, 0.48);
+}
+
+.process-step.is-complete.is-outcome-danger {
+  opacity: 0.82;
+}
+
+.process-step.is-complete.is-outcome-danger .process-index {
+  color: #ad5c64;
+}
+
+.process-step.is-complete.is-outcome-danger .process-step-body strong {
+  color: #d2a7aa;
+}
+
+.process-step.is-complete.is-outcome-danger .process-progress i {
+  background: rgba(255, 83, 83, 0.68);
+}
+
+.process-step.is-complete.is-outcome-danger .process-result {
+  color: #ff6b6b;
+  border-color: rgba(255, 83, 83, 0.62);
+  box-shadow: 0 0 12px rgba(255, 83, 83, 0.18);
+}
+
+.process-step.is-complete.is-outcome-warning {
+  opacity: 0.86;
+}
+
+.process-step.is-complete.is-outcome-warning .process-index {
+  color: #a99057;
+}
+
+.process-step.is-complete.is-outcome-warning .process-step-body strong {
+  color: #dbc791;
+}
+
+.process-step.is-complete.is-outcome-warning .process-progress i {
+  background: rgba(245, 185, 66, 0.72);
+}
+
+.process-step.is-complete.is-outcome-warning .process-result {
+  color: #f5c866;
+  border-color: rgba(245, 185, 66, 0.6);
+  box-shadow: 0 0 12px rgba(245, 185, 66, 0.16);
+}
+
+.signal-state.is-danger {
+  background: linear-gradient(90deg, rgba(255, 69, 69, 0.14), rgba(255, 69, 69, 0.025));
+  border-left-color: rgba(255, 83, 83, 0.9);
+  opacity: 1;
+}
+
+.signal-state.is-danger .signal-state-icon {
+  color: #ff8080;
+  background: rgba(255, 69, 69, 0.09);
+  border-color: rgba(255, 83, 83, 0.5);
+}
+
+.signal-state.is-danger .signal-state-icon > i {
+  background: #ff5353;
+  box-shadow: 0 0 10px rgba(255, 83, 83, 0.52);
+  animation: none;
+}
+
+.signal-state.is-danger small {
+  color: #a85d64;
+}
+
+.signal-state.is-danger strong {
+  color: #ffd2d2;
+}
+
+.signal-state.is-danger .signal-state-check {
+  color: #ff6b6b;
+  border-color: rgba(255, 83, 83, 0.62);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.signal-state.is-warning {
+  background: linear-gradient(90deg, rgba(245, 185, 66, 0.14), rgba(245, 185, 66, 0.025));
+  border-left-color: rgba(245, 185, 66, 0.9);
+  opacity: 1;
+}
+
+.signal-state.is-warning .signal-state-icon {
+  color: #f5c866;
+  background: rgba(245, 185, 66, 0.09);
+  border-color: rgba(245, 185, 66, 0.5);
+}
+
+.signal-state.is-warning .signal-state-icon > i {
+  background: #f5b942;
+  box-shadow: 0 0 10px rgba(245, 185, 66, 0.48);
+  animation: riskSignalWaiting 980ms ease-in-out infinite;
+}
+
+.signal-state.is-warning small {
+  color: #aa9155;
+}
+
+.signal-state.is-warning strong {
+  color: #fff0c7;
+}
+
+.signal-state.is-warning .signal-state-check {
+  color: #f5c866;
+  border-color: rgba(245, 185, 66, 0.62);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.command-center.is-danger .signal-state.is-active {
+  background: linear-gradient(90deg, rgba(255, 69, 69, 0.16), rgba(255, 69, 69, 0.03));
+  border-left-color: #ff5353;
+}
+
+.command-center.is-danger .signal-state.is-active .signal-state-icon {
+  color: #ff9494;
+  background: rgba(255, 69, 69, 0.1);
+  border-color: rgba(255, 83, 83, 0.58);
+}
+
+.command-center.is-danger .signal-state.is-active .signal-state-icon > i {
+  background: #ff5353;
+  box-shadow: 0 0 10px rgba(255, 83, 83, 0.58);
+}
+
+.command-center.is-danger .signal-state.is-active small {
+  color: #b66b71;
+}
+
+.command-center.is-warning .signal-state.is-active {
+  background: linear-gradient(90deg, rgba(245, 185, 66, 0.16), rgba(245, 185, 66, 0.03));
+  border-left-color: #f5b942;
+}
+
+.command-center.is-warning .signal-state.is-active .signal-state-icon {
+  color: #f8d47d;
+  background: rgba(245, 185, 66, 0.1);
+  border-color: rgba(245, 185, 66, 0.58);
+}
+
+.command-center.is-warning .signal-state.is-active .signal-state-icon > i {
+  background: #f5b942;
+  box-shadow: 0 0 10px rgba(245, 185, 66, 0.54);
+}
+
+.command-center.is-warning .signal-state.is-active small {
+  color: #ac9359;
+}
+
+.command-center.is-rejected .signal-state[data-signal-state="release"] {
+  background: linear-gradient(90deg, rgba(196, 38, 49, 0.3), rgba(110, 18, 28, 0.1));
+  border-left-color: #ff5353;
+  box-shadow: inset 0 0 30px rgba(255, 83, 83, 0.08), 0 0 24px rgba(255, 83, 83, 0.08);
+  opacity: 1;
+}
+
+.command-center.is-rejected .signal-state[data-signal-state="release"] strong {
+  color: #fff0f0;
+  font-size: 0.68rem;
+}
+
+.command-center.is-rejected .signal-state[data-signal-state="release"] .signal-state-check {
+  color: #21080d;
+  background: #ff5353;
+  border-color: #ff5353;
+  box-shadow: 0 0 18px rgba(255, 83, 83, 0.4);
+  opacity: 1;
+  transform: scale(1);
+  animation: riskScenarioResult 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.command-center.is-manual-approved .signal-state[data-signal-state="release"] {
+  background: linear-gradient(90deg, rgba(77, 211, 145, 0.24), rgba(77, 211, 145, 0.06));
+  border-left-color: #4dd391;
+  box-shadow: inset 0 0 30px rgba(77, 211, 145, 0.07), 0 0 24px rgba(77, 211, 145, 0.07);
+  opacity: 1;
+}
+
+.command-center.is-manual-approved .signal-state[data-signal-state="release"] strong {
+  color: #ecfff5;
+  font-size: 0.68rem;
+}
+
+.command-center.is-manual-approved .signal-state[data-signal-state="release"] .signal-state-check {
+  color: #07131f;
+  background: #4dd391;
+  border-color: #4dd391;
+  box-shadow: 0 0 18px rgba(77, 211, 145, 0.42);
+  opacity: 1;
+  transform: scale(1);
+  animation: riskScenarioResult 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.command-center.is-static .process-step,
+.command-center.is-static .signal-state {
+  transition: none;
+}
+
+@keyframes riskScenarioResult {
+  0% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.16);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-state.is-warning .signal-state-icon > i,
+  .command-center.is-rejected .signal-state[data-signal-state="release"] .signal-state-check,
+  .command-center.is-manual-approved .signal-state[data-signal-state="release"] .signal-state-check {
+    animation: none !important;
+  }
+}
