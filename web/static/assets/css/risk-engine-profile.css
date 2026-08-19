@@ -53,7 +53,7 @@
   min-width: 0;
 }
 
-.driver-profile-name strong {
+.command-center .timeline-heading .driver-profile-name strong {
   overflow: hidden;
   color: #edf4f8;
   font-size: 0.78rem;
@@ -63,14 +63,16 @@
   white-space: nowrap;
 }
 
-.driver-profile-name span {
+.command-center .timeline-heading .driver-profile-name span {
   color: #8296a8;
+  font-family: var(--font-tech);
   font-size: 0.6rem;
   font-weight: 650;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
-.driver-profile-cpf {
+.command-center .timeline-heading .driver-profile-cpf {
   color: #6f8496;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.54rem;
@@ -78,7 +80,7 @@
   letter-spacing: 0.035em;
 }
 
-.driver-profile-status {
+.command-center .timeline-heading .driver-profile-status {
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
@@ -92,6 +94,14 @@
   text-transform: uppercase;
   white-space: nowrap;
   transition: color 280ms ease;
+}
+
+.command-center .timeline-heading .driver-profile-status span {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
 }
 
 .driver-profile-status i {
@@ -197,13 +207,13 @@
     height: 54px;
   }
 
-  .driver-profile-status {
+  .command-center .timeline-heading .driver-profile-status {
     grid-column: 2;
     justify-content: flex-start;
     min-width: 0;
   }
 
-  .driver-profile-name strong {
+  .command-center .timeline-heading .driver-profile-name strong {
     font-size: 0.72rem;
   }
 }
