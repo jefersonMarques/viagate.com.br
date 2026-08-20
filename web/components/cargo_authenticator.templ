@@ -1,0 +1,141 @@
+package components
+
+templ CargoAuthenticatorPanel() {
+	<figure class="solution-signal-panel auth-hero-panel" aria-label="Fluxo conceitual do Cargo Autenticador confirmando o motorista antes de liberar dados sensíveis" data-auth-hero>
+		<div class="signal-panel-grid" aria-hidden="true"></div>
+		<div class="auth-hero-topbar">
+			<span><i aria-hidden="true"></i> VIAGATE / CARGO AUTENTICADOR</span>
+			<small data-auth-hero-gate>DADOS SENSÍVEIS BLOQUEADOS</small>
+		</div>
+		<div class="auth-hero-body">
+			<div class="auth-hero-validation">
+				<div class="auth-hero-validation-head"><small>IDENTITY / GATE</small><strong>Confirmação do motorista</strong></div>
+				<div class="auth-hero-signal" data-auth-signal="phone">
+					<span>@Icon("smartphone")</span>
+					<div><small>PHONE / 01</small><strong>Telefone</strong><em data-auth-signal-state>Aguardando</em></div><i aria-hidden="true"></i>
+				</div>
+				<div class="auth-hero-signal" data-auth-signal="location">
+					<span>@Icon("map-pin")</span>
+					<div><small>GEO / 02</small><strong>Localização</strong><em data-auth-signal-state>Aguardando</em></div><i aria-hidden="true"></i>
+				</div>
+				<div class="auth-hero-signal" data-auth-signal="biometry">
+					<span>@Icon("scan-face")</span>
+					<div><small>BIO / 03</small><strong>Biometria + prova de vida</strong><em data-auth-signal-state>Aguardando</em></div><i aria-hidden="true"></i>
+				</div>
+			</div>
+			<div class="auth-hero-identity" data-auth-identity>
+				<img src="/assets/images/biometric-silhouette-transparent.svg" width="709" height="760" alt="" aria-hidden="true"/>
+				<div class="auth-hero-identity-state">
+					<small>VALIDAÇÃO</small>
+					<strong data-auth-hero-stage>Link individual gerado</strong>
+					<span data-auth-hero-progress>00 / 03 SINAIS</span>
+				</div>
+			</div>
+			<div class="auth-sensitive-area" data-auth-sensitive-area>
+				<div class="auth-sensitive-head"><span>@Icon("shield-check")</span><div><small>SECURE / DATA</small><strong>Área de dados sensíveis</strong></div></div>
+				<div class="auth-sensitive-status"><i aria-hidden="true"></i><span data-auth-sensitive-status>Aguardando autenticação</span></div>
+				<div class="auth-sensitive-field">
+					<small>TIPO DE DADO</small>
+					<strong>PIX / DADOS PARA PAGAMENTO</strong>
+				</div>
+				<div class="auth-sensitive-field auth-sensitive-value">
+					<small>INFORMAÇÃO</small>
+					<strong data-auth-sensitive-value>••••••••••••••••</strong>
+				</div>
+				<div class="auth-sensitive-owner"><span>@Icon("user-check")</span><p><small>ORIGEM</small><strong data-auth-sensitive-owner>Motorista ainda não validado</strong></p></div>
+			</div>
+		</div>
+		<div class="auth-hero-footer">
+			<span>Telefone</span><span>Localização</span><span>Biometria</span>
+			<strong data-auth-hero-decision>IDENTIDADE EM VALIDAÇÃO</strong>
+		</div>
+	</figure>
+}
+
+templ CargoAuthenticatorSecuritySection() {
+	<section class="auth-security-section" aria-labelledby="auth-security-title">
+		<div class="container auth-security-heading">
+			<div>
+				<span class="product-overline"><span></span> Identidade antes do dado sensível</span>
+				<h2 id="auth-security-title">Confirme o motorista antes de receber PIX ou outra informação crítica.</h2>
+			</div>
+			<p>A transportadora gera um link individual. O motorista confirma telefone, localização e identidade por biometria facial com prova de vida; somente depois da aprovação a área protegida pode ser liberada para informar os dados solicitados.</p>
+		</div>
+		<div class="container auth-security-layout">
+			<div class="auth-security-list">
+				<article>
+					<div class="auth-security-item-head"><span>@Icon("link")</span><small>01 / LINK</small></div>
+					<strong>Jornada individual</strong>
+					<h3>Leve a confirmação diretamente ao motorista.</h3>
+					<p>O link vincula a autenticação à solicitação criada pela transportadora e conduz a jornada pelo navegador, sem depender de mensagens encaminhadas por terceiros.</p>
+				</article>
+				<article>
+					<div class="auth-security-item-head"><span>@Icon("smartphone")</span><small>02 / PHONE</small></div>
+					<strong>Confirmação de telefone</strong>
+					<h3>Confronte o contato usado na negociação.</h3>
+					<p>A confirmação do telefone adiciona contexto à identidade e ajuda a identificar situações em que um intermediário tenta conduzir a negociação usando outro contato.</p>
+				</article>
+				<article>
+					<div class="auth-security-item-head"><span>@Icon("map-pin")</span><small>03 / LOCATION</small></div>
+					<strong>Localização em tempo real</strong>
+					<h3>Registre o contexto do momento da autenticação.</h3>
+					<p>Com a permissão do motorista, a localização do acesso pode ser registrada junto à autenticação para ampliar rastreabilidade e apoiar a análise de divergências.</p>
+				</article>
+				<article>
+					<div class="auth-security-item-head"><span>@Icon("scan-face")</span><small>04 / BIOMETRY</small></div>
+					<strong>Biometria + prova de vida</strong>
+					<h3>Confirme identidade e presença.</h3>
+					<p>A captura facial confirma se a pessoa presente corresponde à identidade informada. A aprovação biométrica funciona como condição para liberar a próxima etapa do fluxo.</p>
+					<a href="/solucoes/biometria-facial">Conhecer biometria facial <span aria-hidden="true">→</span></a>
+				</article>
+			</div>
+			<aside class="auth-payment-gate" aria-label="Exemplo de liberação segura para dados de pagamento">
+				<div class="auth-payment-gate-head"><span>SECURE FLOW / PIX</span><strong>FALSO INTERMEDIÁRIO</strong></div>
+				<div class="auth-payment-gate-intro"><small>EXEMPLO OPERACIONAL</small><strong>Pagamento de frete</strong><p>O dado bancário só é solicitado depois da identidade confirmada.</p></div>
+				<div class="auth-payment-gate-steps">
+					<div><span>@Icon("send")</span><p><small>REQ / 01</small><strong>Transportadora solicita</strong></p><i></i></div>
+					<div><span>@Icon("scan-face")</span><p><small>ID / 02</small><strong>Motorista é autenticado</strong></p><i></i></div>
+					<div><span>@Icon("shield-check")</span><p><small>GATE / 03</small><strong>Área segura é liberada</strong></p><i></i></div>
+					<div><span>@Icon("receipt")</span><p><small>PIX / 04</small><strong>Dado informado pelo validado</strong></p><i></i></div>
+				</div>
+				<div class="auth-payment-result"><small>ORIGEM CONFIRMADA</small><strong>PIX vinculado ao motorista autenticado</strong><span>Menor dependência de conta enviada por terceiro</span></div>
+			</aside>
+		</div>
+		<div class="container auth-use-cases">
+			<div><span>@Icon("receipt")</span><p><small>USO / 01</small><strong>Dados para pagamento</strong><em>PIX, dados bancários e outras informações financeiras solicitadas após autenticação.</em></p></div>
+			<div><span>@Icon("shield-check")</span><p><small>USO / 02</small><strong>Confirmação de identidade</strong><em>O processo pode terminar na biometria quando a empresa só precisa confirmar que o motorista é realmente quem afirma ser.</em></p></div>
+			<div><span>@Icon("database")</span><p><small>USO / 03</small><strong>Outros dados sensíveis</strong><em>Cadastros, alterações de informação e etapas que devam acontecer somente após uma identidade validada.</em></p></div>
+		</div>
+	</section>
+}
+
+templ CargoAuthenticatorProcess() {
+	<section id="como-funciona" class="solution-process auth-process-section" data-auth-process>
+		<div class="container solution-process-heading auth-process-heading">
+			<div><span class="product-overline"><span></span> Autenticação / 04 etapas</span><h2>Da solicitação à liberação segura.</h2></div>
+			<p>O fluxo confirma quem está do outro lado antes de permitir que uma informação sensível seja enviada. Quando a empresa precisa somente validar identidade, a jornada pode encerrar após a autenticação.</p>
+		</div>
+		<div class="container auth-process-shell">
+			<div class="auth-process-livebar"><span><i></i> AUTENTICAÇÃO ATIVA</span><strong data-auth-process-state>Solicitação criada</strong><small data-auth-process-counter>01 / 04</small></div>
+			<ol class="auth-process-track">
+				<li class="is-active" data-auth-process-step data-step-state="Solicitação criada" data-step-detail="A transportadora inicia a autenticação e envia um link individual ao motorista.">
+					<div class="auth-process-node"><span>@Icon("send")</span><small>01</small></div>
+					<div><small>REQUEST / 01</small><h3>Solicite</h3><p>A transportadora inicia a autenticação e envia um link individual ao motorista.</p></div><i class="auth-process-state-dot" aria-hidden="true"></i>
+				</li>
+				<li data-auth-process-step data-step-state="Identidade em validação" data-step-detail="O motorista confirma telefone, localização e realiza biometria facial com prova de vida pelo navegador.">
+					<div class="auth-process-node"><span>@Icon("scan-face")</span><small>02</small></div>
+					<div><small>IDENTITY / 02</small><h3>Autentique</h3><p>O motorista confirma telefone, localização e realiza biometria facial com prova de vida pelo navegador.</p></div><i class="auth-process-state-dot" aria-hidden="true"></i>
+				</li>
+				<li data-auth-process-step data-step-state="Área segura liberada" data-step-detail="Com a identidade aprovada, o sistema libera a etapa protegida para que o próprio motorista informe o dado solicitado.">
+					<div class="auth-process-node"><span>@Icon("shield-check")</span><small>03</small></div>
+					<div><small>SECURE / 03</small><h3>Libere</h3><p>Com a identidade aprovada, o sistema libera a etapa protegida para que o próprio motorista informe o dado solicitado.</p></div><i class="auth-process-state-dot" aria-hidden="true"></i>
+				</li>
+				<li data-auth-process-step data-step-state="Informação recebida" data-step-detail="O dado chega ao ambiente da empresa associado à autenticação concluída, reduzindo a dependência de informações repassadas por intermediários.">
+					<div class="auth-process-node"><span>@Icon("receipt")</span><small>04</small></div>
+					<div><small>DATA / 04</small><h3>Receba</h3><p>O dado chega ao ambiente da empresa associado à autenticação concluída, reduzindo a dependência de informações repassadas por intermediários.</p></div><i class="auth-process-state-dot" aria-hidden="true"></i>
+				</li>
+			</ol>
+			<div class="auth-process-footer"><small>ESTADO ATUAL</small><strong data-auth-process-detail>A transportadora inicia a autenticação e envia um link individual ao motorista.</strong></div>
+		</div>
+	</section>
+}
