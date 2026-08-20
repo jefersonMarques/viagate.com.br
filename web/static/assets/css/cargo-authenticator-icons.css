@@ -3,8 +3,48 @@
 .auth-gate-owner .ui-icon,
 .auth-gate-core-icon .ui-icon,
 .auth-gate-signal .ui-icon {
-  fill: none;
-  stroke: currentColor;
+  color: currentColor !important;
+  fill: none !important;
+  stroke: currentColor !important;
+}
+
+.auth-gate-source-channel .ui-icon path,
+.auth-gate-source-channel .ui-icon rect,
+.auth-gate-source-channel .ui-icon circle,
+.auth-gate-source-channel .ui-icon line,
+.auth-gate-source-channel .ui-icon polyline,
+.auth-gate-source-channel .ui-icon polygon,
+.auth-gate-source-channel .ui-icon ellipse,
+.auth-gate-lock .ui-icon path,
+.auth-gate-lock .ui-icon rect,
+.auth-gate-lock .ui-icon circle,
+.auth-gate-lock .ui-icon line,
+.auth-gate-lock .ui-icon polyline,
+.auth-gate-lock .ui-icon polygon,
+.auth-gate-lock .ui-icon ellipse,
+.auth-gate-owner .ui-icon path,
+.auth-gate-owner .ui-icon rect,
+.auth-gate-owner .ui-icon circle,
+.auth-gate-owner .ui-icon line,
+.auth-gate-owner .ui-icon polyline,
+.auth-gate-owner .ui-icon polygon,
+.auth-gate-owner .ui-icon ellipse,
+.auth-gate-core-icon .ui-icon path,
+.auth-gate-core-icon .ui-icon rect,
+.auth-gate-core-icon .ui-icon circle,
+.auth-gate-core-icon .ui-icon line,
+.auth-gate-core-icon .ui-icon polyline,
+.auth-gate-core-icon .ui-icon polygon,
+.auth-gate-core-icon .ui-icon ellipse,
+.auth-gate-signal .ui-icon path,
+.auth-gate-signal .ui-icon rect,
+.auth-gate-signal .ui-icon circle,
+.auth-gate-signal .ui-icon line,
+.auth-gate-signal .ui-icon polyline,
+.auth-gate-signal .ui-icon polygon,
+.auth-gate-signal .ui-icon ellipse {
+  fill: none !important;
+  stroke: currentColor !important;
 }
 
 .auth-gate-source-channel > span,
