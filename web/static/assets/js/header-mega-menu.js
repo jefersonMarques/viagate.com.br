@@ -1,5 +1,14 @@
 const toolVisualAssets = {
-  "cargo-score": "/assets/images/tools/cargo-score.svg"
+  "cargo-score": {
+    src: "/assets/images/menu/biometric_interface.webp",
+    catalogSlug: "pesquisa-cadastral-de-motoristas",
+    alt: "Interface biométrica usada no fluxo do Cargo Score"
+  },
+  "cargo-auth": {
+    src: "/assets/images/menu/authenticator.webp",
+    catalogSlug: "autenticador-de-seguranca",
+    alt: "Interface do Cargo Autenticador"
+  }
 };
 
 const createToolPreviewImage = (container, className) => {
@@ -32,41 +41,44 @@ const createToolPreviewImage = (container, className) => {
 };
 
 const initializeToolCatalogVisuals = () => {
-  const cargoScoreVisual = document.querySelector('[data-tool-catalog-visual="pesquisa-cadastral-de-motoristas"]');
-  if (!(cargoScoreVisual instanceof HTMLElement)) {
-    return;
-  }
-
-  const placeholder = cargoScoreVisual.querySelector(".tool-catalog-placeholder");
-  if (!(placeholder instanceof HTMLElement)) {
-    return;
-  }
-
-  const image = document.createElement("img");
-  image.src = toolVisualAssets["cargo-score"];
-  image.alt = "Visual industrial do Cargo Score";
-  image.loading = "lazy";
-  image.decoding = "async";
-  image.style.position = "relative";
-  image.style.zIndex = "2";
-  image.style.width = "100%";
-  image.style.height = "360px";
-  image.style.objectFit = "contain";
-  image.style.opacity = "0";
-  image.style.transform = "translateY(8px) scale(.985)";
-  image.style.transition = "opacity 260ms ease, transform 260ms ease";
-
-  Array.from(placeholder.children).forEach((child) => {
-    if (child instanceof HTMLElement) {
-      child.style.display = "none";
+  Object.values(toolVisualAssets).forEach((asset) => {
+    const visual = document.querySelector(`[data-tool-catalog-visual="${asset.catalogSlug}"]`);
+    if (!(visual instanceof HTMLElement)) {
+      return;
     }
-  });
 
-  placeholder.append(image);
+    const placeholder = visual.querySelector(".tool-catalog-placeholder");
+    if (!(placeholder instanceof HTMLElement)) {
+      return;
+    }
 
-  requestAnimationFrame(() => {
-    image.style.opacity = "1";
-    image.style.transform = "translateY(0) scale(1)";
+    const image = document.createElement("img");
+    image.className = "tool-catalog-asset";
+    image.src = asset.src;
+    image.alt = asset.alt;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.style.position = "relative";
+    image.style.zIndex = "2";
+    image.style.width = "100%";
+    image.style.height = "360px";
+    image.style.objectFit = "contain";
+    image.style.opacity = "0";
+    image.style.transform = "translateY(8px) scale(.985)";
+    image.style.transition = "opacity 260ms ease, transform 260ms ease";
+
+    Array.from(placeholder.children).forEach((child) => {
+      if (child instanceof HTMLElement) {
+        child.style.display = "none";
+      }
+    });
+
+    placeholder.append(image);
+
+    requestAnimationFrame(() => {
+      image.style.opacity = "1";
+      image.style.transform = "translateY(0) scale(1)";
+    });
   });
 };
 
@@ -185,7 +197,7 @@ const initializeHeaderMegaMenu = () => {
     const toolCode = option.dataset.toolCode ?? "TOOL";
     const toolTitle = option.dataset.toolTitle ?? "FERRAMENTA";
     const toolDescription = option.dataset.toolDescription ?? "";
-    const visualAsset = toolVisualAssets[toolId] ?? "";
+    const visualAsset = toolVisualAssets[toolId]?.src ?? "";
 
     options.forEach((item) => item.classList.toggle("is-active", item === option));
 
