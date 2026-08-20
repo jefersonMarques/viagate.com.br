@@ -44,6 +44,8 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 					@components.CargoScoreNetworkPanel()
 				} else if solution.Slug == "autenticador-de-seguranca" {
 					@components.CargoAuthenticatorPanel()
+				} else if solution.Slug == "prevencao-veicular" {
+					@components.PreventionVehiclePanel()
 				} else {
 					@components.SolutionSignalPanel(solution)
 				}
