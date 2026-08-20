@@ -42,10 +42,12 @@ templ Layout(meta site.PageMeta) {
 			<link rel="stylesheet" href="/assets/css/risk-engine-profile.css"/>
 			<link rel="stylesheet" href="/assets/css/biometric-flow.css"/>
 			<link rel="stylesheet" href="/assets/css/biometric-face-frame.css"/>
+			<link rel="stylesheet" href="/assets/css/header-mega-menu.css"/>
 			<script src="/assets/js/site.js" defer></script>
 			<script src="/assets/js/risk-engine-profile.js" defer></script>
 			<script src="/assets/js/biometric-flow.js" defer></script>
 			<script src="/assets/js/biometric-face-enhance.js" defer></script>
+			<script src="/assets/js/header-mega-menu.js" defer></script>
 			if meta.Schema != "" {
 				@templ.Raw("<script type=\"application/ld+json\">" + meta.Schema + "</script>")
 			}
