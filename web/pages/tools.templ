@@ -1,0 +1,102 @@
+package pages
+
+import (
+	"fmt"
+
+	"github.com/viagate/site/internal/site"
+	"github.com/viagate/site/web/components"
+)
+
+templ Tools(meta site.PageMeta, tools []site.Solution) {
+	@components.Layout(meta) {
+		<section class="tools-catalog-hero">
+			<div class="command-grid" aria-hidden="true"></div>
+			<div class="command-glow command-glow-right" aria-hidden="true"></div>
+			<div class="container tools-catalog-hero-grid">
+				<div class="tools-catalog-copy">
+					<div class="authority-line"><span class="authority-dot"></span> FERRAMENTAS VIAGATE</div>
+					<h1>Tecnologia aplicada à operação de transporte.</h1>
+					<p>Ferramentas para pesquisa cadastral, autenticação, prevenção, monitoramento e execução da viagem, conectadas por uma mesma base operacional.</p>
+				</div>
+				<div class="tools-catalog-status" aria-label="Resumo do catálogo">
+					<div><span>CATÁLOGO</span><strong>{ fmt.Sprintf("%02d", len(tools)) } ferramentas principais</strong></div>
+					<div><span>MODELO</span><strong>Modular e integrável</strong></div>
+					<div><span>CONTEXTO</span><strong>Transporte e gestão de riscos</strong></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="tools-catalog-section">
+			<div class="container tools-catalog-heading">
+				<div>
+					<span class="eyebrow">Catálogo operacional</span>
+					<h2>Escolha a ferramenta pelo problema que precisa resolver.</h2>
+				</div>
+				<p>Cada ferramenta possui uma função específica e pode compartilhar dados, contexto e eventos com outros módulos da Plataforma Cargo.</p>
+			</div>
+
+			<div class="container tools-catalog-list">
+				for index, tool := range tools {
+					<article class="tool-catalog-card">
+						<div class="tool-catalog-visual" data-tool-catalog-visual={ tool.Slug }>
+							<div class="tool-catalog-visual-head">
+								<span><i></i> VISUAL / { fmt.Sprintf("%02d", index+1) }</span>
+								<small>SVG READY</small>
+							</div>
+							<div class="tool-catalog-placeholder">
+								<span class="tool-catalog-placeholder-index">TOOL / { fmt.Sprintf("%02d", index+1) }</span>
+								<div class="tool-catalog-placeholder-icon">
+									@components.Icon(tool.Icon)
+								</div>
+								<strong>{ tool.ShortName }</strong>
+								<small>ÁREA RESERVADA PARA SVG</small>
+							</div>
+							<div class="tool-catalog-visual-foot"><span>VIAGATE / OPERATION TOOL</span><span>READY</span></div>
+						</div>
+
+						<div class="tool-catalog-content">
+							<div class="tool-catalog-meta">
+								<span>{ fmt.Sprintf("%02d", index+1) } / FERRAMENTA</span>
+								<i></i>
+							</div>
+							<p class="tool-catalog-kicker">{ tool.Name }</p>
+							<h3>{ tool.ShortName }</h3>
+							<p class="tool-catalog-summary">{ tool.Summary }</p>
+							<div class="tool-catalog-features">
+								for featureIndex, feature := range tool.Features {
+									if featureIndex < 4 {
+										<div>
+											<span>@components.Icon(feature.Icon)</span>
+											<strong>{ feature.Title }</strong>
+										</div>
+									}
+								}
+							</div>
+							<a class="tool-catalog-link" href={ toolDetailPath(tool) }>Conhecer ferramenta <span aria-hidden="true">→</span></a>
+						</div>
+					</article>
+				}
+			</div>
+		</section>
+
+		<section class="tools-catalog-integration">
+			<div class="container tools-catalog-integration-grid">
+				<div>
+					<span class="eyebrow eyebrow-light">Além das ferramentas</span>
+					<h2>Leve as capacidades Viagate para dentro do seu ambiente.</h2>
+					<p>As ferramentas podem operar na Plataforma Cargo e também compor projetos de integração via API ou experiências white label.</p>
+				</div>
+				<div class="tools-catalog-integration-links">
+					<a href="/integracoes/api"><span>01</span><strong>Integrações via API</strong><small>Recursos Viagate incorporados ao seu software.</small><i>↗</i></a>
+					<a href="/white-label"><span>02</span><strong>White label</strong><small>Experiência personalizada com a marca da operação.</small><i>↗</i></a>
+				</div>
+			</div>
+		</section>
+
+		@components.CallToAction("Qual ferramenta faz sentido para a sua operação?", "Agende uma demonstração para avaliar módulos, integrações e o fluxo mais adequado ao seu processo.")
+	}
+}
+
+func toolDetailPath(tool site.Solution) string {
+	return "/solucoes/" + tool.Slug
+}
