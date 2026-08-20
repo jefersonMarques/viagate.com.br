@@ -264,6 +264,18 @@
   margin-bottom: 38px;
 }
 
+.cargo-truck-process-heading h2 {
+  color: #06111f;
+}
+
+.cargo-truck-process-heading > p {
+  color: #59687a;
+}
+
+.cargo-truck-process-heading .product-overline {
+  color: #ae3c04;
+}
+
 .cargo-truck-process-shell {
   background: #071521;
   border: 1px solid #1e3a4f;
