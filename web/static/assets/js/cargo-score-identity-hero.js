@@ -192,4 +192,128 @@ const initializeCargoScoreIdentityHero = () => {
   start();
 };
 
+const initializeCargoScoreProcess = () => {
+  const process = document.querySelector("[data-score-process]");
+
+  if (!(process instanceof HTMLElement)) {
+    return;
+  }
+
+  const steps = Array.from(process.querySelectorAll("[data-score-process-step]"));
+  const stateLabel = process.querySelector("[data-score-process-state]");
+  const counterLabel = process.querySelector("[data-score-process-counter]");
+  const detailLabel = process.querySelector("[data-score-process-detail]");
+  const progressBar = process.querySelector("[data-score-process-meter]");
+  const percentLabel = process.querySelector("[data-score-process-percent]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let activeIndex = 0;
+  let timerId = null;
+  let isVisible = true;
+
+  const applyStep = (index) => {
+    const activeStep = steps[index];
+
+    steps.forEach((step, stepIndex) => {
+      if (!(step instanceof HTMLElement)) {
+        return;
+      }
+
+      const isActive = stepIndex === index;
+      const isDone = stepIndex < index;
+      step.classList.toggle("is-active", isActive);
+      step.classList.toggle("is-done", isDone);
+
+      if (isActive) {
+        step.setAttribute("aria-current", "step");
+      } else {
+        step.removeAttribute("aria-current");
+      }
+    });
+
+    if (!(activeStep instanceof HTMLElement)) {
+      return;
+    }
+
+    const percentage = Math.round(((index + 1) / steps.length) * 100);
+
+    if (stateLabel instanceof HTMLElement) {
+      stateLabel.textContent = activeStep.dataset.stepState ?? "Processando";
+    }
+
+    if (counterLabel instanceof HTMLElement) {
+      counterLabel.textContent = `${String(index + 1).padStart(2, "0")} / ${String(steps.length).padStart(2, "0")}`;
+    }
+
+    if (detailLabel instanceof HTMLElement) {
+      detailLabel.textContent = activeStep.dataset.stepDetail ?? "";
+    }
+
+    if (progressBar instanceof HTMLElement) {
+      progressBar.style.width = `${percentage}%`;
+    }
+
+    if (percentLabel instanceof HTMLElement) {
+      percentLabel.textContent = `${percentage}%`;
+    }
+  };
+
+  const scheduleNext = () => {
+    if (!isVisible || prefersReducedMotion) {
+      return;
+    }
+
+    const delay = activeIndex === steps.length - 1 ? 2800 : 2100;
+    timerId = window.setTimeout(() => {
+      activeIndex = (activeIndex + 1) % steps.length;
+      applyStep(activeIndex);
+      scheduleNext();
+    }, delay);
+  };
+
+  const start = () => {
+    if (timerId !== null || prefersReducedMotion) {
+      return;
+    }
+
+    applyStep(activeIndex);
+    scheduleNext();
+  };
+
+  const stop = () => {
+    if (timerId !== null) {
+      window.clearTimeout(timerId);
+      timerId = null;
+    }
+  };
+
+  if (prefersReducedMotion) {
+    activeIndex = steps.length - 1;
+    applyStep(activeIndex);
+    return;
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+          if (isVisible) {
+            start();
+          } else {
+            stop();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(process);
+    window.addEventListener("pagehide", () => observer.disconnect(), { once: true });
+  }
+
+  window.addEventListener("pagehide", stop, { once: true });
+  start();
+};
+
 initializeCargoScoreIdentityHero();
+initializeCargoScoreProcess();
