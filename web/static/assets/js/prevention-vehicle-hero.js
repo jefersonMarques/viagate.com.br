@@ -47,7 +47,7 @@ const initializePreventionVehicleHero = () => {
         { final: "REGULAR", result: "done" },
         { final: "REGULAR", result: "done" },
         { final: "REGULAR", result: "done" },
-        { final: "01 ALERTA", result: "warning" },
+        { final: "SEM ALERTAS", result: "done" },
         { final: "CONSULTADO", result: "done" }
       ]
     },
@@ -148,15 +148,17 @@ const initializePreventionVehicleHero = () => {
   const finishDossier = () => {
     const dossier = dossiers[dossierIndex];
     const warningCount = dossier.checks.filter((check) => check.result === "warning").length;
+    const hasWarnings = warningCount > 0;
 
+    panel.classList.toggle("has-warning", hasWarnings);
     panel.classList.add("is-complete");
 
-    if (headerState instanceof HTMLElement) headerState.textContent = "DOSSIÊ CONCLUÍDO";
-    if (plateState instanceof HTMLElement) plateState.textContent = "VEÍCULO ANALISADO";
-    if (recordState instanceof HTMLElement) recordState.textContent = "CADASTRO CONSOLIDADO";
+    if (headerState instanceof HTMLElement) headerState.textContent = hasWarnings ? "AÇÃO PREVENTIVA" : "DOSSIÊ REGULAR";
+    if (plateState instanceof HTMLElement) plateState.textContent = hasWarnings ? "PENDÊNCIAS LOCALIZADAS" : "SEM ALERTAS";
+    if (recordState instanceof HTMLElement) recordState.textContent = hasWarnings ? "REVISÃO RECOMENDADA" : "CADASTRO REGULAR";
 
     if (footer instanceof HTMLElement) {
-      footer.textContent = warningCount > 0
+      footer.textContent = hasWarnings
         ? `${String(warningCount).padStart(2, "0")} ALERTAS IDENTIFICADOS / TRATATIVA PREVENTIVA`
         : "VEÍCULO SEM ALERTAS / CONSULTA CONCLUÍDA";
     }
@@ -197,7 +199,12 @@ const initializePreventionVehicleHero = () => {
 
     schedule(() => {
       check.classList.remove("is-processing");
-      check.classList.add(check.dataset.result === "warning" ? "is-warning" : "is-done");
+      const isWarning = check.dataset.result === "warning";
+      check.classList.add(isWarning ? "is-warning" : "is-done");
+
+      if (isWarning) {
+        panel.classList.add("has-warning");
+      }
 
       if (state instanceof HTMLElement) {
         state.textContent = check.dataset.final ?? "CONCLUÍDO";
@@ -213,7 +220,7 @@ const initializePreventionVehicleHero = () => {
     }
 
     clearTimers();
-    panel.classList.remove("is-complete");
+    panel.classList.remove("is-complete", "has-warning");
     resetChecks();
     applyDossier(dossierIndex);
     runScan();
@@ -253,10 +260,12 @@ const initializePreventionVehicleHero = () => {
       }
     });
 
+    const warningCount = dossiers[0].checks.filter((check) => check.result === "warning").length;
+    panel.classList.toggle("has-warning", warningCount > 0);
     panel.classList.add("is-complete");
-    if (headerState instanceof HTMLElement) headerState.textContent = "DOSSIÊ CONCLUÍDO";
-    if (plateState instanceof HTMLElement) plateState.textContent = "VEÍCULO ANALISADO";
-    if (recordState instanceof HTMLElement) recordState.textContent = "CADASTRO CONSOLIDADO";
+    if (headerState instanceof HTMLElement) headerState.textContent = "AÇÃO PREVENTIVA";
+    if (plateState instanceof HTMLElement) plateState.textContent = "PENDÊNCIAS LOCALIZADAS";
+    if (recordState instanceof HTMLElement) recordState.textContent = "REVISÃO RECOMENDADA";
     if (footer instanceof HTMLElement) footer.textContent = "02 ALERTAS IDENTIFICADOS / TRATATIVA PREVENTIVA";
   };
 
