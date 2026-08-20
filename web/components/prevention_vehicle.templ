@@ -1,0 +1,93 @@
+package components
+
+templ PreventionVehiclePanel() {
+	<figure class="prevention-vehicle-panel" data-prevention-vehicle-panel aria-label="Representação conceitual de consulta preventiva de veículos por placa, multas, débitos, restrições e histórico">
+		<div class="signal-panel-grid" aria-hidden="true"></div>
+		<div class="prevention-vehicle-topbar">
+			<span><i aria-hidden="true"></i> VIAGATE / PREVENÇÃO</span>
+			<small data-prevention-header-state>IDENTIFICANDO VEÍCULO</small>
+		</div>
+		<div class="prevention-vehicle-stage">
+			<div class="prevention-vehicle-stage-head">
+				<div><small>VEHICLE / CHECK</small><strong data-prevention-vehicle-type>CAVALO + CARRETA</strong></div>
+				<span data-prevention-cycle>01 / 03</span>
+			</div>
+			<div class="prevention-vehicle-visual" aria-hidden="true">
+				<div class="prevention-vehicle-slide is-active" data-prevention-vehicle="0" data-plate="ABC1D23" data-type="CAVALO + CARRETA">
+					<svg viewBox="0 0 560 190">
+						<g class="prevention-truck-lines">
+							<rect x="214" y="48" width="300" height="82"></rect>
+							<polyline points="62,128 62,76 92,76 116,46 184,46 202,76 202,128"></polyline>
+							<polyline points="72,77 132,77 132,51"></polyline>
+							<line x1="202" y1="105" x2="214" y2="105"></line>
+							<line x1="44" y1="130" x2="526" y2="130"></line>
+							<circle cx="118" cy="142" r="18"></circle>
+							<circle cx="175" cy="142" r="18"></circle>
+							<circle cx="430" cy="142" r="18"></circle>
+							<circle cx="482" cy="142" r="18"></circle>
+						</g>
+					</svg>
+				</div>
+				<div class="prevention-vehicle-slide" data-prevention-vehicle="1" data-plate="RSK4B19" data-type="CAMINHÃO BAÚ">
+					<svg viewBox="0 0 560 190">
+						<g class="prevention-truck-lines">
+							<rect x="210" y="42" width="278" height="88"></rect>
+							<polyline points="72,128 72,72 102,72 126,48 184,48 202,72 202,128"></polyline>
+							<polyline points="82,73 140,73 140,52"></polyline>
+							<line x1="54" y1="130" x2="500" y2="130"></line>
+							<circle cx="126" cy="142" r="18"></circle>
+							<circle cx="184" cy="142" r="18"></circle>
+							<circle cx="422" cy="142" r="18"></circle>
+						</g>
+					</svg>
+				</div>
+				<div class="prevention-vehicle-slide" data-prevention-vehicle="2" data-plate="QWE7H52" data-type="CAMINHÃO RÍGIDO">
+					<svg viewBox="0 0 560 190">
+						<g class="prevention-truck-lines">
+							<polyline points="70,128 70,76 98,76 122,48 186,48 204,76 204,128"></polyline>
+							<polyline points="80,77 142,77 142,53"></polyline>
+							<rect x="214" y="64" width="245" height="66"></rect>
+							<line x1="214" y1="88" x2="459" y2="88"></line>
+							<line x1="52" y1="130" x2="476" y2="130"></line>
+							<circle cx="126" cy="142" r="18"></circle>
+							<circle cx="184" cy="142" r="18"></circle>
+							<circle cx="406" cy="142" r="18"></circle>
+						</g>
+					</svg>
+				</div>
+				<div class="prevention-scan-line" data-prevention-scan-line></div>
+				<div class="prevention-plate">
+					<small>BRASIL</small>
+					<strong data-prevention-plate>ABC1D23</strong>
+					<span data-prevention-plate-state>VEÍCULO IDENTIFICADO</span>
+				</div>
+			</div>
+		</div>
+		<div class="prevention-vehicle-checks">
+			<div class="prevention-check" data-prevention-check data-final="02 REGISTROS" data-result="warning">
+				<span>@Icon("file-warning")</span>
+				<p><small>CHECK / 01</small><strong>MULTAS</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+			<div class="prevention-check" data-prevention-check data-final="PENDÊNCIA" data-result="warning">
+				<span>@Icon("receipt")</span>
+				<p><small>CHECK / 02</small><strong>DÉBITOS</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+			<div class="prevention-check" data-prevention-check data-final="SEM ALERTAS" data-result="done">
+				<span>@Icon("triangle-alert")</span>
+				<p><small>CHECK / 03</small><strong>RESTRIÇÕES</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+			<div class="prevention-check" data-prevention-check data-final="CONSULTADO" data-result="done">
+				<span>@Icon("history")</span>
+				<p><small>CHECK / 04</small><strong>HISTÓRICO</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+		</div>
+		<figcaption class="prevention-vehicle-footer">
+			<span><i aria-hidden="true"></i> CONSULTA VEICULAR</span>
+			<strong data-prevention-footer>PENDÊNCIAS ANTES DA OPERAÇÃO</strong>
+		</figcaption>
+	</figure>
+}
