@@ -31,6 +31,18 @@ func (application *Application) solutions(response http.ResponseWriter, request 
 	))
 }
 
+func (application *Application) tools(response http.ResponseWriter, request *http.Request) {
+	application.render(response, request, http.StatusOK, pages.Tools(
+		content.ListingMeta(
+			application.config.SiteURL,
+			"Ferramentas para transporte e gestão de riscos",
+			"Conheça as ferramentas Viagate para pesquisa cadastral, autenticação, logística, prevenção veicular e monitoramento.",
+			"/ferramentas",
+		),
+		content.SolutionsByKind(site.SolutionKindProduct),
+	))
+}
+
 func (application *Application) solution(response http.ResponseWriter, request *http.Request) {
 	solution, found := content.FindSolution(request.PathValue("slug"))
 	if !found || solution.Slug == "api" || solution.Slug == "white-label" {
