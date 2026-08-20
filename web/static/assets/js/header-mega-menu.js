@@ -27,12 +27,15 @@ const createToolPreviewImage = (container, className) => {
   image.setAttribute("aria-hidden", "true");
   image.style.position = "absolute";
   image.style.zIndex = "3";
-  image.style.inset = "18px";
-  image.style.width = "calc(100% - 36px)";
-  image.style.height = "calc(100% - 36px)";
+  image.style.top = "50%";
+  image.style.left = "50%";
+  image.style.width = "auto";
+  image.style.height = "auto";
+  image.style.maxWidth = "calc(100% - 36px)";
+  image.style.maxHeight = "calc(100% - 36px)";
   image.style.objectFit = "contain";
   image.style.opacity = "0";
-  image.style.transform = "translateY(6px) scale(.985)";
+  image.style.transform = "translate(-50%, -50%) translateY(6px) scale(.985)";
   image.style.transition = "opacity 160ms ease, transform 160ms ease";
   image.style.pointerEvents = "none";
   container.append(image);
@@ -60,8 +63,10 @@ const initializeToolCatalogVisuals = () => {
     image.decoding = "async";
     image.style.position = "relative";
     image.style.zIndex = "2";
-    image.style.width = "100%";
-    image.style.height = "360px";
+    image.style.width = "auto";
+    image.style.height = "auto";
+    image.style.maxWidth = "100%";
+    image.style.maxHeight = "360px";
     image.style.objectFit = "contain";
     image.style.opacity = "0";
     image.style.transform = "translateY(8px) scale(.985)";
@@ -207,7 +212,7 @@ const initializeHeaderMegaMenu = () => {
 
     if (previewImage instanceof HTMLImageElement) {
       previewImage.style.opacity = "0";
-      previewImage.style.transform = "translateY(6px) scale(.985)";
+      previewImage.style.transform = "translate(-50%, -50%) translateY(6px) scale(.985)";
     }
 
     if (previewTimerId !== null) {
@@ -234,7 +239,7 @@ const initializeHeaderMegaMenu = () => {
       if (previewImage instanceof HTMLImageElement && visualAsset !== "") {
         previewImage.src = visualAsset;
         previewImage.style.opacity = "1";
-        previewImage.style.transform = "translateY(0) scale(1)";
+        previewImage.style.transform = "translate(-50%, -50%) scale(1)";
       }
 
       if (previewPlaceholder instanceof HTMLElement) {
