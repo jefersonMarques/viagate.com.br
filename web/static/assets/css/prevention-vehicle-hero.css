@@ -12,7 +12,7 @@
 }
 
 .prevention-vehicle-panel .signal-panel-grid {
-  opacity: 0.36;
+  opacity: 0.32;
 }
 
 .prevention-vehicle-topbar,
@@ -64,11 +64,10 @@
   font-size: inherit;
 }
 
-.prevention-vehicle-stage {
+.prevention-dossier-stage {
   position: relative;
   z-index: 3;
-  min-height: 286px;
-  padding: 18px 20px 0;
+  padding: 18px 20px 20px;
   background:
     linear-gradient(rgba(87, 119, 143, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(87, 119, 143, 0.045) 1px, transparent 1px),
@@ -77,106 +76,99 @@
   border-bottom: 1px solid #21394c;
 }
 
-.prevention-vehicle-stage::after {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  height: 1px;
-  content: "";
-  background: linear-gradient(90deg, transparent, #35536a 14%, #35536a 86%, transparent);
-}
-
-.prevention-vehicle-stage-head {
+.prevention-dossier-head,
+.prevention-analysis-head {
   position: relative;
   z-index: 5;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   text-transform: uppercase;
 }
 
-.prevention-vehicle-stage-head > div {
+.prevention-dossier-head {
+  margin-bottom: 16px;
+}
+
+.prevention-dossier-head > div,
+.prevention-analysis-head > div {
   display: grid;
   gap: 3px;
 }
 
-.prevention-vehicle-stage-head small,
-.prevention-vehicle-stage-head > span {
+.prevention-dossier-head small,
+.prevention-dossier-head > span,
+.prevention-analysis-head small,
+.prevention-analysis-head > span {
   color: #536f84;
   font-size: 0.43rem;
   font-weight: 760;
   letter-spacing: 0.08em;
 }
 
-.prevention-vehicle-stage-head strong {
-  color: #a9bac5;
+.prevention-dossier-head strong,
+.prevention-analysis-head strong {
+  color: #b8c8d2;
   font-size: 0.62rem;
   letter-spacing: 0.04em;
 }
 
-.prevention-vehicle-visual {
+.prevention-dossier-body {
   position: relative;
-  height: 224px;
-  overflow: hidden;
-}
-
-.prevention-vehicle-slide {
-  position: absolute;
-  inset: 6px 0 0;
   display: grid;
-  place-items: center;
-  opacity: 0;
-  transform: translateX(26px);
-  transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  grid-template-columns: minmax(220px, 0.82fr) minmax(0, 1.18fr);
+  min-height: 210px;
+  overflow: hidden;
+  background: rgba(8, 25, 40, 0.88);
+  border: 1px solid #29445a;
 }
 
-.prevention-vehicle-slide.is-active {
-  opacity: 1;
-  transform: translateX(0);
+.prevention-dossier-identity {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  gap: 15px;
+  padding: 22px;
+  border-right: 1px solid #29445a;
 }
 
-.prevention-vehicle-slide svg {
-  width: min(92%, 610px);
-  height: 190px;
+.prevention-dossier-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #637e91;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
 }
 
-.prevention-truck-lines {
-  fill: none;
-  stroke: #42647b;
-  stroke-width: 2;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
-  opacity: 0.78;
-  vector-effect: non-scaling-stroke;
+.prevention-dossier-label span {
+  color: #ff9858;
+  font-size: 0.48rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
 }
 
-.prevention-truck-lines rect {
-  fill: rgba(45, 76, 98, 0.08);
-}
-
-.prevention-truck-lines circle {
-  fill: #071521;
-  stroke: #58778d;
+.prevention-dossier-label small {
+  font-size: 0.38rem;
+  font-weight: 760;
+  letter-spacing: 0.07em;
 }
 
 .prevention-plate {
-  position: absolute;
-  z-index: 7;
-  bottom: 25px;
-  left: 50%;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  width: 206px;
-  min-height: 84px;
-  padding: 7px 13px 9px;
+  width: min(100%, 240px);
+  min-height: 96px;
+  padding: 9px 14px 11px;
   color: #091421;
   background: #e9edf0;
   border: 2px solid #8f9eaa;
-  box-shadow: 0 13px 28px rgba(0, 0, 0, 0.34);
-  transform: translateX(-50%);
+  box-shadow: 12px 12px 0 rgba(12, 32, 48, 0.34);
   text-align: center;
 }
 
@@ -185,56 +177,150 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 8px;
+  height: 9px;
   content: "";
   background: #1c4b77;
 }
 
-.prevention-plate small,
-.prevention-plate span {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .prevention-plate small {
   align-self: end;
-  margin-top: 6px;
+  margin-top: 8px;
   color: #405366;
-  font-size: 0.36rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.38rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
 .prevention-plate strong {
   align-self: center;
   color: #0b1722;
   font-family: var(--font-tech);
-  font-size: 1.7rem;
+  font-size: clamp(1.55rem, 2.5vw, 2rem);
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.13em;
   line-height: 1;
 }
 
-.prevention-plate span {
-  align-self: end;
-  color: #5a6873;
-  font-size: 0.34rem;
+.prevention-dossier-state {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
 }
 
-.prevention-scan-line {
+.prevention-dossier-state > i {
+  width: 7px;
+  height: 7px;
+  background: var(--orange-500);
+  box-shadow: 0 0 8px rgba(255, 100, 0, 0.42);
+}
+
+.prevention-dossier-state p {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-dossier-state small {
+  color: #526d80;
+  font-size: 0.38rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-state strong {
+  color: #ff9858;
+  font-size: 0.52rem;
+  letter-spacing: 0.04em;
+}
+
+.prevention-dossier-facts {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: stretch;
+}
+
+.prevention-dossier-facts > div {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  min-height: 82px;
+  padding: 14px 16px;
+  border-right: 1px solid rgba(41, 68, 90, 0.72);
+  border-bottom: 1px solid rgba(41, 68, 90, 0.72);
+}
+
+.prevention-dossier-facts > div:nth-child(even) {
+  border-right: 0;
+}
+
+.prevention-dossier-facts small,
+.prevention-dossier-facts-status span,
+.prevention-dossier-facts-status strong {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-dossier-facts small {
+  color: #526d80;
+  font-size: 0.4rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-facts > div > strong {
+  color: #d7e1e7;
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.02em;
+}
+
+.prevention-dossier-facts .prevention-dossier-facts-status {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 46px;
+  padding-block: 9px;
+  background: rgba(6, 19, 31, 0.64);
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.prevention-dossier-facts-status span {
+  color: #607b90;
+  font-size: 0.4rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-facts-status strong {
+  color: #ff9858;
+  font-size: 0.44rem;
+  letter-spacing: 0.05em;
+}
+
+.prevention-dossier-scan {
   position: absolute;
-  z-index: 6;
-  top: 8px;
-  bottom: 12px;
-  left: 8%;
+  z-index: 5;
+  top: 0;
+  bottom: 0;
+  left: 0;
   width: 1px;
   opacity: 0;
   background: var(--orange-500);
-  box-shadow: 0 0 12px rgba(255, 100, 0, 0.72);
+  box-shadow: 0 0 13px rgba(255, 100, 0, 0.74);
+  pointer-events: none;
 }
 
-.prevention-scan-line::before,
-.prevention-scan-line::after {
+.prevention-dossier-scan::before,
+.prevention-dossier-scan::after {
   position: absolute;
   left: 50%;
   width: 8px;
@@ -244,16 +330,21 @@
   transform: translateX(-50%);
 }
 
-.prevention-scan-line::before {
-  top: 0;
+.prevention-dossier-scan::before { top: 0; }
+.prevention-dossier-scan::after { bottom: 0; }
+
+.prevention-vehicle-panel.is-scanning .prevention-dossier-scan {
+  animation: preventionDossierScan 1.05s cubic-bezier(0.65, 0, 0.35, 1) both;
 }
 
-.prevention-scan-line::after {
-  bottom: 0;
-}
-
-.prevention-vehicle-panel.is-scanning .prevention-scan-line {
-  animation: preventionVehicleScan 1.15s cubic-bezier(0.65, 0, 0.35, 1) both;
+.prevention-analysis-head {
+  position: relative;
+  z-index: 5;
+  min-height: 54px;
+  padding: 10px 18px;
+  align-items: center;
+  background: #06131f;
+  border-bottom: 1px solid #21394c;
 }
 
 .prevention-vehicle-checks {
@@ -269,14 +360,19 @@
   grid-template-columns: 38px minmax(0, 1fr) auto;
   align-items: center;
   gap: 11px;
-  min-height: 82px;
-  padding: 12px 16px;
+  min-height: 76px;
+  padding: 11px 16px;
   border-right: 1px solid #21394c;
   border-bottom: 1px solid #21394c;
   transition: background 180ms ease, border-color 180ms ease;
 }
 
 .prevention-check:nth-child(even) {
+  border-right: 0;
+}
+
+.prevention-check-wide {
+  grid-column: 1 / -1;
   border-right: 0;
 }
 
@@ -318,7 +414,7 @@
 
 .prevention-check strong {
   color: #a9bac5;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0.03em;
 }
 
@@ -326,7 +422,7 @@
   display: grid;
   justify-items: end;
   gap: 2px;
-  min-width: 88px;
+  min-width: 90px;
 }
 
 .prevention-check b {
@@ -393,27 +489,22 @@
 }
 
 .prevention-vehicle-panel.is-complete .prevention-vehicle-topbar > small,
-.prevention-vehicle-panel.is-complete .prevention-vehicle-footer strong {
+.prevention-vehicle-panel.is-complete .prevention-vehicle-footer strong,
+.prevention-vehicle-panel.is-complete .prevention-dossier-facts-status strong,
+.prevention-vehicle-panel.is-complete .prevention-dossier-state strong {
   color: #69d8a2;
 }
 
 .prevention-vehicle-panel.is-complete .prevention-vehicle-topbar > small::before,
-.prevention-vehicle-panel.is-complete .prevention-vehicle-footer > span i {
+.prevention-vehicle-panel.is-complete .prevention-vehicle-footer > span i,
+.prevention-vehicle-panel.is-complete .prevention-dossier-state > i {
   background: #4dd391;
 }
 
-@keyframes preventionVehicleScan {
-  0% {
-    left: 8%;
-    opacity: 0;
-  }
-  10%, 88% {
-    opacity: 1;
-  }
-  100% {
-    left: 92%;
-    opacity: 0;
-  }
+@keyframes preventionDossierScan {
+  0% { left: 0; opacity: 0; }
+  10%, 88% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
 }
 
 @keyframes preventionProcessing {
@@ -427,21 +518,23 @@
     box-shadow: 14px 16px 0 rgba(20, 48, 71, 0.2), 0 28px 56px rgba(0, 0, 0, 0.26);
   }
 
-  .prevention-vehicle-stage {
-    min-height: 266px;
+  .prevention-dossier-body {
+    grid-template-columns: 1fr;
   }
 
-  .prevention-vehicle-visual {
-    height: 205px;
+  .prevention-dossier-identity {
+    grid-template-columns: minmax(160px, 0.7fr) minmax(0, 1fr);
+    align-items: center;
+    border-right: 0;
+    border-bottom: 1px solid #29445a;
   }
 
-  .prevention-vehicle-slide svg {
-    height: 174px;
+  .prevention-dossier-label {
+    grid-column: 1 / -1;
   }
 
-  .prevention-plate {
-    bottom: 18px;
-    width: 190px;
+  .prevention-dossier-state {
+    align-self: center;
   }
 }
 
@@ -451,28 +544,32 @@
     padding-inline: 13px;
   }
 
-  .prevention-vehicle-stage {
-    min-height: 244px;
+  .prevention-dossier-stage {
     padding-inline: 13px;
   }
 
-  .prevention-vehicle-visual {
-    height: 184px;
-  }
-
-  .prevention-vehicle-slide svg {
-    width: 112%;
-    height: 158px;
+  .prevention-dossier-identity {
+    grid-template-columns: 1fr;
+    padding: 16px;
   }
 
   .prevention-plate {
-    bottom: 12px;
-    width: 174px;
-    min-height: 76px;
+    width: 100%;
+    max-width: 220px;
   }
 
-  .prevention-plate strong {
-    font-size: 1.45rem;
+  .prevention-dossier-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .prevention-dossier-facts > div,
+  .prevention-dossier-facts > div:nth-child(even) {
+    min-height: 62px;
+    border-right: 0;
+  }
+
+  .prevention-dossier-facts .prevention-dossier-facts-status {
+    grid-column: auto;
   }
 
   .prevention-vehicle-checks {
@@ -480,12 +577,18 @@
   }
 
   .prevention-check,
-  .prevention-check:nth-child(even) {
+  .prevention-check:nth-child(even),
+  .prevention-check-wide {
+    grid-column: auto;
     border-right: 0;
   }
 
   .prevention-check {
     min-height: 70px;
+    padding-inline: 13px;
+  }
+
+  .prevention-analysis-head {
     padding-inline: 13px;
   }
 
@@ -499,12 +602,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .prevention-vehicle-slide,
   .prevention-check {
     transition: none !important;
   }
 
-  .prevention-vehicle-panel.is-scanning .prevention-scan-line,
+  .prevention-vehicle-panel.is-scanning .prevention-dossier-scan,
   .prevention-check.is-processing .prevention-processing {
     animation: none !important;
   }
