@@ -152,6 +152,8 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 			</section>
 		} else if solution.Slug == "autenticador-de-seguranca" {
 			@components.CargoAuthenticatorSecuritySection()
+		} else if solution.Slug == "gestao-logistica" {
+			@components.CargoTruckControlSection()
 		}
 		if solution.Slug == "pesquisa-cadastral-de-motoristas" {
 			<section id="como-funciona" class="solution-process score-process-section">
@@ -196,6 +198,8 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 			</section>
 		} else if solution.Slug == "autenticador-de-seguranca" {
 			@components.CargoAuthenticatorProcess()
+		} else if solution.Slug == "gestao-logistica" {
+			@components.CargoTruckProcess()
 		} else {
 			<section id="como-funciona" class="solution-process">
 				<div class="container solution-process-heading">
