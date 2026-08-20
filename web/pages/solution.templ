@@ -85,31 +85,74 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 				}
 			</div>
 		</section>
-		<section id="como-funciona" class="solution-process">
-			<div class="container solution-process-heading">
-				<div><span class="product-overline"><span></span> Processo em movimento</span><h2>{ solution.ProcessTitle }</h2></div>
-				<p>{ solution.ProcessText }</p>
-			</div>
-			<div class="container process-live-bar" aria-hidden="true">
-				<span><i></i> PROCESSO ATIVO</span>
-				<strong>VIAGATE / { solution.ShortName }</strong>
-				<small>04 ETAPAS CONECTADAS</small>
-			</div>
-			<ol class="container solution-process-grid">
-				for index, step := range solution.Steps {
-					<li>
-						<div class="process-step-marker">
-							<span>
-								@components.Icon(solution.Features[index].Icon)
-							</span>
-							<small>0{ index + 1 }</small>
-						</div>
-						<div><small>ETAPA 0{ index + 1 }</small><h3>{ step.Title }</h3><p>{ step.Text }</p></div>
-						<i class="process-step-status" aria-hidden="true"></i>
-					</li>
-				}
-			</ol>
-		</section>
+		if solution.Slug == "pesquisa-cadastral-de-motoristas" {
+			<section id="como-funciona" class="solution-process score-process-section">
+				<div class="container solution-process-heading score-process-heading">
+					<div><span class="product-overline"><span></span> Fluxo cadastral / 04 etapas</span><h2>{ solution.ProcessTitle }</h2></div>
+					<p>{ solution.ProcessText }</p>
+				</div>
+				<div class="container score-process-shell" data-score-process>
+					<div class="score-process-livebar">
+						<span><i></i> FLUXO CADASTRAL ATIVO</span>
+						<strong data-score-process-state>Solicitação recebida</strong>
+						<small data-score-process-counter>01 / 04</small>
+					</div>
+					<ol class="score-process-track">
+						<li class="is-active" data-score-process-step data-step-state="Solicitação recebida" data-step-detail={ solution.Steps[0].Text }>
+							<div class="score-process-node"><span>@components.Icon("send")</span><small>01</small></div>
+							<div><small>INPUT / 01</small><h3>{ solution.Steps[0].Title }</h3><p>{ solution.Steps[0].Text }</p></div>
+							<i class="score-process-step-state" aria-hidden="true"></i>
+						</li>
+						<li data-score-process-step data-step-state="Consentimento em andamento" data-step-detail={ solution.Steps[1].Text }>
+							<div class="score-process-node"><span>@components.Icon("link")</span><small>02</small></div>
+							<div><small>IDENTITY / 02</small><h3>{ solution.Steps[1].Title }</h3><p>{ solution.Steps[1].Text }</p></div>
+							<i class="score-process-step-state" aria-hidden="true"></i>
+						</li>
+						<li data-score-process-step data-step-state="Análise em processamento" data-step-detail={ solution.Steps[2].Text }>
+							<div class="score-process-node"><span>@components.Icon("database")</span><small>03</small></div>
+							<div><small>ENGINE / 03</small><h3>{ solution.Steps[2].Title }</h3><p>{ solution.Steps[2].Text }</p></div>
+							<i class="score-process-step-state" aria-hidden="true"></i>
+						</li>
+						<li data-score-process-step data-step-state="Resultado disponível" data-step-detail={ solution.Steps[3].Text }>
+							<div class="score-process-node"><span>@components.Icon("user-check")</span><small>04</small></div>
+							<div><small>OUTPUT / 04</small><h3>{ solution.Steps[3].Title }</h3><p>{ solution.Steps[3].Text }</p></div>
+							<i class="score-process-step-state" aria-hidden="true"></i>
+						</li>
+					</ol>
+					<div class="score-process-footer">
+						<div class="score-process-current"><small>ESTADO ATUAL</small><strong data-score-process-detail>{ solution.Steps[0].Text }</strong></div>
+						<div class="score-process-meter" aria-hidden="true"><span data-score-process-meter></span></div>
+						<span class="score-process-percent" data-score-process-percent>25%</span>
+					</div>
+				</div>
+			</section>
+		} else {
+			<section id="como-funciona" class="solution-process">
+				<div class="container solution-process-heading">
+					<div><span class="product-overline"><span></span> Processo em movimento</span><h2>{ solution.ProcessTitle }</h2></div>
+					<p>{ solution.ProcessText }</p>
+				</div>
+				<div class="container process-live-bar" aria-hidden="true">
+					<span><i></i> PROCESSO ATIVO</span>
+					<strong>VIAGATE / { solution.ShortName }</strong>
+					<small>04 ETAPAS CONECTADAS</small>
+				</div>
+				<ol class="container solution-process-grid">
+					for index, step := range solution.Steps {
+						<li>
+							<div class="process-step-marker">
+								<span>
+									@components.Icon(solution.Features[index].Icon)
+								</span>
+								<small>0{ index + 1 }</small>
+							</div>
+							<div><small>ETAPA 0{ index + 1 }</small><h3>{ step.Title }</h3><p>{ step.Text }</p></div>
+							<i class="process-step-status" aria-hidden="true"></i>
+						</li>
+					}
+				</ol>
+			</section>
+		}
 		<section class="section solution-evidence">
 			<div class="container solution-evidence-grid">
 				<div class="solution-evidence-copy">
