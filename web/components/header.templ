@@ -6,6 +6,30 @@ templ Brand() {
 	</a>
 }
 
+templ ToolFunctionCard(code string, iconName string, title string, text string, className string) {
+	<div class={ "tool-function-card " + className }>
+		<div class="tool-function-card-top">
+			<span>{ code }</span>
+			<span class="tool-function-icon">@Icon(iconName)</span>
+		</div>
+		<strong>{ title }</strong>
+		<small>{ text }</small>
+	</div>
+}
+
+templ ToolFunctionPanel(id string, className string, ariaHidden string, code string, title string, status string) {
+	<section class={ "tool-function-panel " + className } data-tool-panel={ id } aria-hidden={ ariaHidden }>
+		<div class="tool-function-summary">
+			<div><small>{ code }</small><strong>{ title }</strong></div>
+			<span class="tool-function-status"><i></i>{ status }</span>
+		</div>
+		<div class="tool-function-grid">
+			{ children... }
+		</div>
+		<div class="tool-function-trace" aria-hidden="true"><span></span></div>
+	</section>
+}
+
 templ Header() {
 	<header class="site-header">
 		<div class="container header-inner">
@@ -20,47 +44,79 @@ templ Header() {
 						</div>
 						<div class="tools-menu-grid" data-tool-menu>
 							<div class="tools-menu-options">
-								<a class="tool-menu-option is-active" href="/solucoes/pesquisa-cadastral-de-motoristas" data-tool-option data-tool-id="cargo-score" data-tool-code="TOOL / 01" data-tool-title="CARGO SCORE" data-tool-description="Pesquisa cadastral, identidade, documentos e contexto de risco em um fluxo rastreável.">
+								<a class="tool-menu-option is-active" href="/solucoes/pesquisa-cadastral-de-motoristas" data-tool-option data-tool-id="cargo-score" data-tool-description="Pesquisa cadastral, identidade, documentos e contexto de risco em um fluxo rastreável.">
 									<span class="tool-menu-number">01</span>
 									<span class="tool-menu-copy"><strong>Cargo Score</strong><small>Pesquisa cadastral e decisão operacional</small></span>
 									<span class="tool-menu-arrow" aria-hidden="true">→</span>
 								</a>
-								<a class="tool-menu-option" href="/solucoes/autenticador-de-seguranca" data-tool-option data-tool-id="cargo-auth" data-tool-code="TOOL / 02" data-tool-title="CARGO AUTENTICADOR" data-tool-description="Confirmação adicional de identidade antes de pagamentos, alterações e outras etapas sensíveis.">
+								<a class="tool-menu-option" href="/solucoes/autenticador-de-seguranca" data-tool-option data-tool-id="cargo-auth" data-tool-description="Confirmação adicional de identidade antes de pagamentos, alterações e outras etapas sensíveis.">
 									<span class="tool-menu-number">02</span>
 									<span class="tool-menu-copy"><strong>Cargo Autenticador</strong><small>Identidade antes de etapas sensíveis</small></span>
 									<span class="tool-menu-arrow" aria-hidden="true">→</span>
 								</a>
-								<a class="tool-menu-option" href="/solucoes/gestao-logistica" data-tool-option data-tool-id="cargo-truck" data-tool-code="TOOL / 03" data-tool-title="CARGO TRUCK" data-tool-description="Viagens, coletas, entregas, posições, paradas e comprovantes conectados à operação.">
+								<a class="tool-menu-option" href="/solucoes/gestao-logistica" data-tool-option data-tool-id="cargo-truck" data-tool-description="Viagens, coletas, entregas, posições, paradas e comprovantes conectados à operação.">
 									<span class="tool-menu-number">03</span>
 									<span class="tool-menu-copy"><strong>Cargo Truck</strong><small>Gestão logística e viagens</small></span>
 									<span class="tool-menu-arrow" aria-hidden="true">→</span>
 								</a>
-								<a class="tool-menu-option" href="/solucoes/prevencao-veicular" data-tool-option data-tool-id="prevention" data-tool-code="TOOL / 04" data-tool-title="PREVENÇÃO VEICULAR" data-tool-description="Multas, pendências, débitos, restrições e histórico veicular organizados para tratamento preventivo.">
+								<a class="tool-menu-option" href="/solucoes/prevencao-veicular" data-tool-option data-tool-id="prevention" data-tool-description="Multas, pendências, débitos, restrições e histórico veicular organizados para tratamento preventivo.">
 									<span class="tool-menu-number">04</span>
 									<span class="tool-menu-copy"><strong>Prevenção Veicular</strong><small>Multas e histórico do veículo</small></span>
 									<span class="tool-menu-arrow" aria-hidden="true">→</span>
 								</a>
-								<a class="tool-menu-option" href="/solucoes/monitoramento-de-veiculos" data-tool-option data-tool-id="monitoring" data-tool-code="TOOL / 05" data-tool-title="MONITORAMENTO" data-tool-description="Posições e alertas de veículos integrados ao cadastro e ao contexto de cada viagem.">
+								<a class="tool-menu-option" href="/solucoes/monitoramento-de-veiculos" data-tool-option data-tool-id="monitoring" data-tool-description="Posições e alertas de veículos integrados ao cadastro e ao contexto de cada viagem.">
 									<span class="tool-menu-number">05</span>
 									<span class="tool-menu-copy"><strong>Monitoramento</strong><small>Posições, eventos e alertas</small></span>
 									<span class="tool-menu-arrow" aria-hidden="true">→</span>
 								</a>
-								<a class="tool-menu-option tool-menu-option-all" href="/ferramentas" data-tool-option data-tool-id="all-tools" data-tool-code="CATÁLOGO / ALL" data-tool-title="TODAS AS FERRAMENTAS" data-tool-description="Explore o catálogo completo de ferramentas Viagate e acesse os detalhes de cada produto operacional.">
+								<a class="tool-menu-option tool-menu-option-all" href="/ferramentas" data-tool-option data-tool-id="all-tools" data-tool-description="Explore o catálogo completo de ferramentas Viagate e acesse os detalhes de cada produto operacional.">
 									<span class="tool-menu-number">ALL</span>
 									<span class="tool-menu-copy"><strong>Ver todas as ferramentas</strong><small>Catálogo completo Viagate</small></span>
 									<span class="tool-menu-arrow" aria-hidden="true">↗</span>
 								</a>
 							</div>
 							<div class="tool-preview">
-								<div class="tool-preview-head"><span><i></i> VISUAL / PREVIEW</span><span>SVG READY</span></div>
-								<div class="tool-preview-canvas" data-tool-preview-canvas data-tool="cargo-score">
-									<div class="tool-preview-placeholder" data-tool-preview-placeholder>
-										<small data-tool-preview-code>TOOL / 01</small>
-										<strong data-tool-preview-title>CARGO SCORE</strong>
-										<span>ÁREA RESERVADA PARA SVG</span>
-									</div>
+								<div class="tool-preview-head"><span><i></i> RECURSOS / PRINCIPAIS</span><span>FUNCTION MAP</span></div>
+								<div class="tool-function-stage" data-tool-function-stage>
+									@ToolFunctionPanel("cargo-score", "is-active", "false", "TOOL / 01", "CARGO SCORE", "ANÁLISE MODULAR") {
+										@ToolFunctionCard("ID / 01", "scan-face", "Identidade e presença", "Biometria facial e prova de vida.", "")
+										@ToolFunctionCard("DOC / 02", "badge-check", "CNH, ANTT e registros", "Documentos e registros relevantes à política.", "")
+										@ToolFunctionCard("POL / 03", "sliders", "Políticas configuráveis", "Critérios por perfil e necessidade operacional.", "")
+										@ToolFunctionCard("HIS / 04", "history", "Revisão e histórico", "Status, reanálises e divergências com contexto.", "")
+									}
+									@ToolFunctionPanel("cargo-auth", "", "true", "TOOL / 02", "CARGO AUTENTICADOR", "IDENTIDADE SEGURA") {
+										@ToolFunctionCard("LNK / 01", "link", "Link individual", "Jornada vinculada ao CPF informado.", "")
+										@ToolFunctionCard("BIO / 02", "scan-face", "Validação facial", "Confirma a identidade apresentada.", "")
+										@ToolFunctionCard("CTX / 03", "smartphone", "Contexto do acesso", "Localização e dispositivo aplicáveis ao processo.", "")
+										@ToolFunctionCard("OUT / 04", "send", "Envio direto", "Resultado devolvido ao ambiente da empresa.", "")
+									}
+									@ToolFunctionPanel("cargo-truck", "", "true", "TOOL / 03", "CARGO TRUCK", "VIAGEM CONECTADA") {
+										@ToolFunctionCard("OPS / 01", "package-check", "Coletas e entregas", "Atividades, destinos e instruções para o motorista.", "")
+										@ToolFunctionCard("POS / 02", "map", "Rastreamento", "Posições registradas durante a execução da viagem.", "")
+										@ToolFunctionCard("EVT / 03", "coffee", "Eventos de parada", "Descanso, abastecimento, manutenção e outros eventos.", "")
+										@ToolFunctionCard("TIM / 04", "history", "Linha do tempo", "Rota e eventos preservados para revisão.", "")
+									}
+									@ToolFunctionPanel("prevention", "", "true", "TOOL / 04", "PREVENÇÃO VEICULAR", "CONTROLE PREVENTIVO") {
+										@ToolFunctionCard("MUL / 01", "file-warning", "Gestão de multas", "Ocorrências, prazos, valores e tratamento interno.", "")
+										@ToolFunctionCard("VEI / 02", "car-front", "Histórico veicular", "Cadastro, documentação, restrições e registros.", "")
+										@ToolFunctionCard("DEB / 03", "receipt", "Débitos e obrigações", "Multas, IPVA, licenciamento e pendências disponíveis.", "")
+										@ToolFunctionCard("RSK / 04", "triangle-alert", "Indicadores de risco", "Sinistros, leilão, gravames e bloqueios quando disponíveis.", "")
+									}
+									@ToolFunctionPanel("monitoring", "", "true", "TOOL / 05", "MONITORAMENTO", "EVENTOS EM CONTEXTO") {
+										@ToolFunctionCard("POS / 01", "map-pin", "Posicionamento", "Dados disponibilizados pela integração de monitoramento.", "")
+										@ToolFunctionCard("ALT / 02", "bell-ring", "Alertas", "Eventos relevantes para atuação da equipe.", "")
+										@ToolFunctionCard("TRP / 03", "route", "Viagens avulsas", "Acompanhamentos vinculados a operações específicas.", "")
+										@ToolFunctionCard("INT / 04", "workflow", "Integração operacional", "Monitoramento, cadastro e regras em um fluxo único.", "")
+									}
+									@ToolFunctionPanel("all-tools", "", "true", "CATÁLOGO / ALL", "FERRAMENTAS VIAGATE", "05 MÓDULOS PRINCIPAIS") {
+										@ToolFunctionCard("SCO / 01", "user-check", "Cargo Score", "Pesquisa cadastral e decisão operacional.", "")
+										@ToolFunctionCard("AUT / 02", "shield-check", "Cargo Autenticador", "Confirmação de identidade em etapas sensíveis.", "")
+										@ToolFunctionCard("TRK / 03", "route", "Cargo Truck", "Gestão logística e execução de viagens.", "")
+										@ToolFunctionCard("PRV / 04", "truck", "Prevenção", "Multas, pendências e histórico veicular.", "")
+										@ToolFunctionCard("MON / 05", "map-pinned", "Monitoramento", "Posições, eventos e alertas integrados.", "is-wide")
+									}
 								</div>
-								<div class="tool-preview-foot"><span>INTERFACE CONCEITUAL</span><strong data-tool-preview-description>Pesquisa cadastral, identidade, documentos e contexto de risco em um fluxo rastreável.</strong></div>
+								<div class="tool-preview-foot"><span>MAPA FUNCIONAL</span><strong data-tool-preview-description>Pesquisa cadastral, identidade, documentos e contexto de risco em um fluxo rastreável.</strong></div>
 							</div>
 						</div>
 						<div class="mega-menu-footer">
