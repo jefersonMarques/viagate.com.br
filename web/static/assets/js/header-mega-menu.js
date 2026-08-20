@@ -11,38 +11,6 @@ const toolVisualAssets = {
   }
 };
 
-const createToolPreviewImage = (container, className) => {
-  if (!(container instanceof HTMLElement)) {
-    return null;
-  }
-
-  const existingImage = container.querySelector(`.${className}`);
-  if (existingImage instanceof HTMLImageElement) {
-    return existingImage;
-  }
-
-  const image = document.createElement("img");
-  image.className = className;
-  image.alt = "";
-  image.setAttribute("aria-hidden", "true");
-  image.style.position = "absolute";
-  image.style.zIndex = "3";
-  image.style.top = "50%";
-  image.style.left = "50%";
-  image.style.width = "auto";
-  image.style.height = "auto";
-  image.style.maxWidth = "calc(100% - 36px)";
-  image.style.maxHeight = "calc(100% - 36px)";
-  image.style.objectFit = "contain";
-  image.style.opacity = "0";
-  image.style.transform = "translate(-50%, -50%) translateY(6px) scale(.985)";
-  image.style.transition = "opacity 160ms ease, transform 160ms ease";
-  image.style.pointerEvents = "none";
-  container.append(image);
-
-  return image;
-};
-
 const initializeToolCatalogVisuals = () => {
   Object.values(toolVisualAssets).forEach((asset) => {
     const visual = document.querySelector(`[data-tool-catalog-visual="${asset.catalogSlug}"]`);
@@ -189,67 +157,28 @@ const initializeHeaderMegaMenu = () => {
   }
 
   const options = Array.from(toolMenu.querySelectorAll("[data-tool-option]"));
-  const previewCanvas = toolMenu.querySelector("[data-tool-preview-canvas]");
-  const previewPlaceholder = toolMenu.querySelector("[data-tool-preview-placeholder]");
-  const previewCode = toolMenu.querySelector("[data-tool-preview-code]");
-  const previewTitle = toolMenu.querySelector("[data-tool-preview-title]");
+  const panels = Array.from(toolMenu.querySelectorAll("[data-tool-panel]"));
   const previewDescription = toolMenu.querySelector("[data-tool-preview-description]");
-  const previewImage = createToolPreviewImage(previewCanvas, "tool-preview-asset");
-  let previewTimerId = null;
 
   const selectTool = (option) => {
-    const toolId = option.dataset.toolId ?? "tool";
-    const toolCode = option.dataset.toolCode ?? "TOOL";
-    const toolTitle = option.dataset.toolTitle ?? "FERRAMENTA";
+    const toolId = option.dataset.toolId ?? "cargo-score";
     const toolDescription = option.dataset.toolDescription ?? "";
-    const visualAsset = toolVisualAssets[toolId]?.src ?? "";
 
     options.forEach((item) => item.classList.toggle("is-active", item === option));
 
-    if (previewPlaceholder instanceof HTMLElement) {
-      previewPlaceholder.classList.add("is-changing");
+    panels.forEach((panel) => {
+      if (!(panel instanceof HTMLElement)) {
+        return;
+      }
+
+      const active = panel.dataset.toolPanel === toolId;
+      panel.classList.toggle("is-active", active);
+      panel.setAttribute("aria-hidden", active ? "false" : "true");
+    });
+
+    if (previewDescription instanceof HTMLElement) {
+      previewDescription.textContent = toolDescription;
     }
-
-    if (previewImage instanceof HTMLImageElement) {
-      previewImage.style.opacity = "0";
-      previewImage.style.transform = "translate(-50%, -50%) translateY(6px) scale(.985)";
-    }
-
-    if (previewTimerId !== null) {
-      window.clearTimeout(previewTimerId);
-    }
-
-    previewTimerId = window.setTimeout(() => {
-      if (previewCanvas instanceof HTMLElement) {
-        previewCanvas.dataset.tool = toolId;
-      }
-
-      if (previewCode instanceof HTMLElement) {
-        previewCode.textContent = toolCode;
-      }
-
-      if (previewTitle instanceof HTMLElement) {
-        previewTitle.textContent = toolTitle;
-      }
-
-      if (previewDescription instanceof HTMLElement) {
-        previewDescription.textContent = toolDescription;
-      }
-
-      if (previewImage instanceof HTMLImageElement && visualAsset !== "") {
-        previewImage.src = visualAsset;
-        previewImage.style.opacity = "1";
-        previewImage.style.transform = "translate(-50%, -50%) scale(1)";
-      }
-
-      if (previewPlaceholder instanceof HTMLElement) {
-        previewPlaceholder.classList.remove("is-changing");
-        previewPlaceholder.style.opacity = visualAsset === "" ? "1" : "0";
-        previewPlaceholder.style.pointerEvents = visualAsset === "" ? "auto" : "none";
-      }
-
-      previewTimerId = null;
-    }, 120);
   };
 
   options.forEach((option) => {
