@@ -1,0 +1,511 @@
+.prevention-vehicle-panel {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 560px;
+  margin: 0;
+  overflow: hidden;
+  color: #dbe5eb;
+  background: #081827;
+  border: 1px solid #274359;
+  box-shadow: 30px 30px 0 rgba(20, 48, 71, 0.3), 0 45px 90px rgba(0, 0, 0, 0.34);
+}
+
+.prevention-vehicle-panel .signal-panel-grid {
+  opacity: 0.36;
+}
+
+.prevention-vehicle-topbar,
+.prevention-vehicle-footer {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+  padding: 0 18px;
+  color: #607b90;
+  background: rgba(5, 17, 29, 0.96);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.5rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prevention-vehicle-topbar {
+  border-bottom: 1px solid #243c50;
+}
+
+.prevention-vehicle-topbar > span,
+.prevention-vehicle-topbar > small,
+.prevention-vehicle-footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prevention-vehicle-topbar > span i,
+.prevention-vehicle-topbar > small::before,
+.prevention-vehicle-footer > span i {
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: var(--orange-500);
+}
+
+.prevention-vehicle-topbar > span i {
+  box-shadow: 0 0 9px rgba(255, 100, 0, 0.68);
+}
+
+.prevention-vehicle-topbar > small {
+  color: #ff9858;
+  font-size: inherit;
+}
+
+.prevention-vehicle-stage {
+  position: relative;
+  z-index: 3;
+  min-height: 286px;
+  padding: 18px 20px 0;
+  background:
+    linear-gradient(rgba(87, 119, 143, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 119, 143, 0.045) 1px, transparent 1px),
+    #071521;
+  background-size: 34px 34px;
+  border-bottom: 1px solid #21394c;
+}
+
+.prevention-vehicle-stage::after {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, #35536a 14%, #35536a 86%, transparent);
+}
+
+.prevention-vehicle-stage-head {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-vehicle-stage-head > div {
+  display: grid;
+  gap: 3px;
+}
+
+.prevention-vehicle-stage-head small,
+.prevention-vehicle-stage-head > span {
+  color: #536f84;
+  font-size: 0.43rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-vehicle-stage-head strong {
+  color: #a9bac5;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.prevention-vehicle-visual {
+  position: relative;
+  height: 224px;
+  overflow: hidden;
+}
+
+.prevention-vehicle-slide {
+  position: absolute;
+  inset: 6px 0 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateX(26px);
+  transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.prevention-vehicle-slide.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.prevention-vehicle-slide svg {
+  width: min(92%, 610px);
+  height: 190px;
+}
+
+.prevention-truck-lines {
+  fill: none;
+  stroke: #42647b;
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  opacity: 0.78;
+  vector-effect: non-scaling-stroke;
+}
+
+.prevention-truck-lines rect {
+  fill: rgba(45, 76, 98, 0.08);
+}
+
+.prevention-truck-lines circle {
+  fill: #071521;
+  stroke: #58778d;
+}
+
+.prevention-plate {
+  position: absolute;
+  z-index: 7;
+  bottom: 25px;
+  left: 50%;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 206px;
+  min-height: 84px;
+  padding: 7px 13px 9px;
+  color: #091421;
+  background: #e9edf0;
+  border: 2px solid #8f9eaa;
+  box-shadow: 0 13px 28px rgba(0, 0, 0, 0.34);
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.prevention-plate::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 8px;
+  content: "";
+  background: #1c4b77;
+}
+
+.prevention-plate small,
+.prevention-plate span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prevention-plate small {
+  align-self: end;
+  margin-top: 6px;
+  color: #405366;
+  font-size: 0.36rem;
+}
+
+.prevention-plate strong {
+  align-self: center;
+  color: #0b1722;
+  font-family: var(--font-tech);
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.prevention-plate span {
+  align-self: end;
+  color: #5a6873;
+  font-size: 0.34rem;
+}
+
+.prevention-scan-line {
+  position: absolute;
+  z-index: 6;
+  top: 8px;
+  bottom: 12px;
+  left: 8%;
+  width: 1px;
+  opacity: 0;
+  background: var(--orange-500);
+  box-shadow: 0 0 12px rgba(255, 100, 0, 0.72);
+}
+
+.prevention-scan-line::before,
+.prevention-scan-line::after {
+  position: absolute;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  content: "";
+  background: var(--orange-500);
+  transform: translateX(-50%);
+}
+
+.prevention-scan-line::before {
+  top: 0;
+}
+
+.prevention-scan-line::after {
+  bottom: 0;
+}
+
+.prevention-vehicle-panel.is-scanning .prevention-scan-line {
+  animation: preventionVehicleScan 1.15s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.prevention-vehicle-checks {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: #081827;
+}
+
+.prevention-check {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  min-height: 82px;
+  padding: 12px 16px;
+  border-right: 1px solid #21394c;
+  border-bottom: 1px solid #21394c;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.prevention-check:nth-child(even) {
+  border-right: 0;
+}
+
+.prevention-check > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: #718b9d;
+  border: 1px solid #314d62;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.prevention-check .ui-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.prevention-check p {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.prevention-check small,
+.prevention-check strong,
+.prevention-check b,
+.prevention-check em {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-check small {
+  color: #526d80;
+  font-size: 0.39rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-check strong {
+  color: #a9bac5;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+}
+
+.prevention-check > div {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  min-width: 88px;
+}
+
+.prevention-check b {
+  color: #607b90;
+  font-size: 0.42rem;
+  letter-spacing: 0.05em;
+}
+
+.prevention-processing {
+  display: none;
+  color: #ff9858;
+  font-size: 0.42rem;
+  font-style: normal;
+  letter-spacing: 0.11em;
+}
+
+.prevention-check.is-processing {
+  background: rgba(255, 100, 0, 0.035);
+  border-bottom-color: rgba(255, 100, 0, 0.32);
+}
+
+.prevention-check.is-processing > span {
+  color: #ff9858;
+  background: rgba(255, 100, 0, 0.06);
+  border-color: rgba(255, 100, 0, 0.42);
+}
+
+.prevention-check.is-processing .prevention-processing {
+  display: block;
+  animation: preventionProcessing 600ms steps(2, end) infinite;
+}
+
+.prevention-check.is-processing b {
+  color: #ff9858;
+}
+
+.prevention-check.is-done > span {
+  color: #67d9a1;
+  background: rgba(77, 211, 145, 0.055);
+  border-color: rgba(77, 211, 145, 0.34);
+}
+
+.prevention-check.is-done b {
+  color: #67d9a1;
+}
+
+.prevention-check.is-warning > span {
+  color: #ff8a5b;
+  background: rgba(255, 100, 0, 0.06);
+  border-color: rgba(255, 100, 0, 0.38);
+}
+
+.prevention-check.is-warning b {
+  color: #ff9858;
+}
+
+.prevention-vehicle-footer {
+  border-top: 0;
+}
+
+.prevention-vehicle-footer strong {
+  color: #ff9858;
+  font-size: inherit;
+}
+
+.prevention-vehicle-panel.is-complete .prevention-vehicle-topbar > small,
+.prevention-vehicle-panel.is-complete .prevention-vehicle-footer strong {
+  color: #69d8a2;
+}
+
+.prevention-vehicle-panel.is-complete .prevention-vehicle-topbar > small::before,
+.prevention-vehicle-panel.is-complete .prevention-vehicle-footer > span i {
+  background: #4dd391;
+}
+
+@keyframes preventionVehicleScan {
+  0% {
+    left: 8%;
+    opacity: 0;
+  }
+  10%, 88% {
+    opacity: 1;
+  }
+  100% {
+    left: 92%;
+    opacity: 0;
+  }
+}
+
+@keyframes preventionProcessing {
+  0%, 100% { opacity: 0.42; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 860px) {
+  .prevention-vehicle-panel {
+    min-height: 0;
+    box-shadow: 14px 16px 0 rgba(20, 48, 71, 0.2), 0 28px 56px rgba(0, 0, 0, 0.26);
+  }
+
+  .prevention-vehicle-stage {
+    min-height: 266px;
+  }
+
+  .prevention-vehicle-visual {
+    height: 205px;
+  }
+
+  .prevention-vehicle-slide svg {
+    height: 174px;
+  }
+
+  .prevention-plate {
+    bottom: 18px;
+    width: 190px;
+  }
+}
+
+@media (max-width: 560px) {
+  .prevention-vehicle-topbar,
+  .prevention-vehicle-footer {
+    padding-inline: 13px;
+  }
+
+  .prevention-vehicle-stage {
+    min-height: 244px;
+    padding-inline: 13px;
+  }
+
+  .prevention-vehicle-visual {
+    height: 184px;
+  }
+
+  .prevention-vehicle-slide svg {
+    width: 112%;
+    height: 158px;
+  }
+
+  .prevention-plate {
+    bottom: 12px;
+    width: 174px;
+    min-height: 76px;
+  }
+
+  .prevention-plate strong {
+    font-size: 1.45rem;
+  }
+
+  .prevention-vehicle-checks {
+    grid-template-columns: 1fr;
+  }
+
+  .prevention-check,
+  .prevention-check:nth-child(even) {
+    border-right: 0;
+  }
+
+  .prevention-check {
+    min-height: 70px;
+    padding-inline: 13px;
+  }
+
+  .prevention-vehicle-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 66px;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prevention-vehicle-slide,
+  .prevention-check {
+    transition: none !important;
+  }
+
+  .prevention-vehicle-panel.is-scanning .prevention-scan-line,
+  .prevention-check.is-processing .prevention-processing {
+    animation: none !important;
+  }
+}
