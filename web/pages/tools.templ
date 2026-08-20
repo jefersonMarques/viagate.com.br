@@ -66,7 +66,9 @@ templ Tools(meta site.PageMeta, tools []site.Solution) {
 								for featureIndex, feature := range tool.Features {
 									if featureIndex < 4 {
 										<div>
-											<span>@components.Icon(feature.Icon)</span>
+											<span>
+												@components.Icon(feature.Icon)
+											</span>
 											<strong>{ feature.Title }</strong>
 										</div>
 									}
