@@ -8,6 +8,7 @@ func (application *Application) routes() http.Handler {
 	mux.HandleFunc("GET /{$}", application.home)
 	mux.HandleFunc("GET /solucoes", application.solutions)
 	mux.HandleFunc("GET /solucoes/{slug}", application.solution)
+	mux.HandleFunc("GET /ferramentas", application.tools)
 	mux.HandleFunc("GET /integracoes/api", application.api)
 	mux.HandleFunc("GET /white-label", application.whiteLabel)
 	mux.HandleFunc("GET /sobre", application.about)
