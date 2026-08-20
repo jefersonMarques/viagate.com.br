@@ -1,0 +1,101 @@
+package components
+
+templ CargoTruckControlSection() {
+	<section class="cargo-truck-control-section" aria-labelledby="cargo-truck-control-title">
+		<div class="container cargo-truck-control-heading">
+			<div>
+				<span class="product-overline"><span></span> Controle da viagem / motorista conectado</span>
+				<h2 id="cargo-truck-control-title">A viagem acontece no aplicativo. A operação acompanha cada evento na plataforma.</h2>
+			</div>
+			<p>O Cargo Truck leva a viagem para o smartphone do motorista e mantém a equipe informada sobre identidade, posições, paradas, coletas, entregas e comprovantes ao longo da execução.</p>
+		</div>
+		<div class="container cargo-truck-control-layout">
+			<div class="cargo-truck-control-list">
+				<article>
+					<div class="cargo-truck-control-icon">@Icon("scan-face")</div>
+					<div><small>IDENTITY / 01</small><strong>Biometria facial</strong><h3>Confirme quem está executando a viagem.</h3><p>A biometria pode ser incorporada ao fluxo para confirmar a identidade do motorista em momentos definidos pela operação, vinculando a jornada registrada no aplicativo à pessoa validada.</p></div>
+				</article>
+				<article>
+					<div class="cargo-truck-control-icon">@Icon("package-check")</div>
+					<div><small>ACTIVITY / 02</small><strong>Coletas e entregas</strong><h3>Transforme cada atividade em um registro operacional.</h3><p>O motorista recebe as atividades no aplicativo, registra o andamento da coleta ou entrega e associa os comprovantes previstos ao histórico da viagem.</p></div>
+				</article>
+				<article>
+					<div class="cargo-truck-control-icon">@Icon("coffee")</div>
+					<div><small>EVENT / 03</small><strong>Paradas e ações</strong><h3>Entenda o que aconteceu entre a origem e o destino.</h3><p>Refeição, abastecimento, descanso, manutenção e outras ocorrências podem compor a linha do tempo para que a equipe reconstrua a execução sem depender de mensagens isoladas.</p></div>
+				</article>
+				<article>
+					<div class="cargo-truck-control-icon">@Icon("map-pin")</div>
+					<div><small>GEO / 04</small><strong>Acompanhamento geográfico</strong><h3>Adicione localização quando a viagem exigir controle extra.</h3><p>Posições e contexto geográfico podem ser registrados durante a viagem conforme a configuração contratada e os critérios aplicáveis à operação.</p></div>
+				</article>
+			</div>
+			<aside class="cargo-truck-control-extra" aria-label="Exemplo de operação com Cargo Score e controle geográfico">
+				<div class="cargo-truck-control-extra-head"><span>CONTROL / EXTRA</span><strong>CARGO SCORE + CARGO TRUCK</strong></div>
+				<div class="cargo-truck-control-extra-intro"><small>OPERAÇÕES COM MAIOR CONTROLE</small><strong>Da análise à execução da viagem</strong><p>Quando a política de risco ou a apólice exigir controles adicionais, o Cargo Truck pode atuar em conjunto com o Cargo Score e com o acompanhamento geográfico configurado para a viagem.</p></div>
+				<div class="cargo-truck-control-extra-flow">
+					<div><span>@Icon("user-check")</span><p><small>RISK / 01</small><strong>Motorista e veículo analisados</strong></p><i></i></div>
+					<div><span>@Icon("scan-face")</span><p><small>ID / 02</small><strong>Identidade confirmada</strong></p><i></i></div>
+					<div><span>@Icon("map-pin")</span><p><small>GEO / 03</small><strong>Viagem acompanhada</strong></p><i></i></div>
+					<div><span>@Icon("package-check")</span><p><small>POD / 04</small><strong>Entrega comprovada</strong></p><i></i></div>
+				</div>
+				<div class="cargo-truck-control-extra-result"><small>CONTROLE AMPLIADO</small><strong>Risco, identidade e execução no mesmo contexto operacional</strong><span>A configuração deve seguir os critérios definidos para cada operação e apólice.</span></div>
+			</aside>
+		</div>
+	</section>
+}
+
+templ CargoTruckProcess() {
+	<section id="como-funciona" class="solution-process cargo-truck-process-section" aria-labelledby="cargo-truck-process-title">
+		<div class="container solution-process-heading cargo-truck-process-heading">
+			<div>
+				<span class="product-overline"><span></span> Fluxo da viagem / 05 etapas</span>
+				<h2 id="cargo-truck-process-title">Do planejamento à comprovação da entrega</h2>
+			</div>
+			<p>A empresa prepara a viagem, o motorista executa as atividades pelo aplicativo e cada ação relevante passa a compor um histórico operacional que pode ser acompanhado e revisado pela equipe.</p>
+		</div>
+		<div class="container cargo-truck-process-shell">
+			<div class="cargo-truck-process-livebar">
+				<span><i></i> VIAGEM OPERACIONAL</span>
+				<strong>PLANEJAMENTO → EXECUÇÃO → COMPROVAÇÃO</strong>
+				<small>CARGO TRUCK</small>
+			</div>
+			<div class="cargo-truck-process-layout">
+				<ol class="cargo-truck-process-track">
+					<li>
+						<div class="cargo-truck-process-node"><span>@Icon("route")</span><small>01</small></div>
+						<div><small>PLAN / 01</small><h3>Planeje a viagem</h3><p>Cadastre origem, destinos, coletas, entregas, atividades e os controles que deverão acompanhar a execução.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+					<li>
+						<div class="cargo-truck-process-node"><span>@Icon("scan-face")</span><small>02</small></div>
+						<div><small>IDENTITY / 02</small><h3>Vincule o motorista</h3><p>O motorista recebe a viagem no aplicativo e, quando configurado, realiza a confirmação biométrica antes ou durante pontos controlados da jornada.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+					<li>
+						<div class="cargo-truck-process-node"><span>@Icon("smartphone")</span><small>03</small></div>
+						<div><small>EXECUTION / 03</small><h3>Acompanhe a execução</h3><p>O aplicativo orienta as atividades e registra posições, andamento e contexto operacional conforme as regras definidas para a viagem.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+					<li>
+						<div class="cargo-truck-process-node"><span>@Icon("coffee")</span><small>04</small></div>
+						<div><small>EVENTS / 04</small><h3>Registre os eventos</h3><p>Paradas, refeição, abastecimento, descanso, coleta, entrega e outras ocorrências entram na linha do tempo da viagem.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+					<li>
+						<div class="cargo-truck-process-node"><span>@Icon("package-check")</span><small>05</small></div>
+						<div><small>PROOF / 05</small><h3>Comprove e encerre</h3><p>A conclusão da entrega e os comprovantes previstos consolidam o histórico para consulta e revisão posterior pela operação.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+				</ol>
+				<aside class="cargo-truck-process-records" aria-label="Informações que podem compor o histórico da viagem">
+					<div class="cargo-truck-process-records-head"><small>TRIP / RECORD</small><strong>O que fica conectado à viagem</strong></div>
+					<div><span>@Icon("user-check")</span><p><small>MOTORISTA</small><strong>Identidade e vínculo</strong></p><i></i></div>
+					<div><span>@Icon("map-pin")</span><p><small>POSIÇÃO</small><strong>Localização e contexto</strong></p><i></i></div>
+					<div><span>@Icon("coffee")</span><p><small>EVENTOS</small><strong>Paradas e ocorrências</strong></p><i></i></div>
+					<div><span>@Icon("package-check")</span><p><small>ATIVIDADES</small><strong>Coletas e entregas</strong></p><i></i></div>
+					<div><span>@Icon("history")</span><p><small>HISTÓRICO</small><strong>Linha do tempo consolidada</strong></p><i></i></div>
+					<div class="cargo-truck-process-records-result"><small>RESULTADO</small><strong>Uma viagem reconstruível do início ao fim</strong></div>
+				</aside>
+			</div>
+		</div>
+	</section>
+}
