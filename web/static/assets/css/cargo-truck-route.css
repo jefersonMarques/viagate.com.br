@@ -1,14 +1,14 @@
-.cargo-truck-route-panel {
+.cargo-truck-timeline-panel {
   min-height: 560px;
   overflow: hidden;
   background: #081827;
   box-shadow: 30px 30px 0 rgba(20, 48, 71, 0.3), 0 45px 90px rgba(0, 0, 0, 0.34);
 }
 
-.cargo-truck-route-topbar,
-.cargo-truck-route-footer {
+.cargo-truck-timeline-topbar,
+.cargo-truck-timeline-footer {
   position: relative;
-  z-index: 4;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,7 +16,7 @@
   min-height: 52px;
   padding: 0 18px;
   color: #607b90;
-  background: rgba(5, 17, 29, 0.92);
+  background: rgba(5, 17, 29, 0.94);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.5rem;
   font-weight: 760;
@@ -24,424 +24,609 @@
   text-transform: uppercase;
 }
 
-.cargo-truck-route-topbar {
+.cargo-truck-timeline-topbar {
   border-bottom: 1px solid #243c50;
 }
 
-.cargo-truck-route-topbar > span,
-.cargo-truck-route-topbar > small,
-.cargo-truck-route-footer > span {
+.cargo-truck-timeline-topbar > span,
+.cargo-truck-timeline-topbar > small,
+.cargo-truck-timeline-footer > span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-.cargo-truck-route-topbar > span i,
-.cargo-truck-route-topbar > small::before,
-.cargo-truck-route-footer > span::before {
+.cargo-truck-timeline-topbar > span i,
+.cargo-truck-timeline-topbar > small::before,
+.cargo-truck-timeline-footer > span::before {
   width: 6px;
   height: 6px;
   content: "";
   background: var(--orange-500);
 }
 
-.cargo-truck-route-topbar > span i {
+.cargo-truck-timeline-topbar > span i {
   box-shadow: 0 0 9px rgba(255, 100, 0, 0.68);
 }
 
-.cargo-truck-route-topbar > small {
+.cargo-truck-timeline-topbar > small {
   color: #ff9858;
   font-size: inherit;
 }
 
-.cargo-truck-route-stage {
+.cargo-truck-timeline-summary {
   position: relative;
-  z-index: 2;
-  min-height: 456px;
-  background:
-    linear-gradient(rgba(87, 119, 143, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(87, 119, 143, 0.04) 1px, transparent 1px),
-    #071521;
-  background-size: 34px 34px;
-}
-
-.cargo-truck-route-stage::before,
-.cargo-truck-route-stage::after {
-  position: absolute;
-  z-index: 1;
-  content: "";
-  pointer-events: none;
-}
-
-.cargo-truck-route-stage::before {
-  inset: 18px;
-  border: 1px solid rgba(71, 101, 124, 0.18);
-}
-
-.cargo-truck-route-stage::after {
-  top: 50%;
-  right: 18px;
-  left: 18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 100, 0, 0.08), transparent);
-}
-
-.cargo-truck-route-map {
-  position: relative;
-  z-index: 2;
-  min-height: 456px;
-}
-
-.cargo-truck-route-svg {
-  display: block;
-  width: 100%;
-  height: 456px;
-}
-
-.cargo-truck-map-district {
-  fill: rgba(71, 101, 124, 0.075);
-  stroke: rgba(87, 119, 143, 0.16);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.cargo-truck-map-road,
-.cargo-truck-map-link {
-  fill: none;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
-  vector-effect: non-scaling-stroke;
-}
-
-.cargo-truck-map-road.is-primary {
-  stroke: #35556d;
-  stroke-width: 1.8;
-  opacity: 0.56;
-}
-
-.cargo-truck-map-road.is-secondary {
-  stroke: #263f52;
-  stroke-width: 1;
-  opacity: 0.56;
-}
-
-.cargo-truck-map-link {
-  stroke: #304c61;
-  stroke-width: 1.15;
-  stroke-dasharray: 4 5;
-  opacity: 0.58;
-}
-
-.cargo-truck-map-label {
-  fill: #526d81;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 9px;
-  font-weight: 760;
-  letter-spacing: 1.6px;
-}
-
-.cargo-truck-route-base,
-.cargo-truck-route-progress {
-  fill: none;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
-  vector-effect: non-scaling-stroke;
-}
-
-.cargo-truck-route-base {
-  stroke: rgba(255, 100, 0, 0.16);
-  stroke-width: 4;
-}
-
-.cargo-truck-route-progress {
-  stroke: var(--orange-500);
-  stroke-width: 4;
-  filter: drop-shadow(0 0 6px rgba(255, 100, 0, 0.36));
-}
-
-.cargo-truck-route-node {
-  fill: #071521;
-  stroke: #4a687e;
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-}
-
-.cargo-truck-route-node.is-done {
-  fill: #0d332b;
-  stroke: #58d89d;
-}
-
-.cargo-truck-route-marker-ring {
-  fill: rgba(255, 100, 0, 0.1);
-  stroke: rgba(255, 100, 0, 0.46);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-
-.cargo-truck-route-marker-dot {
-  fill: var(--orange-500);
-  filter: drop-shadow(0 0 7px rgba(255, 100, 0, 0.8));
-}
-
-.cargo-truck-route-marker {
-  opacity: 0;
-}
-
-.cargo-truck-route-marker.is-visible {
-  opacity: 1;
-}
-
-.cargo-truck-route-event {
-  position: absolute;
-  z-index: 4;
-  display: grid;
-  min-width: 128px;
-  gap: 3px;
-  padding: 8px 10px 9px;
-  color: #637e92;
-  background: rgba(7, 21, 33, 0.92);
-  border: 1px solid rgba(66, 96, 119, 0.32);
-  border-left: 2px solid #38566c;
-  opacity: 0.24;
-  transform: translateY(5px);
-  transition: opacity 220ms ease, transform 220ms ease, border-color 220ms ease, background 220ms ease;
-}
-
-.cargo-truck-route-event small,
-.cargo-truck-route-event strong {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  text-transform: uppercase;
-}
-
-.cargo-truck-route-event small {
-  color: #506a7e;
-  font-size: 0.42rem;
-  font-weight: 760;
-  letter-spacing: 0.08em;
-}
-
-.cargo-truck-route-event strong {
-  color: #9eb1bf;
-  font-size: 0.58rem;
-  font-weight: 760;
-  letter-spacing: 0.03em;
-}
-
-.cargo-truck-route-event.is-done {
-  background: rgba(8, 35, 37, 0.9);
-  border-color: rgba(77, 211, 145, 0.28);
-  border-left-color: #4dd391;
-  opacity: 0.78;
-  transform: translateY(0);
-}
-
-.cargo-truck-route-event.is-done small {
-  color: #5b8f7c;
-}
-
-.cargo-truck-route-event.is-done strong {
-  color: #73cba2;
-}
-
-.cargo-truck-route-event.is-active {
-  color: #ff9858;
-  background: #0a1f31;
-  border-color: rgba(255, 100, 0, 0.45);
-  border-left-color: var(--orange-500);
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cargo-truck-route-event.is-active small,
-.cargo-truck-route-event.is-active strong {
-  color: #ff9858;
-}
-
-.cargo-truck-route-event.event-start {
-  left: 4%;
-  top: 73%;
-}
-
-.cargo-truck-route-event.event-meal {
-  left: 29%;
-  top: 61%;
-}
-
-.cargo-truck-route-event.event-fuel {
-  left: 56%;
-  top: 43%;
-}
-
-.cargo-truck-route-event.event-delivery {
-  right: 4%;
-  top: 18%;
-}
-
-.cargo-truck-route-hud {
-  position: absolute;
   z-index: 5;
-  top: 22px;
-  left: 22px;
   display: grid;
+  grid-template-columns: 1.35fr 0.55fr 0.9fr;
+  min-height: 68px;
+  background: #071521;
+  border-bottom: 1px solid rgba(64, 92, 113, 0.32);
+}
+
+.cargo-truck-timeline-summary > div {
+  display: grid;
+  align-content: center;
   gap: 4px;
-  padding: 10px 12px;
-  color: #698396;
-  background: rgba(5, 18, 29, 0.82);
-  border-left: 2px solid var(--orange-500);
+  padding: 11px 16px;
+  border-right: 1px solid rgba(64, 92, 113, 0.28);
+}
+
+.cargo-truck-timeline-summary > div:last-child {
+  border-right: 0;
+}
+
+.cargo-truck-timeline-summary small,
+.cargo-truck-timeline-summary strong {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   text-transform: uppercase;
 }
 
-.cargo-truck-route-hud small {
+.cargo-truck-timeline-summary small {
   color: #526c80;
   font-size: 0.42rem;
   font-weight: 760;
   letter-spacing: 0.08em;
 }
 
-.cargo-truck-route-hud strong {
-  color: #dbe5eb;
-  font-size: 0.66rem;
-}
-
-.cargo-truck-route-hud span {
-  color: #ff9858;
-  font-size: 0.43rem;
+.cargo-truck-timeline-summary strong {
+  color: #d8e3e9;
+  font-size: 0.62rem;
   font-weight: 760;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
 }
 
-.cargo-truck-route-footer {
+.cargo-truck-timeline-viewport {
+  position: relative;
+  z-index: 2;
+  height: 390px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(87, 119, 143, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 119, 143, 0.045) 1px, transparent 1px),
+    #071521;
+  background-size: 34px 34px;
+}
+
+.cargo-truck-timeline-viewport::before,
+.cargo-truck-timeline-viewport::after {
+  position: absolute;
+  z-index: 6;
+  right: 0;
+  left: 0;
+  height: 48px;
+  content: "";
+  pointer-events: none;
+}
+
+.cargo-truck-timeline-viewport::before {
+  top: 0;
+  background: linear-gradient(#071521, rgba(7, 21, 33, 0));
+}
+
+.cargo-truck-timeline-viewport::after {
+  bottom: 0;
+  background: linear-gradient(rgba(7, 21, 33, 0), #071521);
+}
+
+.cargo-truck-timeline-track {
+  position: relative;
+  min-height: 850px;
+  padding: 58px 20px 76px;
+  transition: transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.cargo-truck-timeline-axis {
+  position: absolute;
+  z-index: 1;
+  top: 34px;
+  bottom: 34px;
+  left: 50%;
+  width: 1px;
+  background: #294458;
+  transform: translateX(-50%);
+}
+
+.cargo-truck-timeline-axis::before,
+.cargo-truck-timeline-axis::after {
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  content: "";
+  background: #294458;
+  transform: translate(-50%, -50%);
+}
+
+.cargo-truck-timeline-axis::before {
+  top: 0;
+}
+
+.cargo-truck-timeline-axis::after {
+  top: 100%;
+}
+
+.cargo-truck-timeline-axis > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background: var(--orange-500);
+  box-shadow: 0 0 9px rgba(255, 100, 0, 0.28);
+  transform: translateX(-0.5px);
+  transition: height 520ms cubic-bezier(0.22, 1, 0.36, 1), background 240ms ease;
+}
+
+.cargo-truck-timeline-event {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: auto auto auto 1fr;
+  grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1fr);
+  align-items: center;
+  min-height: 145px;
+  opacity: 0.28;
+  transition: opacity 280ms ease;
+}
+
+.cargo-truck-timeline-card {
+  position: relative;
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+  padding: 13px 14px 12px;
+  background: rgba(8, 25, 39, 0.88);
+  border: 1px solid rgba(65, 94, 116, 0.34);
+  transition: border-color 260ms ease, background 260ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease;
+}
+
+.cargo-truck-timeline-event.is-left .cargo-truck-timeline-card {
+  grid-column: 1;
+  transform: translateX(-18px);
+}
+
+.cargo-truck-timeline-event.is-right .cargo-truck-timeline-card {
+  grid-column: 3;
+  transform: translateX(18px);
+}
+
+.cargo-truck-timeline-event.is-left .cargo-truck-timeline-card::after,
+.cargo-truck-timeline-event.is-right .cargo-truck-timeline-card::after {
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  content: "";
+  background: #365469;
+}
+
+.cargo-truck-timeline-event.is-left .cargo-truck-timeline-card::after {
+  right: -25px;
+}
+
+.cargo-truck-timeline-event.is-right .cargo-truck-timeline-card::after {
+  left: -25px;
+}
+
+.cargo-truck-timeline-node {
+  position: relative;
+  z-index: 3;
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  justify-self: center;
+  background: #071521;
+  border: 1px solid #405e73;
+  transition: border-color 240ms ease, background 240ms ease, box-shadow 240ms ease;
+}
+
+.cargo-truck-timeline-node > span {
+  width: 6px;
+  height: 6px;
+  background: #405e73;
+  transition: background 240ms ease;
+}
+
+.cargo-truck-timeline-card-head {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.cargo-truck-timeline-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #7890a2;
+  border: 1px solid rgba(86, 116, 138, 0.34);
+  transition: color 240ms ease, border-color 240ms ease;
+}
+
+.cargo-truck-timeline-icon .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.cargo-truck-timeline-card-head > div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cargo-truck-timeline-card-head small,
+.cargo-truck-timeline-card-head strong,
+.cargo-truck-timeline-meta,
+.cargo-truck-timeline-status {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.cargo-truck-timeline-card-head small {
+  color: #536f83;
+  font-size: 0.42rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+}
+
+.cargo-truck-timeline-card-head strong {
+  overflow: hidden;
+  color: #bac9d3;
+  font-size: 0.66rem;
+  font-weight: 760;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cargo-truck-timeline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  color: #6f8798;
+  font-size: 0.43rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.cargo-truck-timeline-meta span + span::before {
+  margin-right: 8px;
+  color: #3d596d;
+  content: "/";
+}
+
+.cargo-truck-timeline-card p {
+  margin: 0;
+  color: #7790a2;
+  font-size: 0.62rem;
+  line-height: 1.45;
+}
+
+.cargo-truck-timeline-status {
+  display: flex;
+  align-items: center;
+  min-height: 16px;
+  color: #587286;
+  font-size: 0.42rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-status-processing,
+.cargo-truck-status-done {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.cargo-truck-status-processing i {
+  width: 4px;
+  height: 4px;
+  background: #ff9858;
+  opacity: 0.24;
+  animation: cargo-truck-processing 800ms steps(1, end) infinite;
+}
+
+.cargo-truck-status-processing i:nth-of-type(2) {
+  animation-delay: 120ms;
+}
+
+.cargo-truck-status-processing i:nth-of-type(3) {
+  animation-delay: 240ms;
+}
+
+.cargo-truck-status-processing i:nth-of-type(4) {
+  animation-delay: 360ms;
+}
+
+.cargo-truck-status-done b {
+  display: grid;
+  place-items: center;
+  width: 13px;
+  height: 13px;
+  color: #071521;
+  background: #58d89d;
+  font-size: 0.54rem;
+  line-height: 1;
+}
+
+.cargo-truck-timeline-event.is-active {
+  opacity: 1;
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-card,
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-card {
+  transform: translateX(0);
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-card {
+  background: #0a1f31;
+  border-color: rgba(255, 100, 0, 0.48);
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-node {
+  background: #0c2030;
+  border-color: var(--orange-500);
+  box-shadow: 0 0 12px rgba(255, 100, 0, 0.25);
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-node > span {
+  background: var(--orange-500);
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-icon {
+  color: #ff9858;
+  border-color: rgba(255, 100, 0, 0.42);
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-card-head small,
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-card-head strong,
+.cargo-truck-timeline-event.is-active .cargo-truck-timeline-status {
+  color: #ff9858;
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-status-pending {
+  display: none;
+}
+
+.cargo-truck-timeline-event.is-active .cargo-truck-status-processing {
+  display: inline-flex;
+}
+
+.cargo-truck-timeline-event.is-done {
+  opacity: 0.82;
+}
+
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-card {
+  background: rgba(8, 35, 37, 0.86);
+  border-color: rgba(77, 211, 145, 0.28);
+}
+
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-node {
+  background: #0b2826;
+  border-color: #58d89d;
+}
+
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-node > span {
+  background: #58d89d;
+}
+
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-icon {
+  color: #65d9a0;
+  border-color: rgba(77, 211, 145, 0.28);
+}
+
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-card-head small,
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-card-head strong,
+.cargo-truck-timeline-event.is-done .cargo-truck-timeline-status {
+  color: #65d9a0;
+}
+
+.cargo-truck-timeline-event.is-done .cargo-truck-status-pending,
+.cargo-truck-timeline-event.is-done .cargo-truck-status-processing {
+  display: none;
+}
+
+.cargo-truck-timeline-event.is-done .cargo-truck-status-done {
+  display: inline-flex;
+}
+
+.cargo-truck-timeline-footer {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
   border-top: 1px solid #21394c;
 }
 
-.cargo-truck-route-footer > span {
+.cargo-truck-timeline-footer > span {
   color: #607a8f;
 }
 
-.cargo-truck-route-footer > span::before {
+.cargo-truck-timeline-footer > span::before {
   width: 4px;
   height: 4px;
   background: #496478;
 }
 
-.cargo-truck-route-footer strong {
+.cargo-truck-timeline-footer strong {
   justify-self: end;
   color: #ff9858;
   font-size: inherit;
 }
 
-.cargo-truck-route-panel.is-complete .cargo-truck-route-topbar > small,
-.cargo-truck-route-panel.is-complete .cargo-truck-route-footer strong,
-.cargo-truck-route-panel.is-complete .cargo-truck-route-hud span {
+.cargo-truck-timeline-panel.is-complete .cargo-truck-timeline-topbar > small,
+.cargo-truck-timeline-panel.is-complete .cargo-truck-timeline-footer strong,
+.cargo-truck-timeline-panel.is-complete .cargo-truck-timeline-summary > div:last-child strong {
   color: #65d9a0;
 }
 
-.cargo-truck-route-panel.is-complete .cargo-truck-route-topbar > small::before {
-  background: #4dd391;
+.cargo-truck-timeline-panel.is-complete .cargo-truck-timeline-topbar > small::before,
+.cargo-truck-timeline-panel.is-complete .cargo-truck-timeline-axis > span {
+  background: #58d89d;
+}
+
+@keyframes cargo-truck-processing {
+  0%, 24% { opacity: 1; }
+  25%, 100% { opacity: 0.24; }
 }
 
 @media (max-width: 860px) {
-  .cargo-truck-route-panel {
+  .cargo-truck-timeline-panel {
     min-height: 0;
     box-shadow: 14px 16px 0 rgba(20, 48, 71, 0.2), 0 28px 56px rgba(0, 0, 0, 0.26);
   }
 
-  .cargo-truck-route-stage,
-  .cargo-truck-route-map,
-  .cargo-truck-route-svg {
-    min-height: 420px;
+  .cargo-truck-timeline-summary {
+    grid-template-columns: 1fr 0.52fr;
+  }
+
+  .cargo-truck-timeline-summary > div:last-child {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(64, 92, 113, 0.28);
+  }
+
+  .cargo-truck-timeline-viewport {
     height: 420px;
   }
 
-  .cargo-truck-route-event {
-    min-width: 112px;
-    padding: 7px 8px;
+  .cargo-truck-timeline-track {
+    min-height: 900px;
   }
 
-  .cargo-truck-route-event.event-start {
-    left: 2%;
+  .cargo-truck-timeline-event {
+    grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
   }
 
-  .cargo-truck-route-event.event-meal {
-    left: 25%;
+  .cargo-truck-timeline-card {
+    padding: 11px 12px;
   }
 
-  .cargo-truck-route-event.event-fuel {
-    left: 52%;
+  .cargo-truck-timeline-footer {
+    grid-template-columns: auto auto;
   }
 
-  .cargo-truck-route-footer {
-    grid-template-columns: repeat(3, auto);
-  }
-
-  .cargo-truck-route-footer strong {
+  .cargo-truck-timeline-footer strong {
     grid-column: 1 / -1;
     justify-self: start;
   }
 }
 
-@media (max-width: 560px) {
-  .cargo-truck-route-topbar,
-  .cargo-truck-route-footer {
+@media (max-width: 620px) {
+  .cargo-truck-timeline-topbar,
+  .cargo-truck-timeline-footer {
     padding-inline: 13px;
   }
 
-  .cargo-truck-route-stage,
-  .cargo-truck-route-map,
-  .cargo-truck-route-svg {
-    min-height: 390px;
-    height: 390px;
+  .cargo-truck-timeline-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 10px;
   }
 
-  .cargo-truck-route-hud {
-    top: 14px;
-    left: 14px;
+  .cargo-truck-timeline-summary {
+    grid-template-columns: 1fr 0.7fr;
   }
 
-  .cargo-truck-map-label {
-    font-size: 8px;
+  .cargo-truck-timeline-viewport {
+    height: 430px;
   }
 
-  .cargo-truck-route-event {
-    min-width: 0;
-    max-width: 112px;
+  .cargo-truck-timeline-track {
+    min-height: 910px;
+    padding: 50px 14px 70px 28px;
   }
 
-  .cargo-truck-route-event.event-start {
-    top: 73%;
+  .cargo-truck-timeline-axis {
+    left: 30px;
   }
 
-  .cargo-truck-route-event.event-meal {
-    left: 22%;
-    top: 61%;
+  .cargo-truck-timeline-event {
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: 156px;
   }
 
-  .cargo-truck-route-event.event-fuel {
-    left: 49%;
-    top: 43%;
+  .cargo-truck-timeline-event.is-left .cargo-truck-timeline-card,
+  .cargo-truck-timeline-event.is-right .cargo-truck-timeline-card {
+    grid-column: 2;
+    transform: translateX(14px);
   }
 
-  .cargo-truck-route-event.event-delivery {
-    right: 2%;
-    top: 18%;
+  .cargo-truck-timeline-event.is-active .cargo-truck-timeline-card,
+  .cargo-truck-timeline-event.is-done .cargo-truck-timeline-card {
+    transform: translateX(0);
   }
 
-  .cargo-truck-route-footer {
+  .cargo-truck-timeline-node {
+    grid-column: 1;
+  }
+
+  .cargo-truck-timeline-event.is-left .cargo-truck-timeline-card::after,
+  .cargo-truck-timeline-event.is-right .cargo-truck-timeline-card::after {
+    top: 50%;
+    right: auto;
+    left: -18px;
+    width: 17px;
+  }
+
+  .cargo-truck-timeline-card-head {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .cargo-truck-timeline-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cargo-truck-timeline-card-head strong {
+    font-size: 0.61rem;
+  }
+
+  .cargo-truck-timeline-footer {
     grid-template-columns: 1fr;
     gap: 6px;
     padding-block: 10px;
   }
 
-  .cargo-truck-route-footer strong {
+  .cargo-truck-timeline-footer strong {
     grid-column: auto;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cargo-truck-route-event {
+  .cargo-truck-timeline-track,
+  .cargo-truck-timeline-axis > span,
+  .cargo-truck-timeline-event,
+  .cargo-truck-timeline-card,
+  .cargo-truck-timeline-node,
+  .cargo-truck-timeline-icon {
     transition: none !important;
+  }
+
+  .cargo-truck-status-processing i {
+    animation: none !important;
   }
 }
