@@ -1,11 +1,23 @@
+.tools-mega-menu .tool-preview {
+  background:
+    radial-gradient(circle at 55% 15%, rgba(104, 145, 174, 0.14), transparent 42%),
+    #163247;
+}
+
+.tools-mega-menu .tool-preview::before {
+  background-image:
+    linear-gradient(rgba(176, 199, 215, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 199, 215, 0.055) 1px, transparent 1px);
+}
+
 .tool-function-stage {
   position: relative;
   z-index: 2;
   min-height: 390px;
   overflow: hidden;
-  background: #071522;
-  border: 1px solid #263d50;
-  box-shadow: 15px 15px 0 rgba(4, 15, 25, 0.34);
+  background: #10283a;
+  border: 1px solid #48677c;
+  box-shadow: 15px 15px 0 rgba(4, 15, 25, 0.26);
 }
 
 .tool-function-stage::before {
@@ -13,8 +25,8 @@
   inset: 0;
   content: "";
   background-image:
-    linear-gradient(rgba(106, 138, 162, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(106, 138, 162, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(185, 207, 222, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(185, 207, 222, 0.05) 1px, transparent 1px);
   background-size: 28px 28px;
   pointer-events: none;
 }
@@ -52,7 +64,7 @@
   gap: 18px;
   min-height: 46px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #22394c;
+  border-bottom: 1px solid #45657b;
 }
 
 .tool-function-summary > div {
@@ -75,7 +87,7 @@
 }
 
 .tool-function-summary strong {
-  color: #edf3f7;
+  color: #f3f7fa;
   font-size: 1rem;
   letter-spacing: 0.015em;
 }
@@ -84,7 +96,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #668095;
+  color: #9eb1bf;
   font-size: 0.48rem;
   white-space: nowrap;
 }
@@ -103,8 +115,8 @@
   gap: 1px;
   min-height: 0;
   padding: 1px;
-  background: #263d50;
-  border: 1px solid rgba(78, 106, 127, 0.24);
+  background: #507086;
+  border: 1px solid #507086;
 }
 
 .tool-function-card {
@@ -115,7 +127,7 @@
   min-width: 0;
   padding: 14px 15px 13px;
   overflow: hidden;
-  background: rgba(8, 25, 40, 0.98);
+  background: #1b3b50;
   opacity: 0;
   transform: translateY(7px);
 }
@@ -127,8 +139,8 @@
   width: 18px;
   height: 18px;
   content: "";
-  border-right: 1px solid rgba(255, 100, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 100, 0, 0.2);
+  border-right: 1px solid rgba(255, 100, 0, 0.34);
+  border-bottom: 1px solid rgba(255, 100, 0, 0.34);
 }
 
 .tool-function-panel.is-active .tool-function-card {
@@ -165,7 +177,7 @@
 }
 
 .tool-function-card-top > span:first-child {
-  color: #536d82;
+  color: #89a2b4;
   font-size: 0.47rem;
 }
 
@@ -174,9 +186,9 @@
   place-items: center;
   width: 30px;
   height: 30px;
-  color: #d5dfe7;
-  background: #0d2639;
-  border: 1px solid #2d4659;
+  color: #edf3f7;
+  background: #244b62;
+  border: 1px solid #5d7d91;
 }
 
 .tool-function-icon .ui-icon {
@@ -187,14 +199,14 @@
 
 .tool-function-card strong {
   margin-bottom: 5px;
-  color: #e0e8ee;
+  color: #f0f5f8;
   font-size: 0.73rem;
   line-height: 1.2;
 }
 
 .tool-function-card > small {
   max-width: 250px;
-  color: #70879a;
+  color: #a9bdca;
   font-size: 0.59rem;
   line-height: 1.42;
 }
@@ -203,7 +215,7 @@
   position: relative;
   height: 8px;
   overflow: hidden;
-  border-top: 1px solid #1e3446;
+  border-top: 1px solid #45657b;
 }
 
 .tool-function-trace::before {
@@ -213,7 +225,7 @@
   left: 0;
   height: 1px;
   content: "";
-  background: rgba(85, 112, 132, 0.2);
+  background: rgba(166, 192, 209, 0.24);
 }
 
 .tool-function-trace span {
@@ -222,17 +234,23 @@
   left: -22%;
   width: 22%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(255, 100, 0, 0.72), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 100, 0, 0.82), transparent);
   animation: toolFunctionTrace 3.6s linear infinite;
 }
 
+.tools-mega-menu .tool-preview-head,
+.tools-mega-menu .tool-preview-foot {
+  color: #91a9ba;
+}
+
 .tool-preview-head > span:last-child {
-  color: #4d8b70;
+  color: #66c995;
 }
 
 .tool-preview-foot strong {
   max-width: 390px;
   overflow: hidden;
+  color: #c3d1da;
   text-align: right;
   text-overflow: ellipsis;
   white-space: nowrap;
