@@ -1,0 +1,187 @@
+.prevention-plate {
+  grid-template-rows: 24px minmax(68px, 1fr);
+  width: min(100%, 240px);
+  min-height: 96px;
+  padding: 0;
+  overflow: hidden;
+  color: #dce7ed;
+  background: #081827;
+  border: 1px solid #4d6d83;
+  box-shadow: 10px 10px 0 rgba(20, 48, 71, 0.2);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.prevention-plate::before {
+  content: none;
+}
+
+.prevention-plate-band {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 24px;
+  padding: 0 9px;
+  color: #bdd0dc;
+  background: #173f63;
+  border-bottom: 1px solid #4d7088;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.38rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 220ms ease, color 220ms ease;
+}
+
+.prevention-plate-band small {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.prevention-plate-band span {
+  color: #799ab0;
+  font-size: 0.34rem;
+  letter-spacing: 0.08em;
+}
+
+.prevention-plate-field {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 68px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(91, 122, 144, 0.18) 0,
+      rgba(91, 122, 144, 0.18) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    #091a28;
+  transition: background 220ms ease;
+}
+
+.prevention-plate-field::before,
+.prevention-plate-field::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.prevention-plate-field::before {
+  inset: 7px;
+  border: 1px solid rgba(104, 137, 160, 0.16);
+}
+
+.prevention-plate-field::after {
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(94, 126, 148, 0.1);
+}
+
+.prevention-plate strong {
+  position: relative;
+  z-index: 2;
+  color: #dce7ed;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: clamp(1.45rem, 2.45vw, 1.95rem);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  transition: color 220ms ease;
+}
+
+.prevention-vehicle-panel.is-scanning .prevention-plate {
+  border-color: rgba(255, 100, 0, 0.68);
+  box-shadow: 10px 10px 0 rgba(20, 48, 71, 0.2), inset 0 0 0 1px rgba(255, 100, 0, 0.06);
+}
+
+.prevention-vehicle-panel.is-scanning .prevention-plate-band {
+  border-bottom-color: rgba(255, 152, 88, 0.5);
+}
+
+.prevention-vehicle-panel.is-scanning .prevention-plate-field {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 100, 0, 0.12) 0,
+      rgba(255, 100, 0, 0.12) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    #091a28;
+}
+
+.prevention-vehicle-panel.is-complete.has-warning .prevention-plate {
+  border-color: #ff7b2c;
+  box-shadow: 10px 10px 0 rgba(20, 48, 71, 0.2), inset 0 0 0 1px rgba(255, 100, 0, 0.08);
+}
+
+.prevention-vehicle-panel.is-complete.has-warning .prevention-plate-band {
+  color: #ffd3b8;
+  border-bottom-color: rgba(255, 123, 44, 0.7);
+}
+
+.prevention-vehicle-panel.is-complete.has-warning .prevention-plate-field {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 100, 0, 0.14) 0,
+      rgba(255, 100, 0, 0.14) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    #091a28;
+}
+
+.prevention-vehicle-panel.is-complete.has-warning .prevention-plate strong {
+  color: #ff9858;
+}
+
+.prevention-vehicle-panel.is-complete:not(.has-warning) .prevention-plate {
+  border-color: #4dd391;
+  box-shadow: 10px 10px 0 rgba(20, 48, 71, 0.2), inset 0 0 0 1px rgba(77, 211, 145, 0.08);
+}
+
+.prevention-vehicle-panel.is-complete:not(.has-warning) .prevention-plate-band {
+  color: #c9efdd;
+  border-bottom-color: rgba(77, 211, 145, 0.62);
+}
+
+.prevention-vehicle-panel.is-complete:not(.has-warning) .prevention-plate-field {
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(77, 211, 145, 0.12) 0,
+      rgba(77, 211, 145, 0.12) 1px,
+      transparent 1px,
+      transparent 9px
+    ),
+    #091a28;
+}
+
+.prevention-vehicle-panel.is-complete:not(.has-warning) .prevention-plate strong {
+  color: #7be0ad;
+}
+
+@media (max-width: 560px) {
+  .prevention-plate {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prevention-plate,
+  .prevention-plate-band,
+  .prevention-plate-field,
+  .prevention-plate strong {
+    transition: none !important;
+  }
+}
