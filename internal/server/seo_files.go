@@ -43,10 +43,11 @@ type sitemapURL struct {
 
 func (application *Application) sitemap(response http.ResponseWriter, request *http.Request) {
 	baseURL := strings.TrimRight(application.config.SiteURL, "/")
-	const siteUpdatedAt = "2026-08-07"
+	const siteUpdatedAt = "2026-08-20"
 	urls := []sitemapURL{
 		{Location: baseURL + "/", LastModified: siteUpdatedAt, Change: "weekly", Priority: "1.0"},
 		{Location: baseURL + "/solucoes", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.9"},
+		{Location: baseURL + "/ferramentas", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.9"},
 		{Location: baseURL + "/sobre", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.6"},
 		{Location: baseURL + "/blog", LastModified: siteUpdatedAt, Change: "weekly", Priority: "0.8"},
 		{Location: baseURL + "/contato", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.7"},
