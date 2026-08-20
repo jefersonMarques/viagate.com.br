@@ -1,26 +1,22 @@
-/* Visual assets usados nos previews das ferramentas. */
-.tool-preview-canvas[data-tool="cargo-score"] {
+/* Fundo técnico aplicado somente à área ocupada pelo asset visual. */
+.tool-preview-asset,
+.tool-catalog-asset {
+  box-sizing: border-box;
+  padding: 10px;
   background:
-    radial-gradient(circle at 50% 46%, rgba(255, 100, 0, 0.09), transparent 34%),
+    radial-gradient(circle at 50% 46%, rgba(255, 100, 0, 0.07), transparent 38%),
     #07131f;
+  border: 1px solid #294155;
+  box-shadow: inset 0 0 28px rgba(10, 31, 47, 0.55);
+}
+
+.tool-preview-asset {
   border-color: #243b4f;
 }
 
-.tool-preview-canvas[data-tool="cargo-score"]::before {
-  background-image:
-    linear-gradient(rgba(111, 143, 166, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(111, 143, 166, 0.055) 1px, transparent 1px);
-}
-
-.tool-catalog-visual[data-tool-catalog-visual="pesquisa-cadastral-de-motoristas"] .tool-catalog-placeholder {
-  background:
-    radial-gradient(circle at 50% 46%, rgba(255, 100, 0, 0.08), transparent 35%),
-    #07131f;
-  border-color: #294155;
-}
-
-.tool-catalog-visual[data-tool-catalog-visual="pesquisa-cadastral-de-motoristas"] .tool-catalog-placeholder::before {
-  background-image:
-    linear-gradient(rgba(111, 143, 166, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(111, 143, 166, 0.055) 1px, transparent 1px);
+@media (max-width: 720px) {
+  .tool-preview-asset,
+  .tool-catalog-asset {
+    padding: 7px;
+  }
 }
