@@ -52,6 +52,7 @@ templ Layout(meta site.PageMeta) {
 			<link rel="stylesheet" href="/assets/css/cargo-score-verification.css"/>
 			<link rel="stylesheet" href="/assets/css/cargo-authenticator.css"/>
 			<link rel="stylesheet" href="/assets/css/cargo-authenticator-gate.css"/>
+			<link rel="stylesheet" href="/assets/css/cargo-truck-route.css"/>
 			<script src="/assets/js/site.js" defer></script>
 			<script src="/assets/js/risk-engine-profile.js" defer></script>
 			<script src="/assets/js/biometric-flow.js" defer></script>
@@ -59,6 +60,7 @@ templ Layout(meta site.PageMeta) {
 			<script src="/assets/js/header-mega-menu.js" defer></script>
 			<script src="/assets/js/cargo-score-identity-hero.js" defer></script>
 			<script src="/assets/js/cargo-authenticator.js" defer></script>
+			<script src="/assets/js/cargo-truck-route.js" defer></script>
 			if meta.Schema != "" {
 				@templ.Raw("<script type=\"application/ld+json\">" + meta.Schema + "</script>")
 			}
