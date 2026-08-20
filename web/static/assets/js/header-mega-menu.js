@@ -1,3 +1,75 @@
+const toolVisualAssets = {
+  "cargo-score": "/assets/images/tools/cargo-score.svg"
+};
+
+const createToolPreviewImage = (container, className) => {
+  if (!(container instanceof HTMLElement)) {
+    return null;
+  }
+
+  const existingImage = container.querySelector(`.${className}`);
+  if (existingImage instanceof HTMLImageElement) {
+    return existingImage;
+  }
+
+  const image = document.createElement("img");
+  image.className = className;
+  image.alt = "";
+  image.setAttribute("aria-hidden", "true");
+  image.style.position = "absolute";
+  image.style.zIndex = "3";
+  image.style.inset = "18px";
+  image.style.width = "calc(100% - 36px)";
+  image.style.height = "calc(100% - 36px)";
+  image.style.objectFit = "contain";
+  image.style.opacity = "0";
+  image.style.transform = "translateY(6px) scale(.985)";
+  image.style.transition = "opacity 160ms ease, transform 160ms ease";
+  image.style.pointerEvents = "none";
+  container.append(image);
+
+  return image;
+};
+
+const initializeToolCatalogVisuals = () => {
+  const cargoScoreVisual = document.querySelector('[data-tool-catalog-visual="pesquisa-cadastral-de-motoristas"]');
+  if (!(cargoScoreVisual instanceof HTMLElement)) {
+    return;
+  }
+
+  const placeholder = cargoScoreVisual.querySelector(".tool-catalog-placeholder");
+  if (!(placeholder instanceof HTMLElement)) {
+    return;
+  }
+
+  const image = document.createElement("img");
+  image.src = toolVisualAssets["cargo-score"];
+  image.alt = "Visual industrial do Cargo Score";
+  image.loading = "lazy";
+  image.decoding = "async";
+  image.style.position = "relative";
+  image.style.zIndex = "2";
+  image.style.width = "100%";
+  image.style.height = "360px";
+  image.style.objectFit = "contain";
+  image.style.opacity = "0";
+  image.style.transform = "translateY(8px) scale(.985)";
+  image.style.transition = "opacity 260ms ease, transform 260ms ease";
+
+  Array.from(placeholder.children).forEach((child) => {
+    if (child instanceof HTMLElement) {
+      child.style.display = "none";
+    }
+  });
+
+  placeholder.append(image);
+
+  requestAnimationFrame(() => {
+    image.style.opacity = "1";
+    image.style.transform = "translateY(0) scale(1)";
+  });
+};
+
 const initializeHeaderMegaMenu = () => {
   const header = document.querySelector(".site-header");
 
@@ -105,6 +177,7 @@ const initializeHeaderMegaMenu = () => {
   const previewCode = toolMenu.querySelector("[data-tool-preview-code]");
   const previewTitle = toolMenu.querySelector("[data-tool-preview-title]");
   const previewDescription = toolMenu.querySelector("[data-tool-preview-description]");
+  const previewImage = createToolPreviewImage(previewCanvas, "tool-preview-asset");
   let previewTimerId = null;
 
   const selectTool = (option) => {
@@ -112,11 +185,17 @@ const initializeHeaderMegaMenu = () => {
     const toolCode = option.dataset.toolCode ?? "TOOL";
     const toolTitle = option.dataset.toolTitle ?? "FERRAMENTA";
     const toolDescription = option.dataset.toolDescription ?? "";
+    const visualAsset = toolVisualAssets[toolId] ?? "";
 
     options.forEach((item) => item.classList.toggle("is-active", item === option));
 
     if (previewPlaceholder instanceof HTMLElement) {
       previewPlaceholder.classList.add("is-changing");
+    }
+
+    if (previewImage instanceof HTMLImageElement) {
+      previewImage.style.opacity = "0";
+      previewImage.style.transform = "translateY(6px) scale(.985)";
     }
 
     if (previewTimerId !== null) {
@@ -140,8 +219,16 @@ const initializeHeaderMegaMenu = () => {
         previewDescription.textContent = toolDescription;
       }
 
+      if (previewImage instanceof HTMLImageElement && visualAsset !== "") {
+        previewImage.src = visualAsset;
+        previewImage.style.opacity = "1";
+        previewImage.style.transform = "translateY(0) scale(1)";
+      }
+
       if (previewPlaceholder instanceof HTMLElement) {
         previewPlaceholder.classList.remove("is-changing");
+        previewPlaceholder.style.opacity = visualAsset === "" ? "1" : "0";
+        previewPlaceholder.style.pointerEvents = visualAsset === "" ? "auto" : "none";
       }
 
       previewTimerId = null;
@@ -159,4 +246,5 @@ const initializeHeaderMegaMenu = () => {
   }
 };
 
+initializeToolCatalogVisuals();
 initializeHeaderMegaMenu();
