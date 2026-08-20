@@ -26,36 +26,71 @@ const initializeCargoTruckRouteHero = () => {
         <span data-cargo-truck-route-progress>00% DA VIAGEM</span>
       </div>
       <div class="cargo-truck-route-map">
-        <svg class="cargo-truck-route-svg" viewBox="0 0 720 430" role="img" aria-label="Rota abstrata de uma viagem logística com quatro eventos operacionais">
+        <svg class="cargo-truck-route-svg" viewBox="0 0 720 430" role="img" aria-label="Mapa operacional conceitual com rota e quatro eventos de viagem">
           <g aria-hidden="true">
-            <path class="cargo-truck-map-road" d="M28 74H194V144H332V76H484V128H688"/>
-            <path class="cargo-truck-map-road" d="M52 376H168V326H288V366H458V314H684"/>
-            <path class="cargo-truck-map-road" d="M108 28V178H50V270H166V410"/>
-            <path class="cargo-truck-map-road" d="M276 20V118H228V212H352V410"/>
-            <path class="cargo-truck-map-road" d="M470 18V92H414V198H548V410"/>
-            <path class="cargo-truck-map-road" d="M632 24V214H580V286H692"/>
-            <path class="cargo-truck-map-road is-secondary" d="M18 198H124V240H246V176H392V286H520V224H700"/>
-            <path class="cargo-truck-map-road is-secondary" d="M194 18V106H350V42H558V92"/>
-            <rect class="cargo-truck-map-block" x="126" y="94" width="48" height="28"/>
-            <rect class="cargo-truck-map-block" x="362" y="104" width="68" height="38"/>
-            <rect class="cargo-truck-map-block" x="548" y="48" width="54" height="32"/>
-            <rect class="cargo-truck-map-block" x="188" y="334" width="54" height="30"/>
-            <rect class="cargo-truck-map-block" x="466" y="326" width="62" height="34"/>
+            <rect class="cargo-truck-map-district" x="34" y="42" width="118" height="84"/>
+            <rect class="cargo-truck-map-district" x="182" y="34" width="128" height="98"/>
+            <rect class="cargo-truck-map-district" x="346" y="38" width="132" height="74"/>
+            <rect class="cargo-truck-map-district" x="518" y="36" width="142" height="94"/>
+            <rect class="cargo-truck-map-district" x="66" y="176" width="92" height="82"/>
+            <rect class="cargo-truck-map-district" x="192" y="170" width="106" height="66"/>
+            <rect class="cargo-truck-map-district" x="332" y="162" width="126" height="92"/>
+            <rect class="cargo-truck-map-district" x="500" y="172" width="146" height="78"/>
+            <rect class="cargo-truck-map-district" x="42" y="298" width="132" height="82"/>
+            <rect class="cargo-truck-map-district" x="212" y="286" width="122" height="96"/>
+            <rect class="cargo-truck-map-district" x="374" y="294" width="110" height="78"/>
+            <rect class="cargo-truck-map-district" x="522" y="286" width="136" height="92"/>
+
+            <path class="cargo-truck-map-road is-primary" d="M18 84H690"/>
+            <path class="cargo-truck-map-road is-primary" d="M18 214H690"/>
+            <path class="cargo-truck-map-road is-primary" d="M18 348H690"/>
+            <path class="cargo-truck-map-road is-primary" d="M86 16V410"/>
+            <path class="cargo-truck-map-road is-primary" d="M248 16V410"/>
+            <path class="cargo-truck-map-road is-primary" d="M426 16V410"/>
+            <path class="cargo-truck-map-road is-primary" d="M612 16V410"/>
+
+            <path class="cargo-truck-map-road is-secondary" d="M18 48H690"/>
+            <path class="cargo-truck-map-road is-secondary" d="M18 126H690"/>
+            <path class="cargo-truck-map-road is-secondary" d="M18 174H690"/>
+            <path class="cargo-truck-map-road is-secondary" d="M18 258H690"/>
+            <path class="cargo-truck-map-road is-secondary" d="M18 302H690"/>
+            <path class="cargo-truck-map-road is-secondary" d="M18 392H690"/>
+            <path class="cargo-truck-map-road is-secondary" d="M44 16V410"/>
+            <path class="cargo-truck-map-road is-secondary" d="M146 16V410"/>
+            <path class="cargo-truck-map-road is-secondary" d="M198 16V410"/>
+            <path class="cargo-truck-map-road is-secondary" d="M302 16V410"/>
+            <path class="cargo-truck-map-road is-secondary" d="M368 16V410"/>
+            <path class="cargo-truck-map-road is-secondary" d="M486 16V410"/>
+            <path class="cargo-truck-map-road is-secondary" d="M552 16V410"/>
+            <path class="cargo-truck-map-road is-secondary" d="M664 16V410"/>
+
+            <path class="cargo-truck-map-link" d="M86 84H146V126H198"/>
+            <path class="cargo-truck-map-link" d="M248 84H302V48H368"/>
+            <path class="cargo-truck-map-link" d="M426 214H486V258H552"/>
+            <path class="cargo-truck-map-link" d="M146 302H198V348H248"/>
+            <path class="cargo-truck-map-link" d="M302 174H368V214H426"/>
+            <path class="cargo-truck-map-link" d="M486 84H552V126H612"/>
           </g>
 
-          <path class="cargo-truck-route-base" data-cargo-truck-route-base d="M70 338 L152 286 L252 302 L325 224 L421 242 L505 160 L628 118"/>
-          <path class="cargo-truck-route-progress" data-cargo-truck-route-progress-path d="M70 338 L152 286 L252 302 L325 224 L421 242 L505 160 L628 118"/>
+          <path class="cargo-truck-route-base" data-cargo-truck-route-base d="M86 348 L146 348 L198 302 L248 302 L302 258 L368 258 L426 214 L486 214 L552 174 L612 126"/>
+          <path class="cargo-truck-route-progress" data-cargo-truck-route-progress-path d="M86 348 L146 348 L198 302 L248 302 L302 258 L368 258 L426 214 L486 214 L552 174 L612 126"/>
 
           <g aria-hidden="true">
-            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="start" cx="70" cy="338" r="6"/>
-            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="meal" cx="252" cy="302" r="6"/>
-            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="fuel" cx="421" cy="242" r="6"/>
-            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="delivery" cx="628" cy="118" r="6"/>
+            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="start" cx="86" cy="348" r="6"/>
+            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="meal" cx="248" cy="302" r="6"/>
+            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="fuel" cx="426" cy="214" r="6"/>
+            <circle class="cargo-truck-route-node" data-cargo-truck-route-node="delivery" cx="612" cy="126" r="6"/>
           </g>
 
           <g class="cargo-truck-route-marker" data-cargo-truck-route-marker aria-hidden="true">
             <circle class="cargo-truck-route-marker-ring" cx="0" cy="0" r="10"/>
             <circle class="cargo-truck-route-marker-dot" cx="0" cy="0" r="4"/>
+          </g>
+
+          <g class="cargo-truck-map-labels" aria-hidden="true">
+            <text class="cargo-truck-map-label" x="56" y="334">BASE</text>
+            <text class="cargo-truck-map-label" x="584" y="111">DESTINO</text>
+            <text class="cargo-truck-map-label" x="330" y="198">CORREDOR</text>
           </g>
         </svg>
 
