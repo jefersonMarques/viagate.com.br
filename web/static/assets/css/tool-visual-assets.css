@@ -1,0 +1,26 @@
+/* Visual assets usados nos previews das ferramentas. */
+.tool-preview-canvas[data-tool="cargo-score"] {
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 100, 0, 0.09), transparent 34%),
+    #07131f;
+  border-color: #243b4f;
+}
+
+.tool-preview-canvas[data-tool="cargo-score"]::before {
+  background-image:
+    linear-gradient(rgba(111, 143, 166, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 143, 166, 0.055) 1px, transparent 1px);
+}
+
+.tool-catalog-visual[data-tool-catalog-visual="pesquisa-cadastral-de-motoristas"] .tool-catalog-placeholder {
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 100, 0, 0.08), transparent 35%),
+    #07131f;
+  border-color: #294155;
+}
+
+.tool-catalog-visual[data-tool-catalog-visual="pesquisa-cadastral-de-motoristas"] .tool-catalog-placeholder::before {
+  background-image:
+    linear-gradient(rgba(111, 143, 166, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 143, 166, 0.055) 1px, transparent 1px);
+}
