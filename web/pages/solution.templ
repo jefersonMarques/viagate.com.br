@@ -86,41 +86,100 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 			</div>
 		</section>
 		if solution.Slug == "pesquisa-cadastral-de-motoristas" {
+			<section class="score-verification-section" aria-labelledby="score-verification-title">
+				<div class="container score-verification-heading">
+					<div>
+						<span class="product-overline"><span></span> Identidade antes da análise</span>
+						<h2 id="score-verification-title">Antes de consultar dados, confirme quem está do outro lado.</h2>
+					</div>
+					<p>A transportadora inicia o cadastro e o Cargo Score gera um link individual. Pelo navegador, o motorista confirma identidade e contexto do acesso antes que CNH, ANTT, processos, dados veiculares e outras fontes sejam analisados.</p>
+				</div>
+				<div class="container score-verification-layout">
+					<div class="score-verification-list">
+						<article class="score-verification-item">
+							<div class="score-verification-item-head"><span class="score-verification-icon">@components.Icon("scan-face")</span><small>01 / IDENTITY</small></div>
+							<span class="score-verification-kicker">Biometria facial + prova de vida</span>
+							<h3>Confirme identidade e presença.</h3>
+							<p>O motorista realiza a captura facial pelo próprio navegador. A prova de vida ajuda a confirmar que há uma pessoa real presente e que a jornada está vinculada à identidade informada.</p>
+							<a class="score-verification-link" href="/solucoes/biometria-facial">Conhecer biometria facial <span aria-hidden="true">→</span></a>
+						</article>
+						<article class="score-verification-item">
+							<div class="score-verification-item-head"><span class="score-verification-icon">@components.Icon("badge-check")</span><small>02 / DATA</small></div>
+							<span class="score-verification-kicker">Validação de dados</span>
+							<h3>Vincule o cadastro à pessoa validada.</h3>
+							<p>Dados informados pela transportadora e informações confirmadas durante a jornada são associados ao mesmo processo, facilitando a identificação de divergências antes da análise cadastral.</p>
+						</article>
+						<article class="score-verification-item">
+							<div class="score-verification-item-head"><span class="score-verification-icon">@components.Icon("map-pin")</span><small>03 / LOCATION</small></div>
+							<span class="score-verification-kicker">Localização em tempo real</span>
+							<h3>Registre o contexto do acesso.</h3>
+							<p>Com a permissão do motorista, a jornada captura a localização no momento da validação e preserva esse contexto junto ao processo para apoiar conferência, rastreabilidade e análise de divergências.</p>
+						</article>
+						<article class="score-verification-item">
+							<div class="score-verification-item-head"><span class="score-verification-icon">@components.Icon("smartphone")</span><small>04 / PHONE</small></div>
+							<span class="score-verification-kicker">Análise de telefone</span>
+							<h3>Reduza o risco de falso intermediário.</h3>
+							<p>A confirmação do telefone ajuda a confrontar o contato usado na contratação com quem conclui a jornada, adicionando uma evidência importante quando há troca de números, terceiros ou intermediação indevida.</p>
+						</article>
+					</div>
+					<aside class="score-verification-gate" aria-label="Controles antes da liberação das consultas">
+						<div class="score-verification-gate-head"><span>PRE-ANALYSIS / GATE</span><strong>VÍNCULO DO MOTORISTA</strong></div>
+						<div class="score-verification-gate-list">
+							<div class="score-verification-gate-row"><span>@components.Icon("user-check")</span><div><small>INPUT / 01</small><strong>Cadastro recebido</strong></div><i aria-hidden="true"></i></div>
+							<div class="score-verification-gate-row"><span>@components.Icon("link")</span><div><small>LINK / 02</small><strong>Jornada individual gerada</strong></div><i aria-hidden="true"></i></div>
+							<div class="score-verification-gate-row"><span>@components.Icon("smartphone")</span><div><small>PHONE / 03</small><strong>Telefone confirmado</strong></div><i aria-hidden="true"></i></div>
+							<div class="score-verification-gate-row"><span>@components.Icon("map-pin")</span><div><small>GEO / 04</small><strong>Localização registrada</strong></div><i aria-hidden="true"></i></div>
+							<div class="score-verification-gate-row"><span>@components.Icon("scan-face")</span><div><small>BIO / 05</small><strong>Prova de vida aprovada</strong></div><i aria-hidden="true"></i></div>
+						</div>
+						<div class="score-verification-result"><small>GATE / APROVADO</small><strong>Consultas liberadas</strong><span>CNH • ANTT • PROCESSOS • VEÍCULO • REGRAS</span></div>
+					</aside>
+				</div>
+				<div class="container score-privacy-note">
+					<span class="score-privacy-icon">@components.Icon("shield-check")</span>
+					<div class="score-privacy-copy">
+						<small>LGPD / CONTEXTO E AUTORIZAÇÃO</small>
+						<strong>A análise só avança depois da jornada do motorista.</strong>
+						<p>O fluxo registra a participação do motorista e a manifestação ou autorização aplicável antes das consultas, preservando origem, contexto e status das validações. Isso cria evidências para que a operação documente finalidade, base legal e critérios de tratamento conforme sua política de privacidade e o processo contratado.</p>
+					</div>
+				</div>
+			</section>
+		}
+		if solution.Slug == "pesquisa-cadastral-de-motoristas" {
 			<section id="como-funciona" class="solution-process score-process-section">
 				<div class="container solution-process-heading score-process-heading">
 					<div><span class="product-overline"><span></span> Fluxo cadastral / 04 etapas</span><h2>{ solution.ProcessTitle }</h2></div>
-					<p>{ solution.ProcessText }</p>
+					<p>Do cadastro inicial à decisão da viagem, cada etapa mantém identidade, contexto, consultas e resultado dentro do mesmo processo rastreável.</p>
 				</div>
 				<div class="container score-process-shell" data-score-process>
 					<div class="score-process-livebar">
 						<span><i></i> FLUXO CADASTRAL ATIVO</span>
-						<strong data-score-process-state>Solicitação recebida</strong>
+						<strong data-score-process-state>Cadastro iniciado</strong>
 						<small data-score-process-counter>01 / 04</small>
 					</div>
 					<ol class="score-process-track">
-						<li class="is-active" data-score-process-step data-step-state="Solicitação recebida" data-step-detail={ solution.Steps[0].Text }>
+						<li class="is-active" data-score-process-step data-step-state="Cadastro iniciado" data-step-detail="A transportadora informa os dados do motorista e da operação. O Cargo Score gera um link individual para iniciar a validação.">
 							<div class="score-process-node"><span>@components.Icon("send")</span><small>01</small></div>
-							<div><small>INPUT / 01</small><h3>{ solution.Steps[0].Title }</h3><p>{ solution.Steps[0].Text }</p></div>
+							<div><small>INPUT / 01</small><h3>Cadastro</h3><p>A transportadora informa os dados do motorista e da operação. O Cargo Score gera um link individual para iniciar a validação.</p></div>
 							<i class="score-process-step-state" aria-hidden="true"></i>
 						</li>
-						<li data-score-process-step data-step-state="Consentimento em andamento" data-step-detail={ solution.Steps[1].Text }>
-							<div class="score-process-node"><span>@components.Icon("link")</span><small>02</small></div>
-							<div><small>IDENTITY / 02</small><h3>{ solution.Steps[1].Title }</h3><p>{ solution.Steps[1].Text }</p></div>
+						<li data-score-process-step data-step-state="Motorista em validação" data-step-detail="Pelo navegador, o motorista confirma telefone, localização e realiza biometria facial com prova de vida, além de registrar a manifestação aplicável ao processo.">
+							<div class="score-process-node"><span>@components.Icon("scan-face")</span><small>02</small></div>
+							<div><small>IDENTITY / 02</small><h3>Validação do motorista</h3><p>Pelo navegador, o motorista confirma telefone, localização e realiza biometria facial com prova de vida, além de registrar a manifestação aplicável ao processo.</p></div>
 							<i class="score-process-step-state" aria-hidden="true"></i>
 						</li>
-						<li data-score-process-step data-step-state="Análise em processamento" data-step-detail={ solution.Steps[2].Text }>
+						<li data-score-process-step data-step-state="Consultas em processamento" data-step-detail="Com a identidade validada, o sistema consulta CNH, ANTT, processos, dados veiculares e aplica as regras configuradas para a operação.">
 							<div class="score-process-node"><span>@components.Icon("database")</span><small>03</small></div>
-							<div><small>ENGINE / 03</small><h3>{ solution.Steps[2].Title }</h3><p>{ solution.Steps[2].Text }</p></div>
+							<div><small>ENGINE / 03</small><h3>Análises automáticas</h3><p>Com a identidade validada, o sistema consulta CNH, ANTT, processos, dados veiculares e aplica as regras configuradas para a operação.</p></div>
 							<i class="score-process-step-state" aria-hidden="true"></i>
 						</li>
-						<li data-score-process-step data-step-state="Resultado disponível" data-step-detail={ solution.Steps[3].Text }>
+						<li data-score-process-step data-step-state="Resultado pronto para decisão" data-step-detail="O resultado consolidado retorna à transportadora com status, evidências e contexto para apoiar a liberação da viagem.">
 							<div class="score-process-node"><span>@components.Icon("user-check")</span><small>04</small></div>
-							<div><small>OUTPUT / 04</small><h3>{ solution.Steps[3].Title }</h3><p>{ solution.Steps[3].Text }</p></div>
+							<div><small>OUTPUT / 04</small><h3>Resultado e liberação</h3><p>O resultado consolidado retorna à transportadora com status, evidências e contexto para apoiar a liberação da viagem.</p></div>
 							<i class="score-process-step-state" aria-hidden="true"></i>
 						</li>
 					</ol>
 					<div class="score-process-footer">
-						<div class="score-process-current"><small>ESTADO ATUAL</small><strong data-score-process-detail>{ solution.Steps[0].Text }</strong></div>
+						<div class="score-process-current"><small>ESTADO ATUAL</small><strong data-score-process-detail>A transportadora informa os dados do motorista e da operação. O Cargo Score gera um link individual para iniciar a validação.</strong></div>
 						<div class="score-process-meter" aria-hidden="true"><span data-score-process-meter></span></div>
 						<span class="score-process-percent" data-score-process-percent>25%</span>
 					</div>
