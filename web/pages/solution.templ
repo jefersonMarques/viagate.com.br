@@ -14,8 +14,13 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 				<div class="solution-command-copy">
 					<nav class="breadcrumb breadcrumb-dark" aria-label="Navegação estrutural"><a href="/">Início</a><span>/</span><a href="/solucoes">Soluções</a><span>/</span><span>{ solution.ShortName }</span></nav>
 					<div class="product-overline"><span></span>{ solution.Name }</div>
-					<h1>{ solution.Title }</h1>
-					<p>{ solution.Lead }</p>
+					if solution.Slug == "autenticador-de-seguranca" {
+						<h1>Confirme o motorista antes de receber PIX ou outros dados sensíveis</h1>
+						<p>Envie um link individual, confirme telefone, localização e biometria facial com prova de vida e só então libere a etapa protegida para o próprio motorista informar os dados solicitados.</p>
+					} else {
+						<h1>{ solution.Title }</h1>
+						<p>{ solution.Lead }</p>
+					}
 					<div class="hero-actions">
 						<a class="button" href={ "/contato?interesse=" + solution.Slug }>Agendar uma demonstração</a>
 						<a class="button button-dark-ghost" href="#como-funciona">Ver o processo</a>
@@ -37,6 +42,8 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 				</div>
 				if solution.Slug == "pesquisa-cadastral-de-motoristas" {
 					@components.CargoScoreNetworkPanel()
+				} else if solution.Slug == "autenticador-de-seguranca" {
+					@components.CargoAuthenticatorPanel()
 				} else {
 					@components.SolutionSignalPanel(solution)
 				}
@@ -143,6 +150,8 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 					</div>
 				</div>
 			</section>
+		} else if solution.Slug == "autenticador-de-seguranca" {
+			@components.CargoAuthenticatorSecuritySection()
 		}
 		if solution.Slug == "pesquisa-cadastral-de-motoristas" {
 			<section id="como-funciona" class="solution-process score-process-section">
@@ -185,6 +194,8 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 					</div>
 				</div>
 			</section>
+		} else if solution.Slug == "autenticador-de-seguranca" {
+			@components.CargoAuthenticatorProcess()
 		} else {
 			<section id="como-funciona" class="solution-process">
 				<div class="container solution-process-heading">
