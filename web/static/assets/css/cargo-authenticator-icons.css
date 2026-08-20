@@ -1,0 +1,30 @@
+.auth-gate-source-channel .ui-icon,
+.auth-gate-lock .ui-icon,
+.auth-gate-owner .ui-icon,
+.auth-gate-core-icon .ui-icon,
+.auth-gate-signal .ui-icon {
+  fill: none;
+  stroke: currentColor;
+}
+
+.auth-gate-source-channel > span,
+.auth-gate-owner > span,
+.auth-gate-signal > span:first-child {
+  color: #8aa1b2;
+}
+
+.auth-gate-lock > span,
+.auth-gate-core-icon {
+  color: #ff9858;
+}
+
+.auth-gate-signal.is-active > span:first-child {
+  color: #ff9858;
+}
+
+.auth-gate-signal.is-done > span:first-child,
+.auth-gate-panel.is-approved .auth-gate-core-icon,
+.auth-gate-panel.is-approved .auth-gate-lock > span,
+.auth-gate-panel.is-approved .auth-gate-owner > span {
+  color: #65d9a0;
+}
