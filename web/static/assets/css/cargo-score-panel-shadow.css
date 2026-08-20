@@ -1,0 +1,11 @@
+.score-network-panel.score-identity-hero {
+  box-shadow:
+    30px 30px 0 rgba(20, 48, 71, 0.3),
+    0 45px 90px rgba(0, 0, 0, 0.34);
+}
+
+@media (max-width: 860px) {
+  .score-network-panel.score-identity-hero {
+    box-shadow: 14px 16px 0 rgba(2, 10, 18, 0.16);
+  }
+}
