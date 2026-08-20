@@ -1,53 +1,71 @@
 package components
 
 templ CargoAuthenticatorPanel() {
-	<figure class="solution-signal-panel auth-hero-panel" aria-label="Fluxo conceitual do Cargo Autenticador confirmando o motorista antes de liberar dados sensíveis" data-auth-hero>
+	<figure class="solution-signal-panel auth-gate-panel" aria-label="Fluxo conceitual do Cargo Autenticador bloqueando uma ação sensível até a confirmação da identidade do motorista" data-auth-hero>
 		<div class="signal-panel-grid" aria-hidden="true"></div>
-		<div class="auth-hero-topbar">
+		<div class="auth-gate-topbar">
 			<span><i aria-hidden="true"></i> VIAGATE / CARGO AUTENTICADOR</span>
-			<small data-auth-hero-gate>DADOS SENSÍVEIS BLOQUEADOS</small>
+			<small data-auth-gate-badge>ORIGEM NÃO CONFIRMADA</small>
 		</div>
-		<div class="auth-hero-body">
-			<div class="auth-hero-validation">
-				<div class="auth-hero-validation-head"><small>IDENTITY / GATE</small><strong>Confirmação do motorista</strong></div>
-				<div class="auth-hero-signal" data-auth-signal="phone">
-					<span>@Icon("smartphone")</span>
-					<div><small>PHONE / 01</small><strong>Telefone</strong><em data-auth-signal-state>Aguardando</em></div><i aria-hidden="true"></i>
+		<div class="auth-gate-body">
+			<section class="auth-gate-source" aria-label="Informação recebida por canal externo">
+				<div class="auth-gate-block-head"><small>INPUT / EXTERNO</small><strong>Informação recebida</strong></div>
+				<div class="auth-gate-source-channel">
+					<span>@Icon("send")</span>
+					<div><small>CANAL</small><strong>Mensagem / contato externo</strong></div>
 				</div>
-				<div class="auth-hero-signal" data-auth-signal="location">
-					<span>@Icon("map-pin")</span>
-					<div><small>GEO / 02</small><strong>Localização</strong><em data-auth-signal-state>Aguardando</em></div><i aria-hidden="true"></i>
+				<div class="auth-gate-field"><small>TIPO</small><strong>PIX / dado para pagamento</strong></div>
+				<div class="auth-gate-field"><small>INFORMAÇÃO</small><strong data-auth-source-value>Chave PIX recebida por mensagem</strong></div>
+				<div class="auth-gate-source-state"><i aria-hidden="true"></i><span data-auth-source-state>Entrada externa não confiável</span></div>
+			</section>
+			<section class="auth-gate-core" aria-label="Barreira de confirmação de identidade">
+				<div class="auth-gate-core-head">
+					<span class="auth-gate-core-icon">@Icon("shield-check")</span>
+					<div><small>IDENTITY / GATE</small><strong data-auth-gate-title>Bloqueio preventivo ativo</strong><span class="auth-gate-core-status" data-auth-gate-status>BLOQUEADO</span></div>
 				</div>
-				<div class="auth-hero-signal" data-auth-signal="biometry">
-					<span>@Icon("scan-face")</span>
-					<div><small>BIO / 03</small><strong>Biometria + prova de vida</strong><em data-auth-signal-state>Aguardando</em></div><i aria-hidden="true"></i>
+				<div class="auth-gate-signals">
+					<div class="auth-gate-signal" data-auth-gate-signal="phone">
+						<span>@Icon("smartphone")</span>
+						<div><small>PHONE / 01</small><strong>Telefone</strong><em data-auth-gate-signal-state>Aguardando</em></div>
+						<i aria-hidden="true"></i>
+					</div>
+					<div class="auth-gate-signal" data-auth-gate-signal="location">
+						<span>@Icon("map-pin")</span>
+						<div><small>GEO / 02</small><strong>Localização</strong><em data-auth-gate-signal-state>Aguardando</em></div>
+						<i aria-hidden="true"></i>
+					</div>
+					<div class="auth-gate-signal" data-auth-gate-signal="biometry">
+						<span>@Icon("scan-face")</span>
+						<div><small>BIO / 03</small><strong>Biometria + prova de vida</strong><em data-auth-gate-signal-state>Aguardando</em></div>
+						<i aria-hidden="true"></i>
+					</div>
 				</div>
-			</div>
-			<div class="auth-hero-identity" data-auth-identity>
-				<img src="/assets/images/biometric-silhouette-transparent.svg" width="709" height="760" alt="" aria-hidden="true"/>
-				<div class="auth-hero-identity-state">
-					<small>VALIDAÇÃO</small>
-					<strong data-auth-hero-stage>Link individual gerado</strong>
-					<span data-auth-hero-progress>00 / 03 SINAIS</span>
+				<div class="auth-gate-source-channel">
+					<span>@Icon("link")</span>
+					<div><small>LINK INDIVIDUAL</small><strong data-auth-gate-link>Link individual disponível</strong></div>
 				</div>
-			</div>
-			<div class="auth-sensitive-area" data-auth-sensitive-area>
-				<div class="auth-sensitive-head"><span>@Icon("shield-check")</span><div><small>SECURE / DATA</small><strong>Área de dados sensíveis</strong></div></div>
-				<div class="auth-sensitive-status"><i aria-hidden="true"></i><span data-auth-sensitive-status>Aguardando autenticação</span></div>
-				<div class="auth-sensitive-field">
-					<small>TIPO DE DADO</small>
-					<strong>PIX / DADOS PARA PAGAMENTO</strong>
+			</section>
+			<section class="auth-gate-secure" aria-label="Área segura liberada somente após autenticação">
+				<div class="auth-gate-secure-head">
+					<span class="auth-gate-core-icon">@Icon("receipt")</span>
+					<div><small>SECURE / DATA</small><strong>Área protegida</strong></div>
 				</div>
-				<div class="auth-sensitive-field auth-sensitive-value">
-					<small>INFORMAÇÃO</small>
-					<strong data-auth-sensitive-value>••••••••••••••••</strong>
+				<div class="auth-gate-lock">
+					<span>@Icon("shield-check")</span>
+					<div><small>STATUS</small><strong data-auth-lock-state>Aguardando autenticação</strong></div>
 				</div>
-				<div class="auth-sensitive-owner"><span>@Icon("user-check")</span><p><small>ORIGEM</small><strong data-auth-sensitive-owner>Motorista ainda não validado</strong></p></div>
-			</div>
+				<div class="auth-gate-lock-state"><i aria-hidden="true"></i><span data-auth-lock-label>BLOQUEADA</span></div>
+				<div class="auth-gate-field"><small>ETAPA</small><strong>Informar dados para pagamento</strong></div>
+				<div class="auth-gate-field auth-gate-sensitive-value"><small>DADO</small><strong data-auth-secure-value>••••••••••••••••</strong></div>
+				<div class="auth-gate-owner">
+					<span>@Icon("user-check")</span>
+					<div><small>VÍNCULO</small><strong data-auth-gate-owner>Motorista ainda não autenticado</strong></div>
+				</div>
+			</section>
 		</div>
-		<div class="auth-hero-footer">
-			<span>Telefone</span><span>Localização</span><span>Biometria</span>
-			<strong data-auth-hero-decision>IDENTIDADE EM VALIDAÇÃO</strong>
+		<div class="auth-gate-footer">
+			<span>Entrada externa</span><span>Identity Gate</span><span>Área segura</span>
+			<strong data-auth-gate-footer>AÇÃO SENSÍVEL BLOQUEADA</strong>
 		</div>
 	</figure>
 }
