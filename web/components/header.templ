@@ -10,22 +10,149 @@ templ Header() {
 	<header class="site-header">
 		<div class="container header-inner">
 			@Brand()
-			<nav class="desktop-nav" aria-label="Navegação principal">
-				<a href="/solucoes">Soluções</a>
-				<a href="/integracoes/api">API</a>
-				<a href="/white-label">White label</a>
+			<nav class="desktop-nav mega-nav" aria-label="Navegação principal">
+				<div class="nav-cluster" data-mega-cluster>
+					<button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-tools" data-mega-trigger>Ferramentas</button>
+					<div class="mega-menu tools-mega-menu" id="menu-tools">
+						<div class="mega-menu-topline">
+							<span><i></i> VIAGATE / FERRAMENTAS</span>
+							<small>ecossistema conectado</small>
+						</div>
+						<div class="tools-menu-grid" data-tool-menu>
+							<div class="tools-menu-options">
+								<a class="tool-menu-option is-active" href="/solucoes/pesquisa-cadastral-de-motoristas" data-tool-option data-tool-id="cargo-score" data-tool-code="TOOL / 01" data-tool-title="CARGO SCORE" data-tool-description="Pesquisa cadastral, identidade, documentos e contexto de risco em um fluxo rastreável.">
+									<span class="tool-menu-number">01</span>
+									<span class="tool-menu-copy"><strong>Cargo Score</strong><small>Pesquisa cadastral e decisão operacional</small></span>
+									<span class="tool-menu-arrow" aria-hidden="true">→</span>
+								</a>
+								<a class="tool-menu-option" href="/solucoes/autenticador-de-seguranca" data-tool-option data-tool-id="cargo-auth" data-tool-code="TOOL / 02" data-tool-title="CARGO AUTENTICADOR" data-tool-description="Confirmação adicional de identidade antes de pagamentos, alterações e outras etapas sensíveis.">
+									<span class="tool-menu-number">02</span>
+									<span class="tool-menu-copy"><strong>Cargo Autenticador</strong><small>Identidade antes de etapas sensíveis</small></span>
+									<span class="tool-menu-arrow" aria-hidden="true">→</span>
+								</a>
+								<a class="tool-menu-option" href="/solucoes/gestao-logistica" data-tool-option data-tool-id="cargo-truck" data-tool-code="TOOL / 03" data-tool-title="CARGO TRUCK" data-tool-description="Viagens, coletas, entregas, posições, paradas e comprovantes conectados à operação.">
+									<span class="tool-menu-number">03</span>
+									<span class="tool-menu-copy"><strong>Cargo Truck</strong><small>Gestão logística e viagens</small></span>
+									<span class="tool-menu-arrow" aria-hidden="true">→</span>
+								</a>
+								<a class="tool-menu-option" href="/solucoes/prevencao-veicular" data-tool-option data-tool-id="prevention" data-tool-code="TOOL / 04" data-tool-title="PREVENÇÃO VEICULAR" data-tool-description="Multas, pendências, débitos, restrições e histórico veicular organizados para tratamento preventivo.">
+									<span class="tool-menu-number">04</span>
+									<span class="tool-menu-copy"><strong>Prevenção Veicular</strong><small>Multas e histórico do veículo</small></span>
+									<span class="tool-menu-arrow" aria-hidden="true">→</span>
+								</a>
+								<a class="tool-menu-option" href="/solucoes/monitoramento-de-veiculos" data-tool-option data-tool-id="monitoring" data-tool-code="TOOL / 05" data-tool-title="MONITORAMENTO" data-tool-description="Posições e alertas de veículos integrados ao cadastro e ao contexto de cada viagem.">
+									<span class="tool-menu-number">05</span>
+									<span class="tool-menu-copy"><strong>Monitoramento</strong><small>Posições, eventos e alertas</small></span>
+									<span class="tool-menu-arrow" aria-hidden="true">→</span>
+								</a>
+								<a class="tool-menu-option" href="/integracoes/api" data-tool-option data-tool-id="api" data-tool-code="TOOL / 06" data-tool-title="INTEGRAÇÕES VIA API" data-tool-description="Biometria, consultas e resultados Viagate incorporados ao software já utilizado pela empresa.">
+									<span class="tool-menu-number">06</span>
+									<span class="tool-menu-copy"><strong>Integrações via API</strong><small>Recursos Viagate no seu software</small></span>
+									<span class="tool-menu-arrow" aria-hidden="true">→</span>
+								</a>
+							</div>
+							<div class="tool-preview">
+								<div class="tool-preview-head"><span><i></i> VISUAL / PREVIEW</span><span>SVG READY</span></div>
+								<div class="tool-preview-canvas" data-tool-preview-canvas data-tool="cargo-score">
+									<div class="tool-preview-placeholder" data-tool-preview-placeholder>
+										<small data-tool-preview-code>TOOL / 01</small>
+										<strong data-tool-preview-title>CARGO SCORE</strong>
+										<span>ÁREA RESERVADA PARA SVG</span>
+									</div>
+								</div>
+								<div class="tool-preview-foot"><span>INTERFACE CONCEITUAL</span><strong data-tool-preview-description>Pesquisa cadastral, identidade, documentos e contexto de risco em um fluxo rastreável.</strong></div>
+							</div>
+						</div>
+						<div class="mega-menu-footer">
+							<span>Plataforma modular para operações de transporte e gestão de riscos.</span>
+							<div><a href="/white-label">White label ↗</a><a href="/solucoes">Todas as soluções ↗</a></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="nav-cluster" data-mega-cluster>
+					<button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-analysis" data-mega-trigger>Tipos de análises</button>
+					<div class="mega-menu analysis-menu" id="menu-analysis">
+						<div class="mega-menu-topline">
+							<span><i></i> VIAGATE / CAMADAS DE ANÁLISE</span>
+							<small>fontes + contexto + decisão</small>
+						</div>
+						<div class="analysis-menu-grid">
+							<section class="analysis-menu-column">
+								<div class="analysis-menu-heading"><span>01 / IDENTIDADE</span><strong>Pessoa</strong></div>
+								<div class="analysis-menu-links">
+									<a class="analysis-menu-link" href="/solucoes/biometria-facial">Biometria facial e prova de vida</a>
+									<a class="analysis-menu-link" href="/solucoes/pesquisa-cadastral-de-motoristas">Dados cadastrais</a>
+									<a class="analysis-menu-link" href="/solucoes/autenticador-de-seguranca">Autenticação de identidade</a>
+									<a class="analysis-menu-link" href="/solucoes/pesquisa-cadastral-de-motoristas">Telefone e contexto do acesso</a>
+								</div>
+							</section>
+							<section class="analysis-menu-column">
+								<div class="analysis-menu-heading"><span>02 / DOCUMENTOS</span><strong>Risco</strong></div>
+								<div class="analysis-menu-links">
+									<a class="analysis-menu-link" href="/solucoes/pesquisa-cadastral-de-motoristas">CNH e informações da habilitação</a>
+									<a class="analysis-menu-link" href="/solucoes/pesquisa-cadastral-de-motoristas">ANTT e RNTRC</a>
+									<a class="analysis-menu-link" href="/solucoes/pesquisa-cadastral-de-motoristas">Processos e contexto judicial</a>
+									<a class="analysis-menu-link" href="/solucoes/pesquisa-cadastral-de-motoristas">Políticas e critérios operacionais</a>
+								</div>
+							</section>
+							<section class="analysis-menu-column">
+								<div class="analysis-menu-heading"><span>03 / OPERAÇÃO</span><strong>Veículo</strong></div>
+								<div class="analysis-menu-links">
+									<a class="analysis-menu-link" href="/solucoes/prevencao-veicular">Histórico veicular</a>
+									<a class="analysis-menu-link" href="/solucoes/prevencao-veicular">Multas, débitos e restrições</a>
+									<a class="analysis-menu-link" href="/solucoes/monitoramento-de-veiculos">Monitoramento e alertas</a>
+									<a class="analysis-menu-link" href="/solucoes/gestao-logistica">Viagem e contexto operacional</a>
+								</div>
+							</section>
+						</div>
+						<div class="mega-menu-footer"><span>As análises podem ser combinadas conforme a finalidade e a política da operação.</span><div><a href="/solucoes">Ver arquitetura completa ↗</a></div></div>
+					</div>
+				</div>
+
+				<div class="nav-cluster" data-mega-cluster>
+					<button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-content" data-mega-trigger>Conteúdos</button>
+					<div class="mega-menu content-mega-menu" id="menu-content">
+						<div class="mega-menu-topline">
+							<span><i></i> VIAGATE / CONTEÚDO</span>
+							<small>inteligência operacional</small>
+						</div>
+						<div class="mega-menu-content">
+							<div class="mega-menu-intro">
+								<div><span class="mega-menu-index">EDITORIAL / 01</span><strong>Risco, identidade e operação explicados sem ruído.</strong><p>Conteúdo técnico para transportadoras, seguradoras, gerenciadoras e equipes que precisam tomar decisões com mais contexto.</p></div>
+								<a href="/blog">Explorar todos os conteúdos <span aria-hidden="true">→</span></a>
+							</div>
+							<div class="content-menu-list">
+								<a class="content-menu-link" href="/blog"><small>BASE / TODOS</small><strong>Blog Viagate</strong><span aria-hidden="true">↗</span></a>
+								<a class="content-menu-link" href="/blog/pesquisa-cadastral-de-motoristas"><small>GESTÃO DE RISCOS</small><strong>Pesquisa cadastral de motoristas</strong><span aria-hidden="true">↗</span></a>
+								<a class="content-menu-link" href="/blog/biometria-facial-no-transporte"><small>IDENTIDADE DIGITAL</small><strong>Biometria facial no transporte</strong><span aria-hidden="true">↗</span></a>
+								<a class="content-menu-link" href="/blog/como-reduzir-fraudes-no-frete"><small>PREVENÇÃO A FRAUDES</small><strong>Como reduzir fraudes no frete</strong><span aria-hidden="true">↗</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<a href="/sobre">Sobre</a>
-				<a href="/blog">Conteúdos</a>
 			</nav>
 			<a class="button button-small desktop-cta" href="/contato">Agendar demonstração</a>
 			<details class="mobile-menu">
 				<summary aria-label="Abrir menu"><span></span><span></span><span></span></summary>
 				<nav aria-label="Navegação para celular">
-					<a href="/solucoes">Soluções</a>
-					<a href="/integracoes/api">API</a>
-					<a href="/white-label">White label</a>
+					<span class="mobile-nav-label">Ferramentas</span>
+					<a href="/solucoes/pesquisa-cadastral-de-motoristas">Cargo Score</a>
+					<a href="/solucoes/autenticador-de-seguranca">Cargo Autenticador</a>
+					<a href="/solucoes/gestao-logistica">Cargo Truck</a>
+					<a href="/solucoes/prevencao-veicular">Prevenção Veicular</a>
+					<a href="/solucoes/monitoramento-de-veiculos">Monitoramento</a>
+					<a href="/integracoes/api">Integrações via API</a>
+					<span class="mobile-nav-label">Tipos de análises</span>
+					<a href="/solucoes/biometria-facial">Biometria facial</a>
+					<a href="/solucoes/pesquisa-cadastral-de-motoristas">Pesquisa cadastral</a>
+					<a href="/solucoes/prevencao-veicular">Análise veicular</a>
+					<span class="mobile-nav-label">Conteúdos</span>
+					<a href="/blog">Blog</a>
 					<a href="/sobre">Sobre</a>
-					<a href="/blog">Conteúdos</a>
+					<a href="/white-label">White label</a>
 					<a class="button" href="/contato">Agendar demonstração</a>
 				</nav>
 			</details>
