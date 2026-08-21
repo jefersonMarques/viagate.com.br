@@ -23,8 +23,8 @@ const initializeVehicleMonitoringHero = () => {
         <div class="monitoring-map-canvas" aria-hidden="true">
           <img src="/assets/images/monitoring-brazil-corridor.svg" alt=""/>
           <svg class="monitoring-route-svg" viewBox="0 0 1000 912" preserveAspectRatio="xMidYMid meet">
-            <path class="monitoring-route-base" d="M460 815 L486 770 L510 728 L502 684 L490 642 L466 604 L444 566 L432 524 L420 478 L410 432 L405 386"></path>
-            <path class="monitoring-route-path" data-monitoring-route-path d="M460 815 L486 770 L510 728 L502 684 L490 642 L466 604 L444 566 L432 524 L420 478 L410 432 L405 386"></path>
+            <path class="monitoring-route-base" d="M462 776 L500 744 L519 718 L496 660 L530 630 L555 608 L515 585 L470 570 L431 566 L420 520 L414 465 L409 411"></path>
+            <path class="monitoring-route-path" data-monitoring-route-path d="M462 776 L500 744 L519 718 L496 660 L530 630 L555 608 L515 585 L470 570 L431 566 L420 520 L414 465 L409 411"></path>
             <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
             <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
             <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
@@ -118,19 +118,19 @@ const initializeVehicleMonitoringHero = () => {
       detail: "Primeiro ponto monitorado confirmado no corredor."
     },
     {
-      fraction: 0.34,
+      fraction: 0.3,
       code: "PR / REGISTRO",
       title: "ISCA CONECTADA",
       detail: "Camada complementar validada durante a operação."
     },
     {
-      fraction: 0.52,
-      code: "MS / REGISTRO",
+      fraction: 0.48,
+      code: "SP / REGISTRO",
       title: "EVENTO REGISTRADO",
-      detail: "Registro operacional sincronizado na viagem."
+      detail: "Registro operacional sincronizado durante a passagem por São Paulo."
     },
     {
-      fraction: 0.73,
+      fraction: 0.7,
       code: "MS / REGISTRO",
       title: "CARGO TRUCK ATIVO",
       detail: "Aplicativo disponível como apoio operacional."
@@ -216,7 +216,7 @@ const initializeVehicleMonitoringHero = () => {
       eventCard.classList.add("is-changing");
     }
 
-    const stillCurrent = await wait(prefersReducedMotion ? 0 : 120, token);
+    const stillCurrent = await wait(prefersReducedMotion ? 0 : 180, token);
     if (!stillCurrent) return false;
 
     setText(eventCode, stop.code);
@@ -266,12 +266,12 @@ const initializeVehicleMonitoringHero = () => {
 
     if (token !== cycleToken || !isVisible) return;
 
-    routePath.style.transition = prefersReducedMotion ? "none" : "stroke-dashoffset 1.35s cubic-bezier(.65,0,.35,1)";
+    routePath.style.transition = prefersReducedMotion ? "none" : "stroke-dashoffset 1.65s cubic-bezier(.65,0,.35,1)";
     panel.classList.add("is-route-drawing");
     routePath.style.strokeDashoffset = "0";
     setText(badge, "TRAÇANDO ROTA");
 
-    if (!(await wait(prefersReducedMotion ? 0 : 1500, token))) return;
+    if (!(await wait(prefersReducedMotion ? 0 : 1800, token))) return;
 
     marker.classList.add("is-visible");
     setText(badge, "VIAGEM EM MONITORAMENTO");
@@ -285,23 +285,23 @@ const initializeVehicleMonitoringHero = () => {
           eventCard.classList.remove("is-visible");
         }
 
-        if (!(await wait(prefersReducedMotion ? 0 : 160, token))) return;
-        if (!(await moveMarker(stop.fraction, prefersReducedMotion ? 0 : 820, token))) return;
+        if (!(await wait(prefersReducedMotion ? 0 : 220, token))) return;
+        if (!(await moveMarker(stop.fraction, prefersReducedMotion ? 0 : 1100, token))) return;
       }
 
       if (!(await showStop(stop, index, token))) return;
-      if (!(await wait(prefersReducedMotion ? 0 : 620, token))) return;
+      if (!(await wait(prefersReducedMotion ? 0 : 950, token))) return;
     }
 
     setText(badge, "VIAGEM CONSOLIDADA");
     setText(routeStatus, "DESTINO CONFIRMADO");
     setText(footer, "RESULTADO DA VIAGEM");
 
-    if (!(await wait(prefersReducedMotion ? 0 : 850, token))) return;
+    if (!(await wait(prefersReducedMotion ? 0 : 1050, token))) return;
 
     panel.classList.add("show-summary");
 
-    if (!(await wait(prefersReducedMotion ? 0 : 3400, token))) return;
+    if (!(await wait(prefersReducedMotion ? 0 : 3800, token))) return;
 
     if (token === cycleToken && isVisible && !prefersReducedMotion) {
       void runCycle(token);
