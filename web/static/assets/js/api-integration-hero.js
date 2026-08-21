@@ -67,10 +67,6 @@ const initializeApiIntegrationHero = () => {
         <small data-api-payload-type>REQUEST / BIOMETRIA</small>
         <strong data-api-payload-status>REQUEST CREATED</strong>
         <span data-api-payload-detail>O sistema envia uma solicitação para a capacidade necessária.</span>
-        <dl class="api-flow-payload-code">
-          <dt>flow</dt><dd data-api-payload-flow>request</dd>
-          <dt>target</dt><dd data-api-payload-target>biometria</dd>
-        </dl>
       </div>
     </div>
 
@@ -108,8 +104,6 @@ const initializeApiIntegrationHero = () => {
   const payloadType = panel.querySelector("[data-api-payload-type]");
   const payloadStatus = panel.querySelector("[data-api-payload-status]");
   const payloadDetail = panel.querySelector("[data-api-payload-detail]");
-  const payloadFlow = panel.querySelector("[data-api-payload-flow]");
-  const payloadTarget = panel.querySelector("[data-api-payload-target]");
   const steps = Array.from(panel.querySelectorAll("[data-api-step]"));
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const desktopLayout = window.matchMedia("(min-width: 621px)");
@@ -172,12 +166,10 @@ const initializeApiIntegrationHero = () => {
     });
   };
 
-  const setPayload = ({ type, status, detail, flow, target, response = false }) => {
+  const setPayload = ({ type, status, detail, response = false }) => {
     setText(payloadType, type);
     setText(payloadStatus, status);
     setText(payloadDetail, detail);
-    setText(payloadFlow, flow);
-    setText(payloadTarget, target);
 
     if (payload instanceof HTMLElement) {
       payload.classList.toggle("is-response", response);
@@ -238,9 +230,7 @@ const initializeApiIntegrationHero = () => {
     setPayload({
       type: `REQUEST / ${capability.label}`,
       status: "REQUEST CREATED",
-      detail: "O sistema envia uma solicitação para a capacidade necessária.",
-      flow: "request",
-      target: capability.key
+      detail: "O sistema envia uma solicitação para a capacidade necessária."
     });
   };
 
@@ -258,9 +248,7 @@ const initializeApiIntegrationHero = () => {
     setPayload({
       type: `REQUEST / ${capability.label}`,
       status: "AUTHORIZED",
-      detail: "A solicitação passa pela camada de acesso antes do roteamento.",
-      flow: "authorized",
-      target: capability.key
+      detail: "A solicitação passa pela camada de acesso antes do roteamento."
     });
     if (!(await wait(prefersReducedMotion ? 0 : 650, token))) return false;
 
@@ -279,9 +267,7 @@ const initializeApiIntegrationHero = () => {
     setPayload({
       type: `PROCESSING / ${capability.label}`,
       status: "ROUTED",
-      detail: "O gateway direciona a solicitação para a capacidade correspondente.",
-      flow: "processing",
-      target: capability.key
+      detail: "O gateway direciona a solicitação para a capacidade correspondente."
     });
     if (!(await animatePacket(branch, 0, 1, prefersReducedMotion ? 0 : 820, token))) return false;
 
@@ -289,9 +275,7 @@ const initializeApiIntegrationHero = () => {
     setPayload({
       type: `PROCESSING / ${capability.label}`,
       status: "WAITING RESULT",
-      detail: "A capacidade processa a solicitação e devolve o resultado ao gateway.",
-      flow: "processing",
-      target: capability.key
+      detail: "A capacidade processa a solicitação e devolve o resultado ao gateway."
     });
     if (!(await wait(prefersReducedMotion ? 0 : 900, token))) return false;
 
@@ -310,8 +294,6 @@ const initializeApiIntegrationHero = () => {
       type: `RESPONSE / ${capability.label}`,
       status: "RESULT RECEIVED",
       detail: "O resultado retorna ao sistema de origem para continuar o fluxo da empresa.",
-      flow: "response",
-      target: capability.key,
       response: true
     });
     setPacketPoint(responsePath, 0);
