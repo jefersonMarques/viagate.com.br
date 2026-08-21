@@ -1,0 +1,187 @@
+package components
+
+templ MonitoringOverview() {
+	<section class="monitoring-overview" aria-labelledby="monitoring-overview-title">
+		<div class="container monitoring-overview-intro">
+			<div>
+				<span class="eyebrow">Integração operacional</span>
+				<h2 id="monitoring-overview-title">Conecte o que já monitora a viagem sem reconstruir a operação.</h2>
+			</div>
+			<p>A Viagate atua como uma camada de integração: recebe dados disponibilizados por rastreadores, iscas e parceiros compatíveis e associa esses registros ao veículo e à viagem. A origem continua responsável pelo sinal, pelo equipamento e pelos recursos próprios de monitoramento.</p>
+		</div>
+		<div class="container monitoring-overview-grid">
+			<article>
+				<span>01 / INDICADO PARA</span>
+				<h3>Operações que já possuem monitoramento.</h3>
+				<p>Transportadoras, embarcadores e operações que trabalham com rastreadores, iscas, gerenciadoras ou parceiros e querem levar esse contexto para a Plataforma Cargo.</p>
+			</article>
+			<article>
+				<span>02 / ORIGEM DO SINAL</span>
+				<h3>A integração não substitui a fonte.</h3>
+				<p>O equipamento ou parceiro continua gerando e disponibilizando os dados. A Viagate integra o que estiver tecnicamente disponível no projeto contratado.</p>
+			</article>
+			<article>
+				<span>03 / RESULTADO</span>
+				<h3>Monitoramento dentro do contexto da viagem.</h3>
+				<p>Veículo, viagem, fontes integradas e registros recebidos passam a ser consultados dentro do mesmo contexto operacional.</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="monitoring-sources" aria-labelledby="monitoring-sources-title">
+		<div class="container monitoring-sources-heading">
+			<div>
+				<span class="product-overline"><span></span> Fontes / integração</span>
+				<h2 id="monitoring-sources-title">Uma operação pode reunir fontes diferentes no mesmo fluxo.</h2>
+			</div>
+			<p>A composição depende das integrações disponíveis para cada parceiro, equipamento e modalidade de acompanhamento.</p>
+		</div>
+		<div class="container monitoring-sources-layout">
+			<div class="monitoring-source-list">
+				<article>
+					<div><span>@Icon("map-pinned")</span><small>SOURCE / 01</small></div>
+					<h3>Rastreadores</h3>
+					<p>Conecte fontes compatíveis para associar à viagem os registros disponibilizados pela integração.</p>
+				</article>
+				<article>
+					<div><span>@Icon("map-pin")</span><small>SOURCE / 02</small></div>
+					<h3>Iscas</h3>
+					<p>Inclua sinais de iscas quando a tecnologia e o parceiro disponibilizarem integração para a operação.</p>
+				</article>
+				<article>
+					<div><span>@Icon("workflow")</span><small>SOURCE / 03</small></div>
+					<h3>Parceiros de monitoramento</h3>
+					<p>Integre empresas e gerenciadoras compatíveis sem obrigar a equipe a reconstruir o contexto da viagem manualmente.</p>
+				</article>
+				<article>
+					<div><span>@Icon("smartphone")</span><small>APP / 04</small></div>
+					<h3>Cargo Truck</h3>
+					<p>Use o aplicativo como camada operacional complementar para atividades e registros da viagem quando o processo exigir.</p>
+				</article>
+			</div>
+			<aside class="monitoring-integration-hub" aria-label="Arquitetura conceitual das integrações de monitoramento">
+				<div class="monitoring-integration-head"><span>INTEGRATION / HUB</span><strong>FONTES → VIAGATE → VIAGEM</strong></div>
+				<div class="monitoring-integration-inputs">
+					<div><span>@Icon("map-pinned")</span><p><small>TRACKER</small><strong>Rastreador</strong></p><i></i></div>
+					<div><span>@Icon("map-pin")</span><p><small>BAIT</small><strong>Isca</strong></p><i></i></div>
+					<div><span>@Icon("workflow")</span><p><small>PARTNER</small><strong>Parceiro</strong></p><i></i></div>
+					<div><span>@Icon("smartphone")</span><p><small>APP</small><strong>Cargo Truck</strong></p><i></i></div>
+				</div>
+				<div class="monitoring-integration-core">
+					<small>VIAGATE / INTEGRATION LAYER</small>
+					<strong>Contexto operacional</strong>
+					<span>VEÍCULO • VIAGEM • FONTES • REGISTROS</span>
+				</div>
+				<div class="monitoring-integration-note">
+					<span>@Icon("link")</span>
+					<p><small>DISPONIBILIDADE</small><strong>Validada por integração e projeto</strong></p>
+				</div>
+			</aside>
+		</div>
+	</section>
+}
+
+templ MonitoringProcess() {
+	<section id="como-funciona" class="monitoring-process" aria-labelledby="monitoring-process-title">
+		<div class="container monitoring-process-heading">
+			<div>
+				<span class="product-overline"><span></span> Fluxo de monitoramento / 05 etapas</span>
+				<h2 id="monitoring-process-title">Da fonte de sinal ao histórico da viagem.</h2>
+			</div>
+			<p>A Viagate organiza a integração e o vínculo operacional. O conteúdo recebido continua dependendo das capacidades disponibilizadas por cada fonte conectada.</p>
+		</div>
+		<div class="container monitoring-process-shell">
+			<div class="monitoring-process-livebar">
+				<span><i></i> MONITORAMENTO / FLUXO</span>
+				<strong>FONTE → INTEGRAÇÃO → VIAGEM</strong>
+				<small>05 ETAPAS</small>
+			</div>
+			<div class="monitoring-process-layout">
+				<ol class="monitoring-process-list">
+					<li>
+						<div class="monitoring-process-node"><span>@Icon("workflow")</span><small>01</small></div>
+						<div><small>MAP / 01</small><h3>Mapeie as fontes</h3><p>Identifique rastreadores, iscas, parceiros e o uso opcional do Cargo Truck que fazem parte da operação.</p></div>
+						<i></i>
+					</li>
+					<li>
+						<div class="monitoring-process-node"><span>@Icon("link")</span><small>02</small></div>
+						<div><small>LINK / 02</small><h3>Conecte as integrações</h3><p>Valide compatibilidade, acessos e dados que cada fonte pode disponibilizar para o projeto.</p></div>
+						<i></i>
+					</li>
+					<li>
+						<div class="monitoring-process-node"><span>@Icon("route")</span><small>03</small></div>
+						<div><small>TRIP / 03</small><h3>Vincule à viagem</h3><p>Associe veículo, viagem e fontes de monitoramento para que os registros recebidos tenham contexto operacional.</p></div>
+						<i></i>
+					</li>
+					<li>
+						<div class="monitoring-process-node"><span>@Icon("map-pinned")</span><small>04</small></div>
+						<div><small>MONITOR / 04</small><h3>Acompanhe o que é recebido</h3><p>Consulte posições e eventos efetivamente disponibilizados pelas integrações conectadas à viagem.</p></div>
+						<i></i>
+					</li>
+					<li>
+						<div class="monitoring-process-node"><span>@Icon("history")</span><small>05</small></div>
+						<div><small>HISTORY / 05</small><h3>Consolide o histórico</h3><p>Mantenha os registros recebidos associados ao mesmo contexto para facilitar acompanhamento e revisão da viagem.</p></div>
+						<i></i>
+					</li>
+				</ol>
+				<aside class="monitoring-process-context">
+					<div class="monitoring-process-context-head"><span>TRIP / CONTEXT</span><strong>O que fica conectado</strong></div>
+					<div><span>@Icon("truck")</span><p><small>VEÍCULO</small><strong>Identificação da operação</strong></p></div>
+					<div><span>@Icon("workflow")</span><p><small>FONTES</small><strong>Integrações vinculadas</strong></p></div>
+					<div><span>@Icon("smartphone")</span><p><small>APP</small><strong>Cargo Truck opcional</strong></p></div>
+					<div><span>@Icon("map-pin")</span><p><small>REGISTROS</small><strong>Dados recebidos</strong></p></div>
+					<div><span>@Icon("history")</span><p><small>HISTÓRICO</small><strong>Contexto preservado</strong></p></div>
+					<div class="monitoring-process-result"><small>OUTPUT / OPERAÇÃO</small><strong>Uma viagem, várias fontes, um contexto.</strong></div>
+				</aside>
+			</div>
+		</div>
+	</section>
+}
+
+templ MonitoringEvidence() {
+	<section class="monitoring-evidence" aria-labelledby="monitoring-evidence-title">
+		<div class="container monitoring-evidence-layout">
+			<div class="monitoring-evidence-copy">
+				<span class="eyebrow">Resultado visível</span>
+				<h2 id="monitoring-evidence-title">O sinal continua na origem. O contexto fica na operação.</h2>
+				<p>O objetivo não é reproduzir todos os recursos do rastreador ou do parceiro. É trazer para a viagem os registros disponibilizados pelas integrações e conectá-los às demais informações operacionais.</p>
+				<p>Assim, a equipe consegue revisar a viagem sabendo quais fontes participaram do acompanhamento e quais registros chegaram ao processo.</p>
+				<a class="button button-outline" href="/contato?interesse=monitoramento-de-veiculos">Solicitar uma demonstração</a>
+			</div>
+			<div class="monitoring-evidence-panel" aria-label="Exemplo conceitual de composição de integrações">
+				<div class="monitoring-evidence-head"><span>INTEGRATION / RESULT</span><strong>EXEMPLO DE COMPOSIÇÃO</strong></div>
+				<div class="monitoring-evidence-row"><span>@Icon("map-pinned")</span><div><small>RASTREADOR</small><strong>Fonte externa</strong></div><em>INTEGRÁVEL*</em></div>
+				<div class="monitoring-evidence-row"><span>@Icon("map-pin")</span><div><small>ISCA</small><strong>Fonte externa</strong></div><em>INTEGRÁVEL*</em></div>
+				<div class="monitoring-evidence-row"><span>@Icon("workflow")</span><div><small>PARCEIRO</small><strong>Monitoramento</strong></div><em>SOB PROJETO</em></div>
+				<div class="monitoring-evidence-row"><span>@Icon("smartphone")</span><div><small>CARGO TRUCK</small><strong>Camada operacional</strong></div><em>OPCIONAL</em></div>
+				<div class="monitoring-evidence-output"><small>OUTPUT / TRIP</small><strong>Veículo + viagem + fontes + registros recebidos</strong><span>* disponibilidade técnica avaliada para cada integração.</span></div>
+			</div>
+		</div>
+	</section>
+}
+
+templ MonitoringFAQ() {
+	<section class="section faq-section">
+		<div class="container faq-layout">
+			<div><span class="eyebrow">Dúvidas frequentes</span><h2>Perguntas sobre Monitoramento</h2></div>
+			<div class="faq-list">
+				<details>
+					<summary>A Viagate substitui o rastreador ou o parceiro de monitoramento?<span>+</span></summary>
+					<p>Não. O rastreador, a isca ou o parceiro continuam responsáveis pela origem do sinal e pelos recursos próprios. A Viagate integra os dados disponibilizados e os associa ao contexto da operação.</p>
+				</details>
+				<details>
+					<summary>É possível integrar rastreadores e iscas que já utilizamos?<span>+</span></summary>
+					<p>Depende da disponibilidade técnica, dos acessos e dos recursos oferecidos pelo fornecedor. A compatibilidade é avaliada para cada integração e projeto.</p>
+				</details>
+				<details>
+					<summary>O Cargo Truck substitui um rastreador veicular?<span>+</span></summary>
+					<p>Não. O Cargo Truck pode complementar a viagem com registros operacionais pelo aplicativo. Necessidades específicas de rastreamento ou exigências de apólice devem considerar a fonte de monitoramento e os critérios definidos para a operação.</p>
+				</details>
+				<details>
+					<summary>Posso usar somente algumas dessas integrações?<span>+</span></summary>
+					<p>Sim. A composição pode ser definida de acordo com as fontes já utilizadas, a disponibilidade técnica e o escopo necessário para cada operação.</p>
+				</details>
+			</div>
+		</div>
+	</section>
+}
