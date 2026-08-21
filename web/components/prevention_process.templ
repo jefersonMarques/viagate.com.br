@@ -1,0 +1,56 @@
+package components
+
+templ PreventionProcess() {
+	<section id="como-funciona" class="solution-process prevention-process-section" aria-labelledby="prevention-process-title">
+		<div class="container solution-process-heading prevention-process-heading">
+			<div>
+				<span class="product-overline"><span></span> Fluxo preventivo / 04 etapas</span>
+				<h2 id="prevention-process-title">Do cadastro do veículo à tratativa da pendência</h2>
+			</div>
+			<p>Cadastre o veículo, consolide as consultas previstas para a operação e transforme multas, débitos, restrições e outras ocorrências em pendências visíveis para a equipe agir antes do impacto.</p>
+		</div>
+		<div class="container prevention-process-shell">
+			<div class="prevention-process-livebar">
+				<span><i aria-hidden="true"></i> PREVENÇÃO ATIVA</span>
+				<strong>CADASTRO → CONSULTA → ALERTA → TRATATIVA</strong>
+				<small>VEÍCULO / CONTROLE</small>
+			</div>
+			<div class="prevention-process-layout">
+				<ol class="prevention-process-track">
+					<li>
+						<div class="prevention-process-node"><span>@Icon("car-front")</span><small>01</small></div>
+						<div><small>INPUT / 01</small><h3>Cadastre o veículo</h3><p>Associe placa e dados cadastrais ao veículo que fará parte da operação ou da frota acompanhada.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+					<li>
+						<div class="prevention-process-node"><span>@Icon("database")</span><small>02</small></div>
+						<div><small>CHECK / 02</small><h3>Consulte os registros</h3><p>Reúna multas, débitos, licenciamento, restrições e histórico veicular disponíveis para o processo contratado.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+					<li>
+						<div class="prevention-process-node"><span>@Icon("triangle-alert")</span><small>03</small></div>
+						<div><small>ALERT / 03</small><h3>Identifique e priorize</h3><p>Transforme ocorrências em alertas objetivos, destacando o que exige atenção, prazo ou revisão da equipe.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+					<li>
+						<div class="prevention-process-node"><span>@Icon("badge-check")</span><small>04</small></div>
+						<div><small>ACTION / 04</small><h3>Trate e acompanhe</h3><p>Direcione a pendência para a tratativa adequada e preserve o contexto para acompanhar resolução, prazo e histórico.</p></div>
+						<i aria-hidden="true"></i>
+					</li>
+				</ol>
+				<aside class="prevention-process-case" aria-label="Exemplo de pendência veicular identificada">
+					<div class="prevention-process-case-head"><small>VEHICLE / ALERT</small><strong>PENDÊNCIA IDENTIFICADA</strong></div>
+					<div class="prevention-process-case-plate"><small>PLACA</small><strong>ABC1D23</strong><span>VOLVO FH 540 · 2024</span></div>
+					<div class="prevention-process-case-alert">
+						<span>@Icon("file-warning")</span>
+						<div><small>MULTAS / 02</small><strong>Tratativa necessária</strong><p>Existem registros que precisam ser revisados antes do próximo ciclo operacional.</p></div>
+					</div>
+					<div class="prevention-process-case-row"><span>@Icon("receipt")</span><p><small>DÉBITOS</small><strong>R$ 684,31</strong></p><i></i></div>
+					<div class="prevention-process-case-row"><span>@Icon("badge-check")</span><p><small>LICENCIAMENTO</small><strong>Regular</strong></p><i class="is-ok"></i></div>
+					<div class="prevention-process-case-row"><span>@Icon("history")</span><p><small>HISTÓRICO</small><strong>Consulta preservada</strong></p><i class="is-ok"></i></div>
+					<div class="prevention-process-case-result"><small>PRÓXIMA AÇÃO</small><strong>Revisar pendência e registrar tratativa</strong></div>
+				</aside>
+			</div>
+		</div>
+	</section>
+}
