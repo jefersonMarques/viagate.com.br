@@ -22,14 +22,16 @@ const initializeVehicleMonitoringHero = () => {
       <div class="monitoring-map-view" data-monitoring-map-view>
         <div class="monitoring-map-canvas" aria-hidden="true">
           <img src="/assets/images/monitoring-brazil-corridor.svg" alt=""/>
-          <svg class="monitoring-route-svg" viewBox="250 240 430 620" preserveAspectRatio="xMidYMid meet">
-            <path class="monitoring-route-base" d="M475 820 C510 785 532 742 520 692 C508 650 475 624 445 590 C418 559 405 524 408 486 C411 440 421 395 405 350"></path>
-            <path class="monitoring-route-path" data-monitoring-route-path d="M475 820 C510 785 532 742 520 692 C508 650 475 624 445 590 C418 559 405 524 408 486 C411 440 421 395 405 350"></path>
-            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
-            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
-            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
-            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
-            <circle class="monitoring-route-marker" data-monitoring-route-marker r="8"></circle>
+          <svg class="monitoring-route-svg" viewBox="190 180 610 710" preserveAspectRatio="xMidYMid meet">
+            <path class="monitoring-route-base" d="M468 818 L498 782 L532 742 L520 700 L496 660 L462 624 L438 594 L414 560 L410 520 L420 478 L432 438 L424 392 L408 346"></path>
+            <path class="monitoring-route-path" data-monitoring-route-path d="M468 818 L498 782 L532 742 L520 700 L496 660 L462 624 L438 594 L414 560 L410 520 L420 478 L432 438 L424 392 L408 346"></path>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
+            <circle class="monitoring-route-marker" data-monitoring-route-marker r="7"></circle>
           </svg>
           <span class="monitoring-map-label monitoring-map-label-origin">RS <small>ORIGEM</small></span>
           <span class="monitoring-map-label monitoring-map-label-destination">MT <small>DESTINO</small></span>
@@ -45,7 +47,7 @@ const initializeVehicleMonitoringHero = () => {
           <small>ROTA / RS → MT</small>
           <strong data-monitoring-route-status>TRAÇANDO ROTA</strong>
           <div class="monitoring-route-meter" aria-hidden="true"><span data-monitoring-route-meter></span></div>
-          <span data-monitoring-route-counter>00 / 04 REGISTROS</span>
+          <span data-monitoring-route-counter>00 / 06 REGISTROS</span>
         </div>
       </div>
 
@@ -64,7 +66,7 @@ const initializeVehicleMonitoringHero = () => {
           <article><small>ISCAS INTEGRADAS</small><strong>02</strong><span>associadas à viagem</span></article>
           <article><small>CARGO TRUCK</small><strong>ATIVO</strong><span>camada operacional</span></article>
           <article><small>USO DO APP</small><strong>SIM</strong><span>durante a operação</span></article>
-          <article><small>REGISTROS</small><strong>04</strong><span>eventos demonstrativos</span></article>
+          <article><small>REGISTROS</small><strong>06</strong><span>eventos demonstrativos</span></article>
           <article><small>FONTES CONECTADAS</small><strong>03</strong><span>integrações na viagem</span></article>
           <article><small>STATUS</small><strong>CONCLUÍDA</strong><span>histórico consolidado</span></article>
         </div>
@@ -110,16 +112,28 @@ const initializeVehicleMonitoringHero = () => {
       detail: "Viagem vinculada às integrações disponíveis."
     },
     {
-      fraction: 0.3,
-      code: "PR / REGISTRO",
-      title: "ISCA CONECTADA",
-      detail: "Sinal associado ao acompanhamento da viagem."
+      fraction: 0.16,
+      code: "SC / REGISTRO",
+      title: "POSIÇÃO RECEBIDA",
+      detail: "Primeiro ponto monitorado confirmado no corredor."
     },
     {
-      fraction: 0.64,
+      fraction: 0.34,
+      code: "PR / REGISTRO",
+      title: "ISCA CONECTADA",
+      detail: "Camada complementar validada durante a operação."
+    },
+    {
+      fraction: 0.52,
+      code: "MS / REGISTRO",
+      title: "EVENTO REGISTRADO",
+      detail: "Registro operacional sincronizado na viagem."
+    },
+    {
+      fraction: 0.73,
       code: "MS / REGISTRO",
       title: "CARGO TRUCK ATIVO",
-      detail: "Evento registrado pela camada operacional do aplicativo."
+      detail: "Aplicativo disponível como apoio operacional."
     },
     {
       fraction: 1,
@@ -208,7 +222,7 @@ const initializeVehicleMonitoringHero = () => {
     setText(eventCode, stop.code);
     setText(eventTitle, stop.title);
     setText(eventDetail, stop.detail);
-    setText(routeCounter, `${String(index + 1).padStart(2, "0")} / 04 REGISTROS`);
+    setText(routeCounter, `${String(index + 1).padStart(2, "0")} / 06 REGISTROS`);
 
     if (routeMeter instanceof HTMLElement) {
       routeMeter.style.width = `${((index + 1) / stops.length) * 100}%`;
@@ -243,7 +257,7 @@ const initializeVehicleMonitoringHero = () => {
     setText(badge, "PREPARANDO ROTA");
     setText(footer, "ROTA RS → MT");
     setText(routeStatus, "TRAÇANDO ROTA");
-    setText(routeCounter, "00 / 04 REGISTROS");
+    setText(routeCounter, "00 / 06 REGISTROS");
   };
 
   const runCycle = async (token) => {
@@ -271,19 +285,19 @@ const initializeVehicleMonitoringHero = () => {
           eventCard.classList.remove("is-visible");
         }
 
-        if (!(await wait(prefersReducedMotion ? 0 : 180, token))) return;
-        if (!(await moveMarker(stop.fraction, prefersReducedMotion ? 0 : 1050, token))) return;
+        if (!(await wait(prefersReducedMotion ? 0 : 160, token))) return;
+        if (!(await moveMarker(stop.fraction, prefersReducedMotion ? 0 : 820, token))) return;
       }
 
       if (!(await showStop(stop, index, token))) return;
-      if (!(await wait(prefersReducedMotion ? 0 : 820, token))) return;
+      if (!(await wait(prefersReducedMotion ? 0 : 620, token))) return;
     }
 
     setText(badge, "VIAGEM CONSOLIDADA");
     setText(routeStatus, "DESTINO CONFIRMADO");
     setText(footer, "RESULTADO DA VIAGEM");
 
-    if (!(await wait(prefersReducedMotion ? 0 : 900, token))) return;
+    if (!(await wait(prefersReducedMotion ? 0 : 850, token))) return;
 
     panel.classList.add("show-summary");
 
