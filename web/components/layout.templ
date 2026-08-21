@@ -62,6 +62,7 @@ templ Layout(meta site.PageMeta) {
 			<link rel="stylesheet" href="/assets/css/api-integration-hero.css"/>
 			<link rel="stylesheet" href="/assets/css/api-integration-page.css"/>
 			<link rel="stylesheet" href="/assets/css/white-label-hero.css"/>
+			<link rel="stylesheet" href="/assets/css/white-label-page.css"/>
 			<script src="/assets/js/site.js" defer></script>
 			<script src="/assets/js/risk-engine-profile.js" defer></script>
 			<script src="/assets/js/biometric-flow.js" defer></script>
@@ -75,6 +76,7 @@ templ Layout(meta site.PageMeta) {
 			<script src="/assets/js/api-integration-hero.js" defer></script>
 			<script src="/assets/js/api-integration-page.js" defer></script>
 			<script src="/assets/js/white-label-hero.js" defer></script>
+			<script src="/assets/js/white-label-page.js" defer></script>
 			if meta.Schema != "" {
 				@templ.Raw("<script type=\"application/ld+json\">" + meta.Schema + "</script>")
 			}
