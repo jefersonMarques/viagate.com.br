@@ -1,0 +1,459 @@
+.monitoring-motion-panel {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 560px;
+  margin: 0;
+  overflow: hidden;
+  color: #dbe5eb;
+  background: #081827;
+  border: 1px solid #274359;
+  box-shadow: 30px 30px 0 rgba(20, 48, 71, 0.3), 0 45px 90px rgba(0, 0, 0, 0.34);
+}
+
+.monitoring-motion-panel .signal-panel-grid {
+  opacity: 0.22;
+}
+
+.monitoring-motion-topbar,
+.monitoring-motion-footer {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 52px;
+  padding: 0 18px;
+  color: #607b90;
+  background: rgba(5, 17, 29, 0.96);
+  border-bottom: 1px solid #243c50;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.5rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.monitoring-motion-topbar > span,
+.monitoring-motion-topbar > small,
+.monitoring-motion-footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.monitoring-motion-topbar i,
+.monitoring-motion-footer i {
+  width: 6px;
+  height: 6px;
+  background: var(--orange-500);
+  box-shadow: 0 0 9px rgba(255, 100, 0, 0.5);
+}
+
+.monitoring-motion-topbar > small {
+  color: #ff9858;
+  font-size: inherit;
+}
+
+.monitoring-motion-stage {
+  position: relative;
+  z-index: 3;
+  min-height: 456px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(87, 119, 143, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 119, 143, 0.035) 1px, transparent 1px),
+    #071521;
+  background-size: 34px 34px;
+}
+
+.monitoring-motion-terrain {
+  position: absolute;
+  z-index: 1;
+  inset: -12% -28%;
+  opacity: 0.075;
+  background-image: url("/assets/images/monitoring-terrain-pattern.svg");
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+  background-size: 720px auto;
+  animation: monitoringTerrainFlow 16s linear infinite;
+  pointer-events: none;
+}
+
+.monitoring-motion-axis {
+  position: absolute;
+  z-index: 3;
+  top: 46%;
+  right: 36px;
+  left: 36px;
+  height: 58px;
+  transform: translateY(-50%);
+}
+
+.monitoring-motion-axis::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, #37556a 7%, #37556a 93%, transparent);
+}
+
+.monitoring-motion-road {
+  position: absolute;
+  top: calc(50% - 9px);
+  right: 12px;
+  left: 12px;
+  height: 18px;
+  opacity: 0.58;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 26px,
+    rgba(95, 125, 146, 0.52) 26px,
+    rgba(95, 125, 146, 0.52) 38px,
+    transparent 38px,
+    transparent 72px
+  );
+  background-position: 0 0;
+  animation: monitoringRoadFlow 1.35s linear infinite;
+}
+
+.monitoring-motion-unit {
+  position: absolute;
+  z-index: 7;
+  top: 46%;
+  left: 47%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  background: var(--orange-500);
+  box-shadow: 0 0 0 1px rgba(255, 152, 88, 0.7), 0 0 18px rgba(255, 100, 0, 0.22);
+}
+
+.monitoring-motion-unit::before,
+.monitoring-motion-unit::after {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  content: "";
+  border: 1px solid rgba(255, 152, 88, 0.28);
+}
+
+.monitoring-motion-unit::before {
+  top: -7px;
+  left: -7px;
+}
+
+.monitoring-motion-unit::after {
+  top: -13px;
+  left: -13px;
+  width: 46px;
+  height: 46px;
+  opacity: 0.34;
+}
+
+.monitoring-motion-link {
+  position: absolute;
+  z-index: 5;
+  top: calc(46% - 78px);
+  left: calc(47% + 12px);
+  width: min(30%, 174px);
+  height: 78px;
+  border-top: 1px solid rgba(255, 152, 88, 0.46);
+  border-right: 1px solid rgba(255, 152, 88, 0.46);
+}
+
+.monitoring-motion-link::before,
+.monitoring-motion-link::after {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: var(--orange-500);
+}
+
+.monitoring-motion-link::before {
+  top: -3px;
+  left: -3px;
+}
+
+.monitoring-motion-link::after {
+  right: -3px;
+  bottom: -3px;
+}
+
+.monitoring-motion-readout {
+  position: absolute;
+  z-index: 7;
+  top: 70px;
+  right: 26px;
+  display: grid;
+  gap: 5px;
+  width: 188px;
+  padding: 14px 15px;
+  background: rgba(7, 21, 33, 0.9);
+  border: 1px solid #2c485d;
+}
+
+.monitoring-motion-readout small,
+.monitoring-motion-readout span,
+.monitoring-motion-status small,
+.monitoring-motion-status strong,
+.monitoring-motion-source {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.monitoring-motion-readout small {
+  color: #607b90;
+  font-size: 0.42rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+}
+
+.monitoring-motion-readout strong {
+  color: #f2f6f8;
+  font-family: var(--font-tech);
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.monitoring-motion-readout span {
+  color: #ff9858;
+  font-size: 0.4rem;
+  font-weight: 760;
+  letter-spacing: 0.07em;
+}
+
+.monitoring-motion-radar {
+  position: absolute;
+  z-index: 4;
+  top: calc(46% + 28px);
+  left: 47%;
+  width: 140px;
+  height: 140px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.monitoring-motion-radar::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 28px;
+  content: "";
+  background: linear-gradient(#ff7a2b, transparent);
+}
+
+.monitoring-motion-wave {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(255, 100, 0, 0.34);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+  animation: monitoringRadarPulse 2.7s ease-out infinite;
+}
+
+.monitoring-motion-wave:nth-child(2) {
+  animation-delay: 0.9s;
+}
+
+.monitoring-motion-wave:nth-child(3) {
+  animation-delay: 1.8s;
+}
+
+.monitoring-motion-status {
+  position: absolute;
+  z-index: 7;
+  bottom: 74px;
+  left: 26px;
+  display: grid;
+  gap: 4px;
+  min-width: 190px;
+  padding: 12px 14px;
+  background: rgba(7, 21, 33, 0.82);
+  border-left: 2px solid var(--orange-500);
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.monitoring-motion-status.is-changing {
+  opacity: 0.28;
+  transform: translateX(5px);
+}
+
+.monitoring-motion-status small {
+  color: #536f84;
+  font-size: 0.39rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.monitoring-motion-status strong {
+  color: #dbe5eb;
+  font-size: 0.58rem;
+  letter-spacing: 0.05em;
+}
+
+.monitoring-motion-source {
+  position: absolute;
+  z-index: 6;
+  right: 26px;
+  bottom: 26px;
+  color: #536f84;
+  font-size: 0.38rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.monitoring-motion-footer {
+  min-height: 52px;
+  border-top: 1px solid #243c50;
+  border-bottom: 0;
+}
+
+.monitoring-motion-footer strong {
+  color: #8da3b2;
+  font-size: inherit;
+}
+
+.monitoring-motion-panel.is-paused .monitoring-motion-terrain,
+.monitoring-motion-panel.is-paused .monitoring-motion-road,
+.monitoring-motion-panel.is-paused .monitoring-motion-wave {
+  animation-play-state: paused;
+}
+
+@keyframes monitoringTerrainFlow {
+  from { background-position: 0 50%; }
+  to { background-position: -720px 50%; }
+}
+
+@keyframes monitoringRoadFlow {
+  from { background-position: 0 0; }
+  to { background-position: -72px 0; }
+}
+
+@keyframes monitoringRadarPulse {
+  0% {
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(7.5);
+  }
+}
+
+@media (max-width: 860px) {
+  .monitoring-motion-panel {
+    min-height: 520px;
+    box-shadow: 14px 16px 0 rgba(20, 48, 71, 0.2), 0 28px 56px rgba(0, 0, 0, 0.26);
+  }
+
+  .monitoring-motion-stage {
+    min-height: 416px;
+  }
+
+  .monitoring-motion-readout {
+    right: 18px;
+    width: 164px;
+  }
+
+  .monitoring-motion-status {
+    left: 18px;
+  }
+
+  .monitoring-motion-source {
+    right: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .monitoring-motion-topbar,
+  .monitoring-motion-footer {
+    padding-inline: 13px;
+  }
+
+  .monitoring-motion-stage {
+    min-height: 430px;
+  }
+
+  .monitoring-motion-axis {
+    top: 41%;
+    right: 14px;
+    left: 14px;
+  }
+
+  .monitoring-motion-unit {
+    top: 41%;
+    left: 42%;
+  }
+
+  .monitoring-motion-radar {
+    top: calc(41% + 28px);
+    left: 42%;
+  }
+
+  .monitoring-motion-link {
+    top: calc(41% - 62px);
+    left: calc(42% + 12px);
+    width: 24%;
+    height: 62px;
+  }
+
+  .monitoring-motion-readout {
+    top: 56px;
+    right: 13px;
+    width: 150px;
+    padding: 11px 12px;
+  }
+
+  .monitoring-motion-readout strong {
+    font-size: 1.35rem;
+  }
+
+  .monitoring-motion-status {
+    right: 13px;
+    bottom: 70px;
+    left: 13px;
+    min-width: 0;
+  }
+
+  .monitoring-motion-source {
+    right: 13px;
+    bottom: 24px;
+    left: 13px;
+    line-height: 1.6;
+  }
+
+  .monitoring-motion-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 66px;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monitoring-motion-terrain,
+  .monitoring-motion-road,
+  .monitoring-motion-wave {
+    animation: none !important;
+  }
+
+  .monitoring-motion-status {
+    transition: none !important;
+  }
+}
