@@ -202,6 +202,8 @@ templ Solution(meta site.PageMeta, solution site.Solution) {
 			@components.CargoAuthenticatorProcess()
 		} else if solution.Slug == "gestao-logistica" {
 			@components.CargoTruckProcess()
+		} else if solution.Slug == "prevencao-veicular" {
+			@components.PreventionProcess()
 		} else {
 			<section id="como-funciona" class="solution-process">
 				<div class="container solution-process-heading">
