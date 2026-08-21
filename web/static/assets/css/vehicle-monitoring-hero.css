@@ -72,12 +72,12 @@
   position: absolute;
   z-index: 1;
   inset: -12% -28%;
-  opacity: 0.075;
+  opacity: 0.1;
   background-image: url("/assets/images/monitoring-terrain-pattern.svg");
   background-repeat: repeat-x;
   background-position: 0 50%;
   background-size: 720px auto;
-  animation: monitoringTerrainFlow 16s linear infinite;
+  animation: monitoringTerrainFlow 11s linear infinite;
   pointer-events: none;
 }
 
@@ -85,9 +85,9 @@
   position: absolute;
   z-index: 3;
   top: 46%;
-  right: 36px;
-  left: 36px;
-  height: 58px;
+  right: 28px;
+  left: 28px;
+  height: 64px;
   transform: translateY(-50%);
 }
 
@@ -103,65 +103,157 @@
 
 .monitoring-motion-road {
   position: absolute;
-  top: calc(50% - 9px);
+  top: calc(50% - 13px);
   right: 12px;
   left: 12px;
-  height: 18px;
-  opacity: 0.58;
+  height: 26px;
+  opacity: 0.72;
   background: repeating-linear-gradient(
     90deg,
     transparent 0,
-    transparent 26px,
-    rgba(95, 125, 146, 0.52) 26px,
-    rgba(95, 125, 146, 0.52) 38px,
-    transparent 38px,
-    transparent 72px
+    transparent 24px,
+    rgba(95, 125, 146, 0.48) 24px,
+    rgba(95, 125, 146, 0.48) 36px,
+    transparent 36px,
+    transparent 66px
   );
-  background-position: 0 0;
-  animation: monitoringRoadFlow 1.35s linear infinite;
+  animation: monitoringRoadFlow 1.05s linear infinite;
 }
 
-.monitoring-motion-unit {
+.monitoring-motion-road-nodes {
   position: absolute;
-  z-index: 7;
+  top: 50%;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.monitoring-motion-road-nodes i {
+  width: 5px;
+  height: 5px;
+  background: #49677b;
+  opacity: 0.72;
+  box-shadow: 0 0 0 1px rgba(73, 103, 123, 0.18);
+  animation: monitoringNodeBlink 2.1s steps(1, end) infinite;
+}
+
+.monitoring-motion-road-nodes i:nth-child(2) { animation-delay: 0.3s; }
+.monitoring-motion-road-nodes i:nth-child(3) { animation-delay: 0.6s; }
+.monitoring-motion-road-nodes i:nth-child(4) { animation-delay: 0.9s; }
+.monitoring-motion-road-nodes i:nth-child(5) { animation-delay: 1.2s; }
+.monitoring-motion-road-nodes i:nth-child(6) { animation-delay: 1.5s; }
+.monitoring-motion-road-nodes i:nth-child(7) { animation-delay: 1.8s; }
+
+.monitoring-motion-vehicle {
+  position: absolute;
+  z-index: 8;
   top: 46%;
   left: 47%;
-  width: 22px;
-  height: 22px;
+  width: 112px;
+  height: 38px;
   transform: translate(-50%, -50%);
-  background: var(--orange-500);
-  box-shadow: 0 0 0 1px rgba(255, 152, 88, 0.7), 0 0 18px rgba(255, 100, 0, 0.22);
 }
 
-.monitoring-motion-unit::before,
-.monitoring-motion-unit::after {
+.monitoring-motion-trailer {
   position: absolute;
-  width: 34px;
-  height: 34px;
+  top: 8px;
+  left: 0;
+  width: 72px;
+  height: 22px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(86, 116, 137, 0.18) 0,
+      rgba(86, 116, 137, 0.18) 1px,
+      transparent 1px,
+      transparent 8px
+    ),
+    #0b2030;
+  border: 1px solid #46657a;
+}
+
+.monitoring-motion-trailer::after {
+  position: absolute;
+  inset: 5px;
   content: "";
-  border: 1px solid rgba(255, 152, 88, 0.28);
+  border: 1px solid rgba(88, 121, 145, 0.12);
 }
 
-.monitoring-motion-unit::before {
-  top: -7px;
-  left: -7px;
+.monitoring-motion-trailer i {
+  position: absolute;
+  bottom: -4px;
+  width: 7px;
+  height: 4px;
+  background: #607b90;
 }
 
-.monitoring-motion-unit::after {
-  top: -13px;
-  left: -13px;
-  width: 46px;
-  height: 46px;
-  opacity: 0.34;
+.monitoring-motion-trailer i:first-child { left: 12px; }
+.monitoring-motion-trailer i:last-child { right: 12px; }
+
+.monitoring-motion-coupling {
+  position: absolute;
+  top: 17px;
+  left: 72px;
+  width: 9px;
+  height: 4px;
+  background: #4d6b7f;
+}
+
+.monitoring-motion-cab {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 30px;
+  height: 28px;
+  background: var(--orange-500);
+  border: 1px solid rgba(255, 169, 112, 0.72);
+  box-shadow: 0 0 17px rgba(255, 100, 0, 0.2);
+}
+
+.monitoring-motion-cab::before {
+  position: absolute;
+  top: 5px;
+  right: 4px;
+  bottom: 5px;
+  width: 4px;
+  content: "";
+  background: #071521;
+  opacity: 0.68;
+}
+
+.monitoring-motion-vehicle-frame {
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(255, 152, 88, 0.22);
+  animation: monitoringVehiclePulse 1.8s ease-in-out infinite;
+}
+
+.monitoring-motion-trail {
+  position: absolute;
+  top: 13px;
+  right: calc(100% + 10px);
+  width: 58px;
+  height: 12px;
+  opacity: 0.52;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 100, 0, 0.25)) 0 0 / 100% 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(86, 116, 137, 0.34)) 10px 5px / calc(100% - 10px) 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(86, 116, 137, 0.24)) 20px 10px / calc(100% - 20px) 1px no-repeat;
+  animation: monitoringTrailPulse 1.05s ease-in-out infinite;
 }
 
 .monitoring-motion-link {
   position: absolute;
-  z-index: 5;
-  top: calc(46% - 78px);
-  left: calc(47% + 12px);
-  width: min(30%, 174px);
-  height: 78px;
+  z-index: 6;
+  top: calc(46% - 80px);
+  left: calc(47% + 56px);
+  width: min(29%, 170px);
+  height: 80px;
   border-top: 1px solid rgba(255, 152, 88, 0.46);
   border-right: 1px solid rgba(255, 152, 88, 0.46);
 }
@@ -185,31 +277,72 @@
   bottom: -3px;
 }
 
-.monitoring-motion-readout {
+.monitoring-motion-readout,
+.monitoring-motion-event,
+.monitoring-motion-status,
+.monitoring-motion-current-source {
   position: absolute;
   z-index: 7;
+  background: rgba(7, 21, 33, 0.9);
+  border: 1px solid #2c485d;
+}
+
+.monitoring-motion-readout {
   top: 70px;
   right: 26px;
   display: grid;
   gap: 5px;
   width: 188px;
   padding: 14px 15px;
-  background: rgba(7, 21, 33, 0.9);
-  border: 1px solid #2c485d;
+}
+
+.monitoring-motion-event {
+  top: 82px;
+  left: 34px;
+  display: grid;
+  gap: 4px;
+  min-width: 154px;
+  padding: 10px 12px;
+  border-left: 2px solid #44677d;
+  transition: opacity 160ms ease, transform 160ms ease, border-color 160ms ease;
+}
+
+.monitoring-motion-event::after {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 54px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, #44677d, transparent);
+}
+
+.monitoring-motion-event.is-changing,
+.monitoring-motion-status.is-changing {
+  opacity: 0.3;
+  transform: translateX(5px);
 }
 
 .monitoring-motion-readout small,
 .monitoring-motion-readout span,
+.monitoring-motion-event small,
+.monitoring-motion-event strong,
 .monitoring-motion-status small,
 .monitoring-motion-status strong,
+.monitoring-motion-current-source small,
+.monitoring-motion-current-source strong,
+.monitoring-motion-sources,
 .monitoring-motion-source {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   text-transform: uppercase;
 }
 
-.monitoring-motion-readout small {
+.monitoring-motion-readout small,
+.monitoring-motion-event small,
+.monitoring-motion-status small,
+.monitoring-motion-current-source small {
   color: #607b90;
-  font-size: 0.42rem;
+  font-size: 0.4rem;
   font-weight: 760;
   letter-spacing: 0.09em;
 }
@@ -230,13 +363,21 @@
   letter-spacing: 0.07em;
 }
 
+.monitoring-motion-event strong,
+.monitoring-motion-status strong,
+.monitoring-motion-current-source strong {
+  color: #dbe5eb;
+  font-size: 0.56rem;
+  letter-spacing: 0.05em;
+}
+
 .monitoring-motion-radar {
   position: absolute;
   z-index: 4;
-  top: calc(46% + 28px);
-  left: 47%;
-  width: 140px;
-  height: 140px;
+  top: calc(46% + 22px);
+  left: calc(47% + 30px);
+  width: 126px;
+  height: 126px;
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -246,9 +387,20 @@
   top: 0;
   left: 50%;
   width: 1px;
-  height: 28px;
+  height: 24px;
   content: "";
   background: linear-gradient(#ff7a2b, transparent);
+}
+
+.monitoring-motion-radar-core {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: var(--orange-500);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 9px rgba(255, 100, 0, 0.44);
 }
 
 .monitoring-motion-wave {
@@ -264,57 +416,79 @@
   animation: monitoringRadarPulse 2.7s ease-out infinite;
 }
 
-.monitoring-motion-wave:nth-child(2) {
-  animation-delay: 0.9s;
-}
-
-.monitoring-motion-wave:nth-child(3) {
-  animation-delay: 1.8s;
-}
+.monitoring-motion-wave:nth-child(3) { animation-delay: 0.9s; }
+.monitoring-motion-wave:nth-child(4) { animation-delay: 1.8s; }
 
 .monitoring-motion-status {
-  position: absolute;
-  z-index: 7;
-  bottom: 74px;
+  bottom: 82px;
   left: 26px;
   display: grid;
   gap: 4px;
-  min-width: 190px;
-  padding: 12px 14px;
-  background: rgba(7, 21, 33, 0.82);
+  min-width: 184px;
+  padding: 11px 13px;
   border-left: 2px solid var(--orange-500);
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
-.monitoring-motion-status.is-changing {
-  opacity: 0.28;
-  transform: translateX(5px);
-}
-
-.monitoring-motion-status small {
-  color: #536f84;
-  font-size: 0.39rem;
-  font-weight: 760;
-  letter-spacing: 0.08em;
-}
-
-.monitoring-motion-status strong {
-  color: #dbe5eb;
-  font-size: 0.58rem;
-  letter-spacing: 0.05em;
-}
-
-.monitoring-motion-source {
-  position: absolute;
-  z-index: 6;
+.monitoring-motion-current-source {
   right: 26px;
-  bottom: 26px;
-  color: #536f84;
-  font-size: 0.38rem;
+  bottom: 82px;
+  display: grid;
+  gap: 4px;
+  min-width: 136px;
+  padding: 11px 13px;
+  border-right: 2px solid var(--orange-500);
+  text-align: right;
+}
+
+.monitoring-motion-current-source strong {
+  color: #ff9858;
+}
+
+.monitoring-motion-sources {
+  position: absolute;
+  z-index: 7;
+  right: 26px;
+  bottom: 22px;
+  left: 26px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid #21394c;
+  background: rgba(5, 17, 29, 0.84);
+}
+
+.monitoring-motion-sources > span {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 8px 10px;
+  color: #5d778a;
+  border-right: 1px solid #21394c;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.monitoring-motion-sources > span:last-child {
+  border-right: 0;
+}
+
+.monitoring-motion-sources small {
+  font-size: 0.34rem;
   font-weight: 760;
   letter-spacing: 0.08em;
+}
+
+.monitoring-motion-sources strong {
+  font-size: 0.43rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+}
+
+.monitoring-motion-sources > span.is-active {
+  color: #ff9858;
+  background: rgba(255, 100, 0, 0.055);
+  box-shadow: inset 0 2px 0 var(--orange-500);
 }
 
 .monitoring-motion-footer {
@@ -330,6 +504,9 @@
 
 .monitoring-motion-panel.is-paused .monitoring-motion-terrain,
 .monitoring-motion-panel.is-paused .monitoring-motion-road,
+.monitoring-motion-panel.is-paused .monitoring-motion-road-nodes i,
+.monitoring-motion-panel.is-paused .monitoring-motion-vehicle-frame,
+.monitoring-motion-panel.is-paused .monitoring-motion-trail,
 .monitoring-motion-panel.is-paused .monitoring-motion-wave {
   animation-play-state: paused;
 }
@@ -341,7 +518,7 @@
 
 @keyframes monitoringRoadFlow {
   from { background-position: 0 0; }
-  to { background-position: -72px 0; }
+  to { background-position: -66px 0; }
 }
 
 @keyframes monitoringRadarPulse {
@@ -351,7 +528,34 @@
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(7.5);
+    transform: translate(-50%, -50%) scale(7.2);
+  }
+}
+
+@keyframes monitoringVehiclePulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes monitoringTrailPulse {
+  0%, 100% { opacity: 0.28; }
+  50% { opacity: 0.68; }
+}
+
+@keyframes monitoringNodeBlink {
+  0%, 72%, 100% {
+    background: #49677b;
+    box-shadow: none;
+  }
+  73%, 82% {
+    background: var(--orange-500);
+    box-shadow: 0 0 8px rgba(255, 100, 0, 0.46);
   }
 }
 
@@ -370,12 +574,21 @@
     width: 164px;
   }
 
+  .monitoring-motion-event {
+    left: 18px;
+  }
+
   .monitoring-motion-status {
     left: 18px;
   }
 
-  .monitoring-motion-source {
+  .monitoring-motion-current-source {
     right: 18px;
+  }
+
+  .monitoring-motion-sources {
+    right: 18px;
+    left: 18px;
   }
 }
 
@@ -386,55 +599,76 @@
   }
 
   .monitoring-motion-stage {
-    min-height: 430px;
+    min-height: 500px;
   }
 
   .monitoring-motion-axis {
-    top: 41%;
+    top: 42%;
     right: 14px;
     left: 14px;
   }
 
-  .monitoring-motion-unit {
-    top: 41%;
-    left: 42%;
+  .monitoring-motion-vehicle {
+    top: 42%;
+    left: 47%;
+    transform: translate(-50%, -50%) scale(0.84);
   }
 
   .monitoring-motion-radar {
-    top: calc(41% + 28px);
-    left: 42%;
+    top: calc(42% + 20px);
+    left: calc(47% + 24px);
   }
 
   .monitoring-motion-link {
-    top: calc(41% - 62px);
-    left: calc(42% + 12px);
-    width: 24%;
-    height: 62px;
+    top: calc(42% - 61px);
+    left: calc(47% + 49px);
+    width: 19%;
+    height: 61px;
   }
 
   .monitoring-motion-readout {
-    top: 56px;
+    top: 54px;
     right: 13px;
-    width: 150px;
+    width: 148px;
     padding: 11px 12px;
   }
 
   .monitoring-motion-readout strong {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
+  }
+
+  .monitoring-motion-event {
+    top: 62px;
+    left: 13px;
+    min-width: 128px;
   }
 
   .monitoring-motion-status {
-    right: 13px;
-    bottom: 70px;
+    right: auto;
+    bottom: 106px;
     left: 13px;
     min-width: 0;
   }
 
-  .monitoring-motion-source {
+  .monitoring-motion-current-source {
     right: 13px;
-    bottom: 24px;
+    bottom: 106px;
+    min-width: 118px;
+  }
+
+  .monitoring-motion-sources {
+    right: 13px;
+    bottom: 18px;
     left: 13px;
-    line-height: 1.6;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monitoring-motion-sources > span:nth-child(2) {
+    border-right: 0;
+  }
+
+  .monitoring-motion-sources > span:nth-child(-n + 2) {
+    border-bottom: 1px solid #21394c;
   }
 
   .monitoring-motion-footer {
@@ -449,11 +683,16 @@
 @media (prefers-reduced-motion: reduce) {
   .monitoring-motion-terrain,
   .monitoring-motion-road,
+  .monitoring-motion-road-nodes i,
+  .monitoring-motion-vehicle-frame,
+  .monitoring-motion-trail,
   .monitoring-motion-wave {
     animation: none !important;
   }
 
-  .monitoring-motion-status {
+  .monitoring-motion-event,
+  .monitoring-motion-status,
+  .monitoring-motion-sources > span {
     transition: none !important;
   }
 }
