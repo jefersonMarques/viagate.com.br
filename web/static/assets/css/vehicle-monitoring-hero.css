@@ -133,6 +133,8 @@
 .monitoring-route-svg {
   position: absolute;
   inset: 0;
+  transform: scale(1.06);
+  transform-origin: 42% 58%;
 }
 
 .monitoring-map-canvas > img {
