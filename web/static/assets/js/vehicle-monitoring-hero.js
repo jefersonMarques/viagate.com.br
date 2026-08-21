@@ -9,194 +9,310 @@ const initializeVehicleMonitoringHero = () => {
     return;
   }
 
-  panel.className = "solution-signal-panel monitoring-motion-panel";
-  panel.setAttribute("aria-label", "Representação conceitual de um conjunto veicular acompanhado por integrações de monitoramento e Cargo Truck");
+  panel.className = "solution-signal-panel monitoring-map-panel";
+  panel.setAttribute("aria-label", "Representação conceitual de uma viagem monitorada do Rio Grande do Sul ao Mato Grosso, seguida pelo resumo técnico da operação");
   panel.innerHTML = `
     <div class="signal-panel-grid" aria-hidden="true"></div>
-    <div class="monitoring-motion-topbar">
+    <div class="monitoring-map-topbar">
       <span><i aria-hidden="true"></i> VIAGATE / MONITORAMENTO</span>
-      <small data-monitoring-badge>ACOMPANHAMENTO ONLINE</small>
+      <small data-monitoring-badge>PREPARANDO ROTA</small>
     </div>
-    <div class="monitoring-motion-stage">
-      <div class="monitoring-motion-terrain" aria-hidden="true"></div>
 
-      <div class="monitoring-motion-axis" aria-hidden="true">
-        <div class="monitoring-motion-road"></div>
-        <div class="monitoring-motion-road-nodes">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <div class="monitoring-map-stage">
+      <div class="monitoring-map-view" data-monitoring-map-view>
+        <div class="monitoring-map-canvas" aria-hidden="true">
+          <img src="/assets/images/monitoring-brazil-corridor.svg" alt=""/>
+          <svg class="monitoring-route-svg" viewBox="250 240 430 620" preserveAspectRatio="xMidYMid meet">
+            <path class="monitoring-route-base" d="M475 820 C510 785 532 742 520 692 C508 650 475 624 445 590 C418 559 405 524 408 486 C411 440 421 395 405 350"></path>
+            <path class="monitoring-route-path" data-monitoring-route-path d="M475 820 C510 785 532 742 520 692 C508 650 475 624 445 590 C418 559 405 524 408 486 C411 440 421 395 405 350"></path>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
+            <circle class="monitoring-route-node" data-monitoring-route-node r="6"></circle>
+            <circle class="monitoring-route-marker" data-monitoring-route-marker r="8"></circle>
+          </svg>
+          <span class="monitoring-map-label monitoring-map-label-origin">RS <small>ORIGEM</small></span>
+          <span class="monitoring-map-label monitoring-map-label-destination">MT <small>DESTINO</small></span>
+        </div>
+
+        <div class="monitoring-route-event" data-monitoring-event-card>
+          <small data-monitoring-event-code>ROUTE / 01</small>
+          <strong data-monitoring-event-title>MONITORAMENTO INICIADO</strong>
+          <span data-monitoring-event-detail>Viagem vinculada às integrações disponíveis.</span>
+        </div>
+
+        <div class="monitoring-route-status">
+          <small>ROTA / RS → MT</small>
+          <strong data-monitoring-route-status>TRAÇANDO ROTA</strong>
+          <div class="monitoring-route-meter" aria-hidden="true"><span data-monitoring-route-meter></span></div>
+          <span data-monitoring-route-counter>00 / 04 REGISTROS</span>
         </div>
       </div>
 
-      <div class="monitoring-motion-event" data-monitoring-event-box>
-        <small>SINAL / LIVE</small>
-        <strong data-monitoring-event>SINAL RECEBIDO</strong>
-      </div>
-
-      <div class="monitoring-motion-vehicle" aria-hidden="true">
-        <div class="monitoring-motion-trail"></div>
-        <div class="monitoring-motion-trailer">
-          <i></i><i></i>
+      <div class="monitoring-summary-view" data-monitoring-summary-view>
+        <div class="monitoring-summary-head">
+          <div><small>TRIP / RESULT</small><strong>VIAGEM CONSOLIDADA</strong></div>
+          <span>EXEMPLO OPERACIONAL</span>
         </div>
-        <div class="monitoring-motion-coupling"></div>
-        <div class="monitoring-motion-cab"></div>
-        <div class="monitoring-motion-vehicle-frame"></div>
-      </div>
 
-      <div class="monitoring-motion-link" aria-hidden="true"></div>
-      <div class="monitoring-motion-readout">
-        <small>MONITORANDO</small>
-        <strong data-monitoring-speed>77 KM/H</strong>
-        <span data-monitoring-motion-state>ATIVO EM MOVIMENTO</span>
-      </div>
+        <div class="monitoring-summary-route">
+          <div><small>ROTA MONITORADA</small><strong>RS → MT</strong></div>
+          <span><i></i> CONCLUÍDA</span>
+        </div>
 
-      <div class="monitoring-motion-radar" aria-hidden="true">
-        <span class="monitoring-motion-radar-core"></span>
-        <span class="monitoring-motion-wave"></span>
-        <span class="monitoring-motion-wave"></span>
-        <span class="monitoring-motion-wave"></span>
-      </div>
+        <div class="monitoring-summary-grid">
+          <article><small>ISCAS INTEGRADAS</small><strong>02</strong><span>associadas à viagem</span></article>
+          <article><small>CARGO TRUCK</small><strong>ATIVO</strong><span>camada operacional</span></article>
+          <article><small>USO DO APP</small><strong>SIM</strong><span>durante a operação</span></article>
+          <article><small>REGISTROS</small><strong>04</strong><span>eventos demonstrativos</span></article>
+          <article><small>FONTES CONECTADAS</small><strong>03</strong><span>integrações na viagem</span></article>
+          <article><small>STATUS</small><strong>CONCLUÍDA</strong><span>histórico consolidado</span></article>
+        </div>
 
-      <div class="monitoring-motion-status" data-monitoring-status-box>
-        <small>STATUS / 01</small>
-        <strong data-monitoring-status>RASTREAMENTO CONECTADO</strong>
-      </div>
-
-      <div class="monitoring-motion-current-source">
-        <small>FONTE ATIVA</small>
-        <strong data-monitoring-source>RASTREADOR</strong>
-      </div>
-
-      <div class="monitoring-motion-sources" aria-label="Fontes que podem compor o monitoramento">
-        <span data-monitoring-source-item><small>01</small><strong>ISCAS</strong></span>
-        <span class="is-active" data-monitoring-source-item><small>02</small><strong>RASTREADORES</strong></span>
-        <span data-monitoring-source-item><small>03</small><strong>PARCEIROS</strong></span>
-        <span data-monitoring-source-item><small>04</small><strong>CARGO TRUCK</strong></span>
+        <div class="monitoring-summary-flow" aria-hidden="true">
+          <span class="is-done"><i></i> ORIGEM</span>
+          <span class="is-done"><i></i> SINAL</span>
+          <span class="is-done"><i></i> APP</span>
+          <span class="is-done"><i></i> DESTINO</span>
+        </div>
       </div>
     </div>
-    <figcaption class="monitoring-motion-footer">
+
+    <figcaption class="monitoring-map-footer">
       <span><i aria-hidden="true"></i> OPERAÇÃO ACOMPANHADA</span>
-      <strong data-monitoring-footer>MONITORAMENTO ATIVO</strong>
+      <strong data-monitoring-footer>ROTA RS → MT</strong>
     </figcaption>
   `;
 
-  const speed = panel.querySelector("[data-monitoring-speed]");
   const badge = panel.querySelector("[data-monitoring-badge]");
-  const motionState = panel.querySelector("[data-monitoring-motion-state]");
-  const eventBox = panel.querySelector("[data-monitoring-event-box]");
-  const event = panel.querySelector("[data-monitoring-event]");
-  const statusBox = panel.querySelector("[data-monitoring-status-box]");
-  const status = panel.querySelector("[data-monitoring-status]");
-  const source = panel.querySelector("[data-monitoring-source]");
-  const sourceItems = Array.from(panel.querySelectorAll("[data-monitoring-source-item]"));
   const footer = panel.querySelector("[data-monitoring-footer]");
+  const routePath = panel.querySelector("[data-monitoring-route-path]");
+  const marker = panel.querySelector("[data-monitoring-route-marker]");
+  const routeNodes = Array.from(panel.querySelectorAll("[data-monitoring-route-node]"));
+  const eventCard = panel.querySelector("[data-monitoring-event-card]");
+  const eventCode = panel.querySelector("[data-monitoring-event-code]");
+  const eventTitle = panel.querySelector("[data-monitoring-event-title]");
+  const eventDetail = panel.querySelector("[data-monitoring-event-detail]");
+  const routeStatus = panel.querySelector("[data-monitoring-route-status]");
+  const routeMeter = panel.querySelector("[data-monitoring-route-meter]");
+  const routeCounter = panel.querySelector("[data-monitoring-route-counter]");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const states = [
+  if (!(routePath instanceof SVGPathElement) || !(marker instanceof SVGCircleElement)) {
+    return;
+  }
+
+  const stops = [
     {
-      speed: "77 KM/H",
-      badge: "ACOMPANHAMENTO ONLINE",
-      state: "ATIVO EM MOVIMENTO",
-      event: "SINAL RECEBIDO",
-      status: "RASTREAMENTO CONECTADO",
-      source: "RASTREADOR",
-      sourceIndex: 1,
-      footer: "MONITORAMENTO ATIVO"
+      fraction: 0,
+      code: "RS / ORIGEM",
+      title: "MONITORAMENTO INICIADO",
+      detail: "Viagem vinculada às integrações disponíveis."
     },
     {
-      speed: "79 KM/H",
-      badge: "MONITORAMENTO ATIVO",
-      state: "ACOMPANHAMENTO CONTÍNUO",
-      event: "INTEGRAÇÃO ATIVA",
-      status: "OPERAÇÃO ACOMPANHADA",
-      source: "PARCEIRO",
-      sourceIndex: 2,
-      footer: "INTEGRAÇÕES CONECTADAS"
+      fraction: 0.3,
+      code: "PR / REGISTRO",
+      title: "ISCA CONECTADA",
+      detail: "Sinal associado ao acompanhamento da viagem."
     },
     {
-      speed: "80 KM/H",
-      badge: "SINAL ATIVO",
-      state: "ATIVO EM MOVIMENTO",
-      event: "SINAL ATUALIZADO",
-      status: "MONITORAMENTO CONECTADO",
-      source: "ISCA",
-      sourceIndex: 0,
-      footer: "ACOMPANHAMENTO ONLINE"
+      fraction: 0.64,
+      code: "MS / REGISTRO",
+      title: "CARGO TRUCK ATIVO",
+      detail: "Evento registrado pela camada operacional do aplicativo."
     },
     {
-      speed: "78 KM/H",
-      badge: "CAMADA OPERACIONAL",
-      state: "VIAGEM EM ACOMPANHAMENTO",
-      event: "CARGO TRUCK CONECTADO",
-      status: "CAMADAS INTEGRADAS",
-      source: "CARGO TRUCK",
-      sourceIndex: 3,
-      footer: "OPERAÇÃO ACOMPANHADA"
+      fraction: 1,
+      code: "MT / DESTINO",
+      title: "VIAGEM FINALIZADA",
+      detail: "Histórico consolidado para acompanhamento da operação."
     }
   ];
 
-  let currentIndex = 0;
-  let intervalId = null;
-  let transitionId = null;
+  const routeLength = routePath.getTotalLength();
+  let cycleToken = 0;
+  let isVisible = true;
+  let currentFraction = 0;
 
-  const renderState = (state) => {
-    if (speed instanceof HTMLElement) speed.textContent = state.speed;
-    if (badge instanceof HTMLElement) badge.textContent = state.badge;
-    if (motionState instanceof HTMLElement) motionState.textContent = state.state;
-    if (source instanceof HTMLElement) source.textContent = state.source;
-    if (footer instanceof HTMLElement) footer.textContent = state.footer;
-
-    sourceItems.forEach((item, index) => {
-      item.classList.toggle("is-active", index === state.sourceIndex);
-    });
-
-    if (eventBox instanceof HTMLElement) eventBox.classList.add("is-changing");
-    if (statusBox instanceof HTMLElement) statusBox.classList.add("is-changing");
-
-    if (transitionId !== null) {
-      window.clearTimeout(transitionId);
+  const setText = (element, value) => {
+    if (element instanceof HTMLElement) {
+      element.textContent = value;
     }
-
-    transitionId = window.setTimeout(() => {
-      if (event instanceof HTMLElement) event.textContent = state.event;
-      if (status instanceof HTMLElement) status.textContent = state.status;
-      if (eventBox instanceof HTMLElement) eventBox.classList.remove("is-changing");
-      if (statusBox instanceof HTMLElement) statusBox.classList.remove("is-changing");
-      transitionId = null;
-    }, prefersReducedMotion ? 0 : 140);
   };
 
-  const start = () => {
-    panel.classList.remove("is-paused");
+  const wait = (delay, token) => new Promise((resolve) => {
+    window.setTimeout(() => resolve(token === cycleToken && isVisible), delay);
+  });
 
-    if (prefersReducedMotion || intervalId !== null) {
-      return;
+  const pointAt = (fraction) => routePath.getPointAtLength(routeLength * fraction);
+
+  const setMarker = (fraction) => {
+    const point = pointAt(fraction);
+    marker.setAttribute("cx", String(point.x));
+    marker.setAttribute("cy", String(point.y));
+  };
+
+  const configureNodes = () => {
+    routeNodes.forEach((node, index) => {
+      if (!(node instanceof SVGCircleElement)) {
+        return;
+      }
+
+      const stop = stops[index];
+      const point = pointAt(stop.fraction);
+      node.setAttribute("cx", String(point.x));
+      node.setAttribute("cy", String(point.y));
+    });
+  };
+
+  const moveMarker = (targetFraction, duration, token) => new Promise((resolve) => {
+    const startFraction = currentFraction;
+    const startedAt = performance.now();
+
+    const tick = (now) => {
+      if (token !== cycleToken || !isVisible) {
+        resolve(false);
+        return;
+      }
+
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const fraction = startFraction + ((targetFraction - startFraction) * eased);
+      setMarker(fraction);
+
+      if (progress >= 1) {
+        currentFraction = targetFraction;
+        resolve(true);
+        return;
+      }
+
+      window.requestAnimationFrame(tick);
+    };
+
+    window.requestAnimationFrame(tick);
+  });
+
+  const showStop = async (stop, index, token) => {
+    routeNodes.forEach((node, nodeIndex) => {
+      node.classList.toggle("is-active", nodeIndex === index);
+      node.classList.toggle("is-complete", nodeIndex <= index);
+    });
+
+    if (eventCard instanceof HTMLElement) {
+      eventCard.classList.add("is-changing");
     }
 
-    intervalId = window.setInterval(() => {
-      currentIndex = (currentIndex + 1) % states.length;
-      renderState(states[currentIndex]);
-    }, 1500);
+    const stillCurrent = await wait(prefersReducedMotion ? 0 : 120, token);
+    if (!stillCurrent) return false;
+
+    setText(eventCode, stop.code);
+    setText(eventTitle, stop.title);
+    setText(eventDetail, stop.detail);
+    setText(routeCounter, `${String(index + 1).padStart(2, "0")} / 04 REGISTROS`);
+
+    if (routeMeter instanceof HTMLElement) {
+      routeMeter.style.width = `${((index + 1) / stops.length) * 100}%`;
+    }
+
+    if (eventCard instanceof HTMLElement) {
+      eventCard.classList.remove("is-changing");
+      eventCard.classList.add("is-visible");
+    }
+
+    return true;
+  };
+
+  const resetCycle = () => {
+    panel.classList.remove("show-summary", "is-route-drawing");
+    routeNodes.forEach((node) => node.classList.remove("is-active", "is-complete"));
+    routePath.style.transition = "none";
+    routePath.style.strokeDasharray = String(routeLength);
+    routePath.style.strokeDashoffset = String(routeLength);
+    currentFraction = 0;
+    setMarker(0);
+    marker.classList.remove("is-visible");
+
+    if (eventCard instanceof HTMLElement) {
+      eventCard.classList.remove("is-visible", "is-changing");
+    }
+
+    if (routeMeter instanceof HTMLElement) {
+      routeMeter.style.width = "0%";
+    }
+
+    setText(badge, "PREPARANDO ROTA");
+    setText(footer, "ROTA RS → MT");
+    setText(routeStatus, "TRAÇANDO ROTA");
+    setText(routeCounter, "00 / 04 REGISTROS");
+  };
+
+  const runCycle = async (token) => {
+    resetCycle();
+    void routePath.getBoundingClientRect();
+
+    if (token !== cycleToken || !isVisible) return;
+
+    routePath.style.transition = prefersReducedMotion ? "none" : "stroke-dashoffset 1.35s cubic-bezier(.65,0,.35,1)";
+    panel.classList.add("is-route-drawing");
+    routePath.style.strokeDashoffset = "0";
+    setText(badge, "TRAÇANDO ROTA");
+
+    if (!(await wait(prefersReducedMotion ? 0 : 1500, token))) return;
+
+    marker.classList.add("is-visible");
+    setText(badge, "VIAGEM EM MONITORAMENTO");
+    setText(routeStatus, "ACOMPANHAMENTO ATIVO");
+
+    for (let index = 0; index < stops.length; index += 1) {
+      const stop = stops[index];
+
+      if (index > 0) {
+        if (eventCard instanceof HTMLElement) {
+          eventCard.classList.remove("is-visible");
+        }
+
+        if (!(await wait(prefersReducedMotion ? 0 : 180, token))) return;
+        if (!(await moveMarker(stop.fraction, prefersReducedMotion ? 0 : 1050, token))) return;
+      }
+
+      if (!(await showStop(stop, index, token))) return;
+      if (!(await wait(prefersReducedMotion ? 0 : 820, token))) return;
+    }
+
+    setText(badge, "VIAGEM CONSOLIDADA");
+    setText(routeStatus, "DESTINO CONFIRMADO");
+    setText(footer, "RESULTADO DA VIAGEM");
+
+    if (!(await wait(prefersReducedMotion ? 0 : 900, token))) return;
+
+    panel.classList.add("show-summary");
+
+    if (!(await wait(prefersReducedMotion ? 0 : 3400, token))) return;
+
+    if (token === cycleToken && isVisible && !prefersReducedMotion) {
+      void runCycle(token);
+    }
+  };
+
+  configureNodes();
+
+  if (prefersReducedMotion) {
+    panel.classList.add("show-summary");
+    setText(badge, "VIAGEM CONSOLIDADA");
+    setText(footer, "RESULTADO DA VIAGEM");
+    return;
+  }
+
+  const start = () => {
+    isVisible = true;
+    cycleToken += 1;
+    void runCycle(cycleToken);
   };
 
   const stop = () => {
-    panel.classList.add("is-paused");
-
-    if (intervalId !== null) {
-      window.clearInterval(intervalId);
-      intervalId = null;
-    }
-
-    if (transitionId !== null) {
-      window.clearTimeout(transitionId);
-      transitionId = null;
-    }
+    isVisible = false;
+    cycleToken += 1;
   };
-
-  renderState(states[0]);
-
-  if (prefersReducedMotion) {
-    return;
-  }
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -211,10 +327,11 @@ const initializeVehicleMonitoringHero = () => {
 
     observer.observe(panel);
     window.addEventListener("pagehide", () => observer.disconnect(), { once: true });
+  } else {
+    start();
   }
 
   window.addEventListener("pagehide", stop, { once: true });
-  start();
 };
 
 initializeVehicleMonitoringHero();
