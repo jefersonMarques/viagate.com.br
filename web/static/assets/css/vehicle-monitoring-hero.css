@@ -121,11 +121,11 @@
 
 .monitoring-map-canvas {
   position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 14px;
-  width: min(66%, 500px);
-  aspect-ratio: 610 / 710;
+  top: -12px;
+  bottom: auto;
+  left: -48px;
+  width: min(74%, 540px);
+  aspect-ratio: 1000 / 912;
   overflow: visible;
 }
 
@@ -136,22 +136,18 @@
 }
 
 .monitoring-map-canvas > img {
-  width: 112%;
-  height: 112%;
+  width: 100%;
+  height: 100%;
   max-width: none;
   opacity: 0.94;
   object-fit: contain;
-  transform: translate(-5%, -5%) scale(1.04);
-  transform-origin: center;
   filter: drop-shadow(0 20px 34px rgba(0, 0, 0, 0.22));
 }
 
 .monitoring-route-svg {
-  width: 112%;
-  height: 112%;
+  width: 100%;
+  height: 100%;
   overflow: visible;
-  transform: translate(-5%, -5%) scale(1.04);
-  transform-origin: center;
 }
 
 .monitoring-route-base,
@@ -164,12 +160,12 @@
 
 .monitoring-route-base {
   stroke: rgba(91, 121, 143, 0.28);
-  stroke-width: 2px;
+  stroke-width: 1.2px;
 }
 
 .monitoring-route-path {
   stroke: var(--orange-500);
-  stroke-width: 2px;
+  stroke-width: 1.7px;
   filter: drop-shadow(0 0 4px rgba(255, 100, 0, 0.34));
 }
 
@@ -226,13 +222,13 @@
 }
 
 .monitoring-map-label-origin {
-  right: 12%;
+  left: 44%;
   bottom: 6%;
 }
 
 .monitoring-map-label-destination {
-  top: 14%;
-  right: 38%;
+  left: 37%;
+  top: 39%;
 }
 
 .monitoring-route-event,
@@ -477,8 +473,8 @@
   }
 
   .monitoring-map-canvas {
-    left: 12px;
-    width: min(62%, 430px);
+    left: -40px;
+    width: min(73%, 500px);
   }
 
   .monitoring-route-event,
@@ -507,12 +503,12 @@
   }
 
   .monitoring-map-canvas {
-    top: 8px;
+    top: -8px;
     bottom: auto;
     left: 50%;
-    width: 260px;
+    width: 310px;
     max-width: none;
-    height: 300px;
+    height: auto;
     transform: translateX(-50%);
   }
 
