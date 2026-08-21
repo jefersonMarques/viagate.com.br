@@ -112,6 +112,24 @@ const initializeApiIntegrationHero = () => {
   const payloadTarget = panel.querySelector("[data-api-payload-target]");
   const steps = Array.from(panel.querySelectorAll("[data-api-step]"));
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const desktopLayout = window.matchMedia("(min-width: 621px)");
+
+  const alignGateway = () => {
+    if (!(gateway instanceof HTMLElement)) {
+      return;
+    }
+
+    if (desktopLayout.matches) {
+      gateway.style.left = "45.25%";
+      return;
+    }
+
+    gateway.style.removeProperty("left");
+  };
+
+  alignGateway();
+  desktopLayout.addEventListener("change", alignGateway);
+  window.addEventListener("pagehide", () => desktopLayout.removeEventListener("change", alignGateway), { once: true });
 
   if (!(requestPath instanceof SVGPathElement) || !(responsePath instanceof SVGPathElement) || !(packet instanceof SVGGElement)) {
     return;
