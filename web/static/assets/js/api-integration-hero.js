@@ -22,7 +22,6 @@ const initializeApiIntegrationHero = () => {
     <div class="api-flow-stage">
       <svg class="api-flow-lines" viewBox="0 0 760 420" preserveAspectRatio="none" aria-hidden="true">
         <path class="api-flow-line" data-api-request-path d="M92 174 H300"></path>
-        <path class="api-flow-line" data-api-response-path d="M300 286 H92"></path>
 
         <path class="api-flow-branch" data-api-branch="biometria" d="M438 146 H520 V67 H648"></path>
         <path class="api-flow-branch" data-api-branch="cnh" d="M438 168 H548 V137 H648"></path>
@@ -94,7 +93,6 @@ const initializeApiIntegrationHero = () => {
   `;
 
   const requestPath = panel.querySelector("[data-api-request-path]");
-  const responsePath = panel.querySelector("[data-api-response-path]");
   const packet = panel.querySelector("[data-api-packet]");
   const badge = panel.querySelector("[data-api-badge]");
   const gateway = panel.querySelector("[data-api-gateway]");
@@ -125,7 +123,7 @@ const initializeApiIntegrationHero = () => {
   desktopLayout.addEventListener("change", alignGateway);
   window.addEventListener("pagehide", () => desktopLayout.removeEventListener("change", alignGateway), { once: true });
 
-  if (!(requestPath instanceof SVGPathElement) || !(responsePath instanceof SVGPathElement) || !(packet instanceof SVGGElement)) {
+  if (!(requestPath instanceof SVGPathElement) || !(packet instanceof SVGGElement)) {
     return;
   }
 
@@ -220,7 +218,6 @@ const initializeApiIntegrationHero = () => {
     }
 
     requestPath.classList.remove("is-active", "is-response");
-    responsePath.classList.remove("is-active", "is-response");
     packet.classList.remove("is-response");
     packet.classList.add("is-visible");
 
@@ -285,8 +282,7 @@ const initializeApiIntegrationHero = () => {
     if (!(await animatePacket(branch, 1, 0, prefersReducedMotion ? 0 : 680, token))) return false;
 
     setPhase(3);
-    requestPath.classList.remove("is-active");
-    responsePath.classList.add("is-active", "is-response");
+    requestPath.classList.add("is-active", "is-response");
     packet.classList.add("is-response");
     setText(badge, "RESPONSE / RECEIVED");
     setText(gatewayState, "RETURNING");
@@ -296,8 +292,8 @@ const initializeApiIntegrationHero = () => {
       detail: "O resultado retorna ao sistema de origem para continuar o fluxo da empresa.",
       response: true
     });
-    setPacketPoint(responsePath, 0);
-    if (!(await animatePacket(responsePath, 0, 1, prefersReducedMotion ? 0 : 900, token))) return false;
+    setPacketPoint(requestPath, 1);
+    if (!(await animatePacket(requestPath, 1, 0, prefersReducedMotion ? 0 : 900, token))) return false;
 
     if (client instanceof HTMLElement) {
       client.classList.add("is-received");
