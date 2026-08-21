@@ -1,4 +1,4 @@
-.monitoring-motion-panel {
+.monitoring-map-panel {
   position: relative;
   width: 100%;
   min-width: 0;
@@ -11,12 +11,12 @@
   box-shadow: 30px 30px 0 rgba(20, 48, 71, 0.3), 0 45px 90px rgba(0, 0, 0, 0.34);
 }
 
-.monitoring-motion-panel .signal-panel-grid {
-  opacity: 0.22;
+.monitoring-map-panel .signal-panel-grid {
+  opacity: 0.18;
 }
 
-.monitoring-motion-topbar,
-.monitoring-motion-footer {
+.monitoring-map-topbar,
+.monitoring-map-footer {
   position: relative;
   z-index: 8;
   display: flex;
@@ -27,7 +27,6 @@
   padding: 0 18px;
   color: #607b90;
   background: rgba(5, 17, 29, 0.96);
-  border-bottom: 1px solid #243c50;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.5rem;
   font-weight: 760;
@@ -35,28 +34,41 @@
   text-transform: uppercase;
 }
 
-.monitoring-motion-topbar > span,
-.monitoring-motion-topbar > small,
-.monitoring-motion-footer > span {
+.monitoring-map-topbar {
+  border-bottom: 1px solid #243c50;
+}
+
+.monitoring-map-footer {
+  border-top: 1px solid #243c50;
+}
+
+.monitoring-map-topbar > span,
+.monitoring-map-topbar > small,
+.monitoring-map-footer > span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
-.monitoring-motion-topbar i,
-.monitoring-motion-footer i {
+.monitoring-map-topbar i,
+.monitoring-map-footer i {
   width: 6px;
   height: 6px;
   background: var(--orange-500);
   box-shadow: 0 0 9px rgba(255, 100, 0, 0.5);
 }
 
-.monitoring-motion-topbar > small {
+.monitoring-map-topbar > small {
   color: #ff9858;
   font-size: inherit;
 }
 
-.monitoring-motion-stage {
+.monitoring-map-footer strong {
+  color: #8da3b2;
+  font-size: inherit;
+}
+
+.monitoring-map-stage {
   position: relative;
   z-index: 3;
   min-height: 456px;
@@ -68,610 +80,484 @@
   background-size: 34px 34px;
 }
 
-.monitoring-motion-terrain {
+.monitoring-map-stage::after {
   position: absolute;
-  z-index: 1;
-  inset: -12% -28%;
-  opacity: 0.1;
-  background-image: url("/assets/images/monitoring-terrain-pattern.svg");
-  background-repeat: repeat-x;
-  background-position: 0 50%;
-  background-size: 720px auto;
-  animation: monitoringTerrainFlow 11s linear infinite;
+  inset: 0;
+  content: "";
   pointer-events: none;
+  background: radial-gradient(circle at 38% 48%, rgba(255, 100, 0, 0.045), transparent 34%);
 }
 
-.monitoring-motion-axis {
+.monitoring-map-view,
+.monitoring-summary-view {
   position: absolute;
   z-index: 3;
-  top: 46%;
-  right: 28px;
-  left: 28px;
-  height: 64px;
-  transform: translateY(-50%);
+  inset: 0;
+  transition: opacity 360ms ease, transform 360ms ease;
 }
 
-.monitoring-motion-axis::before {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  height: 1px;
-  content: "";
-  background: linear-gradient(90deg, transparent, #37556a 7%, #37556a 93%, transparent);
+.monitoring-map-view {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.monitoring-motion-road {
-  position: absolute;
-  top: calc(50% - 13px);
-  right: 12px;
-  left: 12px;
-  height: 26px;
-  opacity: 0.72;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0,
-    transparent 24px,
-    rgba(95, 125, 146, 0.48) 24px,
-    rgba(95, 125, 146, 0.48) 36px,
-    transparent 36px,
-    transparent 66px
-  );
-  animation: monitoringRoadFlow 1.05s linear infinite;
-}
-
-.monitoring-motion-road-nodes {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  transform: translateY(-50%);
+.monitoring-summary-view {
+  opacity: 0;
   pointer-events: none;
+  transform: translateX(18px);
 }
 
-.monitoring-motion-road-nodes i {
-  width: 5px;
-  height: 5px;
-  background: #49677b;
-  opacity: 0.72;
-  box-shadow: 0 0 0 1px rgba(73, 103, 123, 0.18);
-  animation: monitoringNodeBlink 2.1s steps(1, end) infinite;
+.monitoring-map-panel.show-summary .monitoring-map-view {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-18px);
 }
 
-.monitoring-motion-road-nodes i:nth-child(2) { animation-delay: 0.3s; }
-.monitoring-motion-road-nodes i:nth-child(3) { animation-delay: 0.6s; }
-.monitoring-motion-road-nodes i:nth-child(4) { animation-delay: 0.9s; }
-.monitoring-motion-road-nodes i:nth-child(5) { animation-delay: 1.2s; }
-.monitoring-motion-road-nodes i:nth-child(6) { animation-delay: 1.5s; }
-.monitoring-motion-road-nodes i:nth-child(7) { animation-delay: 1.8s; }
+.monitoring-map-panel.show-summary .monitoring-summary-view {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
 
-.monitoring-motion-vehicle {
+.monitoring-map-canvas {
   position: absolute;
-  z-index: 8;
-  top: 46%;
-  left: 47%;
-  width: 112px;
-  height: 38px;
-  transform: translate(-50%, -50%);
+  top: 20px;
+  bottom: 20px;
+  left: 28px;
+  aspect-ratio: 430 / 620;
+  max-width: 54%;
 }
 
-.monitoring-motion-trailer {
+.monitoring-map-canvas > img,
+.monitoring-route-svg {
   position: absolute;
-  top: 8px;
-  left: 0;
-  width: 72px;
-  height: 22px;
-  overflow: hidden;
-  background:
-    repeating-linear-gradient(
-      135deg,
-      rgba(86, 116, 137, 0.18) 0,
-      rgba(86, 116, 137, 0.18) 1px,
-      transparent 1px,
-      transparent 8px
-    ),
-    #0b2030;
-  border: 1px solid #46657a;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.monitoring-motion-trailer::after {
-  position: absolute;
-  inset: 5px;
-  content: "";
-  border: 1px solid rgba(88, 121, 145, 0.12);
+.monitoring-map-canvas > img {
+  opacity: 0.92;
+  filter: drop-shadow(0 20px 34px rgba(0, 0, 0, 0.22));
 }
 
-.monitoring-motion-trailer i {
-  position: absolute;
-  bottom: -4px;
-  width: 7px;
-  height: 4px;
-  background: #607b90;
+.monitoring-route-svg {
+  overflow: visible;
 }
 
-.monitoring-motion-trailer i:first-child { left: 12px; }
-.monitoring-motion-trailer i:last-child { right: 12px; }
-
-.monitoring-motion-coupling {
-  position: absolute;
-  top: 17px;
-  left: 72px;
-  width: 9px;
-  height: 4px;
-  background: #4d6b7f;
+.monitoring-route-base,
+.monitoring-route-path {
+  fill: none;
+  stroke-linecap: square;
+  stroke-linejoin: bevel;
+  vector-effect: non-scaling-stroke;
 }
 
-.monitoring-motion-cab {
-  position: absolute;
-  top: 5px;
-  right: 0;
-  width: 30px;
-  height: 28px;
-  background: var(--orange-500);
-  border: 1px solid rgba(255, 169, 112, 0.72);
-  box-shadow: 0 0 17px rgba(255, 100, 0, 0.2);
+.monitoring-route-base {
+  stroke: rgba(91, 121, 143, 0.34);
+  stroke-width: 5px;
 }
 
-.monitoring-motion-cab::before {
-  position: absolute;
-  top: 5px;
-  right: 4px;
-  bottom: 5px;
-  width: 4px;
-  content: "";
-  background: #071521;
-  opacity: 0.68;
+.monitoring-route-path {
+  stroke: var(--orange-500);
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 6px rgba(255, 100, 0, 0.42));
 }
 
-.monitoring-motion-vehicle-frame {
-  position: absolute;
-  inset: -6px;
-  border: 1px solid rgba(255, 152, 88, 0.22);
-  animation: monitoringVehiclePulse 1.8s ease-in-out infinite;
+.monitoring-route-node {
+  fill: #071521;
+  stroke: #56758b;
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
+  transition: fill 180ms ease, stroke 180ms ease, r 180ms ease;
 }
 
-.monitoring-motion-trail {
-  position: absolute;
-  top: 13px;
-  right: calc(100% + 10px);
-  width: 58px;
-  height: 12px;
-  opacity: 0.52;
-  background:
-    linear-gradient(90deg, transparent, rgba(255, 100, 0, 0.25)) 0 0 / 100% 1px no-repeat,
-    linear-gradient(90deg, transparent, rgba(86, 116, 137, 0.34)) 10px 5px / calc(100% - 10px) 1px no-repeat,
-    linear-gradient(90deg, transparent, rgba(86, 116, 137, 0.24)) 20px 10px / calc(100% - 20px) 1px no-repeat;
-  animation: monitoringTrailPulse 1.05s ease-in-out infinite;
+.monitoring-route-node.is-complete {
+  fill: #4dd391;
+  stroke: #7be0ad;
 }
 
-.monitoring-motion-link {
+.monitoring-route-node.is-active {
+  fill: var(--orange-500);
+  stroke: #ffb181;
+  r: 8px;
+}
+
+.monitoring-route-marker {
+  fill: var(--orange-500);
+  stroke: #ffc199;
+  stroke-width: 2px;
+  opacity: 0;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 8px rgba(255, 100, 0, 0.6));
+  transition: opacity 160ms ease;
+}
+
+.monitoring-route-marker.is-visible {
+  opacity: 1;
+}
+
+.monitoring-map-label {
   position: absolute;
   z-index: 6;
-  top: calc(46% - 80px);
-  left: calc(47% + 56px);
-  width: min(29%, 170px);
-  height: 80px;
-  border-top: 1px solid rgba(255, 152, 88, 0.46);
-  border-right: 1px solid rgba(255, 152, 88, 0.46);
+  display: grid;
+  gap: 2px;
+  color: #dbe5eb;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.monitoring-motion-link::before,
-.monitoring-motion-link::after {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  content: "";
-  background: var(--orange-500);
+.monitoring-map-label small {
+  color: #607b90;
+  font-size: 0.34rem;
+  letter-spacing: 0.08em;
 }
 
-.monitoring-motion-link::before {
-  top: -3px;
-  left: -3px;
+.monitoring-map-label-origin {
+  right: 9%;
+  bottom: 7%;
 }
 
-.monitoring-motion-link::after {
-  right: -3px;
-  bottom: -3px;
+.monitoring-map-label-destination {
+  top: 12%;
+  right: 30%;
 }
 
-.monitoring-motion-readout,
-.monitoring-motion-event,
-.monitoring-motion-status,
-.monitoring-motion-current-source {
+.monitoring-route-event,
+.monitoring-route-status {
   position: absolute;
   z-index: 7;
-  background: rgba(7, 21, 33, 0.9);
+  right: 24px;
+  width: 202px;
+  background: rgba(7, 21, 33, 0.92);
   border: 1px solid #2c485d;
-}
-
-.monitoring-motion-readout {
-  top: 70px;
-  right: 26px;
-  display: grid;
-  gap: 5px;
-  width: 188px;
-  padding: 14px 15px;
-}
-
-.monitoring-motion-event {
-  top: 82px;
-  left: 34px;
-  display: grid;
-  gap: 4px;
-  min-width: 154px;
-  padding: 10px 12px;
-  border-left: 2px solid #44677d;
-  transition: opacity 160ms ease, transform 160ms ease, border-color 160ms ease;
-}
-
-.monitoring-motion-event::after {
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  width: 54px;
-  height: 1px;
-  content: "";
-  background: linear-gradient(90deg, #44677d, transparent);
-}
-
-.monitoring-motion-event.is-changing,
-.monitoring-motion-status.is-changing {
-  opacity: 0.3;
-  transform: translateX(5px);
-}
-
-.monitoring-motion-readout small,
-.monitoring-motion-readout span,
-.monitoring-motion-event small,
-.monitoring-motion-event strong,
-.monitoring-motion-status small,
-.monitoring-motion-status strong,
-.monitoring-motion-current-source small,
-.monitoring-motion-current-source strong,
-.monitoring-motion-sources,
-.monitoring-motion-source {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   text-transform: uppercase;
 }
 
-.monitoring-motion-readout small,
-.monitoring-motion-event small,
-.monitoring-motion-status small,
-.monitoring-motion-current-source small {
-  color: #607b90;
-  font-size: 0.4rem;
-  font-weight: 760;
-  letter-spacing: 0.09em;
-}
-
-.monitoring-motion-readout strong {
-  color: #f2f6f8;
-  font-family: var(--font-tech);
-  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
-  font-weight: 760;
-  letter-spacing: 0.06em;
-  line-height: 1;
-}
-
-.monitoring-motion-readout span {
-  color: #ff9858;
-  font-size: 0.4rem;
-  font-weight: 760;
-  letter-spacing: 0.07em;
-}
-
-.monitoring-motion-event strong,
-.monitoring-motion-status strong,
-.monitoring-motion-current-source strong {
-  color: #dbe5eb;
-  font-size: 0.56rem;
-  letter-spacing: 0.05em;
-}
-
-.monitoring-motion-radar {
-  position: absolute;
-  z-index: 4;
-  top: calc(46% + 22px);
-  left: calc(47% + 30px);
-  width: 126px;
-  height: 126px;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.monitoring-motion-radar::before {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1px;
-  height: 24px;
-  content: "";
-  background: linear-gradient(#ff7a2b, transparent);
-}
-
-.monitoring-motion-radar-core {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: var(--orange-500);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 9px rgba(255, 100, 0, 0.44);
-}
-
-.monitoring-motion-wave {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 16px;
-  height: 16px;
-  border: 1px solid rgba(255, 100, 0, 0.34);
-  border-radius: 50%;
+.monitoring-route-event {
+  top: 88px;
+  display: grid;
+  gap: 5px;
+  padding: 13px 14px;
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.2);
-  animation: monitoringRadarPulse 2.7s ease-out infinite;
-}
-
-.monitoring-motion-wave:nth-child(3) { animation-delay: 0.9s; }
-.monitoring-motion-wave:nth-child(4) { animation-delay: 1.8s; }
-
-.monitoring-motion-status {
-  bottom: 82px;
-  left: 26px;
-  display: grid;
-  gap: 4px;
-  min-width: 184px;
-  padding: 11px 13px;
+  transform: translateX(8px);
   border-left: 2px solid var(--orange-500);
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.monitoring-motion-current-source {
-  right: 26px;
-  bottom: 82px;
-  display: grid;
-  gap: 4px;
-  min-width: 136px;
-  padding: 11px 13px;
-  border-right: 2px solid var(--orange-500);
-  text-align: right;
+.monitoring-route-event.is-visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.monitoring-motion-current-source strong {
-  color: #ff9858;
+.monitoring-route-event.is-changing {
+  opacity: 0.28;
+  transform: translateX(6px);
 }
 
-.monitoring-motion-sources {
-  position: absolute;
-  z-index: 7;
-  right: 26px;
-  bottom: 22px;
-  left: 26px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid #21394c;
-  background: rgba(5, 17, 29, 0.84);
-}
-
-.monitoring-motion-sources > span {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: 8px;
-  min-height: 42px;
-  padding: 8px 10px;
-  color: #5d778a;
-  border-right: 1px solid #21394c;
-  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
-}
-
-.monitoring-motion-sources > span:last-child {
-  border-right: 0;
-}
-
-.monitoring-motion-sources small {
-  font-size: 0.34rem;
+.monitoring-route-event small,
+.monitoring-route-status small,
+.monitoring-route-status > span {
+  color: #607b90;
+  font-size: 0.39rem;
   font-weight: 760;
   letter-spacing: 0.08em;
 }
 
-.monitoring-motion-sources strong {
+.monitoring-route-event strong,
+.monitoring-route-status strong {
+  color: #dbe5eb;
+  font-size: 0.59rem;
+  letter-spacing: 0.05em;
+}
+
+.monitoring-route-event span {
+  color: #8298a8;
   font-size: 0.43rem;
-  font-weight: 760;
-  letter-spacing: 0.06em;
+  line-height: 1.55;
+  text-transform: none;
 }
 
-.monitoring-motion-sources > span.is-active {
+.monitoring-route-status {
+  right: 24px;
+  bottom: 54px;
+  display: grid;
+  gap: 6px;
+  padding: 13px 14px;
+}
+
+.monitoring-route-status strong {
   color: #ff9858;
-  background: rgba(255, 100, 0, 0.055);
-  box-shadow: inset 0 2px 0 var(--orange-500);
 }
 
-.monitoring-motion-footer {
-  min-height: 52px;
-  border-top: 1px solid #243c50;
-  border-bottom: 0;
+.monitoring-route-meter {
+  height: 2px;
+  overflow: hidden;
+  background: #183247;
 }
 
-.monitoring-motion-footer strong {
-  color: #8da3b2;
-  font-size: inherit;
+.monitoring-route-meter span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--orange-500);
+  transition: width 240ms ease;
 }
 
-.monitoring-motion-panel.is-paused .monitoring-motion-terrain,
-.monitoring-motion-panel.is-paused .monitoring-motion-road,
-.monitoring-motion-panel.is-paused .monitoring-motion-road-nodes i,
-.monitoring-motion-panel.is-paused .monitoring-motion-vehicle-frame,
-.monitoring-motion-panel.is-paused .monitoring-motion-trail,
-.monitoring-motion-panel.is-paused .monitoring-motion-wave {
-  animation-play-state: paused;
+.monitoring-summary-view {
+  padding: 26px 28px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
 }
 
-@keyframes monitoringTerrainFlow {
-  from { background-position: 0 50%; }
-  to { background-position: -720px 50%; }
+.monitoring-summary-head,
+.monitoring-summary-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-@keyframes monitoringRoadFlow {
-  from { background-position: 0 0; }
-  to { background-position: -66px 0; }
+.monitoring-summary-head {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #274359;
 }
 
-@keyframes monitoringRadarPulse {
-  0% {
-    opacity: 0.65;
-    transform: translate(-50%, -50%) scale(0.2);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(7.2);
-  }
+.monitoring-summary-head > div {
+  display: grid;
+  gap: 3px;
 }
 
-@keyframes monitoringVehiclePulse {
-  0%, 100% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.9;
-    transform: scale(1.035);
-  }
+.monitoring-summary-head small,
+.monitoring-summary-head > span,
+.monitoring-summary-route small,
+.monitoring-summary-route > span,
+.monitoring-summary-grid small,
+.monitoring-summary-grid span,
+.monitoring-summary-flow {
+  color: #607b90;
+  font-size: 0.4rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
 }
 
-@keyframes monitoringTrailPulse {
-  0%, 100% { opacity: 0.28; }
-  50% { opacity: 0.68; }
+.monitoring-summary-head strong {
+  color: #dbe5eb;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
 }
 
-@keyframes monitoringNodeBlink {
-  0%, 72%, 100% {
-    background: #49677b;
-    box-shadow: none;
-  }
-  73%, 82% {
-    background: var(--orange-500);
-    box-shadow: 0 0 8px rgba(255, 100, 0, 0.46);
-  }
+.monitoring-summary-head > span {
+  color: #ff9858;
+}
+
+.monitoring-summary-route {
+  min-height: 72px;
+  padding: 12px 14px;
+  margin-top: 14px;
+  background: rgba(8, 25, 40, 0.72);
+  border: 1px solid #29445a;
+}
+
+.monitoring-summary-route > div {
+  display: grid;
+  gap: 4px;
+}
+
+.monitoring-summary-route strong {
+  color: #f3f7f9;
+  font-family: var(--font-tech);
+  font-size: 1.18rem;
+  letter-spacing: 0.08em;
+}
+
+.monitoring-summary-route > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #69d8a2;
+}
+
+.monitoring-summary-route > span i {
+  width: 7px;
+  height: 7px;
+  background: #4dd391;
+  box-shadow: 0 0 8px rgba(77, 211, 145, 0.36);
+}
+
+.monitoring-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 14px;
+  border-top: 1px solid #29445a;
+  border-left: 1px solid #29445a;
+}
+
+.monitoring-summary-grid article {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  min-height: 92px;
+  padding: 13px 14px;
+  background: rgba(7, 21, 33, 0.72);
+  border-right: 1px solid #29445a;
+  border-bottom: 1px solid #29445a;
+}
+
+.monitoring-summary-grid strong {
+  color: #e7eef2;
+  font-family: var(--font-tech);
+  font-size: 0.94rem;
+  letter-spacing: 0.05em;
+}
+
+.monitoring-summary-grid span {
+  text-transform: none;
+  line-height: 1.35;
+}
+
+.monitoring-summary-grid article:nth-child(1) strong,
+.monitoring-summary-grid article:nth-child(2) strong,
+.monitoring-summary-grid article:nth-child(3) strong {
+  color: #ff9858;
+}
+
+.monitoring-summary-grid article:nth-child(6) strong {
+  color: #69d8a2;
+}
+
+.monitoring-summary-flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 14px;
+  border: 1px solid #21394c;
+  background: rgba(5, 17, 29, 0.72);
+}
+
+.monitoring-summary-flow span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 8px 10px;
+  border-right: 1px solid #21394c;
+}
+
+.monitoring-summary-flow span:last-child {
+  border-right: 0;
+}
+
+.monitoring-summary-flow i {
+  width: 6px;
+  height: 6px;
+  background: #4dd391;
 }
 
 @media (max-width: 860px) {
-  .monitoring-motion-panel {
-    min-height: 520px;
+  .monitoring-map-panel {
+    min-height: 540px;
     box-shadow: 14px 16px 0 rgba(20, 48, 71, 0.2), 0 28px 56px rgba(0, 0, 0, 0.26);
   }
 
-  .monitoring-motion-stage {
-    min-height: 416px;
+  .monitoring-map-stage {
+    min-height: 436px;
   }
 
-  .monitoring-motion-readout {
-    right: 18px;
-    width: 164px;
-  }
-
-  .monitoring-motion-event {
+  .monitoring-map-canvas {
     left: 18px;
+    max-width: 52%;
   }
 
-  .monitoring-motion-status {
-    left: 18px;
-  }
-
-  .monitoring-motion-current-source {
+  .monitoring-route-event,
+  .monitoring-route-status {
     right: 18px;
+    width: 184px;
   }
 
-  .monitoring-motion-sources {
-    right: 18px;
-    left: 18px;
+  .monitoring-summary-view {
+    padding-inline: 20px;
   }
 }
 
-@media (max-width: 560px) {
-  .monitoring-motion-topbar,
-  .monitoring-motion-footer {
+@media (max-width: 620px) {
+  .monitoring-map-panel {
+    min-height: 640px;
+  }
+
+  .monitoring-map-stage {
+    min-height: 536px;
+  }
+
+  .monitoring-map-topbar,
+  .monitoring-map-footer {
     padding-inline: 13px;
   }
 
-  .monitoring-motion-stage {
-    min-height: 500px;
+  .monitoring-map-canvas {
+    top: 14px;
+    bottom: auto;
+    left: 50%;
+    width: 208px;
+    max-width: none;
+    height: 300px;
+    transform: translateX(-50%);
   }
 
-  .monitoring-motion-axis {
-    top: 42%;
-    right: 14px;
-    left: 14px;
-  }
-
-  .monitoring-motion-vehicle {
-    top: 42%;
-    left: 47%;
-    transform: translate(-50%, -50%) scale(0.84);
-  }
-
-  .monitoring-motion-radar {
-    top: calc(42% + 20px);
-    left: calc(47% + 24px);
-  }
-
-  .monitoring-motion-link {
-    top: calc(42% - 61px);
-    left: calc(47% + 49px);
-    width: 19%;
-    height: 61px;
-  }
-
-  .monitoring-motion-readout {
-    top: 54px;
+  .monitoring-route-event,
+  .monitoring-route-status {
     right: 13px;
-    width: 148px;
-    padding: 11px 12px;
-  }
-
-  .monitoring-motion-readout strong {
-    font-size: 1.3rem;
-  }
-
-  .monitoring-motion-event {
-    top: 62px;
     left: 13px;
-    min-width: 128px;
+    width: auto;
   }
 
-  .monitoring-motion-status {
-    right: auto;
-    bottom: 106px;
-    left: 13px;
-    min-width: 0;
+  .monitoring-route-event {
+    top: 326px;
   }
 
-  .monitoring-motion-current-source {
-    right: 13px;
-    bottom: 106px;
-    min-width: 118px;
-  }
-
-  .monitoring-motion-sources {
-    right: 13px;
+  .monitoring-route-status {
     bottom: 18px;
-    left: 13px;
+  }
+
+  .monitoring-summary-view {
+    padding: 18px 13px;
+  }
+
+  .monitoring-summary-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .monitoring-summary-route {
+    min-height: 64px;
+  }
+
+  .monitoring-summary-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .monitoring-motion-sources > span:nth-child(2) {
+  .monitoring-summary-grid article {
+    min-height: 78px;
+    padding: 11px;
+  }
+
+  .monitoring-summary-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .monitoring-summary-flow span:nth-child(2) {
     border-right: 0;
   }
 
-  .monitoring-motion-sources > span:nth-child(-n + 2) {
+  .monitoring-summary-flow span:nth-child(-n+2) {
     border-bottom: 1px solid #21394c;
   }
 
-  .monitoring-motion-footer {
+  .monitoring-map-footer {
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
@@ -681,18 +567,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .monitoring-motion-terrain,
-  .monitoring-motion-road,
-  .monitoring-motion-road-nodes i,
-  .monitoring-motion-vehicle-frame,
-  .monitoring-motion-trail,
-  .monitoring-motion-wave {
-    animation: none !important;
-  }
-
-  .monitoring-motion-event,
-  .monitoring-motion-status,
-  .monitoring-motion-sources > span {
+  .monitoring-map-view,
+  .monitoring-summary-view,
+  .monitoring-route-event,
+  .monitoring-route-meter span,
+  .monitoring-route-node,
+  .monitoring-route-marker {
     transition: none !important;
   }
 }
