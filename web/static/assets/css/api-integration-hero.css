@@ -348,12 +348,49 @@
   border-left: 2px solid var(--orange-500);
 }
 
+.api-flow-payload::before,
+.api-flow-payload::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.api-flow-payload::before {
+  top: 24px;
+  right: -5px;
+  width: 8px;
+  height: 8px;
+  background: #071521;
+  border: 1px solid var(--orange-500);
+  box-shadow: 0 0 6px rgba(255, 100, 0, 0.32);
+}
+
+.api-flow-payload::after {
+  top: 28px;
+  right: -16px;
+  width: 16px;
+  height: 1px;
+  background: var(--orange-500);
+  box-shadow: 0 0 4px rgba(255, 100, 0, 0.28);
+}
+
 .api-flow-payload strong {
   color: #ff9858;
 }
 
 .api-flow-payload.is-response {
   border-left-color: #4dd391;
+}
+
+.api-flow-payload.is-response::before {
+  border-color: #4dd391;
+  box-shadow: 0 0 6px rgba(77, 211, 145, 0.3);
+}
+
+.api-flow-payload.is-response::after {
+  background: #4dd391;
+  box-shadow: 0 0 4px rgba(77, 211, 145, 0.28);
 }
 
 .api-flow-payload.is-response strong {
@@ -599,6 +636,11 @@
     bottom: 18px;
   }
 
+  .api-flow-payload::before,
+  .api-flow-payload::after {
+    display: none;
+  }
+
   .api-flow-footer {
     min-height: 94px;
     padding: 0;
@@ -627,7 +669,9 @@
   .api-flow-packet,
   .api-flow-module,
   .api-flow-step,
-  .api-flow-summary {
+  .api-flow-summary,
+  .api-flow-payload::before,
+  .api-flow-payload::after {
     transition: none !important;
   }
 }
