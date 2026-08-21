@@ -342,7 +342,7 @@
 
 .api-flow-payload {
   left: 22px;
-  bottom: 24px;
+  bottom: 12px;
   width: 242px;
   padding: 12px 14px;
   border-left: 2px solid var(--orange-500);
@@ -350,29 +350,8 @@
 
 .api-flow-payload::before,
 .api-flow-payload::after {
-  position: absolute;
-  content: "";
-  pointer-events: none;
-  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
-}
-
-.api-flow-payload::before {
-  top: 24px;
-  right: -5px;
-  width: 8px;
-  height: 8px;
-  background: #071521;
-  border: 1px solid var(--orange-500);
-  box-shadow: 0 0 6px rgba(255, 100, 0, 0.32);
-}
-
-.api-flow-payload::after {
-  top: 28px;
-  right: -16px;
-  width: 16px;
-  height: 1px;
-  background: var(--orange-500);
-  box-shadow: 0 0 4px rgba(255, 100, 0, 0.28);
+  content: none !important;
+  display: none !important;
 }
 
 .api-flow-payload strong {
@@ -383,43 +362,8 @@
   border-left-color: #4dd391;
 }
 
-.api-flow-payload.is-response::before {
-  border-color: #4dd391;
-  box-shadow: 0 0 6px rgba(77, 211, 145, 0.3);
-}
-
-.api-flow-payload.is-response::after {
-  background: #4dd391;
-  box-shadow: 0 0 4px rgba(77, 211, 145, 0.28);
-}
-
 .api-flow-payload.is-response strong {
   color: #69d8a2;
-}
-
-.api-flow-payload-code {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 7px 12px;
-  margin-top: 10px;
-  padding-top: 9px;
-  border-top: 1px solid #213a4e;
-}
-
-.api-flow-payload-code dt,
-.api-flow-payload-code dd {
-  margin: 0;
-  font-size: 0.38rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.api-flow-payload-code dt {
-  color: #536f84;
-}
-
-.api-flow-payload-code dd {
-  color: #9eb0bc;
 }
 
 .api-flow-steps {
@@ -636,11 +580,6 @@
     bottom: 18px;
   }
 
-  .api-flow-payload::before,
-  .api-flow-payload::after {
-    display: none;
-  }
-
   .api-flow-footer {
     min-height: 94px;
     padding: 0;
@@ -669,9 +608,7 @@
   .api-flow-packet,
   .api-flow-module,
   .api-flow-step,
-  .api-flow-summary,
-  .api-flow-payload::before,
-  .api-flow-payload::after {
+  .api-flow-summary {
     transition: none !important;
   }
 }
