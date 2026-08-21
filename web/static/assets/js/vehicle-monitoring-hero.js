@@ -22,9 +22,9 @@ const initializeVehicleMonitoringHero = () => {
       <div class="monitoring-map-view" data-monitoring-map-view>
         <div class="monitoring-map-canvas" aria-hidden="true">
           <img src="/assets/images/monitoring-brazil-corridor.svg" alt=""/>
-          <svg class="monitoring-route-svg" viewBox="250 240 430 620" preserveAspectRatio="xMidYMid meet">
-            <path class="monitoring-route-base" d="M468 818 L498 782 L532 742 L520 700 L496 660 L462 624 L438 594 L414 560 L410 520 L420 478 L432 438 L424 392 L408 346"></path>
-            <path class="monitoring-route-path" data-monitoring-route-path d="M468 818 L498 782 L532 742 L520 700 L496 660 L462 624 L438 594 L414 560 L410 520 L420 478 L432 438 L424 392 L408 346"></path>
+          <svg class="monitoring-route-svg" viewBox="0 0 1000 912" preserveAspectRatio="xMidYMid meet">
+            <path class="monitoring-route-base" d="M460 815 L486 770 L510 728 L502 684 L490 642 L466 604 L444 566 L432 524 L420 478 L410 432 L405 386"></path>
+            <path class="monitoring-route-path" data-monitoring-route-path d="M460 815 L486 770 L510 728 L502 684 L490 642 L466 604 L444 566 L432 524 L420 478 L410 432 L405 386"></path>
             <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
             <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
             <circle class="monitoring-route-node" data-monitoring-route-node r="5"></circle>
