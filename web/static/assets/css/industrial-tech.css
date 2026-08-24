@@ -272,21 +272,256 @@ input[type="reset"] {
   gap: clamp(40px, 5vw, 80px);
 }
 
+.enterprise-control-image,
+.hero-image,
+.content-image,
+.solutions-architecture-image {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-height: 430px;
+  padding: clamp(28px, 4vw, 48px);
+  overflow: hidden;
+  color: #e8eef3;
+  background:
+    linear-gradient(rgba(56, 87, 108, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 87, 108, 0.16) 1px, transparent 1px),
+    radial-gradient(circle at 78% 22%, rgba(255, 100, 0, 0.15), transparent 28%),
+    #071527;
+  background-size: 38px 38px, 38px 38px, auto, auto;
+  border: 1px solid #29465b;
+  box-shadow: 22px 22px 0 rgba(20, 48, 71, 0.12), 0 32px 64px rgba(7, 21, 39, 0.14);
+}
+
+.enterprise-control-image::before,
+.hero-image::before,
+.content-image::before,
+.solutions-architecture-image::before {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  bottom: 24px;
+  left: 24px;
+  z-index: -1;
+  content: "";
+  border-top: 1px solid rgba(219, 230, 238, 0.16);
+  border-right: 1px solid rgba(219, 230, 238, 0.08);
+  border-bottom: 1px solid rgba(219, 230, 238, 0.08);
+  border-left: 3px solid var(--orange-600);
+}
+
+.enterprise-control-image::after,
+.hero-image::after,
+.content-image::after,
+.solutions-architecture-image::after {
+  position: absolute;
+  top: 72px;
+  right: 7%;
+  width: 42%;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, rgba(255, 100, 0, 0.78), rgba(255, 100, 0, 0));
+  box-shadow:
+    0 72px 0 rgba(92, 124, 146, 0.28),
+    0 144px 0 rgba(92, 124, 146, 0.2),
+    0 216px 0 rgba(92, 124, 146, 0.14);
+}
+
+.enterprise-control-image .placeholder-icon,
+.hero-image .placeholder-icon,
+.content-image .placeholder-icon,
+.solutions-architecture-image .placeholder-icon {
+  position: absolute;
+  top: 42px;
+  left: 44px;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 7px 10px;
+  color: transparent;
+  font-size: 0;
+  line-height: 1;
+  background: rgba(255, 100, 0, 0.08);
+  border: 1px solid rgba(255, 100, 0, 0.44);
+}
+
+.enterprise-control-image .placeholder-icon::after,
+.hero-image .placeholder-icon::after,
+.content-image .placeholder-icon::after,
+.solutions-architecture-image .placeholder-icon::after {
+  color: #ff9858;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.enterprise-control-image > strong,
+.hero-image > strong,
+.content-image > strong,
+.solutions-architecture-image > strong,
+.enterprise-control-image > span:not(.placeholder-icon),
+.hero-image > span:not(.placeholder-icon),
+.content-image > span:not(.placeholder-icon),
+.solutions-architecture-image > span:not(.placeholder-icon),
+.enterprise-control-image > small,
+.hero-image > small,
+.content-image > small,
+.solutions-architecture-image > small {
+  position: relative;
+  z-index: 2;
+  display: block;
+  max-width: 88%;
+  color: transparent;
+  font-size: 0;
+}
+
+.enterprise-control-image > strong::after,
+.hero-image > strong::after,
+.content-image > strong::after,
+.solutions-architecture-image > strong::after {
+  color: #f5f8fa;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.enterprise-control-image > span:not(.placeholder-icon)::after,
+.hero-image > span:not(.placeholder-icon)::after,
+.content-image > span:not(.placeholder-icon)::after,
+.solutions-architecture-image > span:not(.placeholder-icon)::after {
+  display: block;
+  margin-top: 12px;
+  color: #aebdca;
+  font-size: clamp(0.78rem, 1.2vw, 0.95rem);
+  font-weight: 650;
+  line-height: 1.55;
+  letter-spacing: 0.055em;
+}
+
+.enterprise-control-image > small::after,
+.hero-image > small::after,
+.content-image > small::after,
+.solutions-architecture-image > small::after {
+  display: block;
+  margin-top: 22px;
+  color: #ff9858;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
 .enterprise-control-image {
   aspect-ratio: 3 / 2;
   min-height: 0;
-  overflow: hidden;
-  background-color: #071527;
-  background-image: url("/assets/images/painel-cargo-comercial-1920x1280.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-color: rgba(7, 21, 39, 0.16);
-  box-shadow: 22px 22px 0 rgba(20, 48, 71, 0.12), 0 32px 64px rgba(7, 21, 39, 0.16);
 }
 
-.enterprise-control-image > * {
-  display: none;
+.enterprise-control-image .placeholder-icon::after {
+  content: "AUDIT / 03";
+}
+
+.enterprise-control-image > strong::after {
+  content: "DECISION TRACE";
+}
+
+.enterprise-control-image > span:not(.placeholder-icon)::after {
+  content: "SOURCE  →  POLICY  →  STATUS  →  EVENT";
+}
+
+.enterprise-control-image > small::after {
+  content: "ORIGEM • CRITÉRIO • HISTÓRICO";
+}
+
+.hero-image {
+  min-height: 520px;
+}
+
+.hero-image .placeholder-icon::after {
+  content: "VIAGATE / CORE";
+}
+
+.hero-image > strong::after {
+  content: "IDENTIDADE → RISCO → OPERAÇÃO";
+}
+
+.hero-image > span:not(.placeholder-icon)::after {
+  content: "Uma base tecnológica para conectar validação, decisão e execução no transporte.";
+}
+
+.hero-image > small::after {
+  content: "CURITIBA / BRASIL • TRANSPORTE • TECNOLOGIA";
+}
+
+.content-image {
+  min-height: 420px;
+  color: #0b1b2d;
+  background:
+    linear-gradient(rgba(34, 63, 83, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 63, 83, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 82% 20%, rgba(255, 100, 0, 0.12), transparent 30%),
+    #eef2f4;
+  background-size: 36px 36px, 36px 36px, auto, auto;
+  border-color: #c9d4dc;
+  box-shadow: 18px 18px 0 rgba(20, 48, 71, 0.08), 0 24px 54px rgba(7, 21, 39, 0.08);
+}
+
+.content-image::before {
+  border-top-color: rgba(32, 64, 85, 0.18);
+  border-right-color: rgba(32, 64, 85, 0.1);
+  border-bottom-color: rgba(32, 64, 85, 0.1);
+}
+
+.content-image > strong::after {
+  color: #0b1b2d;
+}
+
+.content-image > span:not(.placeholder-icon)::after {
+  color: #516575;
+}
+
+.content-image .placeholder-icon::after,
+.content-image > small::after {
+  color: #d85300;
+}
+
+.content-image .placeholder-icon::after {
+  content: "CONTEXT / CHAIN";
+}
+
+.content-image > strong::after {
+  content: "DECISÃO CONTÍNUA";
+}
+
+.content-image > span:not(.placeholder-icon)::after {
+  content: "IDENTIDADE  →  CADASTRO  →  AUTENTICAÇÃO  →  VIAGEM";
+}
+
+.content-image > small::after {
+  content: "CONTEXTO PRESERVADO / AUDITÁVEL";
+}
+
+.solutions-architecture-image {
+  aspect-ratio: 3 / 2;
+  min-height: 0;
+}
+
+.solutions-architecture-image .placeholder-icon::after {
+  content: "ARCHITECTURE / CORE";
+}
+
+.solutions-architecture-image > strong::after {
+  content: "PLATAFORMA CARGO";
+}
+
+.solutions-architecture-image > span:not(.placeholder-icon)::after {
+  content: "API  ↔  CORE  ↔  WHITE LABEL";
+}
+
+.solutions-architecture-image > small::after {
+  content: "TMS • ERP • SISTEMAS DO CLIENTE";
 }
 
 .hero-copy,
@@ -382,6 +617,22 @@ input[type="reset"] {
 
   .cta-section .cta-card {
     width: min(calc(100% - 32px), var(--container));
+  }
+
+  .enterprise-control-image,
+  .hero-image,
+  .content-image,
+  .solutions-architecture-image {
+    min-height: 360px;
+    padding: 30px;
+  }
+
+  .enterprise-control-image .placeholder-icon,
+  .hero-image .placeholder-icon,
+  .content-image .placeholder-icon,
+  .solutions-architecture-image .placeholder-icon {
+    top: 32px;
+    left: 32px;
   }
 }
 
