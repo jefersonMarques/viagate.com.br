@@ -119,6 +119,71 @@ const initializeToolCatalogVisuals = () => {
   });
 };
 
+const initializeHeaderScrollVisibility = (header, closeMenus) => {
+  const mobileMenu = header.querySelector(".mobile-menu");
+  let lastScrollY = Math.max(0, window.scrollY);
+  let upwardTravel = 0;
+  let downwardTravel = 0;
+  let ticking = false;
+
+  const revealHeader = () => {
+    header.classList.remove("is-hidden");
+  };
+
+  const hideHeader = () => {
+    if (header.classList.contains("is-hidden")) {
+      return;
+    }
+
+    closeMenus();
+
+    if (mobileMenu instanceof HTMLDetailsElement && mobileMenu.open) {
+      mobileMenu.open = false;
+    }
+
+    header.classList.add("is-hidden");
+  };
+
+  const updateHeader = () => {
+    const currentScrollY = Math.max(0, window.scrollY);
+    const delta = currentScrollY - lastScrollY;
+
+    if (currentScrollY <= 18) {
+      upwardTravel = 0;
+      downwardTravel = 0;
+      revealHeader();
+    } else if (delta > 0) {
+      upwardTravel = 0;
+      downwardTravel += delta;
+
+      if (currentScrollY > header.offsetHeight + 24 && downwardTravel >= 10) {
+        hideHeader();
+      }
+    } else if (delta < 0) {
+      downwardTravel = 0;
+      upwardTravel += Math.abs(delta);
+
+      if (upwardTravel >= 4) {
+        revealHeader();
+      }
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  };
+
+  window.addEventListener("scroll", () => {
+    if (ticking) {
+      return;
+    }
+
+    ticking = true;
+    window.requestAnimationFrame(updateHeader);
+  }, { passive: true });
+
+  header.addEventListener("focusin", revealHeader);
+};
+
 const initializeHeaderMegaMenu = () => {
   const header = document.querySelector(".site-header");
 
@@ -176,7 +241,7 @@ const initializeHeaderMegaMenu = () => {
       }, 130);
     };
 
-    cluster.addEventListener("mouseenter", open);
+    trigger.addEventListener("mouseenter", open);
     cluster.addEventListener("mouseleave", scheduleClose);
 
     trigger.addEventListener("click", () => {
@@ -216,6 +281,8 @@ const initializeHeaderMegaMenu = () => {
 
     closeAll();
   });
+
+  initializeHeaderScrollVisibility(header, closeAll);
 
   const toolMenu = header.querySelector("[data-tool-menu]");
   if (!(toolMenu instanceof HTMLElement)) {
