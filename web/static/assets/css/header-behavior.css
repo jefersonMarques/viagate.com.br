@@ -1,0 +1,71 @@
+.site-header {
+  transform: translate3d(0, 0, 0);
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms ease;
+  will-change: transform;
+}
+
+.site-header.is-hidden {
+  transform: translate3d(0, calc(-100% - 2px), 0);
+}
+
+.site-header.is-hidden .mega-menu {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translate(-50%, -10px) !important;
+  pointer-events: none !important;
+}
+
+/* O painel não deve abrir só porque o ponteiro entrou na caixa ampla do cluster. */
+.nav-cluster:hover > .mega-menu {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  pointer-events: none;
+}
+
+.nav-cluster.is-open > .mega-menu,
+.nav-cluster:focus-within > .mega-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+/* O estado visual também fica restrito ao trigger real, abertura explícita ou teclado. */
+.nav-cluster:hover .nav-trigger {
+  color: #d7e0e8;
+}
+
+.nav-cluster:hover .nav-trigger::before {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.nav-cluster:hover .nav-trigger::after {
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.nav-cluster .nav-trigger:hover,
+.nav-cluster:focus-within .nav-trigger,
+.nav-cluster.is-open .nav-trigger {
+  color: var(--orange-500);
+}
+
+.nav-cluster .nav-trigger:hover::before,
+.nav-cluster:focus-within .nav-trigger::before,
+.nav-cluster.is-open .nav-trigger::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.nav-cluster .nav-trigger:hover::after,
+.nav-cluster:focus-within .nav-trigger::after,
+.nav-cluster.is-open .nav-trigger::after {
+  transform: translateY(1px) rotate(225deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none !important;
+  }
+}
