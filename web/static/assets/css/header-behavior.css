@@ -30,30 +30,40 @@
   transform: translateY(-10px);
 }
 
-.site-header.is-hidden .mega-menu {
+/*
+ * O estado do painel é controlado somente pela classe .is-open.
+ * :hover e :focus-within não podem deixar uma camada invisível sobre o conteúdo.
+ */
+.nav-cluster > .mega-menu,
+.nav-cluster:hover > .mega-menu,
+.nav-cluster:focus-within > .mega-menu {
+  z-index: -1 !important;
   visibility: hidden !important;
   opacity: 0 !important;
   transform: translateY(-10px) !important;
   pointer-events: none !important;
 }
 
-/* O painel não deve abrir só porque o ponteiro entrou na caixa ampla do cluster. */
-.nav-cluster:hover > .mega-menu {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-}
-
 .nav-cluster.is-open > .mega-menu,
-.nav-cluster:focus-within > .mega-menu {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+.nav-cluster.is-open:hover > .mega-menu,
+.nav-cluster.is-open:focus-within > .mega-menu {
+  z-index: 120 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
 }
 
-/* O estado visual também fica restrito ao trigger real, abertura explícita ou teclado. */
+.site-header.is-hidden .mega-menu,
+.site-header.is-hidden .nav-cluster.is-open > .mega-menu {
+  z-index: -1 !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translateY(-10px) !important;
+  pointer-events: none !important;
+}
+
+/* O estado visual fica no trigger real ou no menu explicitamente aberto. */
 .nav-cluster:hover .nav-trigger {
   color: #d7e0e8;
 }
@@ -68,20 +78,17 @@
 }
 
 .nav-cluster .nav-trigger:hover,
-.nav-cluster:focus-within .nav-trigger,
 .nav-cluster.is-open .nav-trigger {
   color: var(--orange-500);
 }
 
 .nav-cluster .nav-trigger:hover::before,
-.nav-cluster:focus-within .nav-trigger::before,
 .nav-cluster.is-open .nav-trigger::before {
   transform: scaleX(1);
   transform-origin: left center;
 }
 
 .nav-cluster .nav-trigger:hover::after,
-.nav-cluster:focus-within .nav-trigger::after,
 .nav-cluster.is-open .nav-trigger::after {
   transform: translateY(1px) rotate(225deg);
 }
