@@ -8,10 +8,20 @@
   transform: translate3d(0, calc(-100% - 2px), 0);
 }
 
+/* Os mega-menus usam exatamente a largura útil da mesma .container do header. */
+.mega-menu,
+.tools-mega-menu,
+.analysis-menu {
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  transform: translateY(-10px);
+}
+
 .site-header.is-hidden .mega-menu {
   visibility: hidden !important;
   opacity: 0 !important;
-  transform: translate(-50%, -10px) !important;
+  transform: translateY(-10px) !important;
   pointer-events: none !important;
 }
 
@@ -19,7 +29,7 @@
 .nav-cluster:hover > .mega-menu {
   visibility: hidden;
   opacity: 0;
-  transform: translate(-50%, -10px);
+  transform: translateY(-10px);
   pointer-events: none;
 }
 
@@ -27,7 +37,7 @@
 .nav-cluster:focus-within > .mega-menu {
   visibility: visible;
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translateY(0);
   pointer-events: auto;
 }
 
