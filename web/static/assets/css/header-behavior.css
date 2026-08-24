@@ -23,7 +23,8 @@
 /* Os mega-menus usam exatamente a largura útil da mesma .container do header. */
 .mega-menu,
 .tools-mega-menu,
-.analysis-menu {
+.analysis-menu,
+.content-mega-menu {
   left: 0;
   width: 100%;
   max-width: 100%;
@@ -31,12 +32,16 @@
 }
 
 /*
- * O estado do painel é controlado somente pela classe .is-open.
- * :hover e :focus-within não podem deixar uma camada invisível sobre o conteúdo.
+ * Fechado significa fora do layout de interação.
+ * Isso impede qualquer mega-menu invisível de bloquear links da página.
  */
 .nav-cluster > .mega-menu,
 .nav-cluster:hover > .mega-menu,
-.nav-cluster:focus-within > .mega-menu {
+.nav-cluster:focus-within > .mega-menu,
+.nav-cluster > .mega-menu.tools-mega-menu,
+.nav-cluster > .mega-menu.analysis-menu,
+.nav-cluster > .mega-menu.content-mega-menu {
+  display: none !important;
   z-index: -1 !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -45,8 +50,10 @@
 }
 
 .nav-cluster.is-open > .mega-menu,
-.nav-cluster.is-open:hover > .mega-menu,
-.nav-cluster.is-open:focus-within > .mega-menu {
+.nav-cluster.is-open > .mega-menu.tools-mega-menu,
+.nav-cluster.is-open > .mega-menu.analysis-menu,
+.nav-cluster.is-open > .mega-menu.content-mega-menu {
+  display: block !important;
   z-index: 120 !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -56,6 +63,7 @@
 
 .site-header.is-hidden .mega-menu,
 .site-header.is-hidden .nav-cluster.is-open > .mega-menu {
+  display: none !important;
   z-index: -1 !important;
   visibility: hidden !important;
   opacity: 0 !important;
