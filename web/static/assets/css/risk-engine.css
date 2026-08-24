@@ -1,3 +1,56 @@
+.console-mark {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  overflow: hidden;
+  background: var(--orange-500);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(255, 123, 44, 0.2), 0 0 12px rgba(255, 123, 44, 0.14);
+  transform: none;
+}
+
+.console-mark::before,
+.console-mark::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: #fff;
+  will-change: transform;
+}
+
+/* Chevron esquerdo: ligeiramente mais alto, como no símbolo da marca. */
+.console-mark::before {
+  clip-path: polygon(27% 17%, 38% 17%, 54% 48%, 37% 76%, 26% 76%, 42% 48%);
+  animation: viagateMarkLeft 3.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+/* Chevron direito: deslocado para baixo e voltado para o primeiro. */
+.console-mark::after {
+  clip-path: polygon(73% 29%, 62% 29%, 46% 58%, 63% 89%, 74% 89%, 58% 58%);
+  animation: viagateMarkRight 3.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes viagateMarkLeft {
+  0%, 58%, 100% {
+    transform: translateX(-0.8px);
+  }
+  68%, 78% {
+    transform: translateX(0.35px);
+  }
+}
+
+@keyframes viagateMarkRight {
+  0%, 58%, 100% {
+    transform: translateX(0.8px) translateY(0.2px);
+  }
+  68%, 78% {
+    transform: translateX(-0.35px) translateY(0.2px);
+  }
+}
+
 .command-center .console-main {
   grid-template-columns: minmax(0, 1fr) 238px;
   min-height: 510px;
@@ -424,6 +477,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .console-mark::before,
+  .console-mark::after,
   .process-step,
   .process-progress i,
   .process-result,
