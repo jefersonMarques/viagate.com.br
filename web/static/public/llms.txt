@@ -46,6 +46,7 @@ Contato: contato@viagate.com.br | +55 41 99962-3600
 ## Conteúdo e fontes
 
 - [Conteúdos Viagate](https://viagate.com.br/blog): artigos sobre pesquisa cadastral, biometria, fraude e proteção de dados.
+- [Termos de Uso e Política de Privacidade](https://viagate.com.br/termos-uso-politica-privacidade): documento oficial aplicável ao Cargo Truck, Score e Consulta Avulsa, incluindo tratamento de dados pessoais e condições de uso.
 - [Arquivo detalhado para modelos de linguagem](https://viagate.com.br/llms-full.txt): descrição ampliada das soluções, tipos de análise, limites e referências.
 - [Sitemap XML](https://viagate.com.br/sitemap.xml)
 - [Feed RSS](https://viagate.com.br/feed.xml)
