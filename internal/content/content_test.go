@@ -48,6 +48,32 @@ func TestSolutionsAreGroupedWithoutDuplication(t *testing.T) {
 	}
 }
 
+func TestAnalysisReferencesAreCompleteAndUnique(t *testing.T) {
+	if len(Analyses()) != 12 {
+		t.Fatalf("expected 12 analysis references, got %d", len(Analyses()))
+	}
+
+	seen := make(map[string]bool)
+	for _, analysis := range Analyses() {
+		if analysis.Slug == "" || analysis.Name == "" || analysis.Title == "" || analysis.MetaDescription == "" {
+			t.Fatalf("analysis has incomplete SEO content: %#v", analysis)
+		}
+		if seen[analysis.Slug] {
+			t.Fatalf("duplicate analysis slug: %s", analysis.Slug)
+		}
+		seen[analysis.Slug] = true
+		if analysis.Definition == "" || analysis.Purpose == "" || analysis.Interpretation == "" {
+			t.Fatalf("analysis %s needs complete explanatory content", analysis.Slug)
+		}
+		if len(analysis.Scope) < 3 || len(analysis.Process) < 3 || len(analysis.Limitations) < 2 || len(analysis.FrequentlyAsked) < 2 {
+			t.Fatalf("analysis %s needs more supporting content", analysis.Slug)
+		}
+		if analysis.RelatedSolutionName == "" || analysis.RelatedSolutionPath == "" {
+			t.Fatalf("analysis %s needs a related solution", analysis.Slug)
+		}
+	}
+}
+
 func TestArticleContentIsCompleteAndUnique(t *testing.T) {
 	seen := make(map[string]bool)
 	for _, article := range Articles() {
@@ -75,5 +101,17 @@ func TestMetadataUsesCanonicalURLAndValidSchema(t *testing.T) {
 	var schema map[string]any
 	if err := json.Unmarshal([]byte(meta.Schema), &schema); err != nil {
 		t.Fatalf("invalid JSON-LD: %v", err)
+	}
+
+	analysis, found := FindAnalysis("biometria-facial-prova-de-vida")
+	if !found {
+		t.Fatal("expected biometric analysis reference")
+	}
+	analysisMeta := AnalysisMeta("https://viagate.com.br/", analysis)
+	if analysisMeta.Canonical != "https://viagate.com.br/analises/biometria-facial-prova-de-vida" {
+		t.Fatalf("unexpected analysis canonical URL: %s", analysisMeta.Canonical)
+	}
+	if err := json.Unmarshal([]byte(analysisMeta.Schema), &schema); err != nil {
+		t.Fatalf("invalid analysis JSON-LD: %v", err)
 	}
 }
