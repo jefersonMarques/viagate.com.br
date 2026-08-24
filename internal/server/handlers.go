@@ -43,6 +43,31 @@ func (application *Application) tools(response http.ResponseWriter, request *htt
 	))
 }
 
+func (application *Application) analyses(response http.ResponseWriter, request *http.Request) {
+	application.render(response, request, http.StatusOK, pages.Analyses(
+		content.ListingMeta(
+			application.config.SiteURL,
+			"Tipos de análises para transporte e gestão de riscos",
+			"Referências sobre biometria, cadastro, CNH, ANTT, contexto judicial, critérios operacionais, histórico veicular, monitoramento e viagem.",
+			"/analises",
+		),
+		content.Analyses(),
+	))
+}
+
+func (application *Application) analysis(response http.ResponseWriter, request *http.Request) {
+	analysis, found := content.FindAnalysis(request.PathValue("slug"))
+	if !found {
+		application.notFound(response, request)
+		return
+	}
+	application.render(response, request, http.StatusOK, pages.Analysis(
+		content.AnalysisMeta(application.config.SiteURL, analysis),
+		analysis,
+		content.RelatedAnalyses(analysis),
+	))
+}
+
 func (application *Application) solution(response http.ResponseWriter, request *http.Request) {
 	solution, found := content.FindSolution(request.PathValue("slug"))
 	if !found || solution.Slug == "api" || solution.Slug == "white-label" {
