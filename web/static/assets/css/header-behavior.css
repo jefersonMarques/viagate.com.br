@@ -13,6 +13,13 @@
   width: min(calc(100% - clamp(32px, 6vw, 96px)), var(--container));
 }
 
+/* No desktop, o trigger ocupa toda a altura útil do header para não existir um vão entre o item e o mega-menu. */
+@media (min-width: 861px) {
+  .nav-trigger {
+    min-height: 82px;
+  }
+}
+
 /* Os mega-menus usam exatamente a largura útil da mesma .container do header. */
 .mega-menu,
 .tools-mega-menu,
