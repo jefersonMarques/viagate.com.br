@@ -368,6 +368,64 @@
   letter-spacing: 0.04em;
 }
 
+.solution-evidence-image {
+  position: relative;
+  isolation: isolate;
+  display: block !important;
+  min-height: 330px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  color: #102438 !important;
+  background:
+    linear-gradient(rgba(48, 78, 99, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 78, 99, 0.055) 1px, transparent 1px),
+    #eef2f4 !important;
+  background-size: 30px 30px !important;
+  border: 1px solid #c8d4dc !important;
+  border-left: 3px solid #ff6400 !important;
+  box-shadow: 14px 14px 0 rgba(20, 48, 71, 0.07), 0 24px 48px rgba(7, 21, 39, 0.08) !important;
+}
+
+.solution-evidence-image > * {
+  display: none !important;
+}
+
+.solution-evidence-image::before {
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  z-index: 2 !important;
+  height: auto !important;
+  padding: 15px 18px !important;
+  content: "RESULT / EVIDÊNCIAS" !important;
+  color: #d85300;
+  background: rgba(235, 240, 243, 0.94) !important;
+  border: 0 !important;
+  border-bottom: 1px solid #c8d4dc !important;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.solution-evidence-image::after {
+  position: absolute !important;
+  top: 70px !important;
+  right: 22px !important;
+  bottom: auto !important;
+  left: 22px !important;
+  width: auto !important;
+  height: auto !important;
+  content: "01   STATUS CONSOLIDADO          READY\A02   EVIDÊNCIAS VINCULADAS        READY\A03   CONTEXTO PRESERVADO           READY\A04   REVISÃO E HISTÓRICO           READY" !important;
+  white-space: pre;
+  color: #31495b;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: var(--font-tech);
+  font-size: clamp(0.7rem, 1vw, 0.84rem);
+  font-weight: 750;
+  line-height: 3.25;
+  letter-spacing: 0.025em;
+}
+
 @media (max-width: 980px) {
   .about-core-flow,
   .solutions-architecture-flow {
@@ -417,5 +475,17 @@
 
   .decision-trace-foot span {
     font-size: 0.56rem;
+  }
+
+  .solution-evidence-image {
+    min-height: 300px !important;
+  }
+
+  .solution-evidence-image::after {
+    top: 68px !important;
+    right: 14px !important;
+    left: 14px !important;
+    font-size: 0.62rem;
+    line-height: 3.3;
   }
 }
