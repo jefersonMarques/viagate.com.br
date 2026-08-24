@@ -10,6 +10,7 @@ templ Layout(meta site.PageMeta) {
 			<meta name="viewport" content="width=device-width, initial-scale=1"/>
 			<title>{ meta.Title }</title>
 			<meta name="description" content={ meta.Description }/>
+			<meta name="application-name" content="Viagate"/>
 			<link rel="canonical" href={ meta.Canonical }/>
 			if meta.NoIndex {
 				<meta name="robots" content="noindex, follow"/>
@@ -23,12 +24,21 @@ templ Layout(meta site.PageMeta) {
 			<meta property="og:description" content={ meta.Description }/>
 			<meta property="og:url" content={ meta.Canonical }/>
 			<meta property="og:image" content={ meta.Image }/>
+			<meta property="og:image:type" content="image/png"/>
 			<meta property="og:image:width" content="1200"/>
 			<meta property="og:image:height" content="630"/>
+			<meta property="og:image:alt" content="Viagate — tecnologia para transporte e gestão de riscos"/>
+			if meta.Type == "article" && meta.PublishedTime != "" {
+				<meta property="article:published_time" content={ meta.PublishedTime }/>
+			}
+			if meta.Type == "article" && meta.ModifiedTime != "" {
+				<meta property="article:modified_time" content={ meta.ModifiedTime }/>
+			}
 			<meta name="twitter:card" content="summary_large_image"/>
 			<meta name="twitter:title" content={ meta.Title }/>
 			<meta name="twitter:description" content={ meta.Description }/>
 			<meta name="twitter:image" content={ meta.Image }/>
+			<meta name="twitter:image:alt" content="Viagate — tecnologia para transporte e gestão de riscos"/>
 			<meta name="theme-color" content="#071527"/>
 			<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 			<link rel="manifest" href="/site.webmanifest"/>
