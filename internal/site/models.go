@@ -3,13 +3,15 @@ package site
 import "time"
 
 type PageMeta struct {
-	Title       string
-	Description string
-	Canonical   string
-	Image       string
-	Type        string
-	Schema      string
-	NoIndex     bool
+	Title         string
+	Description   string
+	Canonical     string
+	Image         string
+	Type          string
+	Schema        string
+	PublishedTime string
+	ModifiedTime  string
+	NoIndex       bool
 }
 
 type Feature struct {
