@@ -196,6 +196,15 @@ const initializeHeaderMegaMenu = () => {
   const clusters = Array.from(header.querySelectorAll("[data-mega-cluster]"));
   let closeTimerId = null;
 
+  const clearCloseTimer = () => {
+    if (closeTimerId === null) {
+      return;
+    }
+
+    window.clearTimeout(closeTimerId);
+    closeTimerId = null;
+  };
+
   const setClusterOpen = (cluster, open) => {
     cluster.classList.toggle("is-open", open);
 
@@ -206,6 +215,8 @@ const initializeHeaderMegaMenu = () => {
   };
 
   const closeAll = (except = null) => {
+    clearCloseTimer();
+
     clusters.forEach((cluster) => {
       if (cluster !== except) {
         setClusterOpen(cluster, false);
@@ -215,36 +226,46 @@ const initializeHeaderMegaMenu = () => {
 
   clusters.forEach((cluster) => {
     const trigger = cluster.querySelector("[data-mega-trigger]");
+    const menu = cluster.querySelector(".mega-menu");
 
     if (!(trigger instanceof HTMLButtonElement)) {
       return;
     }
 
     const open = () => {
-      if (closeTimerId !== null) {
-        window.clearTimeout(closeTimerId);
-        closeTimerId = null;
-      }
-
+      clearCloseTimer();
       closeAll(cluster);
       setClusterOpen(cluster, true);
     };
 
     const scheduleClose = () => {
-      if (closeTimerId !== null) {
-        window.clearTimeout(closeTimerId);
-      }
+      clearCloseTimer();
 
       closeTimerId = window.setTimeout(() => {
+        const pointerStillInside = cluster.matches(":hover");
+        const focusStillInside = cluster.contains(document.activeElement);
+
+        if (pointerStillInside || focusStillInside) {
+          closeTimerId = null;
+          return;
+        }
+
         setClusterOpen(cluster, false);
         closeTimerId = null;
-      }, 130);
+      }, 280);
     };
 
     trigger.addEventListener("mouseenter", open);
+    cluster.addEventListener("mouseenter", clearCloseTimer);
     cluster.addEventListener("mouseleave", scheduleClose);
 
+    if (menu instanceof HTMLElement) {
+      menu.addEventListener("mouseenter", clearCloseTimer);
+      menu.addEventListener("mouseleave", scheduleClose);
+    }
+
     trigger.addEventListener("click", () => {
+      clearCloseTimer();
       const nextOpenState = !cluster.classList.contains("is-open");
       closeAll(cluster);
       setClusterOpen(cluster, nextOpenState);
