@@ -11,6 +11,70 @@ const toolVisualAssets = {
   }
 };
 
+const analysisReferencePaths = {
+  "Biometria facial e prova de vida": "/analises/biometria-facial-prova-de-vida",
+  "Dados cadastrais": "/analises/dados-cadastrais",
+  "Autenticação de identidade": "/analises/autenticacao-de-identidade",
+  "Telefone e contexto do acesso": "/analises/telefone-contexto-acesso",
+  "CNH e informações da habilitação": "/analises/cnh-informacoes-habilitacao",
+  "ANTT e RNTRC": "/analises/antt-rntrc",
+  "Processos e contexto judicial": "/analises/processos-contexto-judicial",
+  "Políticas e critérios operacionais": "/analises/politicas-criterios-operacionais",
+  "Histórico veicular": "/analises/historico-veicular",
+  "Multas, débitos e restrições": "/analises/multas-debitos-restricoes",
+  "Monitoramento e alertas": "/analises/monitoramento-alertas",
+  "Viagem e contexto operacional": "/analises/viagem-contexto-operacional"
+};
+
+const initializeAnalysisReferenceLinks = (header) => {
+  const analysisMenu = header.querySelector("#menu-analysis");
+  if (analysisMenu instanceof HTMLElement) {
+    analysisMenu.querySelectorAll(".analysis-menu-link").forEach((link) => {
+      if (!(link instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      const path = analysisReferencePaths[link.textContent.trim()];
+      if (path) {
+        link.href = path;
+      }
+    });
+
+    const footerLink = analysisMenu.querySelector(".mega-menu-footer a");
+    if (footerLink instanceof HTMLAnchorElement) {
+      footerLink.href = "/analises";
+      footerLink.textContent = "Ver todos os tipos de análise ↗";
+    }
+  }
+
+  const mobileLabels = Array.from(header.querySelectorAll(".mobile-nav-label"));
+  const analysisLabel = mobileLabels.find((label) => label.textContent.trim() === "Tipos de análises");
+  if (!(analysisLabel instanceof HTMLElement) || !(analysisLabel.parentElement instanceof HTMLElement)) {
+    return;
+  }
+
+  let sibling = analysisLabel.nextElementSibling;
+  while (sibling && !sibling.classList.contains("mobile-nav-label")) {
+    const next = sibling.nextElementSibling;
+    sibling.remove();
+    sibling = next;
+  }
+
+  const fragment = document.createDocumentFragment();
+  Object.entries(analysisReferencePaths).forEach(([label, path]) => {
+    const link = document.createElement("a");
+    link.href = path;
+    link.textContent = label;
+    fragment.append(link);
+  });
+
+  const allLink = document.createElement("a");
+  allLink.href = "/analises";
+  allLink.textContent = "Ver todos os tipos de análise";
+  fragment.append(allLink);
+  analysisLabel.after(fragment);
+};
+
 const initializeToolCatalogVisuals = () => {
   Object.values(toolVisualAssets).forEach((asset) => {
     const visual = document.querySelector(`[data-tool-catalog-visual="${asset.catalogSlug}"]`);
@@ -61,6 +125,8 @@ const initializeHeaderMegaMenu = () => {
   if (!(header instanceof HTMLElement)) {
     return;
   }
+
+  initializeAnalysisReferenceLinks(header);
 
   const clusters = Array.from(header.querySelectorAll("[data-mega-cluster]"));
   let closeTimerId = null;
