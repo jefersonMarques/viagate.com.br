@@ -62,6 +62,51 @@ func ListingMeta(siteURL string, title string, description string, path string) 
 	return site.PageMeta{Title: title + " | Viagate", Description: description, Canonical: canonical, Image: absoluteURL(siteURL, defaultSocialImage), Type: "website", Schema: marshalSchema(schema)}
 }
 
+func AnalysisMeta(siteURL string, analysis site.AnalysisReference) site.PageMeta {
+	path := "/analises/" + analysis.Slug
+	canonical := absoluteURL(siteURL, path)
+	faqEntities := make([]map[string]any, 0, len(analysis.FrequentlyAsked))
+	for _, item := range analysis.FrequentlyAsked {
+		faqEntities = append(faqEntities, map[string]any{
+			"@type": "Question",
+			"name":  item.Question,
+			"acceptedAnswer": map[string]any{
+				"@type": "Answer",
+				"text":  item.Answer,
+			},
+		})
+	}
+	schema := map[string]any{
+		"@context": "https://schema.org",
+		"@graph": []any{
+			map[string]any{
+				"@type":       "DefinedTerm",
+				"@id":         canonical + "#term",
+				"name":        analysis.Name,
+				"description": analysis.Definition,
+				"url":         canonical,
+			},
+			map[string]any{
+				"@type":      "FAQPage",
+				"@id":        canonical + "#faq",
+				"mainEntity": faqEntities,
+			},
+			map[string]any{
+				"@type":       "WebPage",
+				"@id":         canonical + "#webpage",
+				"url":         canonical,
+				"name":        analysis.Title,
+				"description": analysis.MetaDescription,
+				"inLanguage":  "pt-BR",
+				"about":       map[string]any{"@id": canonical + "#term"},
+				"isPartOf":    map[string]any{"@id": absoluteURL(siteURL, "/#website")},
+				"breadcrumb":  breadcrumbSchema(siteURL, []breadcrumb{{"Início", "/"}, {"Tipos de análises", "/analises"}, {analysis.Name, path}}),
+			},
+		},
+	}
+	return site.PageMeta{Title: analysis.Title + " | Viagate", Description: analysis.MetaDescription, Canonical: canonical, Image: absoluteURL(siteURL, defaultSocialImage), Type: "website", Schema: marshalSchema(schema)}
+}
+
 func SolutionMeta(siteURL string, solution site.Solution, path string) site.PageMeta {
 	canonical := absoluteURL(siteURL, path)
 	faqEntities := make([]map[string]any, 0, len(solution.FrequentlyAsked))
