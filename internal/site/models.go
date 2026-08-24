@@ -28,6 +28,26 @@ type FAQ struct {
 	Answer   string
 }
 
+type AnalysisReference struct {
+	Slug                string
+	Category            string
+	Subject             string
+	Name                string
+	Icon                string
+	Title               string
+	MetaDescription     string
+	Lead                string
+	Definition          string
+	Purpose             string
+	Scope               []string
+	Process             []string
+	Interpretation      string
+	Limitations         []string
+	RelatedSolutionName string
+	RelatedSolutionPath string
+	FrequentlyAsked     []FAQ
+}
+
 type SolutionKind string
 
 const (
