@@ -19,6 +19,8 @@ func TestPublicRoutes(t *testing.T) {
 		{path: "/", status: http.StatusOK, contentType: "text/html"},
 		{path: "/solucoes", status: http.StatusOK, contentType: "text/html"},
 		{path: "/solucoes/biometria-facial", status: http.StatusOK, contentType: "text/html"},
+		{path: "/analises", status: http.StatusOK, contentType: "text/html"},
+		{path: "/analises/biometria-facial-prova-de-vida", status: http.StatusOK, contentType: "text/html"},
 		{path: "/blog", status: http.StatusOK, contentType: "text/html"},
 		{path: "/termos-uso-politica-privacidade", status: http.StatusOK, contentType: "text/html"},
 		{path: "/llms.txt", status: http.StatusOK, contentType: "text/plain"},
