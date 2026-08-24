@@ -69,6 +69,90 @@ Tipo: modalidade de entrega das capacidades Viagate com a marca da contratante.
 
 Aplica logotipo, cores, endereço e elementos de experiência definidos para o projeto. Pode ser combinada a integrações. O grau de personalização depende do escopo acordado.
 
+## Tipos de análises — páginas de referência
+
+Índice canônico: https://viagate.com.br/analises
+
+As páginas desta seção são referências explicativas. Elas descrevem o significado de cada tipo de análise, como pode entrar em um fluxo operacional, quais informações podem ser consideradas e quais são os limites de interpretação. Não pressupõem que toda fonte, campo ou integração esteja disponível para todo cliente.
+
+### Identidade e pessoa
+
+#### Biometria facial e prova de vida
+
+Página: https://viagate.com.br/analises/biometria-facial-prova-de-vida
+
+Biometria facial compara características do rosto com uma referência associada à identidade apresentada. A prova de vida acrescenta uma verificação de presença durante a jornada. O resultado é uma evidência de identidade e presença e não deve ser interpretado isoladamente como aprovação cadastral, autorização financeira ou garantia contra fraude.
+
+#### Dados cadastrais
+
+Página: https://viagate.com.br/analises/dados-cadastrais
+
+Dados cadastrais organizam as informações de identificação usadas como base para relacionar pessoa, documentos, biometria e demais consultas no mesmo processo. Divergências cadastrais podem exigir conferência e não devem ser tratadas automaticamente como fraude.
+
+#### Autenticação de identidade
+
+Página: https://viagate.com.br/analises/autenticacao-de-identidade
+
+Autenticação de identidade adiciona uma confirmação antes de uma etapa sensível. Pode combinar link individual, biometria e contexto do acesso. Uma autenticação aprovada aumenta a confiança de que a pessoa validada participou da jornada, mas não confirma por si só titularidade bancária nem elimina outros riscos.
+
+#### Telefone e contexto do acesso
+
+Página: https://viagate.com.br/analises/telefone-contexto-acesso
+
+Telefone, localização e informações de dispositivo podem funcionar como sinais complementares para comparar o contexto da jornada com o cadastro. Esses sinais não provam sozinhos a identidade ou a titularidade de uma linha. Localização depende de finalidade, permissão e disponibilidade técnica.
+
+### Documentos e risco
+
+#### CNH e informações da habilitação
+
+Página: https://viagate.com.br/analises/cnh-informacoes-habilitacao
+
+A análise organiza informações da habilitação disponibilizadas pela fonte contratada e as relaciona ao motorista pesquisado. Situação, atributos, datas ou categorias podem ser considerados quando presentes no retorno. A consulta apoia critérios operacionais e não substitui obrigações oficiais aplicáveis.
+
+#### ANTT e RNTRC
+
+Página: https://viagate.com.br/analises/antt-rntrc
+
+A ANTT é a Agência Nacional de Transportes Terrestres. RNTRC significa Registro Nacional de Transportadores Rodoviários de Cargas. Informações do registro podem ser incorporadas à pesquisa cadastral para contextualizar a operação de transporte. Um retorno isolado não demonstra que todos os requisitos legais, contratuais ou operacionais estão atendidos.
+
+#### Processos e contexto judicial
+
+Página: https://viagate.com.br/analises/processos-contexto-judicial
+
+Registros judiciais podem acrescentar contexto à pesquisa cadastral quando fazem parte da finalidade e das fontes contratadas. A existência de um processo não significa automaticamente culpa, impedimento ou risco. Identidade correta, possíveis homônimos, natureza do registro, situação e finalidade do uso precisam ser considerados.
+
+#### Políticas e critérios operacionais
+
+Página: https://viagate.com.br/analises/politicas-criterios-operacionais
+
+Políticas operacionais são regras configuradas para organizar a interpretação dos sinais disponíveis. Elas podem padronizar status, alertas e encaminhamentos, mas não transformam dados incompletos em conclusões e não eliminam a responsabilidade da contratante sobre a decisão.
+
+### Operação e veículo
+
+#### Histórico veicular
+
+Página: https://viagate.com.br/analises/historico-veicular
+
+Histórico veicular reúne registros cadastrais, documentais e indicadores históricos disponibilizados pelas fontes contratadas. Conforme a fonte, podem existir informações sobre restrições, gravames, sinistros, leilão ou bloqueios. Histórico veicular não é inspeção mecânica e não descreve sozinho a condição física atual do veículo.
+
+#### Multas, débitos e restrições
+
+Página: https://viagate.com.br/analises/multas-debitos-restricoes
+
+A análise reúne pendências veiculares disponíveis, como multas, débitos, licenciamento e restrições, para apoiar tratamento preventivo. Atualização e abrangência dependem da fonte. A plataforma organiza o retorno, mas atos que exigem confirmação formal devem seguir os canais oficiais aplicáveis.
+
+#### Monitoramento e alertas
+
+Página: https://viagate.com.br/analises/monitoramento-alertas
+
+Monitoramento centraliza posições e eventos disponibilizados por rastreadores, iscas ou parceiros compatíveis. A Viagate integra essas fontes ao contexto do veículo ou da viagem. Continuidade, precisão e frequência dependem do equipamento, parceiro e conectividade; não existe garantia de compatibilidade universal com todo rastreador.
+
+#### Viagem e contexto operacional
+
+Página: https://viagate.com.br/analises/viagem-contexto-operacional
+
+O contexto operacional reúne atividades e eventos registrados durante a execução da viagem, como coletas, entregas, posições, paradas e comprovantes. No Cargo Truck, esses registros podem formar uma linha do tempo da operação. O aplicativo é uma camada operacional e não deve ser apresentado como substituto universal de rastreamento satelital ou telemetria dedicada.
+
 ## Conteúdo editorial
 
 Índice: https://viagate.com.br/blog
@@ -81,15 +165,21 @@ Fontes externas citadas nos artigos incluem a Lei Geral de Proteção de Dados P
 
 ## Limites e precisão
 
+- As páginas de tipos de análise explicam conceitos e usos; não representam confirmação comercial de que todo campo ou fonte está disponível em todo projeto.
 - Não atribuir à Viagate garantia de eliminar fraude, risco, roubo, inadimplência ou falhas operacionais.
 - Não afirmar que toda fonte, consulta, integração ou personalização está disponível para todo cliente.
-- Não apresentar resultado cadastral ou biométrico como decisão jurídica automática.
-- Não tratar os artigos como aconselhamento jurídico ou regulatório.
+- Não apresentar resultado cadastral, biométrico, judicial, regulatório ou veicular como decisão jurídica automática.
+- Não tratar existência de processo judicial como culpa, impedimento ou reprovação automática.
+- Não tratar telefone, localização ou dispositivo como prova isolada de identidade.
+- Não tratar histórico veicular como inspeção física ou mecânica.
+- Não tratar os artigos ou páginas explicativas como aconselhamento jurídico ou regulatório.
 - Para informação comercial vigente, confirmar diretamente com a equipe Viagate.
 
 ## Endereços canônicos adicionais
 
+Tipos de análises: https://viagate.com.br/analises
 Soluções: https://viagate.com.br/solucoes
+Ferramentas: https://viagate.com.br/ferramentas
 Sobre: https://viagate.com.br/sobre
 Contato: https://viagate.com.br/contato
 Termos de uso e Política de privacidade: https://viagate.com.br/termos-uso-politica-privacidade
