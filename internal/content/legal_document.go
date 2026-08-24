@@ -3,6 +3,7 @@ package content
 import (
 	_ "embed"
 	"html"
+	"strconv"
 	"strings"
 	"sync"
 )
@@ -26,6 +27,7 @@ func renderLegalDocument(markdown string) string {
 	var builder strings.Builder
 	lines := strings.Split(strings.ReplaceAll(markdown, "\r\n", "\n"), "\n")
 	sectionNumber := 0
+	sectionOpen := false
 
 	for _, rawLine := range lines {
 		line := strings.TrimSpace(rawLine)
@@ -39,6 +41,10 @@ func renderLegalDocument(markdown string) string {
 				continue
 			}
 
+			if sectionOpen {
+				builder.WriteString(`</section>`)
+			}
+
 			sectionNumber++
 			id := legalHeadingID(title, sectionNumber)
 			className := "legal-document-section"
@@ -47,6 +53,7 @@ func renderLegalDocument(markdown string) string {
 			}
 			builder.WriteString(`<section class="` + className + `" id="` + id + `" aria-labelledby="` + id + `-title">`)
 			builder.WriteString(`<h2 id="` + id + `-title">` + html.EscapeString(unescapeLegalMarkdown(title)) + `</h2>`)
+			sectionOpen = true
 			continue
 		}
 
@@ -70,15 +77,11 @@ func renderLegalDocument(markdown string) string {
 		builder.WriteString(`<p>` + html.EscapeString(unescapeLegalMarkdown(line)) + `</p>`)
 	}
 
-	if sectionNumber > 0 {
+	if sectionOpen {
 		builder.WriteString(`</section>`)
 	}
 
-	return normalizeLegalSections(builder.String())
-}
-
-func normalizeLegalSections(rendered string) string {
-	return strings.ReplaceAll(rendered, `</h2><section`, `</h2></section><section`)
+	return builder.String()
 }
 
 func unescapeLegalMarkdown(value string) string {
@@ -121,5 +124,5 @@ func legalHeadingID(title string, fallback int) string {
 	if id, ok := ids[title]; ok {
 		return id
 	}
-	return "secao-" + string(rune('0'+fallback))
+	return "secao-" + strconv.Itoa(fallback)
 }
