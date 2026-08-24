@@ -5,11 +5,11 @@ import "github.com/viagate/site/internal/site"
 func articleImagePath(slug string) string {
 	switch slug {
 	case "pesquisa-cadastral-de-motoristas":
-		return "/assets/images/blog/pesquisa-cadastral-motoristas.svg"
+		return "/assets/images/pesquisa-cadastral-motoristas-viagate.webp"
 	case "biometria-facial-no-transporte":
-		return "/assets/images/blog/biometria-facial-transporte.svg"
+		return "/assets/images/biometria-facial-transporte-viagate.webp"
 	case "como-reduzir-fraudes-no-frete":
-		return "/assets/images/blog/fraudes-frete.svg"
+		return "/assets/images/fraudes-frete-autenticacao-identidade-viagate.webp"
 	default:
 		return ""
 	}
@@ -17,7 +17,7 @@ func articleImagePath(slug string) string {
 
 templ ArticleImage(article site.Article, className string, loading string) {
 	if articleImagePath(article.Slug) != "" {
-		<img class={ className } src={ articleImagePath(article.Slug) } alt={ article.ImageDescription } width="1600" height="900" loading={ loading } decoding="async"/>
+		<img class={ className } src={ articleImagePath(article.Slug) } alt={ article.ImageDescription } width="1672" height="941" loading={ loading } decoding="async"/>
 	} else {
 		@ImagePlaceholder(article.ImageDescription, article.ImageSize, className)
 	}
