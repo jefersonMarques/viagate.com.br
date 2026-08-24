@@ -152,13 +152,16 @@ func (application *Application) contact(response http.ResponseWriter, request *h
 }
 
 func (application *Application) legal(response http.ResponseWriter, request *http.Request) {
-	application.render(response, request, http.StatusOK, pages.Legal(content.SimpleMeta(
-		application.config.SiteURL,
-		"Termos de uso e Política de privacidade",
-		"Consulte os termos de uso e saiba como os dados pessoais enviados pelo site institucional da Viagate são tratados.",
-		"/termos-uso-politica-privacidade",
-		false,
-	)))
+	application.render(response, request, http.StatusOK, pages.Legal(
+		content.SimpleMeta(
+			application.config.SiteURL,
+			"Termos de Uso e Política de Privacidade",
+			"Consulte os Termos de Uso e a Política de Privacidade aplicáveis ao Cargo Truck, Score e Consulta Avulsa da Via Gateway.",
+			"/termos-uso-politica-privacidade",
+			false,
+		),
+		content.LegalDocumentHTML(),
+	))
 }
 
 func (application *Application) notFound(response http.ResponseWriter, request *http.Request) {
