@@ -28,6 +28,8 @@ func renderLegalDocument(markdown string) string {
 	lines := strings.Split(strings.ReplaceAll(markdown, "\r\n", "\n"), "\n")
 	sectionNumber := 0
 	sectionOpen := false
+	preambleOpen := true
+	builder.WriteString(`<section class="legal-document-preamble" aria-label="Apresentação dos termos">`)
 
 	for _, rawLine := range lines {
 		line := strings.TrimSpace(rawLine)
@@ -41,6 +43,10 @@ func renderLegalDocument(markdown string) string {
 				continue
 			}
 
+			if preambleOpen {
+				builder.WriteString(`</section>`)
+				preambleOpen = false
+			}
 			if sectionOpen {
 				builder.WriteString(`</section>`)
 			}
@@ -77,6 +83,9 @@ func renderLegalDocument(markdown string) string {
 		builder.WriteString(`<p>` + html.EscapeString(unescapeLegalMarkdown(line)) + `</p>`)
 	}
 
+	if preambleOpen {
+		builder.WriteString(`</section>`)
+	}
 	if sectionOpen {
 		builder.WriteString(`</section>`)
 	}
