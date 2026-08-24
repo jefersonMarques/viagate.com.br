@@ -1,12 +1,15 @@
 package server
 
 import (
+	"encoding/xml"
 	"io"
 	"log/slog"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/viagate/site/internal/content"
 )
 
 func TestPublicRoutes(t *testing.T) {
@@ -83,6 +86,87 @@ func TestLegalRouteRedirects(t *testing.T) {
 				t.Fatalf("unexpected redirect target: %s", response.Header().Get("Location"))
 			}
 		})
+	}
+}
+
+func TestSitemapContainsAllIndexableRoutes(t *testing.T) {
+	application := newTestApplication()
+	request := httptest.NewRequest(http.MethodGet, "/sitemap.xml", nil)
+	response := httptest.NewRecorder()
+	application.Handler().ServeHTTP(response, request)
+
+	if response.Code != http.StatusOK {
+		t.Fatalf("expected sitemap status 200, got %d", response.Code)
+	}
+
+	var sitemap sitemapURLSet
+	if err := xml.Unmarshal(response.Body.Bytes(), &sitemap); err != nil {
+		t.Fatalf("invalid sitemap XML: %v", err)
+	}
+
+	locations := make(map[string]bool, len(sitemap.URLs))
+	for _, item := range sitemap.URLs {
+		if locations[item.Location] {
+			t.Fatalf("duplicate sitemap URL: %s", item.Location)
+		}
+		locations[item.Location] = true
+	}
+
+	const baseURL = "https://viagate.com.br"
+	expectedPaths := []string{
+		"/",
+		"/solucoes",
+		"/ferramentas",
+		"/analises",
+		"/sobre",
+		"/blog",
+		"/contato",
+		"/termos-uso-politica-privacidade",
+		"/integracoes/api",
+		"/white-label",
+	}
+	for _, solution := range content.Solutions() {
+		if solution.Slug != "api" && solution.Slug != "white-label" {
+			expectedPaths = append(expectedPaths, "/solucoes/"+solution.Slug)
+		}
+	}
+	for _, analysis := range content.Analyses() {
+		expectedPaths = append(expectedPaths, "/analises/"+analysis.Slug)
+	}
+	for _, article := range content.Articles() {
+		expectedPaths = append(expectedPaths, "/blog/"+article.Slug)
+	}
+
+	for _, path := range expectedPaths {
+		if !locations[baseURL+path] {
+			t.Errorf("indexable route missing from sitemap: %s", path)
+		}
+	}
+	if len(locations) != len(expectedPaths) {
+		t.Errorf("sitemap has %d URLs, expected %d", len(locations), len(expectedPaths))
+	}
+}
+
+func TestRobotsReferencesSitemapAndSearchCrawlers(t *testing.T) {
+	application := newTestApplication()
+	request := httptest.NewRequest(http.MethodGet, "/robots.txt", nil)
+	response := httptest.NewRecorder()
+	application.Handler().ServeHTTP(response, request)
+
+	body := response.Body.String()
+	for _, expected := range []string{
+		"User-agent: *\nAllow: /",
+		"User-agent: Googlebot\nAllow: /",
+		"User-agent: OAI-SearchBot\nAllow: /",
+		"User-agent: GPTBot\nAllow: /",
+		"Sitemap: https://viagate.com.br/sitemap.xml",
+	} {
+		if !strings.Contains(body, expected) {
+			t.Errorf("robots.txt missing %q", expected)
+		}
+	}
+	if strings.Contains(body, "Disallow: /") {
+		t.Fatal("robots.txt blocks site-wide crawling")
 	}
 }
 
