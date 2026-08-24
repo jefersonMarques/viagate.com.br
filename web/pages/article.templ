@@ -18,7 +18,7 @@ templ Article(meta site.PageMeta, article site.Article) {
 				</div>
 			</header>
 			<div class="container article-shell">
-				@components.ImagePlaceholder(article.ImageDescription, article.ImageSize, "article-cover")
+				@components.ArticleImage(article, "article-cover article-cover-image", "eager")
 				<div class="article-content">
 					<p class="article-summary">{ article.Summary }</p>
 					for _, section := range article.Sections {
