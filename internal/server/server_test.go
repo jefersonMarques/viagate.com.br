@@ -2,6 +2,7 @@ package server
 
 import (
 	"encoding/xml"
+	"image/png"
 	"io"
 	"log/slog"
 	"net/http"
@@ -10,6 +11,7 @@ import (
 	"testing"
 
 	"github.com/viagate/site/internal/content"
+	staticfiles "github.com/viagate/site/web/static"
 )
 
 func TestPublicRoutes(t *testing.T) {
@@ -167,6 +169,22 @@ func TestRobotsReferencesSitemapAndSearchCrawlers(t *testing.T) {
 	}
 	if strings.Contains(body, "Disallow: /") {
 		t.Fatal("robots.txt blocks site-wide crawling")
+	}
+}
+
+func TestSocialImageDimensions(t *testing.T) {
+	file, err := staticfiles.Files.Open("assets/images/viagate-social.png")
+	if err != nil {
+		t.Fatalf("social image is missing: %v", err)
+	}
+	defer file.Close()
+
+	config, err := png.DecodeConfig(file)
+	if err != nil {
+		t.Fatalf("invalid social image: %v", err)
+	}
+	if config.Width != 1200 || config.Height != 630 {
+		t.Fatalf("social image must be 1200x630, got %dx%d", config.Width, config.Height)
 	}
 }
 
