@@ -8,6 +8,11 @@
   transform: translate3d(0, calc(-100% - 2px), 0);
 }
 
+/* Mantém o header exatamente na mesma largura útil das demais .container do site. */
+.header-inner {
+  width: min(calc(100% - clamp(32px, 6vw, 96px)), var(--container));
+}
+
 /* Os mega-menus usam exatamente a largura útil da mesma .container do header. */
 .mega-menu,
 .tools-mega-menu,
@@ -72,6 +77,12 @@
 .nav-cluster:focus-within .nav-trigger::after,
 .nav-cluster.is-open .nav-trigger::after {
   transform: translateY(1px) rotate(225deg);
+}
+
+@media (max-width: 860px) {
+  .header-inner {
+    width: min(calc(100% - 32px), var(--container));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
