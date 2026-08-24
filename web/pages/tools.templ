@@ -11,86 +11,116 @@ templ Tools(meta site.PageMeta, tools []site.Solution) {
 	@components.Layout(meta) {
 		<section class="tools-catalog-hero">
 			<div class="command-grid" aria-hidden="true"></div>
+			<div class="tools-depth-grid tools-depth-grid-hero" aria-hidden="true"></div>
 			<div class="command-glow command-glow-right" aria-hidden="true"></div>
 			<div class="container tools-catalog-hero-grid">
 				<div class="tools-catalog-copy">
 					<div class="authority-line"><span class="authority-dot"></span> FERRAMENTAS VIAGATE</div>
-					<h1>Tecnologia aplicada à operação de transporte.</h1>
-					<p>Ferramentas para pesquisa cadastral, autenticação, prevenção, monitoramento e execução da viagem, conectadas por uma mesma base operacional.</p>
+					<h1>Ferramentas para cada ponto crítico da operação.</h1>
+					<p>Escolha a capacidade pelo problema que precisa resolver e conecte novos módulos conforme a operação evolui, sem reconstruir o processo.</p>
+					<div class="hero-actions">
+						<a class="button" href="#catalogo">Explorar ferramentas</a>
+						<a class="button button-dark-ghost" href="/contato?interesse=ferramentas">Agendar demonstração</a>
+					</div>
+					<ul class="tools-hero-principles" aria-label="Princípios do catálogo de ferramentas">
+						<li><span>01</span> Comece pelo risco prioritário</li>
+						<li><span>02</span> Conecte novas capacidades</li>
+						<li><span>03</span> Preserve o contexto operacional</li>
+					</ul>
 				</div>
-				<div class="tools-catalog-status" aria-label="Resumo do catálogo">
-					<div><span>CATÁLOGO</span><strong>{ fmt.Sprintf("%02d", len(tools)) } ferramentas principais</strong></div>
-					<div><span>MODELO</span><strong>Modular e integrável</strong></div>
-					<div><span>CONTEXTO</span><strong>Transporte e gestão de riscos</strong></div>
-				</div>
+
+				<figure class="tools-hero-console" data-tools-hero aria-label="Catálogo animado das ferramentas Viagate">
+					<div class="tools-hero-console-top">
+						<span><i></i> VIAGATE / TOOLSET</span>
+						<small>{ fmt.Sprintf("%02d", len(tools)) } MÓDULOS DISPONÍVEIS</small>
+					</div>
+					<div class="tools-hero-console-body">
+						<div class="tools-hero-rail">
+							for index, tool := range tools {
+								@ToolHeroRailItem(tool, index, index == 0)
+							}
+						</div>
+						<div class="tools-hero-current">
+							<div class="tools-hero-current-head">
+								<span>ACTIVE / TOOL <b data-tools-current-index>01</b></span>
+								<small data-tools-current-state>ACTIVE / READY</small>
+							</div>
+							<div class="tools-hero-current-core">
+								<span class="tools-hero-current-pulse" data-tools-pulse aria-hidden="true"></span>
+								<div class="tools-hero-current-icon">@components.Icon("workflow")</div>
+								<strong data-tools-current-title>Ecossistema modular</strong>
+								<p data-tools-current-summary>Ferramentas conectadas à mesma base operacional.</p>
+							</div>
+							<div class="tools-hero-current-signals" aria-hidden="true">
+								<div><span>INPUT</span><i></i><strong>CONTEXTO</strong></div>
+								<div><span>ENGINE</span><i></i><strong>CAPACIDADE</strong></div>
+								<div><span>OUTPUT</span><i></i><strong>RESULTADO</strong></div>
+							</div>
+						</div>
+					</div>
+					<figcaption>Seleção conceitual das ferramentas disponíveis no ecossistema Viagate.</figcaption>
+				</figure>
+			</div>
+
+			<div class="container tools-catalog-status" aria-label="Pontos críticos cobertos pelo ecossistema">
+				<div><span>01 / IDENTIDADE</span><strong>Confirmar quem está na operação</strong></div>
+				<div><span>02 / ANÁLISE</span><strong>Organizar dados e critérios</strong></div>
+				<div><span>03 / PROTEÇÃO</span><strong>Reduzir fraude e exposição</strong></div>
+				<div><span>04 / VIAGEM</span><strong>Acompanhar execução e eventos</strong></div>
 			</div>
 		</section>
 
-		<section class="tools-catalog-section">
-			<div class="container tools-catalog-heading">
+		<section id="catalogo" class="section tools-catalog-section">
+			<div class="tools-depth-grid tools-depth-grid-catalog" aria-hidden="true"></div>
+			<div class="container ecosystem-heading tools-catalog-heading">
 				<div>
-					<span class="eyebrow">Catálogo operacional</span>
-					<h2>Escolha a ferramenta pelo problema que precisa resolver.</h2>
+					<span class="eyebrow">Ecossistema modular</span>
+					<h2>Escolha a ferramenta pelo ponto crítico da operação.</h2>
 				</div>
-				<p>Cada ferramenta possui uma função específica e pode compartilhar dados, contexto e eventos com outros módulos da Plataforma Cargo.</p>
+				<p>As ferramentas podem funcionar de forma independente ou compartilhar contexto com outros módulos da Plataforma Cargo, conforme o processo contratado.</p>
 			</div>
 
-			<div class="container tools-catalog-list">
-				for index, tool := range tools {
-					<article class="tool-catalog-card">
-						<div class="tool-catalog-visual" data-tool-catalog-visual={ tool.Slug }>
-							<div class="tool-catalog-visual-head">
-								<span><i></i> VISUAL / { fmt.Sprintf("%02d", index+1) }</span>
-								<small>SVG READY</small>
-							</div>
-							<div class="tool-catalog-placeholder">
-								<span class="tool-catalog-placeholder-index">TOOL / { fmt.Sprintf("%02d", index+1) }</span>
-								<div class="tool-catalog-placeholder-icon">
-									@components.Icon(tool.Icon)
-								</div>
-								<strong>{ tool.ShortName }</strong>
-								<small>ÁREA RESERVADA PARA SVG</small>
-							</div>
-							<div class="tool-catalog-visual-foot"><span>VIAGATE / OPERATION TOOL</span><span>READY</span></div>
-						</div>
+			<div class="container tools-critical-rail" aria-label="Jornada de controle operacional">
+				<div><span>@components.Icon("scan-face")</span><small>01 / CONFIRMAR</small><strong>Identidade e presença</strong></div>
+				<div><span>@components.Icon("user-check")</span><small>02 / ANALISAR</small><strong>Cadastro e critérios</strong></div>
+				<div><span>@components.Icon("shield-check")</span><small>03 / PROTEGER</small><strong>Etapas sensíveis</strong></div>
+				<div><span>@components.Icon("route")</span><small>04 / ACOMPANHAR</small><strong>Viagem e operação</strong></div>
+			</div>
 
-						<div class="tool-catalog-content">
-							<div class="tool-catalog-meta">
-								<span>{ fmt.Sprintf("%02d", index+1) } / FERRAMENTA</span>
-								<i></i>
-							</div>
-							<p class="tool-catalog-kicker">{ tool.Name }</p>
-							<h3>{ tool.ShortName }</h3>
-							<p class="tool-catalog-summary">{ tool.Summary }</p>
-							<div class="tool-catalog-features">
-								for featureIndex, feature := range tool.Features {
-									if featureIndex < 4 {
-										<div>
-											<span>
-												@components.Icon(feature.Icon)
-											</span>
-											<strong>{ feature.Title }</strong>
-										</div>
-									}
-								}
-							</div>
-							<a class="tool-catalog-link" href={ toolDetailPath(tool) }>Conhecer ferramenta <span aria-hidden="true">→</span></a>
-						</div>
-					</article>
+			<div class="container power-grid tools-power-grid">
+				for index, tool := range tools {
+					@components.PowerSolutionCard(tool, index+1)
 				}
+			</div>
+
+			<div class="container tools-catalog-note">
+				<span>MODULAR / CONNECTED</span>
+				<p>Comece com uma ferramenta e conecte outras capacidades quando o fluxo exigir mais validação, prevenção ou acompanhamento.</p>
+				<a class="text-link" href="/solucoes">Ver todas as soluções <span aria-hidden="true">→</span></a>
 			</div>
 		</section>
 
 		<section class="tools-catalog-integration">
+			<div class="tools-depth-grid tools-depth-grid-integration" aria-hidden="true"></div>
 			<div class="container tools-catalog-integration-grid">
-				<div>
-					<span class="eyebrow eyebrow-light">Além das ferramentas</span>
-					<h2>Leve as capacidades Viagate para dentro do seu ambiente.</h2>
-					<p>As ferramentas podem operar na Plataforma Cargo e também compor projetos de integração via API ou experiências white label.</p>
+				<div class="tools-catalog-integration-copy">
+					<span class="eyebrow eyebrow-light">Além da interface padrão</span>
+					<h2>Use as capacidades no ambiente que faz sentido para a sua operação.</h2>
+					<p>O ecossistema também pode compor projetos de integração via API ou experiências white label, conforme a arquitetura e o escopo contratados.</p>
 				</div>
 				<div class="tools-catalog-integration-links">
-					<a href="/integracoes/api"><span>01</span><strong>Integrações via API</strong><small>Recursos Viagate incorporados ao seu software.</small><i>↗</i></a>
-					<a href="/white-label"><span>02</span><strong>White label</strong><small>Experiência personalizada com a marca da operação.</small><i>↗</i></a>
+					<a href="/integracoes/api">
+						<span>01 / API</span>
+						<strong>Integrações via API</strong>
+						<small>Leve capacidades Viagate para dentro do seu software.</small>
+						<i aria-hidden="true">↗</i>
+					</a>
+					<a href="/white-label">
+						<span>02 / BRAND</span>
+						<strong>White label</strong>
+						<small>Apresente jornadas com identidade visual configurada para o projeto.</small>
+						<i aria-hidden="true">↗</i>
+					</a>
 				</div>
 			</div>
 		</section>
@@ -99,6 +129,20 @@ templ Tools(meta site.PageMeta, tools []site.Solution) {
 	}
 }
 
-func toolDetailPath(tool site.Solution) string {
-	return "/solucoes/" + tool.Slug
+templ ToolHeroRailItem(tool site.Solution, index int, active bool) {
+	if active {
+		<button class="is-active" type="button" data-tools-hero-item data-tool-title={ tool.ShortName } data-tool-summary={ tool.Summary }>
+			<span>{ fmt.Sprintf("%02d", index+1) }</span>
+			<i>@components.Icon(tool.Icon)</i>
+			<strong>{ tool.ShortName }</strong>
+			<small>READY</small>
+		</button>
+	} else {
+		<button type="button" data-tools-hero-item data-tool-title={ tool.ShortName } data-tool-summary={ tool.Summary }>
+			<span>{ fmt.Sprintf("%02d", index+1) }</span>
+			<i>@components.Icon(tool.Icon)</i>
+			<strong>{ tool.ShortName }</strong>
+			<small>READY</small>
+		</button>
+	}
 }
