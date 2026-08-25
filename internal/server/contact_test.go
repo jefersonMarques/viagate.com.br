@@ -6,6 +6,8 @@ import (
 	"net/url"
 	"strings"
 	"testing"
+
+	"github.com/viagate/site/internal/site"
 )
 
 func TestSubmitContactSendsEmailThroughBrevo(t *testing.T) {
@@ -91,5 +93,16 @@ func TestSubmitContactRejectsInvalidOrigin(t *testing.T) {
 
 	if location := response.Header().Get("Location"); location != "/contato?status=invalid" {
 		t.Fatalf("unexpected redirect: %s", location)
+	}
+}
+
+func TestValidateContactRejectsDisplayNameEmail(t *testing.T) {
+	err := validateContact(site.ContactForm{
+		Name:    "Maria Teste",
+		Email:   "Maria <maria@example.com>",
+		Consent: true,
+	})
+	if err == nil {
+		t.Fatal("expected display-name email to be rejected")
 	}
 }
