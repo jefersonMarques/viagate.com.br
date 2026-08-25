@@ -25,7 +25,7 @@ func (application *Application) staticAssets() http.Handler {
 	fileServer := http.FileServer(http.FS(assets))
 	return http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
 		if application.config.Environment == "production" {
-			response.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+			response.Header().Set("Cache-Control", "public, max-age=3600, must-revalidate")
 		} else {
 			response.Header().Set("Cache-Control", "no-store")
 		}
