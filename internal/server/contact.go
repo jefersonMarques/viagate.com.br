@@ -79,7 +79,8 @@ func validateContact(form site.ContactForm) error {
 	if len(form.Company) > 120 || len(form.Phone) > 40 || len(form.Message) > 3000 || len(form.Interest) > 100 {
 		return errors.New("invalid field size")
 	}
-	if _, err := mail.ParseAddress(form.Email); err != nil || len(form.Email) > 254 {
+	parsedEmail, err := mail.ParseAddress(form.Email)
+	if err != nil || len(form.Email) > 254 || parsedEmail.Address != form.Email {
 		return errors.New("invalid email")
 	}
 	if !form.Consent {
