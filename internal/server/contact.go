@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"net/mail"
@@ -42,6 +43,7 @@ func (application *Application) submitContact(response http.ResponseWriter, requ
 		Website:  strings.TrimSpace(request.FormValue("website")),
 		Consent:  request.FormValue("consent") == "on",
 	}
+
 	if form.Website != "" {
 		application.contactRedirect(response, request, "sent")
 		return
@@ -50,16 +52,23 @@ func (application *Application) submitContact(response http.ResponseWriter, requ
 		application.contactRedirect(response, request, "invalid")
 		return
 	}
-	if application.config.ContactWebhookURL == "" {
-		application.config.Logger.Warn("contact webhook is not configured")
+	if !application.brevo.configured() {
+		application.config.Logger.Error("Brevo contact email is not configured")
 		application.contactRedirect(response, request, "unavailable")
 		return
 	}
-	if err := application.sendContact(request, form); err != nil {
-		application.config.Logger.Error("contact submission failed", "error", err)
+	if err := application.brevo.sendContact(request.Context(), form); err != nil {
+		application.config.Logger.Error("contact email delivery failed", "error", err)
 		application.contactRedirect(response, request, "unavailable")
 		return
 	}
+
+	if application.config.ContactWebhookURL != "" {
+		if err := application.sendContactWebhook(request, form); err != nil {
+			application.config.Logger.Warn("contact webhook delivery failed", "error", err)
+		}
+	}
+
 	application.contactRedirect(response, request, "sent")
 }
 
@@ -70,7 +79,8 @@ func validateContact(form site.ContactForm) error {
 	if len(form.Company) > 120 || len(form.Phone) > 40 || len(form.Message) > 3000 || len(form.Interest) > 100 {
 		return errors.New("invalid field size")
 	}
-	if _, err := mail.ParseAddress(form.Email); err != nil || len(form.Email) > 254 {
+	parsedEmail, err := mail.ParseAddress(form.Email)
+	if err != nil || len(form.Email) > 254 || parsedEmail.Address != form.Email {
 		return errors.New("invalid email")
 	}
 	if !form.Consent {
@@ -95,7 +105,7 @@ func (application *Application) hasValidOrigin(request *http.Request) bool {
 	return strings.EqualFold(parsedOrigin.Host, expected.Host) || strings.EqualFold(parsedOrigin.Host, request.Host)
 }
 
-func (application *Application) sendContact(request *http.Request, form site.ContactForm) error {
+func (application *Application) sendContactWebhook(request *http.Request, form site.ContactForm) error {
 	payload := struct {
 		Name      string `json:"name"`
 		Email     string `json:"email"`
@@ -111,24 +121,27 @@ func (application *Application) sendContact(request *http.Request, form site.Con
 		Message: form.Message, Interest: form.Interest, Consent: form.Consent, Source: "viagate.com.br/contato",
 		CreatedAt: time.Now().UTC().Format(time.RFC3339),
 	}
+
 	data, err := json.Marshal(payload)
 	if err != nil {
-		return err
+		return fmt.Errorf("marshal webhook payload: %w", err)
 	}
 	webhookRequest, err := http.NewRequestWithContext(request.Context(), http.MethodPost, application.config.ContactWebhookURL, bytes.NewReader(data))
 	if err != nil {
-		return err
+		return fmt.Errorf("create webhook request: %w", err)
 	}
 	webhookRequest.Header.Set("Content-Type", "application/json")
+
 	client := &http.Client{Timeout: 8 * time.Second}
 	webhookResponse, err := client.Do(webhookRequest)
 	if err != nil {
-		return err
+		return fmt.Errorf("send webhook request: %w", err)
 	}
 	defer webhookResponse.Body.Close()
 	_, _ = io.Copy(io.Discard, io.LimitReader(webhookResponse.Body, 4096))
-	if webhookResponse.StatusCode < 200 || webhookResponse.StatusCode >= 300 {
-		return errors.New("webhook returned a non-success status")
+
+	if webhookResponse.StatusCode < http.StatusOK || webhookResponse.StatusCode >= http.StatusMultipleChoices {
+		return fmt.Errorf("webhook returned status %d", webhookResponse.StatusCode)
 	}
 	return nil
 }

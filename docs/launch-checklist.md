@@ -10,8 +10,11 @@
 ## Configuração
 
 - Definir `SITE_URL=https://viagate.com.br` no ambiente de produção.
-- Configurar `CONTACT_WEBHOOK_URL` e realizar um envio real de ponta a ponta.
-- Executar o binário atrás de TLS com HTTP/2 ou HTTP/3 e compressão Brotli no proxy.
+- Configurar `BREVO_API_KEY`, `BREVO_CONTACT_NAME`, `BREVO_CONTACT_SUBJECT`, `BREVO_CONTACT_SENDER` e `CONTACT_EMAIL`.
+- Confirmar que `BREVO_CONTACT_SENDER` está autorizado no Brevo e realizar um envio real pelo formulário `/contato`.
+- Configurar `CONTACT_WEBHOOK_URL` somente quando houver uma integração secundária que também precise receber o lead.
+- Configurar `TRUSTED_PROXY_CIDRS` apenas com os CIDRs dos proxies reversos autorizados a fornecer o IP do visitante.
+- Executar o binário atrás de TLS com HTTP/2 ou HTTP/3 e compressão Brotli/gzip no proxy reverso.
 - Manter o redirecionamento de HTTP para HTTPS e de variações do domínio para a URL canônica.
 
 ## Indexação
@@ -32,9 +35,12 @@
 ## Qualidade
 
 - Executar `task check` antes de cada versão.
+- Confirmar que `templ generate` conclui sem erro e que nenhum `*_templ.go` gerado está sendo versionado.
+- Validar cache dos assets depois do deploy e confirmar que arquivos alterados são revalidados pelos navegadores.
+- Confirmar no proxy que a resposta final usa Brotli ou gzip sem dupla compressão pela aplicação.
 - Rodar Lighthouse em produção para desktop e celular; rede, TLS, imagens e scripts de terceiros podem alterar a pontuação.
 - Monitorar Core Web Vitals com dados reais de usuários após acumular volume suficiente.
-- Atualizar as datas do sitemap e dos artigos somente quando o conteúdo for realmente alterado.
+- Atualizar `UpdatedAt` dos artigos somente quando o conteúdo for realmente alterado.
 
 ## Robôs de IA
 
