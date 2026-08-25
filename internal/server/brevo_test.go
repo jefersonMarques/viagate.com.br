@@ -16,16 +16,18 @@ func TestBrevoClientSendContact(t *testing.T) {
 	var received brevoEmailPayload
 	server := httptest.NewServer(http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
 		if request.Method != http.MethodPost {
-			t.Fatalf("expected POST, got %s", request.Method)
+			t.Errorf("expected POST, got %s", request.Method)
 		}
 		if request.Header.Get("api-key") != "test-api-key" {
-			t.Fatal("Brevo API key header was not sent")
+			t.Error("Brevo API key header was not sent")
 		}
 		if request.Header.Get("Content-Type") != "application/json" {
-			t.Fatalf("unexpected content type: %s", request.Header.Get("Content-Type"))
+			t.Errorf("unexpected content type: %s", request.Header.Get("Content-Type"))
 		}
 		if err := json.NewDecoder(request.Body).Decode(&received); err != nil {
-			t.Fatalf("decode Brevo payload: %v", err)
+			t.Errorf("decode Brevo payload: %v", err)
+			response.WriteHeader(http.StatusBadRequest)
+			return
 		}
 		response.WriteHeader(http.StatusCreated)
 	}))
