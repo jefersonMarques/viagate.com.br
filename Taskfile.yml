@@ -1,5 +1,8 @@
 version: "3"
 
+dotenv:
+  - ".env"
+
 tasks:
   tools:
     desc: Instala as ferramentas de desenvolvimento
