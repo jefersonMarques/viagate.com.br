@@ -38,9 +38,7 @@ func (application *Application) routes() http.Handler {
 
 	return application.recoverPanic(
 		application.securityHeaders(
-			application.compress(
-				application.logRequests(mux),
-			),
+			application.logRequests(mux),
 		),
 	)
 }
