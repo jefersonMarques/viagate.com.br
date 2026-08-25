@@ -1,0 +1,613 @@
+.prevention-vehicle-panel {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 560px;
+  margin: 0;
+  overflow: hidden;
+  color: #dbe5eb;
+  background: #081827;
+  border: 1px solid #274359;
+  box-shadow: 30px 30px 0 rgba(20, 48, 71, 0.3), 0 45px 90px rgba(0, 0, 0, 0.34);
+}
+
+.prevention-vehicle-panel .signal-panel-grid {
+  opacity: 0.32;
+}
+
+.prevention-vehicle-topbar,
+.prevention-vehicle-footer {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+  padding: 0 18px;
+  color: #607b90;
+  background: rgba(5, 17, 29, 0.96);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.5rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prevention-vehicle-topbar {
+  border-bottom: 1px solid #243c50;
+}
+
+.prevention-vehicle-topbar > span,
+.prevention-vehicle-topbar > small,
+.prevention-vehicle-footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prevention-vehicle-topbar > span i,
+.prevention-vehicle-topbar > small::before,
+.prevention-vehicle-footer > span i {
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: var(--orange-500);
+}
+
+.prevention-vehicle-topbar > span i {
+  box-shadow: 0 0 9px rgba(255, 100, 0, 0.68);
+}
+
+.prevention-vehicle-topbar > small {
+  color: #ff9858;
+  font-size: inherit;
+}
+
+.prevention-dossier-stage {
+  position: relative;
+  z-index: 3;
+  padding: 18px 20px 20px;
+  background:
+    linear-gradient(rgba(87, 119, 143, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(87, 119, 143, 0.045) 1px, transparent 1px),
+    #071521;
+  background-size: 34px 34px;
+  border-bottom: 1px solid #21394c;
+}
+
+.prevention-dossier-head,
+.prevention-analysis-head {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-dossier-head {
+  margin-bottom: 16px;
+}
+
+.prevention-dossier-head > div,
+.prevention-analysis-head > div {
+  display: grid;
+  gap: 3px;
+}
+
+.prevention-dossier-head small,
+.prevention-dossier-head > span,
+.prevention-analysis-head small,
+.prevention-analysis-head > span {
+  color: #536f84;
+  font-size: 0.43rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-head strong,
+.prevention-analysis-head strong {
+  color: #b8c8d2;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+
+.prevention-dossier-body {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.82fr) minmax(0, 1.18fr);
+  min-height: 210px;
+  overflow: hidden;
+  background: rgba(8, 25, 40, 0.88);
+  border: 1px solid #29445a;
+}
+
+.prevention-dossier-identity {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  gap: 15px;
+  padding: 22px;
+  border-right: 1px solid #29445a;
+}
+
+.prevention-dossier-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #637e91;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-dossier-label span {
+  color: #ff9858;
+  font-size: 0.48rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-label small {
+  font-size: 0.38rem;
+  font-weight: 760;
+  letter-spacing: 0.07em;
+}
+
+.prevention-plate {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: min(100%, 240px);
+  min-height: 96px;
+  padding: 9px 14px 11px;
+  color: #091421;
+  background: #e9edf0;
+  border: 2px solid #8f9eaa;
+  box-shadow: 12px 12px 0 rgba(12, 32, 48, 0.34);
+  text-align: center;
+}
+
+.prevention-plate::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 9px;
+  content: "";
+  background: #1c4b77;
+}
+
+.prevention-plate small {
+  align-self: end;
+  margin-top: 8px;
+  color: #405366;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.38rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.prevention-plate strong {
+  align-self: center;
+  color: #0b1722;
+  font-family: var(--font-tech);
+  font-size: clamp(1.55rem, 2.5vw, 2rem);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1;
+}
+
+.prevention-dossier-state {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.prevention-dossier-state > i {
+  width: 7px;
+  height: 7px;
+  background: var(--orange-500);
+  box-shadow: 0 0 8px rgba(255, 100, 0, 0.42);
+}
+
+.prevention-dossier-state p {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-dossier-state small {
+  color: #526d80;
+  font-size: 0.38rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-state strong {
+  color: #ff9858;
+  font-size: 0.52rem;
+  letter-spacing: 0.04em;
+}
+
+.prevention-dossier-facts {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: stretch;
+}
+
+.prevention-dossier-facts > div {
+  display: grid;
+  align-content: center;
+  gap: 5px;
+  min-height: 82px;
+  padding: 14px 16px;
+  border-right: 1px solid rgba(41, 68, 90, 0.72);
+  border-bottom: 1px solid rgba(41, 68, 90, 0.72);
+}
+
+.prevention-dossier-facts > div:nth-child(even) {
+  border-right: 0;
+}
+
+.prevention-dossier-facts small,
+.prevention-dossier-facts-status span,
+.prevention-dossier-facts-status strong {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-dossier-facts small {
+  color: #526d80;
+  font-size: 0.4rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-facts > div > strong {
+  color: #d7e1e7;
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.02em;
+}
+
+.prevention-dossier-facts .prevention-dossier-facts-status {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 46px;
+  padding-block: 9px;
+  background: rgba(6, 19, 31, 0.64);
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.prevention-dossier-facts-status span {
+  color: #607b90;
+  font-size: 0.4rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-dossier-facts-status strong {
+  color: #ff9858;
+  font-size: 0.44rem;
+  letter-spacing: 0.05em;
+}
+
+.prevention-dossier-scan {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  opacity: 0;
+  background: var(--orange-500);
+  box-shadow: 0 0 13px rgba(255, 100, 0, 0.74);
+  pointer-events: none;
+}
+
+.prevention-dossier-scan::before,
+.prevention-dossier-scan::after {
+  position: absolute;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  content: "";
+  background: var(--orange-500);
+  transform: translateX(-50%);
+}
+
+.prevention-dossier-scan::before { top: 0; }
+.prevention-dossier-scan::after { bottom: 0; }
+
+.prevention-vehicle-panel.is-scanning .prevention-dossier-scan {
+  animation: preventionDossierScan 1.05s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.prevention-analysis-head {
+  position: relative;
+  z-index: 5;
+  min-height: 54px;
+  padding: 10px 18px;
+  align-items: center;
+  background: #06131f;
+  border-bottom: 1px solid #21394c;
+}
+
+.prevention-vehicle-checks {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: #081827;
+}
+
+.prevention-check {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  min-height: 76px;
+  padding: 11px 16px;
+  border-right: 1px solid #21394c;
+  border-bottom: 1px solid #21394c;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.prevention-check:nth-child(even) {
+  border-right: 0;
+}
+
+.prevention-check-wide {
+  grid-column: 1 / -1;
+  border-right: 0;
+}
+
+.prevention-check > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: #718b9d;
+  border: 1px solid #314d62;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.prevention-check .ui-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.prevention-check p {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.prevention-check small,
+.prevention-check strong,
+.prevention-check b,
+.prevention-check em {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.prevention-check small {
+  color: #526d80;
+  font-size: 0.39rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.prevention-check strong {
+  color: #a9bac5;
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+}
+
+.prevention-check > div {
+  display: grid;
+  justify-items: end;
+  gap: 2px;
+  min-width: 90px;
+}
+
+.prevention-check b {
+  color: #607b90;
+  font-size: 0.42rem;
+  letter-spacing: 0.05em;
+}
+
+.prevention-processing {
+  display: none;
+  color: #ff9858;
+  font-size: 0.42rem;
+  font-style: normal;
+  letter-spacing: 0.11em;
+}
+
+.prevention-check.is-processing {
+  background: rgba(255, 100, 0, 0.035);
+  border-bottom-color: rgba(255, 100, 0, 0.32);
+}
+
+.prevention-check.is-processing > span {
+  color: #ff9858;
+  background: rgba(255, 100, 0, 0.06);
+  border-color: rgba(255, 100, 0, 0.42);
+}
+
+.prevention-check.is-processing .prevention-processing {
+  display: block;
+  animation: preventionProcessing 600ms steps(2, end) infinite;
+}
+
+.prevention-check.is-processing b {
+  color: #ff9858;
+}
+
+.prevention-check.is-done > span {
+  color: #67d9a1;
+  background: rgba(77, 211, 145, 0.055);
+  border-color: rgba(77, 211, 145, 0.34);
+}
+
+.prevention-check.is-done b {
+  color: #67d9a1;
+}
+
+.prevention-check.is-warning > span {
+  color: #ff8a5b;
+  background: rgba(255, 100, 0, 0.06);
+  border-color: rgba(255, 100, 0, 0.38);
+}
+
+.prevention-check.is-warning b {
+  color: #ff9858;
+}
+
+.prevention-vehicle-footer {
+  border-top: 0;
+}
+
+.prevention-vehicle-footer strong {
+  color: #ff9858;
+  font-size: inherit;
+}
+
+.prevention-vehicle-panel.is-complete .prevention-vehicle-topbar > small,
+.prevention-vehicle-panel.is-complete .prevention-vehicle-footer strong,
+.prevention-vehicle-panel.is-complete .prevention-dossier-facts-status strong,
+.prevention-vehicle-panel.is-complete .prevention-dossier-state strong {
+  color: #69d8a2;
+}
+
+.prevention-vehicle-panel.is-complete .prevention-vehicle-topbar > small::before,
+.prevention-vehicle-panel.is-complete .prevention-vehicle-footer > span i,
+.prevention-vehicle-panel.is-complete .prevention-dossier-state > i {
+  background: #4dd391;
+}
+
+@keyframes preventionDossierScan {
+  0% { left: 0; opacity: 0; }
+  10%, 88% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+@keyframes preventionProcessing {
+  0%, 100% { opacity: 0.42; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 860px) {
+  .prevention-vehicle-panel {
+    min-height: 0;
+    box-shadow: 14px 16px 0 rgba(20, 48, 71, 0.2), 0 28px 56px rgba(0, 0, 0, 0.26);
+  }
+
+  .prevention-dossier-body {
+    grid-template-columns: 1fr;
+  }
+
+  .prevention-dossier-identity {
+    grid-template-columns: minmax(160px, 0.7fr) minmax(0, 1fr);
+    align-items: center;
+    border-right: 0;
+    border-bottom: 1px solid #29445a;
+  }
+
+  .prevention-dossier-label {
+    grid-column: 1 / -1;
+  }
+
+  .prevention-dossier-state {
+    align-self: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .prevention-vehicle-topbar,
+  .prevention-vehicle-footer {
+    padding-inline: 13px;
+  }
+
+  .prevention-dossier-stage {
+    padding-inline: 13px;
+  }
+
+  .prevention-dossier-identity {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .prevention-plate {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .prevention-dossier-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .prevention-dossier-facts > div,
+  .prevention-dossier-facts > div:nth-child(even) {
+    min-height: 62px;
+    border-right: 0;
+  }
+
+  .prevention-dossier-facts .prevention-dossier-facts-status {
+    grid-column: auto;
+  }
+
+  .prevention-vehicle-checks {
+    grid-template-columns: 1fr;
+  }
+
+  .prevention-check,
+  .prevention-check:nth-child(even),
+  .prevention-check-wide {
+    grid-column: auto;
+    border-right: 0;
+  }
+
+  .prevention-check {
+    min-height: 70px;
+    padding-inline: 13px;
+  }
+
+  .prevention-analysis-head {
+    padding-inline: 13px;
+  }
+
+  .prevention-vehicle-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 66px;
+    gap: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prevention-check {
+    transition: none !important;
+  }
+
+  .prevention-vehicle-panel.is-scanning .prevention-dossier-scan,
+  .prevention-check.is-processing .prevention-processing {
+    animation: none !important;
+  }
+}

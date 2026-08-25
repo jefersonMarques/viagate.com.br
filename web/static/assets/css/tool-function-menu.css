@@ -1,0 +1,314 @@
+.tools-mega-menu .tool-preview {
+  background:
+    radial-gradient(circle at 55% 15%, rgba(104, 145, 174, 0.11), transparent 42%),
+    #163247;
+}
+
+.tools-mega-menu .tool-preview::before {
+  background-image:
+    linear-gradient(rgba(176, 199, 215, 0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176, 199, 215, 0.038) 1px, transparent 1px);
+}
+
+.tools-mega-menu .tool-preview-head > span:last-child,
+.tools-mega-menu .tool-preview-foot > span:first-child {
+  display: none;
+}
+
+.tool-function-stage {
+  position: relative;
+  z-index: 2;
+  min-height: 390px;
+  overflow: hidden;
+  background: rgba(12, 38, 56, 0.52);
+}
+
+.tool-function-stage::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image:
+    linear-gradient(rgba(185, 207, 222, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(185, 207, 222, 0.032) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.tool-function-panel {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0;
+  padding: 18px 20px 14px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(7px);
+  transition:
+    opacity 170ms ease,
+    transform 170ms ease,
+    visibility 170ms ease;
+  pointer-events: none;
+}
+
+.tool-function-panel.is-active {
+  z-index: 2;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.tool-function-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 54px;
+  padding: 0 0 14px;
+  border-bottom: 1px solid rgba(166, 194, 213, 0.24);
+}
+
+.tool-function-summary > div {
+  display: grid;
+  gap: 3px;
+}
+
+.tool-function-summary small,
+.tool-function-card-top > span:first-child,
+.tool-function-status {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 780;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tool-function-summary small {
+  color: var(--orange-500);
+  font-size: 0.5rem;
+}
+
+.tool-function-summary strong {
+  color: #f3f7fa;
+  font-size: 1rem;
+  letter-spacing: 0.015em;
+}
+
+.tool-function-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #9eb1bf;
+  font-size: 0.48rem;
+  white-space: nowrap;
+}
+
+.tool-function-status i {
+  width: 6px;
+  height: 6px;
+  background: #4dd391;
+  border-radius: 50%;
+  box-shadow: 0 0 9px rgba(77, 211, 145, 0.62);
+}
+
+.tool-function-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 0;
+  background: transparent;
+}
+
+.tool-function-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 1fr;
+  align-content: center;
+  min-width: 0;
+  padding: 20px 18px;
+  overflow: hidden;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.tool-function-card:nth-child(odd) {
+  border-right: 1px solid rgba(166, 194, 213, 0.18);
+}
+
+.tool-function-card:nth-child(-n + 2) {
+  border-bottom: 1px solid rgba(166, 194, 213, 0.18);
+}
+
+.tool-function-panel.is-active .tool-function-card {
+  animation: toolFunctionCardIn 240ms ease forwards;
+}
+
+.tool-function-panel.is-active .tool-function-card:nth-child(2) {
+  animation-delay: 35ms;
+}
+
+.tool-function-panel.is-active .tool-function-card:nth-child(3) {
+  animation-delay: 70ms;
+}
+
+.tool-function-panel.is-active .tool-function-card:nth-child(4) {
+  animation-delay: 105ms;
+}
+
+.tool-function-panel.is-active .tool-function-card:nth-child(5) {
+  animation-delay: 140ms;
+}
+
+.tool-function-card.is-wide {
+  grid-column: 1 / -1;
+  min-height: 72px;
+  border-right: 0;
+  border-top: 1px solid rgba(166, 194, 213, 0.18);
+}
+
+.tool-function-card-top {
+  display: contents;
+}
+
+.tool-function-card-top > span:first-child {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  margin-bottom: 9px;
+  color: #89a2b4;
+  font-size: 0.47rem;
+}
+
+.tool-function-icon {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 14px;
+  color: #e7f0f5;
+  background: rgba(49, 91, 116, 0.58);
+  border: 1px solid rgba(148, 181, 202, 0.42);
+}
+
+.tool-function-icon .ui-icon {
+  width: 15px;
+  height: 15px;
+  stroke-width: 1.5;
+}
+
+.tool-function-card > strong {
+  grid-column: 1;
+  grid-row: 2;
+  margin-bottom: 5px;
+  color: #f0f5f8;
+  font-size: 0.73rem;
+  line-height: 1.2;
+}
+
+.tool-function-card > small {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  max-width: 270px;
+  color: #a9bdca;
+  font-size: 0.59rem;
+  line-height: 1.42;
+}
+
+.tool-function-trace {
+  position: relative;
+  height: 7px;
+  overflow: hidden;
+}
+
+.tool-function-trace::before {
+  position: absolute;
+  top: 3px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: rgba(166, 192, 209, 0.16);
+}
+
+.tool-function-trace span {
+  position: absolute;
+  top: 2px;
+  left: -18%;
+  width: 18%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 100, 0, 0.72), transparent);
+  animation: toolFunctionTrace 4.2s linear infinite;
+}
+
+.tools-mega-menu .tool-preview-head,
+.tools-mega-menu .tool-preview-foot {
+  color: #91a9ba;
+}
+
+.tools-mega-menu .tool-preview-foot {
+  justify-content: flex-end;
+}
+
+.tool-preview-foot strong {
+  max-width: 470px;
+  overflow: hidden;
+  color: #c3d1da;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes toolFunctionCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toolFunctionTrace {
+  from {
+    left: -18%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@media (max-width: 1180px) {
+  .tool-function-panel {
+    padding: 15px 17px 12px;
+  }
+
+  .tool-function-card {
+    padding: 17px 15px;
+  }
+
+  .tool-function-card > small {
+    font-size: 0.56rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-function-panel {
+    transition: none !important;
+  }
+
+  .tool-function-panel.is-active .tool-function-card {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+
+  .tool-function-trace span {
+    left: 40%;
+    animation: none !important;
+  }
+}

@@ -43,10 +43,12 @@ type sitemapURL struct {
 
 func (application *Application) sitemap(response http.ResponseWriter, request *http.Request) {
 	baseURL := strings.TrimRight(application.config.SiteURL, "/")
-	const siteUpdatedAt = "2026-08-07"
+	const siteUpdatedAt = "2026-08-24"
 	urls := []sitemapURL{
 		{Location: baseURL + "/", LastModified: siteUpdatedAt, Change: "weekly", Priority: "1.0"},
 		{Location: baseURL + "/solucoes", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.9"},
+		{Location: baseURL + "/ferramentas", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.9"},
+		{Location: baseURL + "/analises", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.9"},
 		{Location: baseURL + "/sobre", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.6"},
 		{Location: baseURL + "/blog", LastModified: siteUpdatedAt, Change: "weekly", Priority: "0.8"},
 		{Location: baseURL + "/contato", LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.7"},
@@ -58,6 +60,9 @@ func (application *Application) sitemap(response http.ResponseWriter, request *h
 		if solution.Slug != "api" && solution.Slug != "white-label" {
 			urls = append(urls, sitemapURL{Location: baseURL + "/solucoes/" + solution.Slug, LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.8"})
 		}
+	}
+	for _, analysis := range content.Analyses() {
+		urls = append(urls, sitemapURL{Location: baseURL + "/analises/" + analysis.Slug, LastModified: siteUpdatedAt, Change: "monthly", Priority: "0.75"})
 	}
 	for _, article := range content.Articles() {
 		urls = append(urls, sitemapURL{Location: baseURL + "/blog/" + article.Slug, LastModified: article.UpdatedAt.Format("2006-01-02"), Change: "monthly", Priority: "0.7"})

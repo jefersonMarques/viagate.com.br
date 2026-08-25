@@ -1,0 +1,559 @@
+.cargo-truck-control-section {
+  padding: 112px 0;
+  color: #dfe7ec;
+  background:
+    linear-gradient(rgba(67, 94, 116, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(67, 94, 116, 0.045) 1px, transparent 1px),
+    #071521;
+  background-size: 36px 36px;
+  border-top: 1px solid #163047;
+  border-bottom: 1px solid #163047;
+}
+
+.cargo-truck-control-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  align-items: end;
+  gap: clamp(40px, 6vw, 90px);
+  margin-bottom: 54px;
+}
+
+.cargo-truck-control-heading h2,
+.cargo-truck-control-heading p,
+.cargo-truck-control-list h3,
+.cargo-truck-control-list p,
+.cargo-truck-control-extra p {
+  color: inherit;
+}
+
+.cargo-truck-control-heading h2 {
+  max-width: 800px;
+  margin-bottom: 0;
+  color: #f2f6f8;
+}
+
+.cargo-truck-control-heading > p {
+  max-width: 580px;
+  margin: 0;
+  color: #8fa2b1;
+  font-size: 1.02rem;
+}
+
+.cargo-truck-control-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+  gap: clamp(34px, 5vw, 72px);
+  align-items: start;
+}
+
+.cargo-truck-control-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #244055;
+  border-left: 1px solid #244055;
+}
+
+.cargo-truck-control-list article {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 252px;
+  padding: 24px;
+  background: rgba(8, 25, 40, 0.72);
+  border-right: 1px solid #244055;
+  border-bottom: 1px solid #244055;
+}
+
+.cargo-truck-control-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: #ff9858;
+  border: 1px solid rgba(255, 100, 0, 0.42);
+}
+
+.cargo-truck-control-icon .ui-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cargo-truck-control-list article > div:last-child {
+  display: grid;
+  align-content: start;
+}
+
+.cargo-truck-control-list small,
+.cargo-truck-control-list > article > div > strong,
+.cargo-truck-control-extra small,
+.cargo-truck-control-extra-head,
+.cargo-truck-process-livebar,
+.cargo-truck-process-track small,
+.cargo-truck-process-records small {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-transform: uppercase;
+}
+
+.cargo-truck-control-list small {
+  margin-bottom: 4px;
+  color: #607b90;
+  font-size: 0.48rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+}
+
+.cargo-truck-control-list > article > div > strong {
+  margin-bottom: 12px;
+  color: #ff9858;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+}
+
+.cargo-truck-control-list h3 {
+  margin-bottom: 10px;
+  color: #e7eef2;
+  font-size: 1.18rem;
+}
+
+.cargo-truck-control-list p {
+  margin: 0;
+  color: #869baa;
+  font-size: 0.9rem;
+  line-height: 1.58;
+}
+
+.cargo-truck-control-extra {
+  overflow: hidden;
+  background: #091b2a;
+  border: 1px solid #29445a;
+  box-shadow: 20px 20px 0 rgba(20, 48, 71, 0.2);
+}
+
+.cargo-truck-control-extra-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 50px;
+  padding: 0 16px;
+  color: #607b90;
+  background: #06131f;
+  border-bottom: 1px solid #29445a;
+  font-size: 0.48rem;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-control-extra-head strong {
+  color: #ff9858;
+  font-size: inherit;
+}
+
+.cargo-truck-control-extra-intro {
+  padding: 22px 20px 18px;
+  border-bottom: 1px solid #223d52;
+}
+
+.cargo-truck-control-extra-intro small {
+  display: block;
+  margin-bottom: 6px;
+  color: #617d91;
+  font-size: 0.46rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-control-extra-intro > strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #eef4f7;
+  font-size: 1.12rem;
+}
+
+.cargo-truck-control-extra-intro p {
+  margin: 0;
+  color: #8398a8;
+  font-size: 0.88rem;
+}
+
+.cargo-truck-control-extra-flow {
+  display: grid;
+}
+
+.cargo-truck-control-extra-flow > div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 10px;
+  align-items: center;
+  gap: 12px;
+  min-height: 70px;
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(38, 66, 86, 0.72);
+}
+
+.cargo-truck-control-extra-flow > div > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: #8aa1b2;
+  border: 1px solid #314e63;
+}
+
+.cargo-truck-control-extra-flow .ui-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.cargo-truck-control-extra-flow p {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.cargo-truck-control-extra-flow small {
+  color: #5f788b;
+  font-size: 0.42rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-control-extra-flow strong {
+  color: #cbd8df;
+  font-size: 0.8rem;
+}
+
+.cargo-truck-control-extra-flow i {
+  width: 7px;
+  height: 7px;
+  background: #4dd391;
+  box-shadow: 0 0 8px rgba(77, 211, 145, 0.32);
+}
+
+.cargo-truck-control-extra-result {
+  display: grid;
+  gap: 5px;
+  padding: 18px 20px 20px;
+  background: rgba(8, 38, 37, 0.7);
+  border-top: 2px solid #4dd391;
+}
+
+.cargo-truck-control-extra-result small {
+  color: #65a98c;
+  font-size: 0.45rem;
+  font-weight: 760;
+  letter-spacing: 0.09em;
+}
+
+.cargo-truck-control-extra-result strong {
+  color: #d9eee5;
+  font-size: 0.9rem;
+}
+
+.cargo-truck-control-extra-result span {
+  color: #75a28f;
+  font-size: 0.72rem;
+}
+
+.cargo-truck-process-section {
+  padding-top: 108px;
+  padding-bottom: 114px;
+  background: #f3f6f8;
+}
+
+.cargo-truck-process-heading {
+  margin-bottom: 38px;
+}
+
+.cargo-truck-process-heading h2 {
+  color: #06111f;
+}
+
+.cargo-truck-process-heading > p {
+  color: #59687a;
+}
+
+.cargo-truck-process-heading .product-overline {
+  color: #ae3c04;
+}
+
+.cargo-truck-process-shell {
+  background: #071521;
+  border: 1px solid #1e3a4f;
+  box-shadow: 30px 30px 0 rgba(20, 48, 71, 0.12);
+}
+
+.cargo-truck-process-livebar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  min-height: 54px;
+  padding: 0 18px;
+  color: #607b90;
+  background: #06131f;
+  border-bottom: 1px solid #29445a;
+  font-size: 0.48rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-process-livebar > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cargo-truck-process-livebar > span i {
+  width: 7px;
+  height: 7px;
+  background: #ff6400;
+  box-shadow: 0 0 8px rgba(255, 100, 0, 0.52);
+}
+
+.cargo-truck-process-livebar strong {
+  justify-self: center;
+  color: #ff9858;
+  font-size: inherit;
+}
+
+.cargo-truck-process-livebar small {
+  color: #667f92;
+  font-size: inherit;
+}
+
+.cargo-truck-process-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(310px, 0.65fr);
+}
+
+.cargo-truck-process-track {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-right: 1px solid #284459;
+}
+
+.cargo-truck-process-track li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 10px;
+  align-items: center;
+  gap: 18px;
+  min-height: 132px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(40, 68, 89, 0.78);
+}
+
+.cargo-truck-process-track li:last-child {
+  border-bottom: 0;
+}
+
+.cargo-truck-process-node {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  color: #ff9858;
+  border: 1px solid rgba(255, 100, 0, 0.4);
+}
+
+.cargo-truck-process-node .ui-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.cargo-truck-process-node small {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  color: #8f6045;
+  font-size: 0.38rem;
+  font-weight: 760;
+}
+
+.cargo-truck-process-track li > div:nth-child(2) > small {
+  display: block;
+  margin-bottom: 4px;
+  color: #607b90;
+  font-size: 0.43rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-process-track h3 {
+  margin-bottom: 7px;
+  color: #edf3f6;
+  font-size: 1.13rem;
+}
+
+.cargo-truck-process-track p {
+  max-width: 720px;
+  margin: 0;
+  color: #8398a8;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.cargo-truck-process-track li > i {
+  width: 7px;
+  height: 7px;
+  background: #4dd391;
+  box-shadow: 0 0 8px rgba(77, 211, 145, 0.26);
+}
+
+.cargo-truck-process-records {
+  align-self: stretch;
+  background: #091b2a;
+}
+
+.cargo-truck-process-records-head {
+  display: grid;
+  gap: 4px;
+  min-height: 78px;
+  padding: 18px;
+  border-bottom: 1px solid #284459;
+}
+
+.cargo-truck-process-records-head small {
+  color: #5c788d;
+  font-size: 0.43rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-process-records-head strong {
+  color: #eef4f7;
+  font-size: 0.9rem;
+}
+
+.cargo-truck-process-records > div:not(.cargo-truck-process-records-head):not(.cargo-truck-process-records-result) {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 8px;
+  align-items: center;
+  gap: 11px;
+  min-height: 68px;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(38, 66, 86, 0.76);
+}
+
+.cargo-truck-process-records > div > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  color: #8ca3b3;
+  border: 1px solid #314e63;
+}
+
+.cargo-truck-process-records .ui-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.cargo-truck-process-records p {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+}
+
+.cargo-truck-process-records p small {
+  color: #5b7488;
+  font-size: 0.39rem;
+  font-weight: 760;
+  letter-spacing: 0.07em;
+}
+
+.cargo-truck-process-records p strong {
+  color: #cad6dd;
+  font-size: 0.76rem;
+}
+
+.cargo-truck-process-records > div > i {
+  width: 6px;
+  height: 6px;
+  background: #4dd391;
+}
+
+.cargo-truck-process-records-result {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  color: #dbece4;
+  background: rgba(8, 38, 37, 0.74);
+  border-top: 2px solid #4dd391;
+}
+
+.cargo-truck-process-records-result small {
+  color: #63a488;
+  font-size: 0.42rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+}
+
+.cargo-truck-process-records-result strong {
+  color: inherit;
+  font-size: 0.86rem;
+}
+
+@media (max-width: 980px) {
+  .cargo-truck-control-heading,
+  .cargo-truck-control-layout,
+  .cargo-truck-process-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cargo-truck-control-heading {
+    align-items: start;
+  }
+
+  .cargo-truck-control-extra {
+    box-shadow: 14px 16px 0 rgba(20, 48, 71, 0.16);
+  }
+
+  .cargo-truck-process-track {
+    border-right: 0;
+    border-bottom: 1px solid #284459;
+  }
+}
+
+@media (max-width: 680px) {
+  .cargo-truck-control-section,
+  .cargo-truck-process-section {
+    padding-block: 82px;
+  }
+
+  .cargo-truck-control-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cargo-truck-control-list article {
+    min-height: 0;
+  }
+
+  .cargo-truck-process-livebar {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding-block: 12px;
+  }
+
+  .cargo-truck-process-livebar strong {
+    justify-self: start;
+  }
+
+  .cargo-truck-process-track li {
+    grid-template-columns: 50px minmax(0, 1fr) 8px;
+    gap: 13px;
+    padding: 18px 15px;
+  }
+
+  .cargo-truck-process-node {
+    width: 46px;
+    height: 46px;
+  }
+
+  .cargo-truck-process-track h3 {
+    font-size: 1rem;
+  }
+}

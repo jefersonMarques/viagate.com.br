@@ -1,0 +1,73 @@
+package components
+
+templ PreventionVehiclePanel() {
+	<figure class="prevention-vehicle-panel" data-prevention-vehicle-panel aria-label="Dossiê veicular conceitual com identificação do veículo, características e consultas preventivas">
+		<div class="signal-panel-grid" aria-hidden="true"></div>
+		<div class="prevention-vehicle-topbar">
+			<span><i aria-hidden="true"></i> VIAGATE / PREVENÇÃO</span>
+			<small data-prevention-header-state>IDENTIFICANDO VEÍCULO</small>
+		</div>
+		<div class="prevention-dossier-stage">
+			<div class="prevention-dossier-head">
+				<div><small>VEHICLE / DOSSIER</small><strong>DADOS DO VEÍCULO</strong></div>
+				<span data-prevention-cycle>01 / 03</span>
+			</div>
+			<div class="prevention-dossier-body">
+				<div class="prevention-dossier-identity">
+					<div class="prevention-dossier-label"><span>IDENTIFICAÇÃO</span><small>PLACA / MERCOSUL</small></div>
+					<div class="prevention-plate">
+						<div class="prevention-plate-band"><small>BRASIL</small></div>
+						<div class="prevention-plate-field"><strong data-prevention-plate>ABC1D23</strong></div>
+					</div>
+					<div class="prevention-dossier-state">
+						<i aria-hidden="true"></i>
+						<p><small>REGISTRY / STATUS</small><strong data-prevention-plate-state>CONSULTANDO CADASTRO</strong></p>
+					</div>
+				</div>
+				<div class="prevention-dossier-facts">
+					<div><small>TIPO</small><strong data-prevention-vehicle-type>CAVALO MECÂNICO</strong></div>
+					<div><small>MARCA / MODELO</small><strong data-prevention-vehicle-model>VOLVO FH 540</strong></div>
+					<div><small>ANO / MODELO</small><strong data-prevention-vehicle-year>2024 / 2024</strong></div>
+					<div><small>CONFIGURAÇÃO</small><strong data-prevention-vehicle-config>6x2</strong></div>
+					<div class="prevention-dossier-facts-status"><span>CADASTRO VEICULAR</span><strong data-prevention-record-state>LOCALIZANDO DADOS</strong></div>
+				</div>
+				<div class="prevention-dossier-scan" data-prevention-scan-line aria-hidden="true"></div>
+			</div>
+		</div>
+		<div class="prevention-analysis-head">
+			<div><small>PREVENTION / CHECKS</small><strong>ANÁLISES PREVENTIVAS</strong></div>
+			<span data-prevention-analysis-count>00 / 05</span>
+		</div>
+		<div class="prevention-vehicle-checks">
+			<div class="prevention-check" data-prevention-check data-final="02 REGISTROS" data-result="warning">
+				<span>@Icon("file-warning")</span>
+				<p><small>CHECK / 01</small><strong>MULTAS</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+			<div class="prevention-check" data-prevention-check data-final="PENDÊNCIA" data-result="warning">
+				<span>@Icon("receipt")</span>
+				<p><small>CHECK / 02</small><strong>DÉBITOS</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+			<div class="prevention-check" data-prevention-check data-final="REGULAR" data-result="done">
+				<span>@Icon("badge-check")</span>
+				<p><small>CHECK / 03</small><strong>LICENCIAMENTO</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+			<div class="prevention-check" data-prevention-check data-final="SEM ALERTAS" data-result="done">
+				<span>@Icon("triangle-alert")</span>
+				<p><small>CHECK / 04</small><strong>RESTRIÇÕES</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+			<div class="prevention-check prevention-check-wide" data-prevention-check data-final="CONSULTADO" data-result="done">
+				<span>@Icon("history")</span>
+				<p><small>CHECK / 05</small><strong>HISTÓRICO VEICULAR</strong></p>
+				<div><em class="prevention-processing">■■□□</em><b data-prevention-check-state>AGUARDANDO</b></div>
+			</div>
+		</div>
+		<figcaption class="prevention-vehicle-footer">
+			<span><i aria-hidden="true"></i> DOSSIÊ VEICULAR</span>
+			<strong data-prevention-footer>PENDÊNCIAS ANTES DA OPERAÇÃO</strong>
+		</figcaption>
+	</figure>
+}

@@ -1,0 +1,186 @@
+.bio-face-oval {
+  width: 132px;
+  height: 176px;
+  isolation: isolate;
+  border: 1px solid rgba(226, 235, 242, 0.88);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 22px rgba(117, 151, 176, 0.035),
+    0 0 18px rgba(117, 151, 176, 0.045);
+}
+
+.bio-face-icon {
+  display: none;
+}
+
+.bio-face-photo {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bio-face-panel.is-scanning .bio-face-oval {
+  border-color: rgba(255, 100, 0, 0.82);
+  box-shadow:
+    inset 0 0 28px rgba(255, 100, 0, 0.045),
+    0 0 20px rgba(255, 100, 0, 0.09);
+}
+
+.bio-face-panel.is-success .bio-face-oval {
+  border-color: rgba(77, 211, 145, 0.9);
+  box-shadow:
+    inset 0 0 28px rgba(77, 211, 145, 0.045),
+    0 0 22px rgba(77, 211, 145, 0.1);
+}
+
+.bio-face-mark {
+  z-index: 4;
+  opacity: 0.42;
+}
+
+.bio-face-mark-a,
+.bio-face-mark-b {
+  top: 14px;
+}
+
+.bio-face-mark-c,
+.bio-face-mark-d {
+  bottom: 14px;
+}
+
+.bio-face-mark-a,
+.bio-face-mark-c {
+  left: 17px;
+}
+
+.bio-face-mark-b,
+.bio-face-mark-d {
+  right: 17px;
+}
+
+.bio-face-scan {
+  z-index: 3;
+  left: 14px;
+  right: 14px;
+}
+
+.core-aux-signal {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 35px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 10px;
+  min-width: 154px;
+  padding: 13px;
+  background: rgba(7, 20, 33, 0.93);
+  border: 1px solid #263f55;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 240ms ease,
+    transform 240ms ease,
+    border-color 240ms ease;
+  pointer-events: none;
+}
+
+.core-aux-signal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.core-aux-signal-indicator {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  background: #122b40;
+  border: 1px solid rgba(255, 123, 44, 0.24);
+}
+
+.core-aux-signal-indicator::before,
+.core-aux-signal-indicator::after {
+  position: absolute;
+  content: "";
+}
+
+.core-aux-signal-indicator::before {
+  width: 7px;
+  height: 7px;
+  background: var(--orange-500);
+  box-shadow: 0 0 10px rgba(255, 123, 44, 0.7);
+}
+
+.core-aux-signal-indicator::after {
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(255, 123, 44, 0.28);
+  transform: rotate(45deg);
+}
+
+.core-aux-signal > div {
+  display: grid;
+}
+
+.core-aux-signal small {
+  color: #61788c;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.core-aux-signal strong {
+  color: #cfdae2;
+  font-size: 0.7rem;
+}
+
+.core-aux-signal-top-right {
+  top: 13%;
+  right: 1%;
+}
+
+.core-aux-signal-bottom-left {
+  bottom: 13%;
+  left: 1%;
+}
+
+@media (max-width: 860px) {
+  .core-aux-signal-top-right {
+    right: -6%;
+  }
+
+  .core-aux-signal-bottom-left {
+    left: -6%;
+  }
+}
+
+@media (max-width: 430px) {
+  .core-aux-signal {
+    min-width: 142px;
+  }
+
+  .core-aux-signal-top-right {
+    top: 9%;
+    right: -9%;
+  }
+
+  .core-aux-signal-bottom-left {
+    bottom: 9%;
+    left: -9%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .core-aux-signal {
+    transition: none !important;
+  }
+}

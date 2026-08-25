@@ -1,0 +1,114 @@
+.site-header {
+  transform: translate3d(0, 0, 0);
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms ease;
+  will-change: transform;
+}
+
+.site-header.is-hidden {
+  transform: translate3d(0, calc(-100% - 2px), 0);
+}
+
+/* Mantém o header exatamente na mesma largura útil das demais .container do site. */
+.header-inner {
+  width: min(calc(100% - clamp(32px, 6vw, 96px)), var(--container));
+}
+
+/* No desktop, o trigger ocupa toda a altura útil do header para não existir um vão entre o item e o mega-menu. */
+@media (min-width: 861px) {
+  .nav-trigger {
+    min-height: 82px;
+  }
+}
+
+/* Os mega-menus usam exatamente a largura útil da mesma .container do header. */
+.mega-menu,
+.tools-mega-menu,
+.analysis-menu,
+.content-mega-menu {
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  transform: translateY(-10px);
+}
+
+/*
+ * Fechado significa fora do layout de interação.
+ * Isso impede qualquer mega-menu invisível de bloquear links da página.
+ */
+.nav-cluster > .mega-menu,
+.nav-cluster:hover > .mega-menu,
+.nav-cluster:focus-within > .mega-menu,
+.nav-cluster > .mega-menu.tools-mega-menu,
+.nav-cluster > .mega-menu.analysis-menu,
+.nav-cluster > .mega-menu.content-mega-menu {
+  display: none !important;
+  z-index: -1 !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translateY(-10px) !important;
+  pointer-events: none !important;
+}
+
+.nav-cluster.is-open > .mega-menu,
+.nav-cluster.is-open > .mega-menu.tools-mega-menu,
+.nav-cluster.is-open > .mega-menu.analysis-menu,
+.nav-cluster.is-open > .mega-menu.content-mega-menu {
+  display: block !important;
+  z-index: 120 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.site-header.is-hidden .mega-menu,
+.site-header.is-hidden .nav-cluster.is-open > .mega-menu {
+  display: none !important;
+  z-index: -1 !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translateY(-10px) !important;
+  pointer-events: none !important;
+}
+
+/* O estado visual fica no trigger real ou no menu explicitamente aberto. */
+.nav-cluster:hover .nav-trigger {
+  color: #d7e0e8;
+}
+
+.nav-cluster:hover .nav-trigger::before {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.nav-cluster:hover .nav-trigger::after {
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.nav-cluster .nav-trigger:hover,
+.nav-cluster.is-open .nav-trigger {
+  color: var(--orange-500);
+}
+
+.nav-cluster .nav-trigger:hover::before,
+.nav-cluster.is-open .nav-trigger::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.nav-cluster .nav-trigger:hover::after,
+.nav-cluster.is-open .nav-trigger::after {
+  transform: translateY(1px) rotate(225deg);
+}
+
+@media (max-width: 860px) {
+  .header-inner {
+    width: min(calc(100% - 32px), var(--container));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none !important;
+  }
+}

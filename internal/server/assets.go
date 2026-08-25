@@ -3,16 +3,25 @@ package server
 import (
 	"io/fs"
 	"net/http"
+	"os"
 	"strings"
 
 	staticfiles "github.com/viagate/site/web/static"
 )
 
 func (application *Application) staticAssets() http.Handler {
-	assets, err := fs.Sub(staticfiles.Files, "assets")
-	if err != nil {
-		panic(err)
+	var assets fs.FS
+
+	if application.config.Environment == "production" {
+		embeddedAssets, err := fs.Sub(staticfiles.Files, "assets")
+		if err != nil {
+			panic(err)
+		}
+		assets = embeddedAssets
+	} else {
+		assets = os.DirFS("web/static/assets")
 	}
+
 	fileServer := http.FileServer(http.FS(assets))
 	return http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
 		if application.config.Environment == "production" {

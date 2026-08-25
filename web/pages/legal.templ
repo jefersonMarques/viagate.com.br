@@ -5,100 +5,45 @@ import (
 	"github.com/viagate/site/web/components"
 )
 
-templ Legal(meta site.PageMeta) {
+templ Legal(meta site.PageMeta, documentHTML string) {
 	@components.Layout(meta) {
-		<section class="legal-page">
-			<div class="container legal-content">
-				<span class="eyebrow">Transparência e condições</span>
-				<h1>Termos de uso e Política de privacidade</h1>
-				<p class="legal-date">Última atualização: 7 de agosto de 2026.</p>
-				<nav class="legal-navigation" aria-label="Navegação do documento">
-					<a href="#termos-de-uso">Termos de uso</a>
-					<a href="#politica-de-privacidade">Política de privacidade</a>
-				</nav>
-				<article id="termos-de-uso" class="legal-section">
-					<h2>Termos de uso</h2>
-					<h3>1. Conteúdo institucional</h3>
-					<p>O site apresenta informações gerais sobre a Viagate e suas soluções. Funcionalidades, integrações, fontes, prazos e condições dependem da proposta comercial, da viabilidade técnica e do contrato aplicável.</p>
-					<h3>2. Uso permitido</h3>
-					<p>O visitante deve utilizar o site de forma lícita, sem tentar comprometer disponibilidade, segurança, formulários, dados ou infraestrutura.</p>
-					<h3>3. Propriedade intelectual</h3>
-					<p>Marcas, textos, interfaces, códigos e demais materiais pertencem aos respectivos titulares. O acesso ao site não concede licença além do uso normal para consulta.</p>
-					<h3>4. Conteúdo editorial</h3>
-					<p>Artigos e guias possuem finalidade informativa e não substituem análise jurídica, técnica ou operacional específica. Referências externas permanecem sob responsabilidade de seus respectivos mantenedores.</p>
-					<h3>5. Disponibilidade</h3>
-					<p>A Viagate pode atualizar ou interromper partes do site para manutenção, segurança ou evolução. Esforços razoáveis são aplicados para preservar disponibilidade e integridade.</p>
-					<h3>6. Contato</h3>
-					<p>Dúvidas sobre estes termos podem ser enviadas para <a href="mailto:contato@viagate.com.br">contato@viagate.com.br</a>.</p>
-				</article>
-				<article id="politica-de-privacidade" class="legal-section">
-					<h2>Política de privacidade</h2>
-					<h3>1. Escopo</h3>
-					<p>Esta política descreve o tratamento de dados pessoais enviados pelo site institucional da Viagate. Os produtos e ambientes contratados podem possuir avisos específicos, adequados às respectivas finalidades e relações entre controladores e operadores.</p>
-					<h3>2. Dados coletados</h3>
-					<p>O formulário pode coletar nome, e-mail, empresa, telefone, mensagem, registros técnicos de segurança e consentimento. Os campos opcionais devem ser preenchidos somente quando necessários ao contato.</p>
-					<h3>3. Finalidades</h3>
-					<p>Os dados são utilizados para responder solicitações, entender necessidades comerciais, proteger o formulário contra abuso e manter registros necessários ao atendimento.</p>
-					<h3>4. Compartilhamento</h3>
-					<p>Os dados podem ser processados por fornecedores de infraestrutura e atendimento contratados pela Viagate, observadas medidas de segurança, instruções e limites compatíveis com a finalidade.</p>
-					<h3>5. Retenção e segurança</h3>
-					<p>Os registros são mantidos pelo período necessário ao atendimento, às obrigações aplicáveis e à proteção de direitos. São adotados controles técnicos e organizacionais proporcionais aos riscos.</p>
-					<h3>6. Direitos do titular</h3>
-					<p>Solicitações sobre confirmação, acesso, correção, oposição, eliminação e outros direitos aplicáveis podem ser enviadas para <a href="mailto:contato@viagate.com.br">contato@viagate.com.br</a>. A identidade do solicitante poderá ser confirmada antes do atendimento.</p>
-					<h3>7. Atualizações</h3>
-					<p>Esta política pode ser atualizada para refletir mudanças no site, nos processos ou na legislação. A data da versão vigente permanece indicada nesta página.</p>
-				</article>
-			</div>
-		</section>
-	}
-}
+		<article class="legal-document-page">
+			<header class="legal-document-hero" id="termos-de-uso">
+				<div class="command-grid" aria-hidden="true"></div>
+				<div class="container legal-document-hero-inner">
+					<nav class="breadcrumb breadcrumb-dark" aria-label="Navegação estrutural"><a href="/">Início</a><span>/</span><span>Termos de uso e Política de privacidade</span></nav>
+					<div class="product-overline"><span></span> DOCUMENTO OFICIAL / VIA GATEWAY</div>
+					<h1>Termos de Uso e Política de Privacidade</h1>
+					<p class="legal-document-version">Revista e em vigor desde 29/01/2021.</p>
+					<div class="legal-document-hero-meta" aria-label="Informações do documento">
+						<div><small>EMPRESA</small><strong>VIA GATEWAY LTDA.</strong></div>
+						<div><small>APLICAÇÕES</small><strong>Cargo Truck / Score / Consulta Avulsa</strong></div>
+						<div><small>FORO</small><strong>Curitiba / Paraná</strong></div>
+					</div>
+				</div>
+			</header>
 
-templ Privacy(meta site.PageMeta) {
-	@components.Layout(meta) {
-		<section class="legal-page">
-			<div class="container legal-content">
-				<span class="eyebrow">Transparência</span>
-				<h1>Política de privacidade</h1>
-				<p class="legal-date">Última atualização: 7 de agosto de 2026.</p>
-				<h2>1. Escopo</h2>
-				<p>Esta política descreve o tratamento de dados pessoais enviados pelo site institucional da Viagate. Os produtos e ambientes contratados podem possuir avisos específicos, adequados às respectivas finalidades e relações entre controladores e operadores.</p>
-				<h2>2. Dados coletados</h2>
-				<p>O formulário pode coletar nome, e-mail, empresa, telefone, mensagem, registros técnicos de segurança e consentimento. Os campos opcionais devem ser preenchidos somente quando necessários ao contato.</p>
-				<h2>3. Finalidades</h2>
-				<p>Os dados são utilizados para responder solicitações, entender necessidades comerciais, proteger o formulário contra abuso e manter registros necessários ao atendimento.</p>
-				<h2>4. Compartilhamento</h2>
-				<p>Os dados podem ser processados por fornecedores de infraestrutura e atendimento contratados pela Viagate, observadas medidas de segurança, instruções e limites compatíveis com a finalidade.</p>
-				<h2>5. Retenção e segurança</h2>
-				<p>Os registros são mantidos pelo período necessário ao atendimento, às obrigações aplicáveis e à proteção de direitos. São adotados controles técnicos e organizacionais proporcionais aos riscos.</p>
-				<h2>6. Direitos do titular</h2>
-				<p>Solicitações sobre confirmação, acesso, correção, oposição, eliminação e outros direitos aplicáveis podem ser enviadas para <a href="mailto:contato@viagate.com.br">contato@viagate.com.br</a>. A identidade do solicitante poderá ser confirmada antes do atendimento.</p>
-				<h2>7. Atualizações</h2>
-				<p>Esta política pode ser atualizada para refletir mudanças no site, nos processos ou na legislação. A data da versão vigente permanece indicada nesta página.</p>
-			</div>
-		</section>
-	}
-}
+			<div class="container legal-document-layout">
+				<aside class="legal-document-sidebar" aria-label="Índice do documento">
+					<div class="legal-document-sidebar-inner">
+						<span>ÍNDICE / DOCUMENTO</span>
+						<a href="#termos-de-uso">Termos de uso</a>
+						<a href="#utilizacao-do-sistema-cargo-truck">Cargo Truck</a>
+						<a href="#utilizacao-no-sistema-score-pesquisa-cadastral">Score</a>
+						<a href="#utilizacao-no-sistema-consulta-avulsa-biometria">Consulta avulsa</a>
+						<a href="#politica-de-privacidade">Política de privacidade</a>
+						<a href="#quais-dados-sao-coletados">Dados coletados</a>
+						<a href="#compartilhamento-de-informacoes-pessoais-com-terceiros">Compartilhamento</a>
+						<a href="#como-armazenamos-as-informacoes-coletadas">Armazenamento</a>
+						<a href="#controle-das-informacoes-pessoais">Controle dos dados</a>
+						<a href="#encarregado-do-tratamento-dos-dados">Encarregado</a>
+					</div>
+				</aside>
 
-templ Terms(meta site.PageMeta) {
-	@components.Layout(meta) {
-		<section class="legal-page">
-			<div class="container legal-content">
-				<span class="eyebrow">Condições do site</span>
-				<h1>Termos de uso</h1>
-				<p class="legal-date">Última atualização: 7 de agosto de 2026.</p>
-				<h2>1. Conteúdo institucional</h2>
-				<p>O site apresenta informações gerais sobre a Viagate e suas soluções. Funcionalidades, integrações, fontes, prazos e condições dependem da proposta comercial, da viabilidade técnica e do contrato aplicável.</p>
-				<h2>2. Uso permitido</h2>
-				<p>O visitante deve utilizar o site de forma lícita, sem tentar comprometer disponibilidade, segurança, formulários, dados ou infraestrutura.</p>
-				<h2>3. Propriedade intelectual</h2>
-				<p>Marcas, textos, interfaces, códigos e demais materiais pertencem aos respectivos titulares. O acesso ao site não concede licença além do uso normal para consulta.</p>
-				<h2>4. Conteúdo editorial</h2>
-				<p>Artigos e guias possuem finalidade informativa e não substituem análise jurídica, técnica ou operacional específica. Referências externas permanecem sob responsabilidade de seus respectivos mantenedores.</p>
-				<h2>5. Disponibilidade</h2>
-				<p>A Viagate pode atualizar ou interromper partes do site para manutenção, segurança ou evolução. Esforços razoáveis são aplicados para preservar disponibilidade e integridade.</p>
-				<h2>6. Contato</h2>
-				<p>Dúvidas sobre estes termos podem ser enviadas para <a href="mailto:contato@viagate.com.br">contato@viagate.com.br</a>.</p>
+				<div class="legal-document-content">
+					@templ.Raw(documentHTML)
+				</div>
 			</div>
-		</section>
+		</article>
 	}
 }

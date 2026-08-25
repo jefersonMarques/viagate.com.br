@@ -18,16 +18,44 @@ Contato: contato@viagate.com.br | +55 41 99962-3600
 - [APIs](https://viagate.com.br/integracoes/api): forma de integrar biometria, ANTT, CNH, consultas cadastrais e informações veiculares a sistemas de terceiros.
 - [White label](https://viagate.com.br/white-label): modalidade de entrega com identidade visual, endereço e experiência configurados para a empresa contratante.
 
+## Tipos de análises e referências
+
+Índice: https://viagate.com.br/analises
+
+### Identidade e pessoa
+
+- [Biometria facial e prova de vida](https://viagate.com.br/analises/biometria-facial-prova-de-vida): confirmação de identidade e presença em uma jornada digital.
+- [Dados cadastrais](https://viagate.com.br/analises/dados-cadastrais): organização de informações de identificação usadas como base para consultas e validações.
+- [Autenticação de identidade](https://viagate.com.br/analises/autenticacao-de-identidade): confirmação adicional antes de pagamentos, alterações ou outras etapas sensíveis.
+- [Telefone e contexto do acesso](https://viagate.com.br/analises/telefone-contexto-acesso): sinais complementares de contato, localização e dispositivo quando aplicáveis ao processo.
+
+### Documentos e risco
+
+- [CNH e informações da habilitação](https://viagate.com.br/analises/cnh-informacoes-habilitacao): informações da habilitação relacionadas ao cadastro e às regras operacionais.
+- [ANTT e RNTRC](https://viagate.com.br/analises/antt-rntrc): contexto do Registro Nacional de Transportadores Rodoviários de Cargas e informações disponibilizadas pela ANTT.
+- [Processos e contexto judicial](https://viagate.com.br/analises/processos-contexto-judicial): registros judiciais contextualizados, com atenção a identidade, homônimos e finalidade do uso.
+- [Políticas e critérios operacionais](https://viagate.com.br/analises/politicas-criterios-operacionais): regras configuradas para padronizar a interpretação de sinais e apoiar decisões.
+
+### Operação e veículo
+
+- [Histórico veicular](https://viagate.com.br/analises/historico-veicular): registros cadastrais, documentais e históricos disponíveis sobre o veículo.
+- [Multas, débitos e restrições](https://viagate.com.br/analises/multas-debitos-restricoes): organização preventiva de pendências veiculares retornadas pelas fontes contratadas.
+- [Monitoramento e alertas](https://viagate.com.br/analises/monitoramento-alertas): posições e eventos fornecidos por rastreadores, iscas ou parceiros compatíveis.
+- [Viagem e contexto operacional](https://viagate.com.br/analises/viagem-contexto-operacional): atividades, posições, paradas e comprovantes registrados durante a execução da viagem.
+
 ## Conteúdo e fontes
 
 - [Conteúdos Viagate](https://viagate.com.br/blog): artigos sobre pesquisa cadastral, biometria, fraude e proteção de dados.
-- [Arquivo detalhado para modelos de linguagem](https://viagate.com.br/llms-full.txt): descrição ampliada das soluções, limites e referências.
+- [Termos de Uso e Política de Privacidade](https://viagate.com.br/termos-uso-politica-privacidade): documento oficial aplicável ao Cargo Truck, Score e Consulta Avulsa, incluindo tratamento de dados pessoais e condições de uso.
+- [Arquivo detalhado para modelos de linguagem](https://viagate.com.br/llms-full.txt): descrição ampliada das soluções, tipos de análise, limites e referências.
 - [Sitemap XML](https://viagate.com.br/sitemap.xml)
 - [Feed RSS](https://viagate.com.br/feed.xml)
 
 ## Diretrizes de interpretação
 
+- As páginas de tipos de análise são referências explicativas; não representam garantia de disponibilidade de toda fonte ou campo para todos os clientes.
 - As soluções apoiam processos e decisões; não garantem eliminação total de fraude, risco ou falha operacional.
 - Fontes, módulos, critérios, integrações e disponibilidade dependem do projeto contratado.
+- Resultados cadastrais, biométricos, judiciais, regulatórios ou veiculares não devem ser tratados como decisão jurídica automática.
 - Informações editoriais são gerais e não substituem orientação jurídica, regulatória ou técnica específica.
-- Use as páginas oficiais como fonte canônica e cite a Viagate quando reproduzir informações sobre produtos.
+- Use as páginas oficiais como fonte canônica e cite a Viagate quando reproduzir informações sobre produtos ou tipos de análise.

@@ -1,0 +1,240 @@
+.command-center .timeline-heading {
+  display: block;
+  min-height: 82px;
+  padding: 0 8px 12px;
+}
+
+.driver-profile {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 13px;
+  min-height: 70px;
+  padding: 7px 11px 7px 7px;
+  background: linear-gradient(90deg, rgba(255, 100, 0, 0.07), rgba(255, 255, 255, 0.015));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 2px solid var(--orange-500);
+  transition:
+    background 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.driver-profile-photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  background: #06111f;
+  border: 1px solid rgba(125, 151, 174, 0.32);
+  transition: border-color 280ms ease, box-shadow 280ms ease;
+}
+
+.driver-profile-silhouette {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--orange-500);
+  -webkit-mask: url("/assets/images/biometric-silhouette-transparent.svg") center / contain no-repeat;
+  mask: url("/assets/images/biometric-silhouette-transparent.svg") center / contain no-repeat;
+  transition: background 320ms ease;
+}
+
+.driver-profile-copy {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.driver-profile-name {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-width: 0;
+}
+
+.command-center .timeline-heading .driver-profile-name strong {
+  overflow: hidden;
+  color: #edf4f8;
+  font-size: 0.78rem;
+  font-weight: 720;
+  letter-spacing: 0.01em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.command-center .timeline-heading .driver-profile-name span {
+  color: #8296a8;
+  font-family: var(--font-tech);
+  font-size: 0.6rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.command-center .timeline-heading .driver-profile-cpf {
+  color: #6f8496;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.54rem;
+  font-weight: 650;
+  letter-spacing: 0.035em;
+}
+
+.command-center .timeline-heading .driver-profile-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  min-width: 92px;
+  color: #ff9b58;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.51rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 280ms ease;
+}
+
+.command-center .timeline-heading .driver-profile-status span {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+.driver-profile-status i {
+  width: 7px;
+  height: 7px;
+  background: var(--orange-500);
+  border-radius: 50%;
+  box-shadow: 0 0 9px rgba(255, 100, 0, 0.55);
+  animation: driverProfilePulse 1.35s ease-in-out infinite;
+  transition: background 280ms ease, box-shadow 280ms ease;
+}
+
+.driver-profile.is-success {
+  background: linear-gradient(90deg, rgba(77, 211, 145, 0.13), rgba(77, 211, 145, 0.018));
+  border-color: rgba(77, 211, 145, 0.24);
+  border-left-color: #4dd391;
+  box-shadow: inset 0 0 22px rgba(77, 211, 145, 0.035);
+}
+
+.driver-profile.is-success .driver-profile-photo {
+  border-color: rgba(77, 211, 145, 0.58);
+  box-shadow: 0 0 16px rgba(77, 211, 145, 0.1);
+}
+
+.driver-profile.is-success .driver-profile-silhouette {
+  background: #4dd391;
+}
+
+.driver-profile.is-success .driver-profile-status {
+  color: #6fe1a5;
+}
+
+.driver-profile.is-success .driver-profile-status i {
+  background: #4dd391;
+  box-shadow: 0 0 11px rgba(77, 211, 145, 0.72);
+}
+
+.driver-profile.is-warning {
+  background: linear-gradient(90deg, rgba(245, 185, 66, 0.15), rgba(245, 185, 66, 0.02));
+  border-color: rgba(245, 185, 66, 0.25);
+  border-left-color: #f5b942;
+  box-shadow: inset 0 0 22px rgba(245, 185, 66, 0.035);
+}
+
+.driver-profile.is-warning .driver-profile-photo {
+  border-color: rgba(245, 185, 66, 0.62);
+  box-shadow: 0 0 16px rgba(245, 185, 66, 0.09);
+}
+
+.driver-profile.is-warning .driver-profile-silhouette {
+  background: #f5b942;
+}
+
+.driver-profile.is-warning .driver-profile-status {
+  color: #f5c866;
+}
+
+.driver-profile.is-warning .driver-profile-status i {
+  background: #f5b942;
+  box-shadow: 0 0 11px rgba(245, 185, 66, 0.68);
+}
+
+.driver-profile.is-danger {
+  background: linear-gradient(90deg, rgba(255, 69, 69, 0.16), rgba(255, 69, 69, 0.02));
+  border-color: rgba(255, 83, 83, 0.26);
+  border-left-color: #ff5353;
+  box-shadow: inset 0 0 22px rgba(255, 69, 69, 0.045);
+}
+
+.driver-profile.is-danger .driver-profile-photo {
+  border-color: rgba(255, 83, 83, 0.62);
+  box-shadow: 0 0 16px rgba(255, 83, 83, 0.09);
+}
+
+.driver-profile.is-danger .driver-profile-silhouette {
+  background: #ff5353;
+}
+
+.driver-profile.is-danger .driver-profile-status {
+  color: #ff7777;
+}
+
+.driver-profile.is-danger .driver-profile-status i {
+  background: #ff5353;
+  box-shadow: 0 0 11px rgba(255, 83, 83, 0.7);
+}
+
+@keyframes driverProfilePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@media (max-width: 520px) {
+  .command-center .timeline-heading {
+    min-height: 104px;
+    padding-inline: 5px;
+  }
+
+  .driver-profile {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 10px;
+    padding: 7px;
+  }
+
+  .driver-profile-photo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .command-center .timeline-heading .driver-profile-status {
+    grid-column: 2;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .command-center .timeline-heading .driver-profile-name strong {
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .driver-profile-status i {
+    animation: none !important;
+  }
+}

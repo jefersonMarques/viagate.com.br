@@ -1,0 +1,42 @@
+.console-brand,
+.console-live {
+  font-size: 0.8rem;
+}
+
+.console-mark {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 20px;
+  overflow: visible;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.console-mark::before,
+.console-mark::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: var(--orange-500) !important;
+  will-change: transform;
+}
+
+.console-mark::before {
+  clip-path: polygon(18% 10%, 31% 10%, 52% 48%, 31% 84%, 18% 84%, 39% 48%);
+}
+
+.console-mark::after {
+  clip-path: polygon(82% 22%, 69% 22%, 48% 60%, 69% 96%, 82% 96%, 61% 60%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .console-mark::before,
+  .console-mark::after {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,27 @@
+.article-card-cover {
+  display: block;
+  max-height: 258px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #07131f;
+}
+
+.article-cover-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #07131f;
+  border: 1px solid #c9d2da;
+  box-shadow: 22px 22px 0 #e1e6ea;
+}
+
+@media (max-width: 720px) {
+  .article-cover-image {
+    min-height: 0;
+    box-shadow: 10px 10px 0 #e1e6ea;
+  }
+}

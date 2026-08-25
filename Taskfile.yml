@@ -9,12 +9,12 @@ tasks:
   generate:
     desc: Gera os arquivos Go dos templates
     cmds:
-      - templ generate
+      - go run github.com/a-h/templ/cmd/templ@v0.3.1001 generate
 
   dev:
     desc: Inicia o servidor com recarregamento automático
     cmds:
-      - templ generate --watch --proxy="http://localhost:8090" --cmd="go run ./cmd/server" --open-browser=false
+      - go run github.com/a-h/templ/cmd/templ@v0.3.1001 generate --watch --proxy="http://localhost:8090" --cmd="go run ./cmd/server" --open-browser=false
 
   build:
     desc: Gera os templates e compila o binário
@@ -32,6 +32,6 @@ tasks:
   check:
     desc: Valida formatação, templates e testes
     cmds:
-      - templ fmt .
+      - go run github.com/a-h/templ/cmd/templ@v0.3.1001 fmt .
       - gofmt -w cmd internal web
       - task: test

@@ -31,6 +31,43 @@ func (application *Application) solutions(response http.ResponseWriter, request 
 	))
 }
 
+func (application *Application) tools(response http.ResponseWriter, request *http.Request) {
+	application.render(response, request, http.StatusOK, pages.Tools(
+		content.ListingMeta(
+			application.config.SiteURL,
+			"Ferramentas para transporte e gestão de riscos",
+			"Conheça as ferramentas Viagate para pesquisa cadastral, autenticação, logística, prevenção veicular e monitoramento.",
+			"/ferramentas",
+		),
+		content.SolutionsByKind(site.SolutionKindProduct),
+	))
+}
+
+func (application *Application) analyses(response http.ResponseWriter, request *http.Request) {
+	application.render(response, request, http.StatusOK, pages.Analyses(
+		content.ListingMeta(
+			application.config.SiteURL,
+			"Tipos de análises para transporte e gestão de riscos",
+			"Referências sobre biometria, cadastro, CNH, ANTT, contexto judicial, critérios operacionais, histórico veicular, monitoramento e viagem.",
+			"/analises",
+		),
+		content.Analyses(),
+	))
+}
+
+func (application *Application) analysis(response http.ResponseWriter, request *http.Request) {
+	analysis, found := content.FindAnalysis(request.PathValue("slug"))
+	if !found {
+		application.notFound(response, request)
+		return
+	}
+	application.render(response, request, http.StatusOK, pages.Analysis(
+		content.AnalysisMeta(application.config.SiteURL, analysis),
+		analysis,
+		content.RelatedAnalyses(analysis),
+	))
+}
+
 func (application *Application) solution(response http.ResponseWriter, request *http.Request) {
 	solution, found := content.FindSolution(request.PathValue("slug"))
 	if !found || solution.Slug == "api" || solution.Slug == "white-label" {
@@ -115,13 +152,16 @@ func (application *Application) contact(response http.ResponseWriter, request *h
 }
 
 func (application *Application) legal(response http.ResponseWriter, request *http.Request) {
-	application.render(response, request, http.StatusOK, pages.Legal(content.SimpleMeta(
-		application.config.SiteURL,
-		"Termos de uso e Política de privacidade",
-		"Consulte os termos de uso e saiba como os dados pessoais enviados pelo site institucional da Viagate são tratados.",
-		"/termos-uso-politica-privacidade",
-		false,
-	)))
+	application.render(response, request, http.StatusOK, pages.Legal(
+		content.SimpleMeta(
+			application.config.SiteURL,
+			"Termos de Uso e Política de Privacidade",
+			"Consulte os Termos de Uso e a Política de Privacidade aplicáveis ao Cargo Truck, Score e Consulta Avulsa da Via Gateway.",
+			"/termos-uso-politica-privacidade",
+			false,
+		),
+		content.LegalDocumentHTML(),
+	))
 }
 
 func (application *Application) notFound(response http.ResponseWriter, request *http.Request) {

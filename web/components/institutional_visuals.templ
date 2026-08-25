@@ -1,0 +1,59 @@
+package components
+
+templ DecisionTraceVisual() {
+	<aside class="decision-trace-visual" aria-label="Exemplo conceitual de trilha de auditoria de uma decisão operacional">
+		<div class="decision-trace-head"><span><i></i> AUDIT TRAIL / PROCESSO</span><small>TRACEABLE</small></div>
+		<ol class="decision-trace-list">
+			<li><time>09:42</time><span>Biometria validada</span><strong>✓</strong></li>
+			<li><time>09:43</time><span>Telefone confirmado</span><strong>✓</strong></li>
+			<li><time>09:43</time><span>Localização registrada</span><strong>✓</strong></li>
+			<li><time>09:44</time><span>Política aplicada</span><strong>✓</strong></li>
+			<li><time>09:44</time><span>Decisão registrada</span><strong>✓</strong></li>
+		</ol>
+		<div class="decision-trace-foot"><span>ORIGEM</span><i></i><span>CRITÉRIO</span><i></i><span>STATUS</span><i></i><span>HISTÓRICO</span></div>
+	</aside>
+}
+
+templ AboutCoreVisual() {
+	<aside class="institutional-visual about-core-visual" aria-label="Representação da base tecnológica Viagate conectando identidade, risco e operação">
+		<div class="institutional-visual-head"><span><i></i> VIAGATE / CORE</span><small>CONNECTED</small></div>
+		<div class="about-core-flow">
+			<div><span>01</span><strong>IDENTIDADE</strong><small>Confirma quem participa</small></div>
+			<i aria-hidden="true">→</i>
+			<div><span>02</span><strong>RISCO</strong><small>Organiza contexto e critérios</small></div>
+			<i aria-hidden="true">→</i>
+			<div><span>03</span><strong>OPERAÇÃO</strong><small>Preserva eventos e decisões</small></div>
+		</div>
+		<div class="institutional-visual-foot"><span>CONTEXTO PRESERVADO</span><strong>uma base, diferentes jornadas</strong></div>
+	</aside>
+}
+
+templ AboutContinuityVisual() {
+	<aside class="institutional-visual about-continuity-visual" aria-label="Fluxo operacional da identidade até a viagem">
+		<div class="institutional-visual-head"><span><i></i> CONTEXTO / JORNADA</span><small>TRACEABLE</small></div>
+		<ol class="about-continuity-list">
+			<li><span>01</span><div><small>IDENTIDADE</small><strong>Quem está do outro lado</strong></div><i></i></li>
+			<li><span>02</span><div><small>CADASTRO</small><strong>Dados e critérios reunidos</strong></div><i></i></li>
+			<li><span>03</span><div><small>AUTENTICAÇÃO</small><strong>Proteção nas etapas sensíveis</strong></div><i></i></li>
+			<li><span>04</span><div><small>VIAGEM</small><strong>Eventos conectados à decisão</strong></div><i></i></li>
+		</ol>
+	</aside>
+}
+
+templ SolutionsArchitectureVisual() {
+	<aside class="institutional-visual solutions-architecture-visual" aria-label="Arquitetura conceitual das formas de utilização da tecnologia Viagate">
+		<div class="institutional-visual-head"><span><i></i> VIAGATE / ARCHITECTURE</span><small>MODULAR</small></div>
+		<div class="solutions-architecture-flow">
+			<div class="architecture-endpoint"><small>SEU AMBIENTE</small><strong>TMS · ERP · APP</strong><span>Sistemas e processos atuais</span></div>
+			<div class="architecture-connector" aria-hidden="true"><i></i><span>↔</span><i></i></div>
+			<div class="architecture-core"><small>VIAGATE</small><strong>CORE</strong><span>Identidade · risco · operação</span></div>
+			<div class="architecture-connector" aria-hidden="true"><i></i><span>↔</span><i></i></div>
+			<div class="architecture-delivery">
+				<div><span>01</span><strong>API</strong></div>
+				<div><span>02</span><strong>WHITE LABEL</strong></div>
+				<div><span>03</span><strong>PLATAFORMA CARGO</strong></div>
+			</div>
+		</div>
+		<div class="institutional-visual-foot"><span>MESMA BASE TECNOLÓGICA</span><strong>entrega conforme o fluxo contratado</strong></div>
+	</aside>
+}
