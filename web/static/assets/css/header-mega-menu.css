@@ -565,7 +565,7 @@
   padding: 7px 0;
   color: #92a4b3 !important;
   border-bottom: 1px solid rgba(73, 99, 120, 0.28);
-  font-size: 0.7rem !important;
+  font-size: 1rem !important;
   font-weight: 620 !important;
   letter-spacing: 0 !important;
   transition: color 160ms ease, padding-left 160ms ease;
