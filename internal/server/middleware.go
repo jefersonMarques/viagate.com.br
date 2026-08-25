@@ -1,13 +1,8 @@
 package server
 
 import (
-	"bufio"
-	"compress/gzip"
-	"fmt"
-	"net"
 	"net/http"
 	"runtime/debug"
-	"strings"
 	"time"
 )
 
@@ -47,48 +42,4 @@ func (application *Application) recoverPanic(next http.Handler) http.Handler {
 		}()
 		next.ServeHTTP(response, request)
 	})
-}
-
-func (application *Application) compress(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
-		if request.Method == http.MethodHead || !strings.Contains(request.Header.Get("Accept-Encoding"), "gzip") || request.Header.Get("Range") != "" {
-			next.ServeHTTP(response, request)
-			return
-		}
-		response.Header().Set("Content-Encoding", "gzip")
-		response.Header().Add("Vary", "Accept-Encoding")
-		writer := gzip.NewWriter(response)
-		defer writer.Close()
-		next.ServeHTTP(&gzipResponseWriter{ResponseWriter: response, writer: writer}, request)
-	})
-}
-
-type gzipResponseWriter struct {
-	http.ResponseWriter
-	writer *gzip.Writer
-}
-
-func (writer *gzipResponseWriter) WriteHeader(status int) {
-	writer.Header().Del("Content-Length")
-	writer.ResponseWriter.WriteHeader(status)
-}
-
-func (writer *gzipResponseWriter) Write(content []byte) (int, error) {
-	writer.Header().Del("Content-Length")
-	return writer.writer.Write(content)
-}
-
-func (writer *gzipResponseWriter) Flush() {
-	_ = writer.writer.Flush()
-	if flusher, ok := writer.ResponseWriter.(http.Flusher); ok {
-		flusher.Flush()
-	}
-}
-
-func (writer *gzipResponseWriter) Hijack() (net.Conn, *bufio.ReadWriter, error) {
-	hijacker, ok := writer.ResponseWriter.(http.Hijacker)
-	if !ok {
-		return nil, nil, fmt.Errorf("hijacking is unsupported")
-	}
-	return hijacker.Hijack()
 }
