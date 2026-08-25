@@ -45,55 +45,12 @@ templ Layout(meta site.PageMeta) {
 			<link rel="alternate" type="application/rss+xml" title="Conteúdos Viagate" href="/feed.xml"/>
 			<link rel="alternate" type="text/plain" title="Viagate para LLMs" href="/llms.txt"/>
 			<style>h1{font-size:2em}</style>
-			<link rel="stylesheet" href="/assets/css/site.css"/>
-			<link rel="stylesheet" href="/assets/css/industrial-tech.css"/>
-			<link rel="stylesheet" href="/assets/css/institutional-visuals.css"/>
-			<link rel="stylesheet" href="/assets/css/risk-engine.css"/>
-			<link rel="stylesheet" href="/assets/css/risk-engine-brand.css"/>
-			<link rel="stylesheet" href="/assets/css/risk-engine-scenarios.css"/>
-			<link rel="stylesheet" href="/assets/css/risk-engine-profile.css"/>
-			<link rel="stylesheet" href="/assets/css/biometric-flow.css"/>
-			<link rel="stylesheet" href="/assets/css/biometric-face-frame.css"/>
-			<link rel="stylesheet" href="/assets/css/header-mega-menu.css"/>
-			<link rel="stylesheet" href="/assets/css/header-behavior.css"/>
-			<link rel="stylesheet" href="/assets/css/tool-function-menu.css"/>
-			<link rel="stylesheet" href="/assets/css/tools-catalog.css"/>
-			<link rel="stylesheet" href="/assets/css/tool-visual-assets.css"/>
-			<link rel="stylesheet" href="/assets/css/analysis-reference.css"/>
-			<link rel="stylesheet" href="/assets/css/legal-document.css"/>
-			<link rel="stylesheet" href="/assets/css/blog-images.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-score-identity-hero.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-score-panel-shadow.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-score-process.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-score-verification.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-authenticator.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-authenticator-gate.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-truck-route.css"/>
-			<link rel="stylesheet" href="/assets/css/cargo-truck-journey.css"/>
-			<link rel="stylesheet" href="/assets/css/prevention-vehicle-hero.css"/>
-			<link rel="stylesheet" href="/assets/css/prevention-vehicle-plate.css"/>
-			<link rel="stylesheet" href="/assets/css/prevention-process.css"/>
-			<link rel="stylesheet" href="/assets/css/vehicle-monitoring-hero.css"/>
-			<link rel="stylesheet" href="/assets/css/vehicle-monitoring-page.css"/>
-			<link rel="stylesheet" href="/assets/css/api-integration-hero.css"/>
-			<link rel="stylesheet" href="/assets/css/api-integration-page.css"/>
-			<link rel="stylesheet" href="/assets/css/white-label-hero.css"/>
-			<link rel="stylesheet" href="/assets/css/white-label-page.css"/>
-			<script src="/assets/js/site.js" defer></script>
-			<script src="/assets/js/risk-engine-profile.js" defer></script>
-			<script src="/assets/js/biometric-flow.js" defer></script>
-			<script src="/assets/js/biometric-face-enhance.js" defer></script>
-			<script src="/assets/js/header-mega-menu.js" defer></script>
-			<script src="/assets/js/tools-catalog.js" defer></script>
-			<script src="/assets/js/cargo-score-identity-hero.js" defer></script>
-			<script src="/assets/js/cargo-authenticator.js" defer></script>
-			<script src="/assets/js/cargo-truck-route.js" defer></script>
-			<script src="/assets/js/prevention-vehicle-hero.js" defer></script>
-			<script src="/assets/js/vehicle-monitoring-hero.js" defer></script>
-			<script src="/assets/js/api-integration-hero.js" defer></script>
-			<script src="/assets/js/api-integration-page.js" defer></script>
-			<script src="/assets/js/white-label-hero.js" defer></script>
-			<script src="/assets/js/white-label-page.js" defer></script>
+			for _, stylesheet := range PageStyles(meta) {
+				<link rel="stylesheet" href={ stylesheet }/>
+			}
+			for _, script := range PageScripts(meta) {
+				<script src={ script } defer></script>
+			}
 			if meta.Schema != "" {
 				@templ.Raw("<script type=\"application/ld+json\">" + meta.Schema + "</script>")
 			}
