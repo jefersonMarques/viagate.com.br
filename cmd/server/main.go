@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -16,11 +17,17 @@ import (
 func main() {
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
 	application := server.New(server.Config{
-		Address:           environmentOrDefault("APP_ADDRESS", ":8090"),
-		Environment:       environmentOrDefault("APP_ENV", "development"),
-		SiteURL:           environmentOrDefault("SITE_URL", "https://viagate.com.br"),
-		ContactWebhookURL: os.Getenv("CONTACT_WEBHOOK_URL"),
-		Logger:            logger,
+		Address:             environmentOrDefault("APP_ADDRESS", ":8090"),
+		Environment:         environmentOrDefault("APP_ENV", "development"),
+		SiteURL:             environmentOrDefault("SITE_URL", "https://viagate.com.br"),
+		BrevoAPIKey:         os.Getenv("BREVO_API_KEY"),
+		BrevoContactName:    os.Getenv("BREVO_CONTACT_NAME"),
+		BrevoContactSubject: os.Getenv("BREVO_CONTACT_SUBJECT"),
+		BrevoContactSender:  os.Getenv("BREVO_CONTACT_SENDER"),
+		ContactEmail:        os.Getenv("CONTACT_EMAIL"),
+		ContactWebhookURL:   os.Getenv("CONTACT_WEBHOOK_URL"),
+		TrustedProxyCIDRs:   environmentList("TRUSTED_PROXY_CIDRS"),
+		Logger:              logger,
 	})
 
 	httpServer := &http.Server{
@@ -61,4 +68,21 @@ func environmentOrDefault(key string, fallback string) string {
 		return fallback
 	}
 	return value
+}
+
+func environmentList(key string) []string {
+	value := strings.TrimSpace(os.Getenv(key))
+	if value == "" {
+		return nil
+	}
+
+	items := strings.Split(value, ",")
+	result := make([]string, 0, len(items))
+	for _, item := range items {
+		item = strings.TrimSpace(item)
+		if item != "" {
+			result = append(result, item)
+		}
+	}
+	return result
 }
