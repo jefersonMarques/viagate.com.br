@@ -8,7 +8,7 @@ import (
 
 func (application *Application) securityHeaders(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
-		response.Header().Set("Content-Security-Policy", "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self' 'sha256-vKDHFHYmDB/3iZPHQA8jnu8SzAwos9LJCQULjcSJ5lw='; upgrade-insecure-requests")
+		response.Header().Set("Content-Security-Policy", "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com; object-src 'none'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com; style-src 'self' 'sha256-vKDHFHYmDB/3iZPHQA8jnu8SzAwos9LJCQULjcSJ5lw='; upgrade-insecure-requests")
 		response.Header().Set("Cross-Origin-Opener-Policy", "same-origin")
 		response.Header().Set("Permissions-Policy", "camera=(), geolocation=(), microphone=()")
 		response.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")
