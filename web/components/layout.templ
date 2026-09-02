@@ -48,7 +48,6 @@ templ Layout(meta site.PageMeta) {
 			<link rel="alternate" type="application/rss+xml" title="Conteúdos Viagate" href="/feed.xml"/>
 			<link rel="alternate" type="text/plain" title="Viagate para LLMs" href="/llms.txt"/>
 			if googleAnalyticsID() != "" {
-				<script async src={ "https://www.googletagmanager.com/gtag/js?id=" + googleAnalyticsID() }></script>
 				<script src="/assets/js/google-analytics.js" data-measurement-id={ googleAnalyticsID() } defer></script>
 			}
 			<style>h1{font-size:2em}</style>
