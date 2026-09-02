@@ -47,7 +47,9 @@ templ Layout(meta site.PageMeta) {
 			<link rel="manifest" href="/site.webmanifest"/>
 			<link rel="alternate" type="application/rss+xml" title="Conteúdos Viagate" href="/feed.xml"/>
 			<link rel="alternate" type="text/plain" title="Viagate para LLMs" href="/llms.txt"/>
-			if googleAnalyticsID() != "" {
+			if googleTagManagerID() != "" {
+				<script src="/assets/js/google-tag-manager.js" data-container-id={ googleTagManagerID() }></script>
+			} else if googleAnalyticsDirectEnabled() {
 				<script src="/assets/js/google-analytics.js" data-measurement-id={ googleAnalyticsID() } defer></script>
 			}
 			<style>h1{font-size:2em}</style>
@@ -105,6 +107,11 @@ templ Layout(meta site.PageMeta) {
 			}
 		</head>
 		<body>
+			if googleTagManagerID() != "" {
+				<noscript>
+					<iframe src={ "https://www.googletagmanager.com/ns.html?id=" + googleTagManagerID() } height="0" width="0" hidden aria-hidden="true" title="Google Tag Manager"></iframe>
+				</noscript>
+			}
 			<a class="skip-link" href="#main-content">Ir para o conteúdo</a>
 			@Header()
 			<main id="main-content">
