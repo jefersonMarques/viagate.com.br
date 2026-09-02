@@ -11,6 +11,9 @@ templ Layout(meta site.PageMeta) {
 			<title>{ meta.Title }</title>
 			<meta name="description" content={ meta.Description }/>
 			<meta name="application-name" content="Viagate"/>
+			if googleSiteVerification() != "" {
+				<meta name="google-site-verification" content={ googleSiteVerification() }/>
+			}
 			<link rel="canonical" href={ meta.Canonical }/>
 			if meta.NoIndex {
 				<meta name="robots" content="noindex, follow"/>
@@ -44,6 +47,10 @@ templ Layout(meta site.PageMeta) {
 			<link rel="manifest" href="/site.webmanifest"/>
 			<link rel="alternate" type="application/rss+xml" title="Conteúdos Viagate" href="/feed.xml"/>
 			<link rel="alternate" type="text/plain" title="Viagate para LLMs" href="/llms.txt"/>
+			if googleAnalyticsID() != "" {
+				<script async src={ "https://www.googletagmanager.com/gtag/js?id=" + googleAnalyticsID() }></script>
+				<script src="/assets/js/google-analytics.js" data-measurement-id={ googleAnalyticsID() } defer></script>
+			}
 			<style>h1{font-size:2em}</style>
 			<link rel="stylesheet" href="/assets/css/site.css"/>
 			<link rel="stylesheet" href="/assets/css/industrial-tech.css"/>
