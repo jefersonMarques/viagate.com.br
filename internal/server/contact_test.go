@@ -84,6 +84,7 @@ func TestSubmitContactRejectsInvalidOrigin(t *testing.T) {
 		"consent": {"on"},
 	}
 	request := httptest.NewRequest(http.MethodPost, "/contato", strings.NewReader(form.Encode()))
+	request.Host = "viagate.com.br"
 	request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	request.Header.Set("Origin", "https://example.com")
 	request.RemoteAddr = "198.51.100.22:49152"
